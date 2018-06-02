@@ -1,0 +1,18 @@
+[MASTER]
+load-plugins = pylint.extensions.mccabe, pylint_django
+ignore-patterns = manage.py, \d{4}.*.py
+good-names = application, urlpatterns, i, j, k
+
+[REPORTS]
+output-format = colorized
+
+[TYPECHECK]
+generated-members = url, py*
+
+[DESIGN]
+min-public-methods=0
+
+[BASIC]
+docstring-min-length = 5
+include-naming-hint = yes
+function-rgx = (([a-z_][a-z0-9_]{2,40})|(_[a-z0-9_]*)|(__[a-z][a-z0-9_]+__))$

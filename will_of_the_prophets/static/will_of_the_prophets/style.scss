@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+$orange: #fd7e14;
+
+$body-bg: #000;
+$body-color: #fff;
+$border-color: $orange;
+$border-width: 10px;
+
+@import "bootstrap/bootstrap";
+
+$board-widths: (
+  sm: map-get($grid-breakpoints, 'sm'),
+  md: map-get($grid-breakpoints, 'md'),
+  lg: map-get($grid-breakpoints, 'lg') * .8333,
+  xl: map-get($grid-breakpoints, 'xl') * .8333,
+);
+
+.starfield {
+  background-image: url('/static/will_of_the_prophets/starfield.png');
+  background-size: cover;
+}
+
+
+@each $breakpoint, $board-width in $board-widths {
+  @include media-breakpoint-up($breakpoint) {
+    .square {
+      height: ($board-width - $border-width * 2) / 10 !important;
+      min-width: ($board-width - $border-width * 2) / 10 !important;
+    }
+  }
+}
+
+
+
+
+
+.square img {
+  width: 100%;
+}
+
+$square-bg-transparency: 0.2;
+
+.square-green {
+  background-color: transparentize($green, $square-bg-transparency);
+}
+
+.square-red {
+  background-color: transparentize($red, $square-bg-transparency);
+}

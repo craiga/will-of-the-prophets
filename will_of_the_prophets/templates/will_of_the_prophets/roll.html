@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>The last roll was a <strong>{{ last_roll.number }}</strong>.</p>
+
+<h1>Board as of {{ last_roll.embargo }}</h1>
+
+{{ board }}
+
+<h1>Roll Again</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" />
+</form>
+
+{% endblock %}

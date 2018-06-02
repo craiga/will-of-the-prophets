@@ -1,0 +1,17 @@
+{% load sass_tags %}
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <link href="{% sass_src 'will_of_the_prophets/style.scss' %}" rel="stylesheet" type="text/css" />
+        {% block style %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+    {% block script %}
+    {% endblock %}
+</html>

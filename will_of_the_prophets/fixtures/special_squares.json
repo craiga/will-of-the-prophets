@@ -1,0 +1,182 @@
+[
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 1,
+    "fields": {
+      "name": "Quark's Bar",
+      "description": "Drunkisode",
+      "image": "/static/will_of_the_prophets/special_squares/quarks_bar.png"
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 2,
+    "fields": {
+      "name": "CoCo NoNo",
+      "description": "A special tiki-themed Drunkisode",
+      "image": "/static/will_of_the_prophets/special_squares/coco_nono.png"
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 3,
+    "fields": {
+      "name": "Mornhammered",
+      "description": "Power Hour",
+      "image": "/static/will_of_the_prophets/special_squares/morn.png"
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 4,
+    "fields": {
+      "name": "Starship Mine",
+      "description": "Build a spaceship model while recording",
+      "image": "/static/will_of_the_prophets/special_squares/starship_mine.png"
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 5,
+    "fields": {
+      "name": "Caught in the Nebula",
+      "description": "No notes",
+      "image": "/static/will_of_the_prophets/special_squares/caught_in_the_nebula.png"
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 6,
+    "fields": {
+      "name": "The Nth Degree",
+      "description": "Extensive Research",
+      "image": "/static/will_of_the_prophets/special_squares/nth_degree.png"
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 7,
+    "fields": {
+      "name": "Measure of a Man",
+      "description": "We flip a coin and vehemently argue the pro/con of an episode",
+      "image": "/static/will_of_the_prophets/special_squares/measure_of_a_man.png"
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 8,
+    "fields": {
+      "name": "The Naked Now",
+      "description": "Roderick Style From the bathtub",
+      "image": "/static/will_of_the_prophets/special_squares/naked_now.png"
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 9,
+    "fields": {
+      "name": "Looking At Eachother During",
+      "description": "One host has to fly to the other host's city and record in-person",
+      "image": "/static/will_of_the_prophets/special_squares/look_at_each_other.png"
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 10,
+    "fields": {
+      "name": "Fuck It, We’ll Do It Live!",
+      "description": "Livestream the recording session",
+      "image": "/static/will_of_the_prophets/special_squares/do_it_live.png"
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 1,
+    "fields": {"square": 2, "type": 1}
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 2,
+    "fields": {"square": 18, "type": 1}
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 3,
+    "fields": {"square": 24, "type": 1}
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 4,
+    "fields": {"square": 36, "type": 1}
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 5,
+    "fields": {"square": 46, "type": 1}
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 6,
+    "fields": {"square": 54, "type": 1}
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 7,
+    "fields": {"square": 68, "type": 1}
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 8,
+    "fields": {"square": 72, "type": 1}
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 18,
+    "fields": {"square": 90, "type": 1}
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 9,
+    "fields": {"square": 10, "type": 2}
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 10,
+    "fields": {"square": 12, "type": 10}
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 11,
+    "fields": {"square": 28, "type": 8}
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 12,
+    "fields": {"square": 34, "type": 7}
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 13,
+    "fields": {"square": 56, "type": 9}
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 14,
+    "fields": {"square": 64, "type": 4}
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 15,
+    "fields": {"square": 78, "type": 6}
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 16,
+    "fields": {"square": 82, "type": 5}
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 17,
+    "fields": {"square": 100, "type": 3}
+  }
+]

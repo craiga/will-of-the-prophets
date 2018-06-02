@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-10">
+    {{ board }}
+    </div>
+    <div class="col-2">
+        <dl>
+            {% for special_square_type in special_square_types %}
+                <dt>
+                    <img class="img-special img-fluid" src="{{ special_square_type.image.url }}" alt="{{ special_square_type.name }}"/>
+                    {{ special_square_type.name }}
+                </dt>
+                <dd>{{ special_square_type.description }}</dd>
+            {% endfor %}
+        </dl>
+    </div>
+{% endblock %}

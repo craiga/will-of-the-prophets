@@ -1,0 +1,41 @@
+{% load static %}
+
+<div class="starfield border border-orange">
+    <div class="row no-gutters">
+        {% for square in squares %}
+    
+            <div class="col rounded square
+                {% if square.is_current_position %}square-current{% endif %}
+                {% if square.special %}
+                    square-special
+                {% else %}
+                    {% if square.number|divisibleby:2 %}
+                        square-red
+                    {% else %}
+                        square-green
+                    {% endif %}
+                {% endif %}
+                {% if square.butthole_start %}square-butthole-start{% endif %}
+                {% if square.butthole_end %}square-butthole-end{% endif %}
+                ">
+                <p class="number">{{ square.number }}</p>
+                {% if square.is_current_position %}
+                    <img class="img-runabout img-fluid" src="{% static 'will_of_the_prophets/runabout.png' %}" alt="Runabout"/>
+                {% endif %}
+                {% if square.special %}
+                    <img class="img-special img-fluid" src="{{ square.special.image.url }}" alt="{{ square.special.name }}"/>
+                {% endif %}
+                {% if square.butthole_start %}
+                    <img class="img-butthole-start img-fluid" src="{% static 'will_of_the_prophets/butthole_start.png' %}" alt="Butthole to {{ square.butthole_start.end_square }}"/>
+                {% endif %}
+                {% if square.butthole_end %}
+                    <img class="img-butthole-end img-fluid" src="{% static 'will_of_the_prophets/butthole_end.png' %}" alt="Butthole from {{ square.butthole_end.start_square }}"/>
+                {% endif %}
+            </div>
+            {% if forloop.counter|divisibleby:"10" %}
+                </div>
+                <div class="row no-gutters">
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
