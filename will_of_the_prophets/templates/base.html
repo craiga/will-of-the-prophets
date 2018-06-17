@@ -1,7 +1,18 @@
 {% load sass_tags %}
+{% load static %}
+
 <html>
     <head>
         <title>{{ title }}</title>
+        <style>
+            @font-face {
+                font-family: 'Federation';
+                src: url('{% static 'will_of_the_prophets/federation.woff2' %}') format('woff2'),
+                     url('{% static 'will_of_the_prophets/federation.woff' %}') format('woff');
+                font-weight: 500;
+                font-style: normal;
+            }
+        </style>
         <link href="{% sass_src 'will_of_the_prophets/style.scss' %}" rel="stylesheet" type="text/css" />
         {% block style %}
         {% endblock %}
