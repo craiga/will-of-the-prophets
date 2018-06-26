@@ -31,10 +31,10 @@ $square-margin: 5px;
 }
 
 $board-widths: (
-  sm: map-get($grid-breakpoints, 'sm') * .833333,
-  md: map-get($grid-breakpoints, 'md') * .833333,
-  lg: map-get($grid-breakpoints, 'lg') * .833333,
-  xl: map-get($grid-breakpoints, 'xl') * .833333,
+  sm: map-get($grid-breakpoints, 'sm') * .75,
+  md: map-get($grid-breakpoints, 'md') * .75,
+  lg: map-get($grid-breakpoints, 'lg') * .75,
+  xl: map-get($grid-breakpoints, 'xl') * .75,
 );
 
 .board {
@@ -83,3 +83,6 @@ $square-bg-transparency: 0.2;
   background-position: center;
 }
 
+.text-font-normal {
+  font-family: $font-family-sans-serif;
+}

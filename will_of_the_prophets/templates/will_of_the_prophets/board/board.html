@@ -28,12 +28,13 @@
                     ;"
                 {% endif %}
                 >
-                <p class="square-number">{{ square.number }}</p>
+                <p class="square-number
+                    {% if square.special or square.butthole_start %}
+                        invisible
+                    {% endif %}
+                ">{{ square.number }}</p>
                 {% if square.is_current_position %}
                     <img class="img-runabout img-fluid" src="{% static 'will_of_the_prophets/runabout.png' %}" alt="Runabout"/>
-                {% endif %}
-                {% if square.butthole_end %}
-                    <img class="img-butthole-end img-fluid" src="{% static 'will_of_the_prophets/butthole_end.png' %}" alt="Butthole from {{ square.butthole_end.start_square }}"/>
                 {% endif %}
             </div>
             {% if forloop.counter|divisibleby:"10" %}
