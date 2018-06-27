@@ -15,7 +15,6 @@
                         square-green
                     {% endif %}
                 {% endif %}
-                {% if square.butthole_end %}square-butthole-end{% endif %}
                 "
                 {% if square.special or square.butthole_start %}
                     style="background-image:
@@ -26,6 +25,17 @@
                         url('{% static 'will_of_the_prophets/butthole_start.png' %}')
                     {% endif %}
                     ;"
+                {% endif %}
+                {% if square.butthole_start %}
+                    id="butthole-start-{{ square.butthole_start.id }}"
+                {% endif %}
+                {% if square.butthole_end %}
+                    data-buttholes-start-at='[
+                        {% for butthole_end in square.butthole_end %}
+                            "butthole-start-{{ butthole_end.id }}"
+                            {% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                    ]'
                 {% endif %}
                 >
                 <p class="square-number
