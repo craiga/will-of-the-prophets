@@ -5,6 +5,7 @@ python:
   - "3.5-dev"
   - "3.6"
   - "3.6-dev"
+services: postgresql
 install:
   - pip install pipenv
   - pipenv install --dev
@@ -12,6 +13,9 @@ before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
+  - psql -c "CREATE DATABASE will_of_the_prophets;" -U postgres
+env:
+  DATABASE_URL: postgresql://postgres:postgres@localhost/will_of_the_prophets/
 script:
   - pipenv run pycodestyle
   - find . -iname "*.py" | xargs pipenv run pylint
