@@ -5,6 +5,12 @@ python:
   - "3.5-dev"
   - "3.6"
   - "3.6-dev"
+addons:
+  apt:
+    sources:
+      - travis-ci/sqlite3
+    packages:
+      - sqlite3
 install:
   - pip install pipenv
   - pipenv install --dev
