@@ -1,5 +1,7 @@
 """Roll tests."""
 
+# pylint: disable=redefined-outer-name
+
 from datetime import timedelta
 
 from django.core.exceptions import ValidationError

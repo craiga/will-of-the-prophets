@@ -13,8 +13,8 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 script:
-  - pipenv run pycodestyle .
+  - pipenv run pycodestyle
   - find . -iname "*.py" | xargs pipenv run pylint
-  - pipenv run python manage.py test
+  - pipenv run python manage.py test --settings will_of_the_prophets.settings.test
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

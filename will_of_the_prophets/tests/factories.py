@@ -32,6 +32,7 @@ class ButtholeFactory(factory.django.DjangoModelFactory):
 
 
 class RollFactory(factory.django.DjangoModelFactory):
+    """Roll factory."""
 
     number = factory.Faker('pyint')
     embargo = factory.Faker('date_time', tzinfo=pytz.utc)

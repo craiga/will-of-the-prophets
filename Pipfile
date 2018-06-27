@@ -20,6 +20,7 @@ pytest-freezegun = "*"
 pytest-mock = "*"
 libsass = "*"
 django-compressor = "*"
+coverage = "*"
 
 [requires]
 python_version = "3.6"
