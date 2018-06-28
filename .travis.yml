@@ -16,6 +16,6 @@ env:
 script:
   - pipenv run pycodestyle
   - find . -iname "*.py" | xargs pipenv run pylint
-  - pipenv run python manage.py test --settings will_of_the_prophets.settings.test --verbosity 3
+  - pipenv run pytest
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
