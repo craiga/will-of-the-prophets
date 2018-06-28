@@ -8,7 +8,7 @@ django = "*"
 django-heroku = "*"
 django-sass-processor = "*"
 pillow = "*"
-"psycopg2" = "*"
+"psycopg2-binary" = "*"
 
 [dev-packages]
 pycodestyle = "*"
