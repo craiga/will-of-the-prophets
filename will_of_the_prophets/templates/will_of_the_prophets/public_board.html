@@ -27,10 +27,10 @@
         {% for special_square_type in special_square_types %}
             <div class="row pb-3">
                 <div class="col-4">
-                    <img class="img-fluid" src="{{ special_square_type.image.url }}" alt="{{ special_square_type.name }}"/>
+                    <img class="img-fluid" src="/{{ special_square_type.image.url }}" alt="{{ special_square_type.name }}"/>
                 </div>
                 <div class="col-8">
-                    <h4 class="text-uppercase text-font-normal mb-0">{{ special_square_type.name }}</h6>
+                    <h4 class="text-uppercase text-font-normal mb-0">{{ special_square_type.name }}</h4>
                     <p class="text-blue text-uppercase h5 text-font-normal ">{{ special_square_type.description }}</p>
                 </div>
             </div>

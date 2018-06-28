@@ -11,3 +11,4 @@ class RollForm(forms.ModelForm):
     class Meta:
         model = Roll
         fields = ['embargo']
+        labels = {'embargo': "Date and time the next move will be public"}

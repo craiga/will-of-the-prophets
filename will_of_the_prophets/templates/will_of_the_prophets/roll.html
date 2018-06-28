@@ -5,24 +5,50 @@
 
 <div class="row pt-3">
     <div class="col-9">
-        <p class="h3 text-orange">The Greatest Generation Presents</p>
-        <h1 class="text-blue">Game of Buttholes:<br>The Will of the Prophets</h1>
-        <p>Board as of <strong>{{ last_roll.embargo }}</strong>.</p>
+        <h1 class="text-font-normal text-blue pb-3">You're required to learn as you play … <em class="text-orange">roll!</em></h1>
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <form method="post" class="form-inline">
+            {% csrf_token %}
+                {{ form.embargo.label_tag }}
+                {{ form.embargo|add_class:'form-control datetimepicker mx-3' }}
+                <button type="submit" class="btn btn-primary">Roll!</button>
+        </form>
+        <h2 class="text-font-normal text-blue pb-3">Board as of <strong>{{ last_roll.embargo }}</strong>:</h2>
         {{ board }}
     </div>
     <aside class="col-3">
-        <p>The last roll was a <strong>{{ last_roll.number }}</strong>.</p>
-        <h4 class="text-font-normal text-blue">You're required to learn as you play…</h4>
-        <form method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                {{ form.embargo.label_tag }}
-                {{ form.embargo|add_class:'form-control datetimepicker'|attr:'placeholder:Embargo date and time' }}
+        <div class="border p-3">
+            <h1 id="latest" class="text-orange">Chula!</h1>
+            <p class="h3 text-font-normal">The last roll was a
+                <strong class="text-orange">{{ last_roll.number }}</strong>.
+                It will appear on the site at
+                <strong class="text-blue">{{ last_roll.embargo }}</strong>.</p>
+            <p class="mb-0">To delete or edit this (or any other) roll, <a href="/admin/">use the admin site</a>!</p>
+        </div>
+        {% for special_square_type in special_square_types %}
+            <div class="row pt-3">
+                <div class="col-4">
+                    <img class="img-fluid" src="/{{ special_square_type.image.url }}" alt="{{ special_square_type.name }}"/>
+                </div>
+                <div class="col-8">
+                    <h4 class="text-uppercase text-font-normal mb-0">{{ special_square_type.name }}</h4>
+                    <p class="text-blue text-uppercase h5 text-font-normal ">{{ special_square_type.description }}</p>
+                </div>
             </div>
-            <div class="form-group col-12">
-                <button type="submit" class="btn btn-primary">…roll.</button>
-            </div>
-        </form>
+        {% endfor %}
     </aside>
 </div>
 
@@ -34,7 +60,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
 <script type="text/javascript">
     $(function () {
-        $('.datetimepicker').datetimepicker();
+        $('.datetimepicker').datetimepicker({
+            theme: 'dark',
+            format: 'Y-m-d H:i',
+        });
     });
 </script>
 
