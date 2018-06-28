@@ -1,3 +1,2 @@
 [run]
-source = .
 omit = manage.py, */wsgi.py, */migrations/*.py
