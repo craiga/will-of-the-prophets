@@ -138,5 +138,10 @@ STATICFILES_FINDERS = [
 ]
 
 
+# django-sass-processor
+# https://github.com/jrief/django-sass-processor
+SASS_OUTPUT_STYLE = 'compressed'
+
+
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
