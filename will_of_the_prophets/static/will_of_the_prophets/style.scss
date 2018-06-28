@@ -86,3 +86,8 @@ $square-bg-transparency: 0.2;
 .text-font-normal {
   font-family: $font-family-sans-serif;
 }
+
+.img-runabout {
+  z-index: 50;
+  position: relative;
+}
