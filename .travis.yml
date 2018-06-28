@@ -20,5 +20,4 @@ script:
   - pipenv run python manage.py compilescss && git diff --no-ext-diff --exit-code
   - pipenv check
 after_script:
-  - ls -al
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
