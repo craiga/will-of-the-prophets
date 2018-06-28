@@ -135,11 +135,6 @@ STATICFILES_FINDERS = [
     'sass_processor.finders.CssFinder',
 ]
 
-# Test runner
-# http://pytest-django.readthedocs.io/en/latest/faq.html#how-can-i-use-manage-py-test-with-pytest-django
-
-TEST_RUNNER = 'will_of_the_prophets.test_runner.PytestTestRunner'
-
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())

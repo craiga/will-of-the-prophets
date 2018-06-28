@@ -20,6 +20,8 @@ def public_board(request):
 
 
 class RollView(LoginRequiredMixin, FormView):
+    """View for rolling the die."""
+
     form_class = forms.RollForm
     template_name = 'will_of_the_prophets/roll.html'
     success_url = '/rolls/'

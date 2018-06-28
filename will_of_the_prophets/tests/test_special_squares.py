@@ -1,5 +1,7 @@
 """Special square tests."""
 
+# pylint: disable=redefined-outer-name, unused-argument
+
 from django.core.exceptions import ValidationError
 
 import pytest
@@ -18,9 +20,7 @@ def butthole():
 
 
 @pytest.mark.django_db
-@pytest.mark.usefixtures('butthole')
-# pylint: disable=redefined-outer-name
-def test_cannot_exist_at_butthole_start(special_square_type):
+def test_cannot_exist_at_butthole_start(special_square_type, butthole):
     """Assert a special square cannot exist at the start of a butthole."""
     square = factories.SpecialSquareFactory.build(square=75,
                                                   type=special_square_type)
@@ -29,9 +29,7 @@ def test_cannot_exist_at_butthole_start(special_square_type):
 
 
 @pytest.mark.django_db
-@pytest.mark.usefixtures('butthole')
-# pylint: disable=redefined-outer-name
-def test_can_exist_at_butthole_end(special_square_type):
+def test_can_exist_at_butthole_end(special_square_type, butthole):
     """Assert a special square can exist at the end of a butthole."""
     square = factories.SpecialSquareFactory.build(square=25,
                                                   type=special_square_type)
