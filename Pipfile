@@ -12,6 +12,7 @@ pillow = "*"
 gunicorn = "*"
 libsass = "*"
 django-compressor = "*"
+raven = "*"
 
 [dev-packages]
 pycodestyle = "*"
