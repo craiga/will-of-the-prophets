@@ -23,6 +23,7 @@ pytz = "*"
 pytest-freezegun = "*"
 pytest-mock = "*"
 coverage = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.6"
