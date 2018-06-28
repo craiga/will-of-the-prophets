@@ -1,19 +1,41 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
 {% block content %}
 
-<p>The last roll was a <strong>{{ last_roll.number }}</strong>.</p>
+<div class="row pt-3">
+    <div class="col-9">
+        <p class="h3 text-orange">The Greatest Generation Presents</p>
+        <h1 class="text-blue">Game of Buttholes:<br>The Will of the Prophets</h1>
+        <p>Board as of <strong>{{ last_roll.embargo }}</strong>.</p>
+        {{ board }}
+    </div>
+    <aside class="col-3">
+        <p>The last roll was a <strong>{{ last_roll.number }}</strong>.</p>
+        <h4 class="text-font-normal text-blue">You're required to learn as you play…</h4>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.embargo.label_tag }}
+                {{ form.embargo|add_class:'form-control datetimepicker'|attr:'placeholder:Embargo date and time' }}
+            </div>
+            <div class="form-group col-12">
+                <button type="submit" class="btn btn-primary">…roll.</button>
+            </div>
+        </form>
+    </aside>
+</div>
 
-<h1>Board as of {{ last_roll.embargo }}</h1>
+{% endblock %}
 
-{{ board }}
+{% block script %}
 
-<h1>Roll Again</h1>
-
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" />
-</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />\
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.datetimepicker').datetimepicker();
+    });
+</script>
 
 {% endblock %}
