@@ -11,6 +11,7 @@ pillow = "*"
 "psycopg2-binary" = "*"
 gunicorn = "*"
 raven = "*"
+django-widget-tweaks = "*"
 
 [dev-packages]
 pycodestyle = "*"

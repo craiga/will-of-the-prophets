@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sass_processor',
+    'widget_tweaks',
     'bootstrap',
     'will_of_the_prophets',
 ]
