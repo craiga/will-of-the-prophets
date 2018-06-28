@@ -1,38 +1,58 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
 {% block content %}
 
-    {% if form.errors %}
-        {% for field in form %}
-            {% for error in field.errors %}
+<div class="row pt-3">
+    <div class="col-12">
+        <p class="h3 text-orange">The Greatest Generation Presents</p>
+        <h1 class="text-blue">Game of Buttholes:<br>The Will of the Prophets</h1>
+
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
                 <div class="alert alert-danger">
                     <strong>{{ error|escape }}</strong>
                 </div>
             {% endfor %}
-        {% endfor %}
-        {% for error in form.non_field_errors %}
-            <div class="alert alert-danger">
-                <strong>{{ error|escape }}</strong>
-            </div>
-        {% endfor %}
-    {% endif %}
-
-    {% if next %}
-        {% if user.is_authenticated %}
-            <p>Your account doesn't have access to this page. To proceed,
-               please login with an account that has access.</p>
-        {% else %}
-            <p>Please login to see this page.</p>
         {% endif %}
-    {% endif %}
 
-    <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        <div>{{ form.username.label_tag }} {{ form.username }}</div>
-        <div>{{ form.password.label_tag }} {{ form.password }}</div>
-        <input type="submit" value="login" />
-        <input type="hidden" name="next" value="{{ next }}" />
-    </form>
+        {% if next and user.is_authenticated %}
+            <div class="alert alert-danger">
+                <strong>Your account doesn't have access to this page. To proceed,
+                   please login with an account that has access.</strong>
+            </div>
+        {% endif %}
 
-    <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}" />
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    {{ form.username.label_tag }}
+                    {{ form.username|add_class:'form-control'|attr:'placeholder:Username' }}
+                </div>
+                <div class="form-group col-sm-6">
+                    {{ form.password.label_tag }}
+                    {{ form.password|add_class:'form-control'|attr:'placeholder:Username' }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <button type="submit" class="btn btn-primary">Log In</button>
+                </div>
+            </div>
+        </form>
+
+        <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+
+    </div>
+</div>
+
 {% endblock %}
