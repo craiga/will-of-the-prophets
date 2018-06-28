@@ -20,4 +20,7 @@ script:
   - pipenv run python manage.py compilescss && git diff --no-ext-diff --exit-code
   - pipenv check
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - ls -al
+  - cat .coverage
+  - car coverage.xml
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT --coverage-input-type coverage.py
