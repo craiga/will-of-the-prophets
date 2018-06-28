@@ -21,6 +21,58 @@
   },
   {
     "model": "will_of_the_prophets.roll",
-    "fields": {"number": 6, "embargo": "2018-08-20"}
+    "fields": {"number": 4, "embargo": "2018-03-26"}
+  },
+  {
+    "model": "will_of_the_prophets.roll",
+    "fields": {"number": 6, "embargo": "2018-04-02"}
+  },
+  {
+    "model": "will_of_the_prophets.roll",
+    "fields": {"number": 2, "embargo": "2018-04-09"}
+  },
+  {
+    "model": "will_of_the_prophets.roll",
+    "fields": {"number": 4, "embargo": "2018-04-16"}
+  },
+  {
+    "model": "will_of_the_prophets.roll",
+    "fields": {"number": 5, "embargo": "2018-04-23"}
+  },
+  {
+    "model": "will_of_the_prophets.roll",
+    "fields": {"number": 3, "embargo": "2018-04-30"}
+  },
+  {
+    "model": "will_of_the_prophets.roll",
+    "fields": {"number": 1, "embargo": "2018-05-07"}
+  },
+  {
+    "model": "will_of_the_prophets.roll",
+    "fields": {"number": 6, "embargo": "2018-05-14"}
+  },
+  {
+    "model": "will_of_the_prophets.roll",
+    "fields": {"number": 3, "embargo": "2018-05-21"}
+  },
+  {
+    "model": "will_of_the_prophets.roll",
+    "fields": {"number": 1, "embargo": "2018-05-28"}
+  },
+  {
+    "model": "will_of_the_prophets.roll",
+    "fields": {"number": 6, "embargo": "2018-06-04"}
+  },
+  {
+    "model": "will_of_the_prophets.roll",
+    "fields": {"number": 4, "embargo": "2018-06-11"}
+  },
+  {
+    "model": "will_of_the_prophets.roll",
+    "fields": {"number": 1, "embargo": "2018-06-18"}
+  },
+  {
+    "model": "will_of_the_prophets.roll",
+    "fields": {"number": 5, "embargo": "2018-06-25"}
   }
 ]

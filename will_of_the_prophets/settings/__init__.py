@@ -28,12 +28,13 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*.herokuapp.com', 'localhost']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'raven.contrib.django.raven_compat',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sass_processor',
+    'widget_tweaks',
     'bootstrap',
     'will_of_the_prophets',
 ]
@@ -135,6 +137,11 @@ STATICFILES_FINDERS = [
     # https://github.com/jrief/django-sass-processor
     'sass_processor.finders.CssFinder',
 ]
+
+
+# django-sass-processor
+# https://github.com/jrief/django-sass-processor
+SASS_OUTPUT_STYLE = 'compressed'
 
 
 # Configure Django App for Heroku.

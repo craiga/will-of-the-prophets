@@ -10,8 +10,8 @@ django-sass-processor = "*"
 pillow = "*"
 "psycopg2-binary" = "*"
 gunicorn = "*"
-libsass = "*"
-django-compressor = "*"
+raven = "*"
+django-widget-tweaks = "*"
 
 [dev-packages]
 pycodestyle = "*"
@@ -24,6 +24,8 @@ pytest-freezegun = "*"
 pytest-mock = "*"
 pytest-cov = "*"
 ipython = "*"
+libsass = "*"
+django-compressor = "*"
 
 [requires]
 python_version = "3.6"

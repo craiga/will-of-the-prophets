@@ -17,5 +17,7 @@ script:
   - pipenv run pycodestyle
   - find . -iname "*.py" | xargs pipenv run pylint
   - pipenv run pytest --cov
+  - pipenv run python manage.py compilescss && git diff --no-ext-diff --exit-code
+  - pipenv check
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
