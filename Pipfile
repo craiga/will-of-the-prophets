@@ -24,6 +24,7 @@ pytest-freezegun = "*"
 pytest-mock = "*"
 coverage = "*"
 pytest-cov = "*"
+ipython = "*"
 
 [requires]
 python_version = "3.6"
