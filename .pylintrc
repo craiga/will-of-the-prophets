@@ -11,6 +11,7 @@ generated-members = url, py*
 
 [DESIGN]
 min-public-methods=0
+max-parents=15
 
 [BASIC]
 docstring-min-length = 5

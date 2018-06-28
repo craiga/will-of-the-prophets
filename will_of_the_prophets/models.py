@@ -10,7 +10,8 @@ from django.forms.models import model_to_dict
 # pylint: disable=cyclic-import
 from will_of_the_prophets.validators import (not_butthole_start_validator,
                                              not_special_square_validator,
-                                             future_validator)
+                                             future_validator,
+                                             RollEmbargoValidator)
 
 
 SQUARE_VALIDATORS = [validators.MinValueValidator(1),
@@ -70,7 +71,8 @@ class Roll(models.Model):
     """A roll of the 'dice'."""
 
     number = models.PositiveIntegerField(default=default_roll_number)
-    embargo = models.DateTimeField(validators=[future_validator])
+    embargo = models.DateTimeField(validators=[future_validator,
+                                               RollEmbargoValidator()])
 
     def __str__(self):
         return '{number} on {embargo}'.format(**model_to_dict(self))
