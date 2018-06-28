@@ -16,11 +16,9 @@ env:
 script:
   - pipenv run pycodestyle
   - find . -iname "*.py" | xargs pipenv run pylint
-  - pipenv run pytest --cov=.
+  - pipenv run pytest --cov=. --cov-report=xml
   - pipenv run python manage.py compilescss && git diff --no-ext-diff --exit-code
   - pipenv check
 after_script:
   - ls -al
-  - cat .coverage
-  - car coverage.xml
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT --coverage-input-type coverage.py
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
