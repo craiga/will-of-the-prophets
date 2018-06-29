@@ -6,7 +6,7 @@
 {% block content %}
 
 <div class="row pt-3">
-    <div class="col-9">
+    <div class="col-lg-9">
         <h1 class="text-font-normal text-blue pb-3">You're required to learn as you play … <em class="text-orange">roll!</em></h1>
         {% if form.errors %}
             {% for field in form %}
@@ -31,26 +31,26 @@
         <h2 class="text-font-normal text-blue pb-3">Board as of <strong>{{ last_roll.embargo }}</strong>:</h2>
         {{ board }}
     </div>
-    <aside class="col-3">
-        <div class="border p-3">
-            <h1 id="latest" class="text-orange">Chula!</h1>
+    <aside class="col-lg-3">
+        <div id="chula" class="border p-3 my-3">
+            <h1 class="text-orange">Chula!</h1>
             <p class="h3 text-font-normal">The last roll was a
                 <strong class="text-orange">{{ last_roll.number }}</strong>.
                 It will appear on the site at
                 <strong class="text-blue">{{ last_roll.embargo }}</strong>.</p>
             <p class="mb-0">To delete or edit this (or any other) roll, <a href="/admin/will_of_the_prophets/roll/">use the admin site</a>!</p>
         </div>
-        {% for special_square_type in special_square_types %}
-            <div class="row pt-3">
-                <div class="col-4">
+        <div class="row pt-3">
+            {% for special_square_type in special_square_types %}
+                <div class="col-lg-4 col-2 py-3">
                     <img class="img-fluid" src="/{{ special_square_type.image.url }}" alt="{{ special_square_type.name }}"/>
                 </div>
-                <div class="col-8">
+                <div class="col-lg-8 col-4 py-3">
                     <h4 class="text-uppercase text-font-normal mb-0">{{ special_square_type.name }}</h4>
                     <p class="text-blue text-uppercase h5 text-font-normal ">{{ special_square_type.description }}</p>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </aside>
 </div>
 

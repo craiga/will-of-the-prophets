@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="row pt-3">
-    <div class="col-9">
+    <div class="col-lg-9">
         <p class="h3 text-orange">The Greatest Generation Presents</p>
         <h1 class="text-blue">Game of Buttholes:<br>The Will of the Prophets</h1>
         {{ board }}
@@ -23,18 +23,18 @@
             </p>
         </footer>
     </div>
-    <aside class="col-3">
-        {% for special_square_type in special_square_types %}
-            <div class="row pb-3">
-                <div class="col-4">
+    <aside class="col-lg-3">
+        <div class="row">
+            {% for special_square_type in special_square_types %}
+                <div class="col-lg-4 col-2 py-3">
                     <img class="img-fluid" src="/{{ special_square_type.image.url }}" alt="{{ special_square_type.name }}"/>
                 </div>
-                <div class="col-8">
+                <div class="col-lg-8 col-4 py-3">
                     <h4 class="text-uppercase text-font-normal mb-0">{{ special_square_type.name }}</h4>
                     <p class="text-blue text-uppercase h5 text-font-normal ">{{ special_square_type.description }}</p>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </aside>
 </div>
 

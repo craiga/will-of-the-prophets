@@ -14,3 +14,9 @@ Once you've checked out this repository, getting this project up and running sho
     pipenv run python manage.py migrate
     pipenv run python manage.py loaddata buttholes special_squares rolls
     pipenv run python manage.py runserver
+
+# Developing with CSS
+
+CSS is built from Sass using django-sass-processor. To compile CSS, use the `compilescss` command.
+
+When making changes to style.scss, remove style.css from the static directory and it will be rebuilt whenever a change is made.
