@@ -6,6 +6,9 @@
     
             <div class="col rounded square
                 {% if square.is_current_position %}square-current{% endif %}
+                {% if square.butthole_start %}
+                    above-butthole
+                {% endif %}
                 {% if square.special or square.butthole_start %}
                     square-bg-contain
                 {% else %}

@@ -1,75 +1,134 @@
-$(function() {
-    // Extract colours and sizes from document.
-    // Assumes something in the document has already got the required classes attached to something.
-    var orange = $(".text-orange").css('color');
-    var blue = $(".text-blue").css('color');
-    var borderWidth = parseInt($('.border').css('border-width'));
+function getOrange() {
+    return $(".text-orange").css('color');
+}
 
+
+function getBlue() {
+    return $(".text-blue").css('color');
+}
+
+
+function getBorderWidth() {
+    return parseInt($('.border').css('border-width'));
+}
+
+
+/**
+ * Calculate coordinates of buttholes.
+ * Returns a list of six numbers:
+ *  1 & 2: x and y coordinates of left side of start
+ *  3 & 4: x and y coordinates of right side of start
+ *  5 & 6: x and y coordinates of end
+ */
+function calculateCoordinates(startEle, endEle) {
+    var startPos = $(startEle).offset();
+    var endPos = $(endEle).offset();
+    var squareWidth= $(startEle).outerWidth();
+    var squareHeight= $(startEle).outerHeight();
+    var borderWidth = getBorderWidth();
+    return [
+        startPos.left + borderWidth,
+        startPos.top + (squareHeight / 2),
+        startPos.left + squareWidth - borderWidth,
+        startPos.top + (squareHeight / 2),
+        endPos.left + (squareWidth / 2),
+        endPos.top + (squareHeight / 4),
+    ]
+}
+
+
+function createCanvas(coordinates) {
+    var left = Math.min(coordinates[0], coordinates[2], coordinates[4]);
+    var top = Math.min(coordinates[1], coordinates[3], coordinates[5]);
+    var width = Math.max(coordinates[0], coordinates[2], coordinates[4]) - left;
+    var height = Math.max(coordinates[1], coordinates[3], coordinates[5]) - top;
+    var canvas = document.createElement('canvas');
+    $(canvas).css({
+        position: 'absolute',
+        left: left,
+        top: top,
+    });
+    $(canvas).attr('width', width);
+    $(canvas).attr('height', height);
+    $(canvas).addClass('butthole');
+    $('.container').append(canvas);
+    return canvas;
+}
+
+
+/** Transpose coordinates so that the upper-left corner is 0, 0. */
+function transposeCoordinates(coordinates) {
+    var minX = Math.min(coordinates[0], coordinates[2], coordinates[4]);
+    var minY = Math.min(coordinates[1], coordinates[3], coordinates[5]);
+    return [
+        coordinates[0] - minX,
+        coordinates[1] - minY,
+        coordinates[2] - minX,
+        coordinates[3] - minY,
+        coordinates[4] - minX,
+        coordinates[5] - minY,
+    ];
+}
+
+
+function drawButtholeSides(coordinates, canvasContext) {
+    canvasContext.lineWidth = getBorderWidth();
+    canvasContext.beginPath();
+    canvasContext.moveTo(coordinates[0], coordinates[1]);
+    canvasContext.lineTo(coordinates[4], coordinates[5]);
+    canvasContext.stroke();
+    canvasContext.beginPath();
+    canvasContext.moveTo(coordinates[2], coordinates[3]);
+    canvasContext.lineTo(coordinates[4], coordinates[5]);
+    canvasContext.stroke();
+}
+
+
+function drawButtholeBackground(coordinates, canvasContext) {
+    canvasContext.beginPath();
+    canvasContext.globalAlpha = 0.75;
+    canvasContext.moveTo(coordinates[0], coordinates[1]);
+    canvasContext.lineTo(coordinates[2], coordinates[3]);
+    canvasContext.lineTo(coordinates[4], coordinates[5]);
+    canvasContext.lineTo(coordinates[0], coordinates[1]);
+    canvasContext.fill();
+}
+
+
+function drawButthole(coordinates, canvas) {
+    var canvasContext = canvas.getContext('2d');
+
+    // Create gradient
+    var gradient = canvasContext.createLinearGradient(0, 0, 0, coordinates[5]);
+    gradient.addColorStop(0, getBlue());
+    gradient.addColorStop(1, getOrange());
+
+    // Set up canvas context.
+    canvasContext.strokeStyle = gradient;
+    canvasContext.fillStyle = gradient;
+
+    drawButtholeSides(coordinates, canvasContext);
+    drawButtholeBackground(coordinates, canvasContext);
+}
+
+
+function drawButtholes() {
     $('[data-buttholes-start-at]').each(function(i, endEle) {
         var startIds = $(endEle).data('buttholes-start-at');
         $(startIds).each(function(i , startId) {
             // Calculate start and end positions
             var startEle = document.getElementById(startId);
-            var startPosA = $(startEle).offset();
-            var startPosB = $(startEle).offset();
-            startPosA.top = startPosA.top + ($(startEle).outerHeight() / 2);
-            startPosA.left = startPosA.left + borderWidth;
-            startPosB.top = startPosB.top + ($(startEle).outerHeight() / 2);
-            startPosB.left = startPosB.left + $(startEle).outerWidth() - borderWidth;
-            var endPos = $(endEle).offset();
-            endPos.top = endPos.top + ($(endEle).outerHeight() / 4);
-            endPos.left = endPos.left + ($(endEle).outerWidth() / 2);
-
-            // Calculate size of the canvas
-            var top = Math.min(startPosA.top, startPosB.top, endPos.top);
-            var left = Math.min(startPosA.left, startPosB.left, endPos.left);
-            var height = Math.max(startPosA.top, startPosB.top, endPos.top) - top;
-            var width = Math.max(startPosA.left, startPosB.left, endPos.left) - left;
-
-            // Ensure start of butthole will be on top of canvas.
-            $(startEle).css('z-index', 20);
-
-            // Create and inject canvas
-            var canvas = document.createElement('canvas');
-            $(canvas).css({
-                position: 'absolute',
-                top: top,
-                left: left,
-                'z-index': 10,
-            });
-            $(canvas).attr('height', height);
-            $(canvas).attr('width', width);
-            $('.container').append(canvas);
-
-            // Set up canvas for drawing
-            var ctx = canvas.getContext('2d');
-
-            // Create gradient
-            var gradient = ctx.createLinearGradient(0, 0, 0, endPos.top - top);
-            gradient.addColorStop(0, blue);
-            gradient.addColorStop(1, orange);
-            
-            // Draw sides
-            ctx.strokeStyle = gradient;
-            ctx.lineWidth = borderWidth;
-            ctx.beginPath();
-            ctx.moveTo(startPosA.left - left, startPosA.top - top);
-            ctx.lineTo(endPos.left - left, endPos.top - top);
-            ctx.stroke();
-            ctx.beginPath();
-            ctx.moveTo(startPosB.left - left, startPosB.top - top);
-            ctx.lineTo(endPos.left - left, endPos.top - top);
-            ctx.stroke();
-
-            // Draw background
-            ctx.beginPath();
-            ctx.globalAlpha = 0.75;
-            ctx.fillStyle = gradient;
-            ctx.moveTo(startPosA.left - left, startPosA.top - top);
-            ctx.lineTo(startPosB.left - left, startPosB.top - top);
-            ctx.lineTo(endPos.left - left, endPos.top - top);
-            ctx.lineTo(startPosA.left - left, startPosA.top - top);
-            ctx.fill();
+            coordinates = calculateCoordinates(startEle, endEle);
+            canvas = createCanvas(coordinates)
+            coordinates = transposeCoordinates(coordinates);
+            drawButthole(coordinates, canvas);
         });
     });
+}
+
+
+$(drawButtholes);
+$(window).resize(function () {
+    $('.butthole').remove();
+    drawButtholes();
 });
