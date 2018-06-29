@@ -21,7 +21,6 @@ function getBorderWidth() {
  *  5 & 6: x and y coordinates of end
  */
 function calculateCoordinates(startEle, endEle) {
-
     var startPos = $(startEle).offset();
     var endPos = $(endEle).offset();
     var squareWidth= $(startEle).outerWidth();
@@ -72,36 +71,44 @@ function transposeCoordinates(coordinates) {
 }
 
 
+function drawButtholeSides(coordinates, canvasContext) {
+    canvasContext.lineWidth = getBorderWidth();
+    canvasContext.beginPath();
+    canvasContext.moveTo(coordinates[0], coordinates[1]);
+    canvasContext.lineTo(coordinates[4], coordinates[5]);
+    canvasContext.stroke();
+    canvasContext.beginPath();
+    canvasContext.moveTo(coordinates[2], coordinates[3]);
+    canvasContext.lineTo(coordinates[4], coordinates[5]);
+    canvasContext.stroke();
+}
+
+
+function drawButtholeBackground(coordinates, canvasContext) {
+    canvasContext.beginPath();
+    canvasContext.globalAlpha = 0.75;
+    canvasContext.moveTo(coordinates[0], coordinates[1]);
+    canvasContext.lineTo(coordinates[2], coordinates[3]);
+    canvasContext.lineTo(coordinates[4], coordinates[5]);
+    canvasContext.lineTo(coordinates[0], coordinates[1]);
+    canvasContext.fill();
+}
+
+
 function drawButthole(coordinates, canvas) {
-    // Set up canvas for drawing
-    var ctx = canvas.getContext('2d');
+    var canvasContext = canvas.getContext('2d');
 
     // Create gradient
-    var gradient = ctx.createLinearGradient(0, 0, 0, coordinates[5]);
+    var gradient = canvasContext.createLinearGradient(0, 0, 0, coordinates[5]);
     gradient.addColorStop(0, getBlue());
     gradient.addColorStop(1, getOrange());
-    
-    // Draw sides
-    ctx.strokeStyle = gradient;
-    ctx.lineWidth = getBorderWidth();
-    ctx.beginPath();
-    ctx.moveTo(coordinates[0], coordinates[1]);
-    ctx.lineTo(coordinates[4], coordinates[5]);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(coordinates[2], coordinates[3]);
-    ctx.lineTo(coordinates[4], coordinates[5]);
-    ctx.stroke();
 
-    // Draw background
-    ctx.beginPath();
-    ctx.globalAlpha = 0.75;
-    ctx.fillStyle = gradient;
-    ctx.moveTo(coordinates[0], coordinates[1]);
-    ctx.lineTo(coordinates[2], coordinates[3]);
-    ctx.lineTo(coordinates[4], coordinates[5]);
-    ctx.lineTo(coordinates[0], coordinates[1]);
-    ctx.fill();
+    // Set up canvas context.
+    canvasContext.strokeStyle = gradient;
+    canvasContext.fillStyle = gradient;
+
+    drawButtholeSides(coordinates, canvasContext);
+    drawButtholeBackground(coordinates, canvasContext);
 }
 
 
