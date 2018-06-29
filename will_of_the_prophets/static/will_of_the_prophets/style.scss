@@ -31,8 +31,8 @@ $square-margin: 5px;
 }
 
 $board-widths: (
-  sm: map-get($grid-breakpoints, 'sm') * .75,
-  md: map-get($grid-breakpoints, 'md') * .75,
+  sm: map-get($grid-breakpoints, 'sm'),
+  md: map-get($grid-breakpoints, 'md'),
   lg: map-get($grid-breakpoints, 'lg') * .75,
   xl: map-get($grid-breakpoints, 'xl') * .75,
 );
@@ -44,7 +44,29 @@ $board-widths: (
 
 .square {
   margin: $square-margin;
+  height: 40px;
 }
+
+.square-number {
+  line-height: 0;
+  text-align: center;
+  padding-top: 20px;
+  font-size: 20px;
+}
+
+.img-runabout {
+  object-fit: contain;
+  height: 40px;
+}
+
+.square-bg-contain .img-runabout {
+  top: 13.3px;
+  left: 0px;
+  height: 26.6px;
+  width: 66%;
+  position: relative;
+}
+
 
 @each $breakpoint, $board-width in $board-widths {
   $row-width: $board-width - $grid-gutter-width * 2 - $border-width * 2 - $board-padding * 2;
@@ -56,15 +78,18 @@ $board-widths: (
     }
 
     .square-number {
-      line-height: 0;
       padding-top: $square-dimension / 2;
       font-size: $square-dimension / 2;
-      text-align: center;
+    }
+
+    .img-runabout {
+      height: $square-dimension;
     }
 
     .square-bg-contain .img-runabout {
       top: $square-dimension / 3;
       left: $square-dimension / 3;
+      height: $square-dimension / 3 * 2;
     }
 
   }
@@ -92,17 +117,6 @@ $square-bg-transparency: 0.2;
 
 .text-font-normal {
   font-family: $font-family-sans-serif;
-}
-
-.img-runabout {
-  object-fit: contain;
-  height: 100%;
-}
-
-.square-bg-contain .img-runabout {
-  height: 66%;
-  width: 66%;
-  position: relative;
 }
 
 .butthole {

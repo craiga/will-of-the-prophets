@@ -35,4 +35,4 @@ class RollView(LoginRequiredMixin, CreateView):
             special_square_types=models.SpecialSquareType.objects.all())
 
     def get_success_url(self):
-        return reverse('roll')
+        return reverse('roll') + "#chula"
