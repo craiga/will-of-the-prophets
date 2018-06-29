@@ -54,12 +54,19 @@ $board-widths: (
       height: $square-dimension;
       width: $square-dimension;
     }
+
     .square-number {
       line-height: 0;
       padding-top: $square-dimension / 2;
       font-size: $square-dimension / 2;
       text-align: center;
     }
+
+    .square-bg-contain .img-runabout {
+      top: $square-dimension / 3;
+      left: $square-dimension / 3;
+    }
+
   }
 }
 
@@ -88,6 +95,12 @@ $square-bg-transparency: 0.2;
 }
 
 .img-runabout {
-  z-index: 50;
+  object-fit: contain;
+  height: 100%;
+}
+
+.square-bg-contain .img-runabout {
+  height: 66%;
+  width: 66%;
   position: relative;
 }
