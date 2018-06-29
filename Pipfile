@@ -12,6 +12,7 @@ pillow = "*"
 gunicorn = "*"
 raven = "*"
 django-widget-tweaks = "*"
+django-tz-detect = "*"
 
 [dev-packages]
 pycodestyle = "*"

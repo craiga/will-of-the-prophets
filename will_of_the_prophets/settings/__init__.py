@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sass_processor',
     'widget_tweaks',
+    'tz_detect',
     'bootstrap',
     'will_of_the_prophets',
 ]
@@ -142,6 +143,15 @@ STATICFILES_FINDERS = [
 # django-sass-processor
 # https://github.com/jrief/django-sass-processor
 SASS_OUTPUT_STYLE = 'compressed'
+
+
+# django-tz-detect
+# https://github.com/adamcharnock/django-tz-detect
+MIDDLEWARE += [
+    'tz_detect.middleware.TimezoneMiddleware',
+]
+
+TZ_DETECT_COUNTRIES = ('US', 'CN', 'IN', 'JP', 'BR', 'RU', 'DE', 'FR', 'GB')
 
 
 # Configure Django App for Heroku.
