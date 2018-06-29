@@ -38,14 +38,14 @@
                     ]'
                 {% endif %}
                 >
-                <p class="square-number
-                    {% if square.special or square.butthole_start %}
-                        invisible
-                    {% endif %}
-                ">{{ square.number }}</p>
                 {% if square.is_current_position %}
                     <img class="img-runabout img-fluid" src="{% static 'will_of_the_prophets/runabout.png' %}" alt="Runabout"/>
                 {% endif %}
+                <p class="square-number
+                    {% if square.special or square.butthole_start or square.is_current_position %}
+                        invisible
+                    {% endif %}
+                ">{{ square.number }}</p>
             </div>
             {% if forloop.counter|divisibleby:"10" %}
                 </div>
