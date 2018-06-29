@@ -7,6 +7,8 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.forms.models import model_to_dict
 
+from model_utils.models import TimeStampedModel
+
 # pylint: disable=cyclic-import
 from will_of_the_prophets.validators import (not_butthole_start_validator,
                                              not_special_square_validator,
@@ -67,7 +69,7 @@ def default_roll_number():
     return random.randint(1, 6)
 
 
-class Roll(models.Model):
+class Roll(TimeStampedModel):
     """A roll of the 'dice'."""
 
     number = models.PositiveIntegerField(default=default_roll_number)
