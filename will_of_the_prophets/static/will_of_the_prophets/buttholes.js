@@ -9,7 +9,7 @@ function getBlue() {
 
 
 function getBorderWidth() {
-    return parseInt($('.border').css('border-width'));
+    return parseInt($('.border').css('border-top-width'));
 }
 
 
@@ -33,7 +33,7 @@ function calculateCoordinates(startEle, endEle) {
         startPos.top + (squareHeight / 2),
         endPos.left + (squareWidth / 2),
         endPos.top + (squareHeight / 4),
-    ]
+    ];
 }
 
 
@@ -119,13 +119,12 @@ function drawButtholes() {
             // Calculate start and end positions
             var startEle = document.getElementById(startId);
             coordinates = calculateCoordinates(startEle, endEle);
-            canvas = createCanvas(coordinates)
+            canvas = createCanvas(coordinates);
             coordinates = transposeCoordinates(coordinates);
             drawButthole(coordinates, canvas);
         });
     });
 }
-
 
 $(drawButtholes);
 $(window).resize(function () {
