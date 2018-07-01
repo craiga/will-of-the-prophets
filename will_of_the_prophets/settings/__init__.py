@@ -44,11 +44,13 @@ INSTALLED_APPS = [
     'sass_processor',
     'widget_tweaks',
     'tz_detect',
+    'debug_toolbar',
     'bootstrap',
     'will_of_the_prophets',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -152,6 +154,11 @@ MIDDLEWARE += [
 ]
 
 TZ_DETECT_COUNTRIES = ('US', 'CN', 'IN', 'JP', 'BR', 'RU', 'DE', 'FR', 'GB')
+
+
+# django-debug-toolbar
+# https://django-debug-toolbar.readthedocs.io/en/stable/installation.html
+INTERNAL_IPS = ('127.0.0.1',)
 
 
 # Configure Django App for Heroku.

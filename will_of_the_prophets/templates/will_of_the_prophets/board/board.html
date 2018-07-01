@@ -3,7 +3,7 @@
 <div class="starfield board border border-orange">
     <div class="row no-gutters">
         {% for square in squares %}
-    
+
             <div class="col rounded square
                 {% if square.is_current_position %}square-current{% endif %}
                 {% if square.butthole_start %}
@@ -30,12 +30,12 @@
                     ;"
                 {% endif %}
                 {% if square.butthole_start %}
-                    id="butthole-start-{{ square.butthole_start.id }}"
+                    id="butthole-start-{{ square.number }}"
                 {% endif %}
-                {% if square.butthole_end %}
+                {% if square.butthole_ends %}
                     data-buttholes-start-at='[
-                        {% for butthole_end in square.butthole_end %}
-                            "butthole-start-{{ butthole_end.id }}"
+                        {% for butthole_start in square.butthole_ends %}
+                            "butthole-start-{{ butthole_start }}"
                             {% if not forloop.last %},{% endif %}
                         {% endfor %}
                     ]'

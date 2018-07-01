@@ -1,21 +1,47 @@
 """Will of the Prophets game board."""
 
+from functools import lru_cache
+
 from django.utils import timezone
 from django.template.loader import render_to_string
+from django.core import signals
 
 from will_of_the_prophets import models
 
 
+@lru_cache(maxsize=1)
+def get_buttholes():
+    """Get butthole starts and ends."""
+    return dict(models.Butthole.objects.values_list('start_square',
+                                                    'end_square'))
+
+
+@lru_cache(maxsize=1)
+def get_special_squares():
+    """Get special square types keyed on squares they appear in."""
+    squares = dict()
+    for square in models.SpecialSquare.objects.select_related().all():
+        squares[square.square] = square.type
+    return squares
+
+
+def clear_caches(**kwargs):  # pylint: disable=unused-argument
+    """Clear cached results of buttholes and special squares."""
+    get_buttholes.cache_clear()
+    get_special_squares.cache_clear()
+
+
+signals.request_started.connect(clear_caches)
+
+
 def calculate_position(*rolls):
     """Calculate the current position."""
+    buttholes = get_buttholes()
     position = 1
     for roll in rolls:
         position += roll
-        try:
-            butthole = models.Butthole.objects.get(start_square=position)
-            position = butthole.end_square
-        except models.Butthole.DoesNotExist:
-            pass
+        if position in buttholes:
+            position = buttholes[position]
 
     return position
 
@@ -29,17 +55,21 @@ class Square:
 
     @property
     def special(self):
-        return (models.SpecialSquareType.objects
-                .filter(squares__square=self.number)
-                .first())
+        return get_special_squares().get(self.number)
 
     @property
     def butthole_start(self):
-        return models.Butthole.objects.filter(start_square=self.number).first()
+        return self.number in get_buttholes()
 
     @property
-    def butthole_end(self):
-        return models.Butthole.objects.filter(end_square=self.number).all()
+    def butthole_ends(self):
+        """Get the starting squares of any buttholes which end here."""
+        butthole_ends = []
+        for start, end in get_buttholes().items():
+            if end == self.number:
+                butthole_ends.append(start)
+
+        return butthole_ends
 
     @property
     def row_break_after(self):
