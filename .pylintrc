@@ -1,5 +1,5 @@
 [MASTER]
-load-plugins = pylint.extensions.mccabe, pylint_django
+load-plugins = pylint.extensions.mccabe
 ignore-patterns = manage.py, \d{4}.*.py
 good-names = application, urlpatterns, i, j, k
 
