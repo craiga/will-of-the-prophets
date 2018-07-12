@@ -76,6 +76,18 @@ class Square:
         return str(self.number)[-1] == '1'
 
 
+def square_numbers():
+    """Square numbers in order."""
+    for row_number in reversed(range(0, 10)):
+        if row_number % 2 == 0:
+            for col_number in range(1, 11):
+                yield (row_number * 10) + col_number
+
+        else:
+            for col_number in reversed(range(1, 11)):
+                yield (row_number * 10) + col_number
+
+
 class Board:
     """The Will of the Prophets board at any given time."""
 
@@ -93,19 +105,10 @@ class Board:
         Order of squares is not sequential.
         """
         current_position = self.get_current_position()
-        for row_number in reversed(range(0, 10)):
-            if row_number % 2 == 0:
-                for col_number in range(1, 11):
-                    square_number = (row_number * 10) + col_number
-                    is_current_position = square_number == current_position
-                    yield Square(number=square_number,
-                                 is_current_position=is_current_position)
-            else:
-                for col_number in reversed(range(1, 11)):
-                    square_number = (row_number * 10) + col_number
-                    is_current_position = square_number == current_position
-                    yield Square(number=square_number,
-                                 is_current_position=is_current_position)
+        for square_number in square_numbers():
+            is_current_position = square_number == current_position
+            yield Square(number=square_number,
+                         is_current_position=is_current_position)
 
     def get_current_position(self):
         """Get the current position."""
