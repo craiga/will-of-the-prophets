@@ -79,13 +79,12 @@ class Square:
 def square_numbers():
     """Square numbers in order."""
     for row_number in reversed(range(0, 10)):
-        if row_number % 2 == 0:
-            for col_number in range(1, 11):
-                yield (row_number * 10) + col_number
+        first_square = row_number * 10 + 1
+        numbers = range(first_square, first_square + 10)
+        if row_number % 2:
+            numbers = reversed(numbers)
 
-        else:
-            for col_number in reversed(range(1, 11)):
-                yield (row_number * 10) + col_number
+        yield from numbers
 
 
 class Board:
