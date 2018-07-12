@@ -77,7 +77,13 @@ class Square:
 
 
 def square_numbers():
-    """Square numbers in order."""
+    """
+    Square numbers in order.
+
+    Starting from the bottom of the board, the first row of squares runs
+    left-to-right, the second row runs right-to-left, the third row runs
+    left-to-right, and so on.
+    """
     for row_number in reversed(range(0, 10)):
         first_square = row_number * 10 + 1
         numbers = range(first_square, first_square + 10)
@@ -98,11 +104,7 @@ class Board:
 
     @property
     def squares(self):
-        """
-        The 100 squares which make up the board.
-
-        Order of squares is not sequential.
-        """
+        """The 100 squares which make up the board."""
         current_position = self.get_current_position()
         for square_number in square_numbers():
             is_current_position = square_number == current_position
