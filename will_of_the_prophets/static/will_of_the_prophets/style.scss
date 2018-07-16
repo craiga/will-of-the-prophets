@@ -62,8 +62,6 @@ $board-widths: (
 .square-bg-contain .img-runabout {
   top: 13.3px;
   left: 0px;
-  height: 26.6px;
-  width: 66%;
   position: relative;
 }
 
@@ -87,9 +85,8 @@ $board-widths: (
     }
 
     .square-bg-contain .img-runabout {
-      top: $square-dimension / 3;
-      left: $square-dimension / 3;
-      height: $square-dimension / 3 * 2;
+      top: $square-dimension * 0.5;
+      left: $square-dimension * 0.5;
     }
 
   }
