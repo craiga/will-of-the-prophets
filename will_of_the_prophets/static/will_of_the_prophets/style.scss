@@ -59,6 +59,10 @@ $board-widths: (
   height: 40px;
 }
 
+.flip-horizontal {
+  transform: scaleX(-1);
+}
+
 .square-bg-contain .img-runabout {
   top: 13.3px;
   left: 0px;

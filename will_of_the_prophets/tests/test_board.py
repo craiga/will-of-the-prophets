@@ -21,7 +21,7 @@ def rolls():
 
 
 @pytest.mark.django_db
-def test_squares():
+def test_square_order():
     """
     Tests that squares are generated as expected.
 
@@ -30,24 +30,23 @@ def test_squares():
 
     The ordering is as follows:
 
-       100 99 … 92 91
+       100 99 … 92 91   (reversed)
         81 82 … 89 90
-        80 79 … 72 71
+        80 79 … 72 71   (reversed)
         …
         21 22 … 29 30
-        20 19 … 12 11
+        20 19 … 12 11   (reversed)
         01 02 … 09 10
     """
     the_board = board.Board()
     squares = list(the_board.squares)
     assert len(squares) == 100
-    for i, expected_number in ((0, 100), (1, 99), (8, 92), (9, 91),
-                               (10, 81), (11, 82), (18, 89), (19, 90),
-                               (20, 80), (21, 79), (28, 72), (29, 71),
-                               (70, 21), (71, 22), (78, 29), (79, 30),
-                               (80, 20), (81, 19), (88, 12), (89, 11),
-                               (90, 1), (91, 2), (98, 9), (99, 10)):
+    for i, expected_number, expected_row_reversed in (
+            (0,  100, True),  (1,  99, True),  (9,  91, True), (10, 81, False),
+            (11, 82,  False), (19, 90, False), (20, 80, True), (80, 20, True),
+            (89, 11,  True),  (90, 1,  False), (99, 10, False)):
         assert squares[i].number == expected_number
+        assert squares[i].row_reversed == expected_row_reversed
 
 
 @pytest.mark.django_db
