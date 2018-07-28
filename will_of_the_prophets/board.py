@@ -43,7 +43,7 @@ def calculate_position(*rolls):
         if position in buttholes:
             position = buttholes[position]
 
-    return position
+    return (position - 1) % 100 + 1
 
 
 class Square:
