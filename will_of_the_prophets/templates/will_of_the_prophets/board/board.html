@@ -5,10 +5,7 @@
         {% for square in squares %}
 
             <div class="col rounded square
-                {% if square.is_current_position %}
-                    above-butthole
-                {% endif %}
-                {% if square.butthole_start %}
+                {% if square.is_current_position or square.butthole_start %}
                     above-butthole
                 {% endif %}
                 {% if square.special and square.is_current_position %}
@@ -47,7 +44,7 @@
                 {% endif %}
                 >
                 {% if square.is_current_position %}
-                    <img class="img-runabout img-fluid above-butthole" src="{% static 'will_of_the_prophets/runabout.png' %}" alt="Runabout"/>
+                    <img class="img-runabout img-fluid above-butthole {% if square.row_reversed %} flip-horizontal{% endif %}" src="{% static 'will_of_the_prophets/runabout.png' %}" alt="Runabout"/>
                 {% endif %}
                 <p class="square-number
                     {% if square.special or square.butthole_start or square.is_current_position %}

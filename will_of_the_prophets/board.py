@@ -49,8 +49,9 @@ def calculate_position(*rolls):
 class Square:
     """A square in the board."""
 
-    def __init__(self, number, is_current_position=False):
+    def __init__(self, number, row_reversed=False, is_current_position=False):
         self.number = number
+        self.row_reversed = row_reversed
         self.is_current_position = is_current_position
 
     @property
@@ -78,19 +79,22 @@ class Square:
 
 def square_numbers():
     """
-    Square numbers in order.
+    Square numbers in order, and whether the row is reversed.
 
     Starting from the bottom of the board, the first row of squares runs
-    left-to-right, the second row runs right-to-left, the third row runs
-    left-to-right, and so on.
+    left-to-right, the second row runs right-to-left (i.e. reversed),
+    the third row runs left-to-right, and so on.
     """
     for row_number in reversed(range(0, 10)):
         first_square = row_number * 10 + 1
         numbers = range(first_square, first_square + 10)
+        row_reversed = False
         if row_number % 2:
             numbers = reversed(numbers)
+            row_reversed = True
 
-        yield from numbers
+        for number in numbers:
+            yield (number, row_reversed)
 
 
 class Board:
@@ -106,9 +110,9 @@ class Board:
     def squares(self):
         """The 100 squares which make up the board."""
         current_position = self.get_current_position()
-        for square_number in square_numbers():
+        for square_number, row_reversed in square_numbers():
             is_current_position = square_number == current_position
-            yield Square(number=square_number,
+            yield Square(number=square_number, row_reversed=row_reversed,
                          is_current_position=is_current_position)
 
     def get_current_position(self):
