@@ -42,9 +42,9 @@ def test_square_order():
     squares = list(the_board.squares)
     assert len(squares) == 100
     for i, expected_number, expected_row_reversed in (
-            (0,  100, True),  (1,  99, True),  (9,  91, True), (10, 81, False),
-            (11, 82,  False), (19, 90, False), (20, 80, True), (80, 20, True),
-            (89, 11,  True),  (90, 1,  False), (99, 10, False)):
+            (0, 100, True), (1, 99, True), (9, 91, True), (10, 81, False),
+            (11, 82, False), (19, 90, False), (20, 80, True), (80, 20, True),
+            (89, 11, True), (90, 1, False), (99, 10, False)):
         assert squares[i].number == expected_number
         assert squares[i].row_reversed == expected_row_reversed
 
