@@ -24,13 +24,6 @@ def not_special_square_validator(value):
     return value
 
 
-def future_validator(value):
-    if value < timezone.now():
-        raise ValidationError(_("Date should be in the future."))
-
-    return value
-
-
 class RollEmbargoValidator(validators.MinValueValidator):
     """Validate that an roll's embargo date is later than all others."""
 
