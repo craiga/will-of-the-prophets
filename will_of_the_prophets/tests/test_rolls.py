@@ -19,18 +19,11 @@ def randint(mocker):
 
 
 @pytest.mark.django_db
-def test_must_be_in_future():
-    roll = RollFactory.build(embargo=timezone.now() - timedelta(hours=1))
-    with pytest.raises(ValidationError):
-        roll.full_clean()
-
-
-@pytest.mark.django_db
 def test_must_be_later_than_latest():
     """
     Test that a roll's embargo must be after other rolls' embargoes.
 
-    This rule needs to be in place because of the create new roll page
+    This rule needs to be in place because the create new roll page
     assumes that the roll with the latest embargo date is the most recently
     created one.
     """

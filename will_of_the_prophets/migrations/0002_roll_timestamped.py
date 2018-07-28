@@ -26,6 +26,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='roll',
             name='embargo',
-            field=models.DateTimeField(validators=[will_of_the_prophets.validators.future_validator, will_of_the_prophets.validators.RollEmbargoValidator()]),
+            field=models.DateTimeField(validators=[will_of_the_prophets.validators.RollEmbargoValidator()]),
         ),
     ]

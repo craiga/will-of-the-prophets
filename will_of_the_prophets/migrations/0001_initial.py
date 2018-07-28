@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('number', models.PositiveIntegerField(default=will_of_the_prophets.models.default_roll_number)),
-                ('embargo', models.DateTimeField(validators=[will_of_the_prophets.validators.future_validator])),
+                ('embargo', models.DateTimeField()),
             ],
         ),
         migrations.CreateModel(

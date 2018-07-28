@@ -12,7 +12,6 @@ from model_utils.models import TimeStampedModel
 # pylint: disable=cyclic-import
 from will_of_the_prophets.validators import (not_butthole_start_validator,
                                              not_special_square_validator,
-                                             future_validator,
                                              RollEmbargoValidator)
 
 
@@ -73,8 +72,7 @@ class Roll(TimeStampedModel):
     """A roll of the 'dice'."""
 
     number = models.PositiveIntegerField(default=default_roll_number)
-    embargo = models.DateTimeField(validators=[future_validator,
-                                               RollEmbargoValidator()])
+    embargo = models.DateTimeField(validators=[RollEmbargoValidator()])
 
     def __str__(self):
         return '{number} on {embargo}'.format(**model_to_dict(self))
