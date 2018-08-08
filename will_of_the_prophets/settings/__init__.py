@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'raven.contrib.django.raven_compat.middleware.Sentry404CatchMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -142,13 +143,76 @@ STATICFILES_FINDERS = [
 ]
 
 
+# Logging
+# Combination of logging settings from https://github.com/heroku/django-heroku/
+# and https://docs.sentry.io/clients/python/integrations/django/.
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'root': {
+        'level': 'WARNING',
+        'handlers': ['sentry'],
+    },
+    'formatters': {
+        'heroku': {
+            'format': ('%(asctime)s [%(process)d] [%(levelname)s] ' +
+                       'pathname=%(pathname)s lineno=%(lineno)s ' +
+                       'funcname=%(funcName)s %(message)s'),
+            'datefmt': '%Y-%m-%d %H:%M:%S'
+        },
+        'sentry': {
+            'format': '%(levelname)s %(asctime)s %(module)s '
+                      '%(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        }
+    },
+    'handlers': {
+        'null': {
+            'level': 'DEBUG',
+            'class': 'logging.NullHandler',
+        },
+        'sentry': {
+            'level': 'WARNING',
+            'class': ('raven.contrib.django.raven_compat.handlers'
+                      '.SentryHandler'),
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'heroku'
+        }
+    },
+    'loggers': {
+        'raven': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+        'sentry.errors': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+        'testlogger': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        }
+    }
+}
+
+
 # django-sass-processor
 # https://github.com/jrief/django-sass-processor
+
 SASS_OUTPUT_STYLE = 'compressed'
 
 
 # django-tz-detect
 # https://github.com/adamcharnock/django-tz-detect
+
 MIDDLEWARE += [
     'tz_detect.middleware.TimezoneMiddleware',
 ]
@@ -158,6 +222,7 @@ TZ_DETECT_COUNTRIES = ('US', 'CN', 'IN', 'JP', 'BR', 'RU', 'DE', 'FR', 'GB')
 
 # django-debug-toolbar
 # https://django-debug-toolbar.readthedocs.io/en/stable/installation.html
+
 INTERNAL_IPS = ('127.0.0.1',)
 
 
@@ -168,4 +233,4 @@ WHITENOISE_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # Configure Django App for Heroku.
-django_heroku.settings(locals())
+django_heroku.settings(locals(), logging=False)
