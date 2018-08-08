@@ -161,5 +161,11 @@ TZ_DETECT_COUNTRIES = ('US', 'CN', 'IN', 'JP', 'BR', 'RU', 'DE', 'FR', 'GB')
 INTERNAL_IPS = ('127.0.0.1',)
 
 
+# Whitenoise
+# http://whitenoise.evans.io/en/stable/django.html#available-settings
+
+WHITENOISE_ROOT = os.path.join(BASE_DIR, 'static')
+
+
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
