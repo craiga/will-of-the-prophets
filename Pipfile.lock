@@ -256,7 +256,7 @@
                 "sha256:e05cb4d9aad6233d67e0541caa7e511fa4047ed7750ec2510d466e806e0255d6",
                 "sha256:f3f501f345f24383c0000395b26b726e46758b71393267aeae0bd36f8b3ade80"
             ],
-            "markers": "python_version != '3.0.*' and python_version < '4' and python_version != '3.1.*' and python_version >= '2.6' and python_version != '3.2.*'",
+            "markers": "python_version >= '2.6' and python_version < '4' and python_version != '3.0.*' and python_version != '3.1.*' and python_version != '3.2.*'",
             "version": "==4.5.1"
         },
         "decorator": {
@@ -301,7 +301,7 @@
                 "sha256:703caac155dcaad61f78de4cb0666dca778d854dfb90b3699930adee0559a622",
                 "sha256:94c59d69bb99c9ec3ca5a3adb41930d3ea09d2a9756c23a02d89fa75646e78dd"
             ],
-            "markers": "python_version >= '2.7' and python_version != '3.0.*' and python_version != '3.1.*' and python_version != '3.2.*'",
+            "markers": "python_version != '3.0.*' and python_version >= '2.7' and python_version != '3.2.*' and python_version != '3.1.*'",
             "version": "==0.3.10"
         },
         "ipython": {
@@ -325,7 +325,7 @@
                 "sha256:b9c40e9750f3d77e6e4d441d8b0266cf555e7cdabdcff33c4fd06366ca761ef8",
                 "sha256:ec9ef8f4a9bc6f71eec99e1806bfa2de401650d996c59330782b89a5555c1497"
             ],
-            "markers": "python_version != '3.0.*' and python_version != '3.1.*' and python_version >= '2.7' and python_version != '3.3.*' and python_version != '3.2.*'",
+            "markers": "python_version != '3.0.*' and python_version >= '2.7' and python_version != '3.3.*' and python_version != '3.1.*' and python_version != '3.2.*'",
             "version": "==4.3.4"
         },
         "jedi": {
@@ -433,7 +433,7 @@
                 "sha256:6e3836e39f4d36ae72840833db137f7b7d35105079aee6ec4a62d9f80d594dd1",
                 "sha256:95eb8364a4708392bae89035f45341871286a333f749c3141c20573d2b3876e1"
             ],
-            "markers": "python_version != '3.0.*' and python_version != '3.1.*' and python_version >= '2.7' and python_version != '3.3.*' and python_version != '3.2.*'",
+            "markers": "python_version != '3.0.*' and python_version >= '2.7' and python_version != '3.3.*' and python_version != '3.1.*' and python_version != '3.2.*'",
             "version": "==0.7.1"
         },
         "prompt-toolkit": {
@@ -456,7 +456,7 @@
                 "sha256:3fd59af7435864e1a243790d322d763925431213b6b8529c6ca71081ace3bbf7",
                 "sha256:e31fb2767eb657cbde86c454f02e99cb846d3cd9d61b318525140214fdc0e98e"
             ],
-            "markers": "python_version != '3.0.*' and python_version != '3.1.*' and python_version >= '2.7' and python_version != '3.3.*' and python_version != '3.2.*'",
+            "markers": "python_version != '3.0.*' and python_version >= '2.7' and python_version != '3.3.*' and python_version != '3.1.*' and python_version != '3.2.*'",
             "version": "==1.5.4"
         },
         "pycodestyle": {
@@ -484,11 +484,11 @@
         },
         "pylint-django": {
             "hashes": [
-                "sha256:5c5a20c443b4e70fdc8c47e42cff8ce79c953954e918f8e559f6e1d05a971585",
-                "sha256:70f2b5397aa2468373fcf87d64a700b359050e905e56e2dbaf954e6edb04c593"
+                "sha256:10dc93b443b77f549f2fe605a01f7ce9ff1a1fe9340e63a37c7b34f5b7ed530f",
+                "sha256:3950201e5b02c03d6498fcf286542d4fc212095029a403360269d16fab1e9f3f"
             ],
             "index": "pypi",
-            "version": "==2.0"
+            "version": "==2.0.1"
         },
         "pylint-plugin-utils": {
             "hashes": [
@@ -501,7 +501,6 @@
                 "sha256:3459a123ad5532852d36f6f4501dfe1acf4af1dd9541834a164666aa40395b02",
                 "sha256:96bfd45dbe863b447a3054145cd78a9d7f31475d2bce6111b133c0cc4f305118"
             ],
-            "markers": "python_version != '3.0.*' and python_version != '3.1.*' and python_version >= '2.7' and python_version != '3.3.*' and python_version != '3.2.*'",
             "version": "==3.7.2"
         },
         "pytest-cov": {
