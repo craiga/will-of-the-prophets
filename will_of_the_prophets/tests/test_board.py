@@ -6,9 +6,9 @@ from datetime import datetime
 
 import pytest
 import pytz
+from model_mommy import mommy
 
 from will_of_the_prophets import board
-import factories
 
 
 @pytest.fixture
@@ -17,7 +17,7 @@ def rolls():
     for number in range(1, 10):
         embargo = datetime(year=2369, month=7, day=number,
                            hour=12, minute=34, second=56, tzinfo=pytz.utc)
-        factories.RollFactory(number=number, embargo=embargo)
+        mommy.make('Roll', number=number, embargo=embargo)
 
 
 @pytest.mark.django_db

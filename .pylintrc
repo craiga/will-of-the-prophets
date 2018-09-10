@@ -17,3 +17,6 @@ max-parents=15
 docstring-min-length = 5
 include-naming-hint = yes
 function-rgx = (([a-z_][a-z0-9_]{2,40})|(_[a-z0-9_]*)|(__[a-z][a-z0-9_]+__))$
+
+[SIMILARITIES]
+ignore-imports=yes

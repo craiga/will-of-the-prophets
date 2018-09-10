@@ -1,9 +1,9 @@
 """Test calculate_position."""
 
 import pytest
+from model_mommy import mommy
 
 from will_of_the_prophets import board
-from factories import ButtholeFactory
 
 
 @pytest.fixture(autouse=True)
@@ -28,7 +28,7 @@ def test_many_rolls():
 
 @pytest.mark.django_db
 def test_butthole():
-    ButtholeFactory(start_square=88, end_square=5)
+    mommy.make('Butthole', start_square=88, end_square=5)
     assert board.calculate_position(3, 20, 2, 40, 17, 5, 2) == 7
 
 

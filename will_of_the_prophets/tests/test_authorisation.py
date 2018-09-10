@@ -4,12 +4,12 @@
 
 import pytest
 
-import factories
+from model_mommy import mommy
 
 
 @pytest.fixture
 def roll():
-    return factories.RollFactory()
+    return mommy.make('Roll')
 
 
 @pytest.mark.django_db
