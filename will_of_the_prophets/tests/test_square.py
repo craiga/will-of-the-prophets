@@ -14,7 +14,7 @@ def clear_caches():
 @pytest.mark.django_db
 def test_special():
     """Test retrieving a square's special square type."""
-    special = mommy.make('SpecialSquareType')
+    special = mommy.make('SpecialSquareType', image='')
     mommy.make('SpecialSquare', square=5, type=special)
     square = board.Square(number=5)
     assert special == square.special

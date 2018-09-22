@@ -15,6 +15,7 @@ django-widget-tweaks = "*"
 django-tz-detect = "*"
 django-model-utils = "*"
 django-debug-toolbar = "*"
+"django-s3direct" = "*"
 
 [dev-packages]
 pycodestyle = "*"

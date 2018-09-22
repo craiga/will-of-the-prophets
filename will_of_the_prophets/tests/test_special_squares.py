@@ -10,7 +10,7 @@ from model_mommy import mommy
 
 @pytest.fixture
 def special_square_type():
-    return mommy.make('SpecialSquareType')
+    return mommy.make('SpecialSquareType', image='')
 
 
 @pytest.fixture

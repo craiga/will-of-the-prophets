@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'tz_detect',
     'debug_toolbar',
+    's3direct',
     'bootstrap',
     'will_of_the_prophets',
 ]
@@ -230,6 +231,20 @@ INTERNAL_IPS = ('127.0.0.1',)
 # http://whitenoise.evans.io/en/stable/django.html#available-settings
 
 WHITENOISE_ROOT = os.path.join(BASE_DIR, 'static')
+
+# django-s3direct
+# https://github.com/bradleyg/django-s3direct
+
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+S3DIRECT_REGION = os.environ['S3DIRECT_REGION']
+S3DIRECT_DESTINATIONS = {
+    'special_square': {
+        'key': 'special_squares/',
+        'auth': lambda u: u.is_staff,
+    },
+}
 
 
 # Configure Django App for Heroku.

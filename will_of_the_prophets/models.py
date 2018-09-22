@@ -8,6 +8,8 @@ from django.db import models
 from django.forms.models import model_to_dict
 
 from model_utils.models import TimeStampedModel
+from s3direct.fields import S3DirectField
+
 
 # pylint: disable=cyclic-import
 from will_of_the_prophets.validators import (not_butthole_start_validator,
@@ -24,7 +26,7 @@ class SpecialSquareType(models.Model):
 
     name = models.TextField()
     description = models.TextField()
-    image = models.ImageField(upload_to='special_square')
+    image = S3DirectField(dest='special_square')
 
     def __str__(self):
         return self.name
