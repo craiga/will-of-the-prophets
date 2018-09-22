@@ -235,10 +235,10 @@ WHITENOISE_ROOT = os.path.join(BASE_DIR, 'static')
 # django-s3direct
 # https://github.com/bradleyg/django-s3direct
 
-AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
-S3DIRECT_REGION = os.environ['S3DIRECT_REGION']
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+S3DIRECT_REGION = os.environ.get('S3DIRECT_REGION')
 S3DIRECT_DESTINATIONS = {
     'special_square': {
         'key': 'special_squares/',
