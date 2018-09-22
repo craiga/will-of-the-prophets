@@ -26,6 +26,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('roll/', views.RollView.as_view(), name='roll'),
     path('tz_detect/', include('tz_detect.urls')),
+    path('s3direct/', include('s3direct.urls')),
     path('', views.public_board, name='public_board'),
 ]
 

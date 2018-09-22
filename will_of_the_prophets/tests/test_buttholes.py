@@ -10,7 +10,7 @@ from model_mommy import mommy
 
 @pytest.fixture
 def special_square_50():
-    return mommy.make('SpecialSquare', square=50)
+    return mommy.make('SpecialSquare', square=50, type__image='')
 
 
 @pytest.fixture
