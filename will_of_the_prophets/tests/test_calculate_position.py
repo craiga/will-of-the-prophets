@@ -33,6 +33,18 @@ def test_butthole():
 
 
 @pytest.mark.django_db
+def test_special_square_positive():
+    mommy.make('SpecialSquare', square=24, type__auto_move=5, type__image='')
+    assert board.calculate_position(3, 20, 2) == 31
+
+
+@pytest.mark.django_db
+def test_special_square_negative():
+    mommy.make('SpecialSquare', square=24, type__auto_move=-5, type__image='')
+    assert board.calculate_position(3, 20, 2) == 21
+
+
+@pytest.mark.django_db
 def test_100():
     """Tests for series of rolls around 100."""
     assert board.calculate_position(3, 20, 2, 40, 17, 5, 10, 1) == 99

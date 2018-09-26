@@ -27,6 +27,9 @@ class SpecialSquareType(models.Model):
     name = models.TextField()
     description = models.TextField()
     image = S3DirectField(dest='special_square')
+    auto_move = models.IntegerField(
+        default=0,
+        help_text="Automatically move the runabout by this many places")
 
     def __str__(self):
         return self.name

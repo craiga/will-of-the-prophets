@@ -37,9 +37,13 @@ signals.request_started.connect(clear_caches)
 def calculate_position(*rolls):
     """Calculate the current position."""
     buttholes = get_buttholes()
+    special_squares = get_special_squares()
     position = 1
     for roll in rolls:
         position += roll
+        if position in special_squares:
+            position = position + special_squares[position].auto_move
+
         if position in buttholes:
             position = buttholes[position]
 
