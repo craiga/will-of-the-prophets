@@ -43,7 +43,7 @@
         <div class="row pt-3">
             {% for special_square_type in special_square_types %}
                 <div class="col-lg-4 col-2 py-3">
-                    <img class="img-fluid" src="/{{ special_square_type.image.url }}" alt="{{ special_square_type.name }}"/>
+                    <img class="img-fluid" src="{{ special_square_type.image }}" alt="{{ special_square_type.name }}"/>
                 </div>
                 <div class="col-lg-8 col-4 py-3">
                     <h4 class="text-uppercase text-font-normal mb-0">{{ special_square_type.name }}</h4>
