@@ -2,12 +2,14 @@
 
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
+from django.views.decorators.clickjacking import xframe_options_exempt
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 
 from will_of_the_prophets import board, forms, models
 
 
+@xframe_options_exempt
 def public_board(request):
     """
     Board for the public.
