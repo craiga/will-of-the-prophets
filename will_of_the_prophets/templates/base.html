@@ -23,8 +23,6 @@
             {% endblock %}
         </div>
     </body>
-    {% load tz_detect %}
-    {% tz_detect %}
     {% load raven %}
     <script src="https://cdn.ravenjs.com/3.26.2/raven.min.js" crossorigin="anonymous"></script>
     <script>Raven.config('{% sentry_public_dsn %}').install()</script>
