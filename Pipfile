@@ -14,10 +14,11 @@ django-widget-tweaks = "*"
 django-tz-detect = "*"
 django-model-utils = "*"
 django-debug-toolbar = "*"
-"django-s3direct" = "*"
+django-s3direct = "*"
 
 [dev-packages]
 pycodestyle = "*"
+pytest = "*"
 pytest-django = "*"
 pytz = "*"
 pytest-freezegun = "*"
