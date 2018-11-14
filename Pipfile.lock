@@ -332,22 +332,20 @@
         },
         "libsass": {
             "hashes": [
-                "sha256:2313f0e82de034eea59443c8f69420c60c55f7c07fd3b59ea7e7a108b36e9d86",
-                "sha256:81d63f915d12bbff9931beac3eb6e20c17c40a0da06c3f0173bbacd6568c302c",
-                "sha256:8731fb9b4d3151b82d46a4495c8e2b322705cacbcb963c4bfe51d8a5a0c016e7",
-                "sha256:938518d827905c83d774a190cc6257b8183edea577485c20de7d49af5ccbeea6",
-                "sha256:95109c996ea5cf598344971e7c50847930f1d5dc110b4fc989c047d3b63c0c92",
-                "sha256:99d952ac9315af4494eedb1c38e13a16c7c49a6ca056262353e9433f086a1fe3",
-                "sha256:9c87df48b541276cc8b03316ab558b4019f16e158786923950926a6ce756124a",
-                "sha256:9f740659ec137cafbfd2298e77f21ceb1e40d30c578bd047e55e09da9220048e",
-                "sha256:a1315327c134d5ec8f90b4185e1ff2369be0108733f1be0c2ae8ba629c514ef1",
-                "sha256:bcbbb4fdd3117e00dc43594fe7e3b10fe17ada8932734287b2680fca18e118c9",
-                "sha256:daa7ea2b3b24585cff907320d071992ffea3ba36c4523f90798f27d1c4a9ef66",
-                "sha256:e0046d841469df8f578d7bbeb6859502cd4b09b9d559451a35392256423559ea",
-                "sha256:e39800d946b9b11d956f02e158eeb85b86ae5b801e63c335f83609d2811b643a"
+                "sha256:11bbd93e6fe3568af6e12bc4746d8ea45de82254cfdd1fcc48ba8b25b20c4350",
+                "sha256:1c2c3e711a94b5b527a821bcdb86affb325041128c90477825c984276fea8520",
+                "sha256:42f1edb3e08c3d1ef98c82c58d038500cd7009ae289865b6c550b7523ff1f166",
+                "sha256:4dd724769bd7d1e06d28cb13a4621b4517753c1e18a72338ee1ccfc26c4ae70b",
+                "sha256:91471a1b2b428d6332c6f56a409722ebde4505cb33151688e1241fd400ced82e",
+                "sha256:976b411d1e65edd9e3f27104860b757409608fcf783d53df8e6115d8416ffa4f",
+                "sha256:b528db0ccec9e6bfc87ee1c3ad6e433ee71d86883ab9006cdc9a77e12b7695f9",
+                "sha256:c14511ba309a7cdee3ac40edc5e5d7d4456bba83feba3110252ab068f7cc922b",
+                "sha256:c7cf04e6ebdf0d01e2fad40417e93f66ea2af36bac4aae535f6addb5bb4c3b70",
+                "sha256:ee756c684b5524099254d55a17169a81255ed7e03e11c97e9761dc9673c71bad",
+                "sha256:fc85166cfa414ecee851fcd827472d9d290af3c3a10aaec3f9c362decfd87315"
             ],
             "index": "pypi",
-            "version": "==0.15.1"
+            "version": "==0.16.0"
         },
         "mccabe": {
             "hashes": [
