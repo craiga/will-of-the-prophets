@@ -18,9 +18,9 @@ Once you've checked out this repository, getting this project up and running sho
 
 # Code Formatting
 
-Code is formatted with [black]():
+Code is formatted with [black](https://black.readthedocs.io/en/latest/):
 
-    pipenv run black --line-length 79 .
+    pipenv run black .
 
 # Developing with CSS
 
