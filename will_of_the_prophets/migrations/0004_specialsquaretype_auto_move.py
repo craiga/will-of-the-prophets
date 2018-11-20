@@ -5,14 +5,15 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('will_of_the_prophets', '0003_s3direct'),
-    ]
+    dependencies = [("will_of_the_prophets", "0003_s3direct")]
 
     operations = [
         migrations.AddField(
-            model_name='specialsquaretype',
-            name='auto_move',
-            field=models.IntegerField(default=0, help_text='Automatically move the runabout by this many places'),
-        ),
+            model_name="specialsquaretype",
+            name="auto_move",
+            field=models.IntegerField(
+                default=0,
+                help_text="Automatically move the runabout by this many places",
+            ),
+        )
     ]

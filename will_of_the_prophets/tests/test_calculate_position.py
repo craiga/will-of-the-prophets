@@ -28,19 +28,19 @@ def test_many_rolls():
 
 @pytest.mark.django_db
 def test_butthole():
-    mommy.make('Butthole', start_square=88, end_square=5)
+    mommy.make("Butthole", start_square=88, end_square=5)
     assert board.calculate_position(3, 20, 2, 40, 17, 5, 2) == 7
 
 
 @pytest.mark.django_db
 def test_special_square_positive():
-    mommy.make('SpecialSquare', square=24, type__auto_move=5, type__image='')
+    mommy.make("SpecialSquare", square=24, type__auto_move=5, type__image="")
     assert board.calculate_position(3, 20, 2) == 31
 
 
 @pytest.mark.django_db
 def test_special_square_negative():
-    mommy.make('SpecialSquare', square=24, type__auto_move=-5, type__image='')
+    mommy.make("SpecialSquare", square=24, type__auto_move=-5, type__image="")
     assert board.calculate_position(3, 20, 2) == 21
 
 

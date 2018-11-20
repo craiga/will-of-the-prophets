@@ -15,9 +15,16 @@ from will_of_the_prophets import board
 def rolls():
     """Generate nine rolls on the first nine days of July 2369."""
     for number in range(1, 10):
-        embargo = datetime(year=2369, month=7, day=number,
-                           hour=12, minute=34, second=56, tzinfo=pytz.utc)
-        mommy.make('Roll', number=number, embargo=embargo)
+        embargo = datetime(
+            year=2369,
+            month=7,
+            day=number,
+            hour=12,
+            minute=34,
+            second=56,
+            tzinfo=pytz.utc,
+        )
+        mommy.make("Roll", number=number, embargo=embargo)
 
 
 @pytest.mark.django_db
@@ -42,15 +49,24 @@ def test_square_order():
     squares = list(the_board.squares)
     assert len(squares) == 100
     for i, expected_number, expected_row_reversed in (
-            (0, 100, True), (1, 99, True), (9, 91, True), (10, 81, False),
-            (11, 82, False), (19, 90, False), (20, 80, True), (80, 20, True),
-            (89, 11, True), (90, 1, False), (99, 10, False)):
+        (0, 100, True),
+        (1, 99, True),
+        (9, 91, True),
+        (10, 81, False),
+        (11, 82, False),
+        (19, 90, False),
+        (20, 80, True),
+        (80, 20, True),
+        (89, 11, True),
+        (90, 1, False),
+        (99, 10, False),
+    ):
         assert squares[i].number == expected_number
         assert squares[i].row_reversed == expected_row_reversed
 
 
 @pytest.mark.django_db
-@pytest.mark.freeze_time('2369-07-05 08:00')
+@pytest.mark.freeze_time("2369-07-05 08:00")
 def test_position(rolls):
     """Test that the current position is correctly set."""
     the_board = board.Board()
@@ -67,11 +83,12 @@ def test_position(rolls):
 
 
 @pytest.mark.django_db
-@pytest.mark.freeze_time('2369-07-05 08:00')
+@pytest.mark.freeze_time("2369-07-05 08:00")
 def test_explicit_date(rolls):
     """Test that the current position is set with an explicit date."""
-    the_board = board.Board(now=datetime(year=2369, month=7, day=8, hour=20,
-                                         tzinfo=pytz.utc))
+    the_board = board.Board(
+        now=datetime(year=2369, month=7, day=8, hour=20, tzinfo=pytz.utc)
+    )
     assert the_board.get_current_position() == 37
 
     squares = list(the_board.squares)

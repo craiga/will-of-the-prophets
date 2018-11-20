@@ -39,8 +39,8 @@ class RollEmbargoValidator(validators.MinValueValidator):
 
         This is the minimum allowable value.
         """
-        rolls = models.Roll.objects.order_by('-embargo')
+        rolls = models.Roll.objects.order_by("-embargo")
         try:
-            return rolls.values_list('embargo', flat=True)[0]
+            return rolls.values_list("embargo", flat=True)[0]
         except IndexError:
             return timezone.make_aware(datetime.min)

@@ -15,7 +15,7 @@ from will_of_the_prophets.models import Roll
 
 @pytest.fixture
 def randint(mocker):
-    return mocker.patch('random.randint', return_value=5)
+    return mocker.patch("random.randint", return_value=5)
 
 
 @pytest.mark.django_db
@@ -27,8 +27,8 @@ def test_must_be_later_than_latest():
     assumes that the roll with the latest embargo date is the most recently
     created one.
     """
-    mommy.make('Roll', embargo=timezone.now() + timedelta(days=5))
-    roll = mommy.prepare('Roll', embargo=timezone.now() + timedelta(days=2))
+    mommy.make("Roll", embargo=timezone.now() + timedelta(days=5))
+    roll = mommy.prepare("Roll", embargo=timezone.now() + timedelta(days=2))
     with pytest.raises(ValidationError):
         roll.full_clean()
 
