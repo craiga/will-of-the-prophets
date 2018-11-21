@@ -8,24 +8,34 @@ import will_of_the_prophets.validators
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('will_of_the_prophets', '0001_initial'),
-    ]
+    dependencies = [("will_of_the_prophets", "0001_initial")]
 
     operations = [
         migrations.AddField(
-            model_name='roll',
-            name='created',
-            field=model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created'),
+            model_name="roll",
+            name="created",
+            field=model_utils.fields.AutoCreatedField(
+                default=django.utils.timezone.now,
+                editable=False,
+                verbose_name="created",
+            ),
         ),
         migrations.AddField(
-            model_name='roll',
-            name='modified',
-            field=model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified'),
+            model_name="roll",
+            name="modified",
+            field=model_utils.fields.AutoLastModifiedField(
+                default=django.utils.timezone.now,
+                editable=False,
+                verbose_name="modified",
+            ),
         ),
         migrations.AlterField(
-            model_name='roll',
-            name='embargo',
-            field=models.DateTimeField(validators=[will_of_the_prophets.validators.RollEmbargoValidator()]),
+            model_name="roll",
+            name="embargo",
+            field=models.DateTimeField(
+                validators=[
+                    will_of_the_prophets.validators.RollEmbargoValidator()
+                ]
+            ),
         ),
     ]

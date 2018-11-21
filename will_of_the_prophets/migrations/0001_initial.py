@@ -11,45 +11,113 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Butthole',
+            name="Butthole",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('start_square', models.PositiveIntegerField(unique=True, validators=[django.core.validators.MinValueValidator(1), django.core.validators.MaxValueValidator(100), will_of_the_prophets.validators.not_special_square_validator])),
-                ('end_square', models.PositiveIntegerField(validators=[django.core.validators.MinValueValidator(1), django.core.validators.MaxValueValidator(100)])),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "start_square",
+                    models.PositiveIntegerField(
+                        unique=True,
+                        validators=[
+                            django.core.validators.MinValueValidator(1),
+                            django.core.validators.MaxValueValidator(100),
+                            will_of_the_prophets.validators.not_special_square_validator,
+                        ],
+                    ),
+                ),
+                (
+                    "end_square",
+                    models.PositiveIntegerField(
+                        validators=[
+                            django.core.validators.MinValueValidator(1),
+                            django.core.validators.MaxValueValidator(100),
+                        ]
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Roll',
+            name="Roll",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('number', models.PositiveIntegerField(default=will_of_the_prophets.models.default_roll_number)),
-                ('embargo', models.DateTimeField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "number",
+                    models.PositiveIntegerField(
+                        default=will_of_the_prophets.models.default_roll_number
+                    ),
+                ),
+                ("embargo", models.DateTimeField()),
             ],
         ),
         migrations.CreateModel(
-            name='SpecialSquare',
+            name="SpecialSquare",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('square', models.PositiveIntegerField(unique=True, validators=[django.core.validators.MinValueValidator(1), django.core.validators.MaxValueValidator(100), will_of_the_prophets.validators.not_butthole_start_validator])),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "square",
+                    models.PositiveIntegerField(
+                        unique=True,
+                        validators=[
+                            django.core.validators.MinValueValidator(1),
+                            django.core.validators.MaxValueValidator(100),
+                            will_of_the_prophets.validators.not_butthole_start_validator,
+                        ],
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='SpecialSquareType',
+            name="SpecialSquareType",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.TextField()),
-                ('description', models.TextField()),
-                ('image', models.ImageField(upload_to='special_square')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.TextField()),
+                ("description", models.TextField()),
+                ("image", models.ImageField(upload_to="special_square")),
             ],
         ),
         migrations.AddField(
-            model_name='specialsquare',
-            name='type',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='squares', to='will_of_the_prophets.SpecialSquareType'),
+            model_name="specialsquare",
+            name="type",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="squares",
+                to="will_of_the_prophets.SpecialSquareType",
+            ),
         ),
     ]

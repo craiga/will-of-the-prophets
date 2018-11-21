@@ -17,7 +17,6 @@ django-debug-toolbar = "*"
 django-s3direct = "*"
 
 [dev-packages]
-pycodestyle = "*"
 pytest = "*"
 pytest-django = "*"
 pytz = "*"
@@ -27,6 +26,10 @@ pytest-cov = "*"
 ipython = "*"
 libsass = "*"
 django-compressor = "*"
+model-mommy = "*"
+black = "*"
 pylint = "*"
 pylint-django = "*"
-model-mommy = "*"
+
+[pipenv]
+allow_prereleases = true  # required for black

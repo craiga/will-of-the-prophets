@@ -2,8 +2,6 @@ language: python
 python:
   - "3.6"
   - "3.6-dev"
-  - "3.7-dev"
-  - "nightly"
 services: postgresql
 install:
   - pip install pipenv
@@ -16,7 +14,7 @@ before_script:
 env:
   DATABASE_URL: postgresql://postgres:postgres@localhost/will_of_the_prophets/
 script:
-  - pipenv run pycodestyle
+  - pipenv run black --check .
   - find . -iname "*.py" | xargs pipenv run pylint
   - pipenv run pytest --cov=. --cov-report=xml
   - pipenv run python manage.py compilescss && git diff --no-ext-diff --exit-code

@@ -6,14 +6,12 @@ import s3direct.fields
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('will_of_the_prophets', '0002_roll_timestamped'),
-    ]
+    dependencies = [("will_of_the_prophets", "0002_roll_timestamped")]
 
     operations = [
         migrations.AlterField(
-            model_name='specialsquaretype',
-            name='image',
+            model_name="specialsquaretype",
+            name="image",
             field=s3direct.fields.S3DirectField(),
-        ),
+        )
     ]

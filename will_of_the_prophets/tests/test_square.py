@@ -14,8 +14,8 @@ def clear_caches():
 @pytest.mark.django_db
 def test_special():
     """Test retrieving a square's special square type."""
-    special = mommy.make('SpecialSquareType', image='')
-    mommy.make('SpecialSquare', square=5, type=special)
+    special = mommy.make("SpecialSquareType", image="")
+    mommy.make("SpecialSquare", square=5, type=special)
     square = board.Square(number=5)
     assert special == square.special
 
@@ -28,7 +28,7 @@ def test_not_special():
 
 @pytest.mark.django_db
 def test_butthole_start():
-    mommy.make('Butthole', start_square=50)
+    mommy.make("Butthole", start_square=50)
     square = board.Square(number=50)
     assert square.butthole_start is True
 
@@ -43,7 +43,7 @@ def test_not_butthole_start():
 def test_butthole_ends():
     """Test getting the list of buttholes which end in this square."""
     for start_square in (55, 66, 77):
-        mommy.make('Butthole', start_square=start_square, end_square=26)
+        mommy.make("Butthole", start_square=start_square, end_square=26)
 
     square = board.Square(number=26)
     assert set(square.butthole_ends) == set([55, 66, 77])
