@@ -28,6 +28,8 @@ libsass = "*"
 django-compressor = "*"
 model-mommy = "*"
 black = "*"
+pylint = "*"
+pylint-django = "*"
 
 [pipenv]
 allow_prereleases = true  # required for black
