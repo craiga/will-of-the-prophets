@@ -10,14 +10,12 @@ from django.forms.models import model_to_dict
 from model_utils.models import TimeStampedModel
 from s3direct.fields import S3DirectField
 
-
 # pylint: disable=cyclic-import
 from will_of_the_prophets.validators import (
+    RollEmbargoValidator,
     not_butthole_start_validator,
     not_special_square_validator,
-    RollEmbargoValidator,
 )
-
 
 SQUARE_VALIDATORS = [
     validators.MinValueValidator(1),

@@ -1,5 +1,5 @@
 [MASTER]
-load-plugins = pylint.extensions.mccabe, pylint_django
+load-plugins = pylint.extensions.mccabe, pylint_django, pylint.extensions.bad_builtin
 ignore-patterns = manage.py, \d{4}.*.py
 good-names = application, urlpatterns, i, j, k
 
@@ -23,3 +23,6 @@ ignore-imports=yes
 
 [MESSAGES CONTROL]
 disable = bad-continuation  # https://github.com/PyCQA/pylint/issues/289
+
+[VARIABLES]
+init-import = yes

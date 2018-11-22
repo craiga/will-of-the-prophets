@@ -2,9 +2,9 @@
 
 from functools import lru_cache
 
-from django.utils import timezone
-from django.template.loader import render_to_string
 from django.core import signals
+from django.template.loader import render_to_string
+from django.utils import timezone
 
 from will_of_the_prophets import models
 
