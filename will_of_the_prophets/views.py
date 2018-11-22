@@ -4,6 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse
 from django.utils import timezone
+from django.views.decorators.cache import cache_control
 from django.views.decorators.clickjacking import xframe_options_exempt
 from django.views.decorators.http import condition
 from django.views.generic.edit import CreateView
@@ -25,6 +26,7 @@ def get_last_modified(request):
 
 @xframe_options_exempt
 @condition(last_modified_func=get_last_modified)
+@cache_control(max_age=3600)
 def public_board(request):
     """
     Board for the public.
