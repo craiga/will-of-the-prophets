@@ -1,6 +1,6 @@
 """Board tests."""
 
-# pylint: disable=redefined-outer-name, unused-argument
+# pylint: disable=unused-argument
 
 from datetime import datetime
 

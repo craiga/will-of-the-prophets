@@ -10,7 +10,6 @@ from model_mommy import mommy
 @pytest.fixture
 def rolls():
     """Generate nine rolls on the first nine days of July 2369."""
-    result = []
     for number in range(1, 10):
         embargo = datetime(
             year=2369,
@@ -21,7 +20,4 @@ def rolls():
             second=56,
             tzinfo=pytz.utc,
         )
-        roll = mommy.make("Roll", number=number, embargo=embargo)
-        result.append(roll)
-
-    return result
+        mommy.make("Roll", number=number, embargo=embargo)
