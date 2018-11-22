@@ -3,7 +3,6 @@
 # pylint: disable=redefined-outer-name, unused-argument
 
 import pytest
-
 from model_mommy import mommy
 
 

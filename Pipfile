@@ -30,6 +30,7 @@ model-mommy = "*"
 black = "*"
 pylint = "*"
 pylint-django = "*"
+isort = "*"
 
 [pipenv]
 allow_prereleases = true  # required for black

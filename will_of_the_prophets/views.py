@@ -1,15 +1,30 @@
 """Views."""
 
-from django.shortcuts import render
-from django.views.generic.edit import CreateView
-from django.views.decorators.clickjacking import xframe_options_exempt
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render
 from django.urls import reverse
+from django.utils import timezone
+from django.views.decorators.clickjacking import xframe_options_exempt
+from django.views.decorators.http import condition
+from django.views.generic.edit import CreateView
 
 from will_of_the_prophets import board, forms, models
 
 
+def get_last_modified(request):
+    """Get board's last modified datetime."""
+    try:
+        return (
+            models.Roll.objects.filter(embargo__lte=timezone.now())
+            .latest("embargo")
+            .embargo
+        )
+    except models.Roll.DoesNotExist:
+        return None
+
+
 @xframe_options_exempt
+@condition(last_modified_func=get_last_modified)
 def public_board(request):
     """
     Board for the public.
