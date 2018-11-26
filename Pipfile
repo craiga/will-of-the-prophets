@@ -32,5 +32,9 @@ pylint = "*"
 pylint-django = "*"
 isort = "*"
 
+# Remove android from this file once this issue has been addressed.
+# https://github.com/PyCQA/pylint-django/issues/201
+astroid = "< 2.1"
+
 [pipenv]
 allow_prereleases = true  # required for black
