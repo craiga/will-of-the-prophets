@@ -2,6 +2,9 @@ language: python
 python:
   - "3.6"
   - "3.6-dev"
+  # 3.7 testing disabled due to https://github.com/ambv/black/issues/494
+  # - "3.7-dev"
+  # - "nightly"
 services: postgresql
 install:
   - pip install pipenv
