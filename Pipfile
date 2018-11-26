@@ -28,13 +28,9 @@ libsass = "*"
 django-compressor = "*"
 model-mommy = "*"
 black = "*"
-pylint = "< 2.2"  # https://github.com/PyCQA/pylint-django/issues/201
+pylint = "*"
 pylint-django = "*"
 isort = "*"
-
-# Remove android from this file once this issue has been addressed.
-# https://github.com/PyCQA/pylint-django/issues/201
-astroid = "< 2.1"
 
 [pipenv]
 allow_prereleases = true  # required for black
