@@ -28,7 +28,7 @@ libsass = "*"
 django-compressor = "*"
 model-mommy = "*"
 black = "*"
-pylint = "*"
+pylint = "< 2.2"  # https://github.com/PyCQA/pylint-django/issues/201
 pylint-django = "*"
 isort = "*"
 
