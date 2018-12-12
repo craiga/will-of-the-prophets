@@ -9,7 +9,7 @@ A web app for the board game played by the hosts of [The Greatest Generation](ht
 
 # Getting Started
 
-Once you've checked out this repository, getting this project up and running should be simple.
+Once you've checked out this repository and installed [pipenv](http://pipenv.readthedocs.io), getting this project up and running should be simple.
 
     pipenv install --dev
     pipenv run python manage.py migrate
