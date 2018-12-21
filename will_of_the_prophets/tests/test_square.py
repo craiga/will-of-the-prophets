@@ -1,5 +1,7 @@
 """Square tests."""
 
+import math
+
 import pytest
 from model_mommy import mommy
 
@@ -53,3 +55,18 @@ def test_butthole_ends():
 def test_no_butthole_ends():
     square = board.Square(number=74)
     assert len(square.butthole_ends) == 0  # pylint: disable=len-as-condition
+
+
+@pytest.mark.django_db
+def test_weight():
+    square = board.Square(number=55)
+    assert math.isclose(square.weight, 1.0)
+
+
+@pytest.mark.django_db
+def test_weight_special_square():
+    """Test that a special square's weight is used."""
+    special = mommy.make("SpecialSquareType", weight=2.5, image="")
+    mommy.make("SpecialSquare", square=71, type=special)
+    square = board.Square(number=71)
+    assert math.isclose(square.weight, 2.5)

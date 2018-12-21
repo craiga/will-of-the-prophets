@@ -52,8 +52,16 @@ def calculate_position(*rolls):
     return (position - 1) % 100 + 1
 
 
-def roll_weighted_dice():
-    return random.randint(1, 6)
+def roll_weighted_die(board):
+    """Roll die, taking into account weights of different squares."""
+    current_position = board.get_current_position()
+    population = [1, 2, 3, 4, 5, 6]
+    weights = []
+    for popval in population:
+        square = Square(current_position + popval)
+        weights.append(square.weight)
+
+    return random.choices(population, weights)[0]
 
 
 class Square:
@@ -85,6 +93,19 @@ class Square:
     @property
     def row_break_after(self):
         return str(self.number)[-1] == "1"
+
+    @property
+    def weight(self):
+        if self.special:
+            return self.special.weight
+        return 1.0
+
+    def __str__(self):
+        description = f"Square #{self.number}"
+        if self.special:
+            description += f", {self.special}"
+        description += f", weight {self.weight}"
+        return description
 
 
 def square_numbers():

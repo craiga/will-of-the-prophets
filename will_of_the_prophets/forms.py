@@ -8,8 +8,15 @@ from will_of_the_prophets import board, models
 class RollForm(forms.ModelForm):
     """Roll form."""
 
-    def save(self, commit=False):
-        self.instance.number = board.roll_weighted_dice()
+    def save(self, commit=True):
+        last_roll = models.Roll.objects.order_by("-embargo").first()
+        if last_roll:
+            game_board = board.Board(now=last_roll.embargo)
+        else:
+            game_board = board.Board()
+
+        self.instance.number = board.roll_weighted_die(game_board)
+
         return super().save(commit=commit)
 
     class Meta:

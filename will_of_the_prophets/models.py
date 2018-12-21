@@ -34,6 +34,13 @@ class SpecialSquareType(models.Model):
         default=0,
         help_text="Automatically move the runabout by this many places",
     )
+    weight = models.FloatField(
+        default=1.0,
+        help_text=(
+            "Relative likelihood of being landed on. If greater than one it's "
+            "more likely, and if less than one it's less likely.",
+        ),
+    )
 
     def __str__(self):
         return self.name
@@ -80,7 +87,7 @@ class Butthole(models.Model):
 def default_roll_number():
     """Former roll calculator. Deprecated."""
     warnings.warn(
-        "Roll number calculation is now handled in will_of_the_prophets.board.roll_weighted_dice.",
+        "Roll number calculation is now handled in will_of_the_prophets.board.roll_weighted_die.",
         DeprecationWarning,
     )
     return random.randint(1, 6)
