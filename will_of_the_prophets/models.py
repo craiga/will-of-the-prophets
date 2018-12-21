@@ -1,6 +1,7 @@
 """Models."""
 
 import random
+import warnings
 
 from django.core import validators
 from django.core.exceptions import ValidationError
@@ -77,13 +78,18 @@ class Butthole(models.Model):
 
 
 def default_roll_number():
+    """Former roll calculator. Deprecated."""
+    warnings.warn(
+        "Roll number calculation is now handled in will_of_the_prophets.board.roll_weighted_dice.",
+        DeprecationWarning,
+    )
     return random.randint(1, 6)
 
 
 class Roll(TimeStampedModel):
     """A roll of the 'dice'."""
 
-    number = models.PositiveIntegerField(default=default_roll_number)
+    number = models.PositiveIntegerField()
     embargo = models.DateTimeField(validators=[RollEmbargoValidator()])
 
     def __str__(self):

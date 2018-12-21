@@ -1,5 +1,6 @@
 """Will of the Prophets game board."""
 
+import random
 from functools import lru_cache
 
 from django.core import signals
@@ -49,6 +50,10 @@ def calculate_position(*rolls):
             position = buttholes[position]
 
     return (position - 1) % 100 + 1
+
+
+def roll_weighted_dice():
+    return random.randint(1, 6)
 
 
 class Square:
