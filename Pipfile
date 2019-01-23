@@ -27,10 +27,7 @@ ipython = "*"
 libsass = "*"
 django-compressor = "*"
 model-mommy = "*"
-black = "*"
+black = "==18.9b0"
 pylint = "*"
 pylint-django = "*"
 isort = "*"
-
-[pipenv]
-allow_prereleases = true  # required for black
