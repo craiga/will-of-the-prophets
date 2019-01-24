@@ -234,5 +234,7 @@ S3DIRECT_DESTINATIONS = {
 }
 
 
+PUBLIC_BOARD_CANONICAL_URL = os.environ.get("PUBLIC_BOARD_CANONICAL_URL")
+
 # Configure Django App for Heroku.
 django_heroku.settings(locals(), logging=False)
