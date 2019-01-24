@@ -1,5 +1,6 @@
 """Views."""
 
+from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse
@@ -33,12 +34,20 @@ def public_board(request):
 
     Does not take embargoed rolls into account.
     """
-    special_square_types = models.SpecialSquareType.objects.all()
-    return render(
+    response = render(
         request,
         "will_of_the_prophets/public_board.html",
-        {"board": board.Board(), "special_square_types": special_square_types},
+        {
+            "board": board.Board(),
+            "special_square_types": models.SpecialSquareType.objects.all(),
+        },
     )
+
+    canonical_url = settings.PUBLIC_BOARD_CANONICAL_URL
+    if canonical_url:
+        response["Link"] = f'<{canonical_url}>; rel="canonical"'
+
+    return response
 
 
 class RollView(LoginRequiredMixin, CreateView):
@@ -53,7 +62,7 @@ class RollView(LoginRequiredMixin, CreateView):
             **kwargs,
             last_roll=last_roll,
             board=board.Board(now=last_roll.embargo),
-            special_square_types=models.SpecialSquareType.objects.all()
+            special_square_types=models.SpecialSquareType.objects.all(),
         )
 
     def get_success_url(self):
