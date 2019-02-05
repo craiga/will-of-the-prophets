@@ -31,4 +31,4 @@ black = "==18.9b0"
 pylint = "*"
 pylint-django = "*"
 isort = "*"
-numpy = "*"  # workaround for https://travis-ci.community/t/issue-pipenv-check-fails-due-to-numpy/2120
+# workaround for https://travis-ci.community/t/issue-pipenv-check-fails-due-to-numpy/2120
