@@ -2,8 +2,8 @@
 
 from datetime import datetime
 
-from django.core.exceptions import ValidationError
 from django.core import validators
+from django.core.exceptions import ValidationError
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
@@ -24,13 +24,6 @@ def not_special_square_validator(value):
     return value
 
 
-def future_validator(value):
-    if value < timezone.now():
-        raise ValidationError(_("Date should be in the future."))
-
-    return value
-
-
 class RollEmbargoValidator(validators.MinValueValidator):
     """Validate that an roll's embargo date is later than all others."""
 
@@ -46,8 +39,8 @@ class RollEmbargoValidator(validators.MinValueValidator):
 
         This is the minimum allowable value.
         """
-        rolls = models.Roll.objects.order_by('-embargo')
+        rolls = models.Roll.objects.order_by("-embargo")
         try:
-            return rolls.values_list('embargo', flat=True)[0]
+            return rolls.values_list("embargo", flat=True)[0]
         except IndexError:
             return timezone.make_aware(datetime.min)

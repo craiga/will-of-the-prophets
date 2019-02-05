@@ -8,21 +8,14 @@ from django.core.exceptions import ValidationError
 from django.utils import timezone
 
 import pytest
+from model_mommy import mommy
 
-from factories import RollFactory
 from will_of_the_prophets.models import Roll
 
 
 @pytest.fixture
 def randint(mocker):
-    return mocker.patch('random.randint', return_value=5)
-
-
-@pytest.mark.django_db
-def test_must_be_in_future():
-    roll = RollFactory.build(embargo=timezone.now() - timedelta(hours=1))
-    with pytest.raises(ValidationError):
-        roll.full_clean()
+    return mocker.patch("random.randint", return_value=5)
 
 
 @pytest.mark.django_db
@@ -30,12 +23,12 @@ def test_must_be_later_than_latest():
     """
     Test that a roll's embargo must be after other rolls' embargoes.
 
-    This rule needs to be in place because of the create new roll page
+    This rule needs to be in place because the create new roll page
     assumes that the roll with the latest embargo date is the most recently
     created one.
     """
-    RollFactory(embargo=timezone.now() + timedelta(days=5))
-    roll = RollFactory.build(embargo=timezone.now() + timedelta(days=2))
+    mommy.make("Roll", embargo=timezone.now() + timedelta(days=5))
+    roll = mommy.prepare("Roll", embargo=timezone.now() + timedelta(days=2))
     with pytest.raises(ValidationError):
         roll.full_clean()
 

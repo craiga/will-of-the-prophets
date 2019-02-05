@@ -24,7 +24,7 @@
                 {% if square.special or square.butthole_start %}
                     style="background-image:
                     {% if square.special %}
-                        url('/{{ square.special.image.url }}')
+                        url('{{ square.special.image }}')
                     {% endif %}
                     {% if square.butthole_start %}
                         url('{% static 'will_of_the_prophets/butthole_start.png' %}')

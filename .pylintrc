@@ -1,5 +1,5 @@
 [MASTER]
-load-plugins = pylint.extensions.mccabe, pylint_django
+load-plugins = pylint.extensions.mccabe, pylint_django, pylint.extensions.bad_builtin
 ignore-patterns = manage.py, \d{4}.*.py
 good-names = application, urlpatterns, i, j, k
 
@@ -17,3 +17,12 @@ max-parents=15
 docstring-min-length = 5
 include-naming-hint = yes
 function-rgx = (([a-z_][a-z0-9_]{2,40})|(_[a-z0-9_]*)|(__[a-z][a-z0-9_]+__))$
+
+[SIMILARITIES]
+ignore-imports=yes
+
+[MESSAGES CONTROL]
+disable = bad-continuation  # https://github.com/PyCQA/pylint/issues/289
+
+[VARIABLES]
+init-import = yes

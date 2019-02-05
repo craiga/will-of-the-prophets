@@ -107,3 +107,6 @@ venv.bak/
 
 # Django Static Files
 staticfiles/
+
+# Where I like to put the output of `pylint --generate-rcfile`.
+pylint.txt

@@ -17,7 +17,8 @@ before_script:
 env:
   DATABASE_URL: postgresql://postgres:postgres@localhost/will_of_the_prophets/
 script:
-  - pipenv run pycodestyle
+  - pipenv run black --check .
+  - pipenv run isort --check-only
   - find . -iname "*.py" | xargs pipenv run pylint
   - pipenv run pytest --cov=. --cov-report=xml
   - pipenv run python manage.py compilescss && git diff --no-ext-diff --exit-code

@@ -11,6 +11,6 @@ admin.site.register(models.SpecialSquareType)
 
 @admin.register(models.Roll)
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('number', 'embargo', 'created', 'modified')
+    list_display = ("number", "embargo", "created", "modified")
     list_display_links = list_display
-    ordering = ('-embargo',)
+    ordering = ("-embargo",)
