@@ -55,10 +55,10 @@
         },
         "django-s3direct": {
             "hashes": [
-                "sha256:71d598aadd33e1c0b69f1f59b64a3eec34f8c5fb3d91415b28ea5a4e452b03d0"
+                "sha256:677086c7d453b1d80ecfe5cd6468598f0a5d8d21d967df86cdf0df646e897dfd"
             ],
             "index": "pypi",
-            "version": "==1.1.1"
+            "version": "==1.1.2"
         },
         "django-sass-processor": {
             "hashes": [
