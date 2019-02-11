@@ -12,7 +12,7 @@ def roll():
 
 
 @pytest.mark.django_db
-@pytest.mark.parametrize("url", ["/"])
+@pytest.mark.parametrize("url", ["/", "/roll_frequency/"])
 def test_public(client, url):
     """Test that pages do not require authorisation."""
     response = client.get(url)

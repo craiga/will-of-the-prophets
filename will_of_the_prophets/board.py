@@ -123,14 +123,17 @@ class Board:
                 is_current_position=is_current_position,
             )
 
-    def get_current_position(self):
-        """Get the current position."""
-        rolls = (
+    @property
+    def rolls(self):
+        return (
             models.Roll.objects.filter(embargo__lte=self.now)
             .order_by("embargo")
             .values_list("number", flat=True)
         )
-        return calculate_position(*rolls)
+
+    def get_current_position(self):
+        """Get the current position."""
+        return calculate_position(*self.rolls)
 
     def __str__(self):
         return render_to_string(

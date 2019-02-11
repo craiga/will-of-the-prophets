@@ -50,6 +50,24 @@ def public_board(request):
     return response
 
 
+@xframe_options_exempt
+@condition(last_modified_func=get_last_modified)
+@cache_control(max_age=3600)
+def roll_frequency(request):
+    """
+    Show roll frequency.
+    """
+    roll_count = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
+    for roll in board.Board().rolls:
+        roll_count[roll] += 1
+
+    return render(
+        request,
+        "will_of_the_prophets/roll_frequency.html",
+        {"roll_frequency": roll_count},
+    )
+
+
 class RollView(LoginRequiredMixin, CreateView):
     """View for rolling the die."""
 
