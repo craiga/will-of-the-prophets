@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p class="h3 text-orange pt-3">Game of Buttholes: The Will of the Prophets</p>
+<h1 class="text-blue">Roll Frequency</h1>
+
+<table id="chart">
+    <tr>
+        <th scope="col">Roll</th>
+        <th scope="col">Frequency</th>
+    </tr>
+    {% for roll, count in roll_frequency.items %}
+        <tr>
+            <th scope="rol">{{ roll }}</th>
+            <td>{{ count }}</td>
+        </tr>
+    {% endfor %}
+</table>
+        
+{% include "will_of_the_prophets/_footer.html" %}
+
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(function() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Roll');
+        data.addColumn('number', 'Frequency');
+        data.addRows([
+            {% for roll, count in roll_frequency.items %}
+                ['{{ roll }}', {{ count }}],
+            {% endfor %}
+        ]);
+
+        $("#chart").css({"width": "100%", "height": "20rem"});
+        var chart = new google.visualization.BarChart(document.getElementById('chart'));
+        chart.draw(data, {
+            colors: ["#00C3FC"],
+            backgroundColor: "transparent",
+            legend: "none",
+            hAxis: {textStyle: {color: 'white'}},
+            vAxis: {textStyle: {color: 'white'}},
+        });
+    });
+</script>
+{% endblock %}

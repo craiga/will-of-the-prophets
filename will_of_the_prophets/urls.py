@@ -23,6 +23,7 @@ from will_of_the_prophets import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("roll_frequency/", views.roll_frequency, name="roll_frequency"),
     path("accounts/", include("django.contrib.auth.urls")),
     path("roll/", views.RollView.as_view(), name="roll"),
     path("tz_detect/", include("tz_detect.urls")),
