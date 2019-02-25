@@ -305,11 +305,11 @@
         },
         "isort": {
             "hashes": [
-                "sha256:4081fc7f82441527eb4fdb9b4162546c55d4a7441c4de50cd1a17e30bb82d1a7",
-                "sha256:d05a79a16b3ea1aea19d82d29352fde3420170b7c9377ff02138d16b684788fe"
+                "sha256:8d9da6c6de0a32004d5eb841c4357f00b29db9247b9875fef4e04b4c78e3f353",
+                "sha256:a25c2d677b85e309598faf8a0c8ffac5f247a15563a98dac8009ef460d17bdeb"
             ],
             "index": "pypi",
-            "version": "==4.3.5"
+            "version": "==4.3.6"
         },
         "jedi": {
             "hashes": [
