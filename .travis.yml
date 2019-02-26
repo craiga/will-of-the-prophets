@@ -18,6 +18,7 @@ env:
 script:
   - pipenv run black --check .
   - pipenv run isort --check-only
+  - cat .dictionary | sort --check
   - find . -iname "*.py" | xargs pipenv run pylint
   - pipenv run pytest --cov=. --cov-report=xml
   - pipenv run python manage.py compilescss && git diff --no-ext-diff --exit-code

@@ -26,3 +26,7 @@ disable = bad-continuation  # https://github.com/PyCQA/pylint/issues/289
 
 [VARIABLES]
 init-import = yes
+
+[SPELLING]
+spelling-dict=en_GB
+spelling-private-dict-file=.dictionary

@@ -87,7 +87,7 @@ def square_numbers():
     Square numbers in order, and whether the row is reversed.
 
     Starting from the bottom of the board, the first row of squares runs
-    left-to-right, the second row runs right-to-left (i.e. reversed),
+    left-to-right, the second row runs right-to-left (that is, reversed),
     the third row runs left-to-right, and so on.
     """
     for row_number in reversed(range(0, 10)):

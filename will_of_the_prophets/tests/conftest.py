@@ -1,4 +1,4 @@
-"""Pytest fixtures used across tests."""
+"""Fixtures used across tests."""
 
 from datetime import datetime
 
