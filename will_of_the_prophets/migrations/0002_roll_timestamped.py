@@ -35,9 +35,7 @@ class Migration(migrations.Migration):
             model_name="roll",
             name="embargo",
             field=models.DateTimeField(
-                validators=[
-                    will_of_the_prophets.validators.RollEmbargoValidator()
-                ]
+                validators=[will_of_the_prophets.validators.RollEmbargoValidator()]
             ),
         ),
     ]
