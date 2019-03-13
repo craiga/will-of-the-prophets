@@ -30,3 +30,6 @@ init-import = yes
 [SPELLING]
 spelling-dict=en_US
 spelling-private-dict-file=.dictionary
+
+[FORMAT]
+max-line-length=100
