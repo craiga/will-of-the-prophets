@@ -87,23 +87,9 @@ AUTH_PASSWORD_VALIDATORS = [
             ".UserAttributeSimilarityValidator"
         )
     },
-    {
-        "NAME": (
-            "django.contrib.auth.password_validation" ".MinimumLengthValidator"
-        )
-    },
-    {
-        "NAME": (
-            "django.contrib.auth.password_validation"
-            ".CommonPasswordValidator"
-        )
-    },
-    {
-        "NAME": (
-            "django.contrib.auth.password_validation"
-            ".NumericPasswordValidator"
-        )
-    },
+    {"NAME": ("django.contrib.auth.password_validation" ".MinimumLengthValidator")},
+    {"NAME": ("django.contrib.auth.password_validation" ".CommonPasswordValidator")},
+    {"NAME": ("django.contrib.auth.password_validation" ".NumericPasswordValidator")},
 ]
 
 
@@ -161,9 +147,7 @@ LOGGING = {
         "null": {"level": "DEBUG", "class": "logging.NullHandler"},
         "sentry": {
             "level": "WARNING",
-            "class": (
-                "raven.contrib.django.raven_compat.handlers" ".SentryHandler"
-            ),
+            "class": ("raven.contrib.django.raven_compat.handlers" ".SentryHandler"),
         },
         "console": {
             "level": "DEBUG",
@@ -172,11 +156,7 @@ LOGGING = {
         },
     },
     "loggers": {
-        "raven": {
-            "level": "DEBUG",
-            "handlers": ["console"],
-            "propagate": False,
-        },
+        "raven": {"level": "DEBUG", "handlers": ["console"], "propagate": False},
         "sentry.errors": {
             "level": "DEBUG",
             "handlers": ["console"],

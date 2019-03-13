@@ -12,9 +12,7 @@ from will_of_the_prophets import models
 @lru_cache(maxsize=1)
 def get_buttholes():
     """Get butthole starts and ends."""
-    return dict(
-        models.Butthole.objects.values_list("start_square", "end_square")
-    )
+    return dict(models.Butthole.objects.values_list("start_square", "end_square"))
 
 
 @lru_cache(maxsize=1)
