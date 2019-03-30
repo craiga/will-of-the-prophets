@@ -69,11 +69,11 @@
         },
         "django-tz-detect": {
             "hashes": [
-                "sha256:1e69c76fcf811c967caafde64e2030137990dbac86af7bb84559c7bcc9d81764",
-                "sha256:b49b016bebf0504f4b17a04d723a5aa81bbb0208823807a5d29732ee9d1ea426"
+                "sha256:3f23b2198cc4638f72f06f6464a767a0cccd3afd1536c66aed3af531fa6a9926",
+                "sha256:88e424bac11cee8433691a481eb6a41560e794b8b1b830e8c202544d9ca138b8"
             ],
             "index": "pypi",
-            "version": "==0.2.9"
+            "version": "==0.2.10"
         },
         "django-widget-tweaks": {
             "hashes": [
