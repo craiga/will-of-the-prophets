@@ -76,10 +76,14 @@ class RollView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         last_roll = models.Roll.objects.order_by("-embargo").first()
+        last_roll_embargo = None
+        if last_roll:
+            last_roll_embargo = last_roll.embargo
+
         return super().get_context_data(
             **kwargs,
             last_roll=last_roll,
-            board=board.Board(now=last_roll.embargo),
+            board=board.Board(now=last_roll_embargo),
             special_square_types=models.SpecialSquareType.objects.all(),
         )
 
