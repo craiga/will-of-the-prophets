@@ -3,12 +3,6 @@
 # pylint: disable=redefined-outer-name, unused-argument
 
 import pytest
-from model_mommy import mommy
-
-
-@pytest.fixture
-def roll():
-    return mommy.make("Roll")
 
 
 @pytest.mark.django_db
@@ -21,7 +15,7 @@ def test_public(client, url):
 
 @pytest.mark.django_db
 @pytest.mark.parametrize("url", ["/roll/"])
-def test_requires_auth(client, admin_client, url, roll):
+def test_requires_auth(client, admin_client, url):
     """Test that pages require authorization."""
     response = client.get(url)
     assert response.status_code == 302
