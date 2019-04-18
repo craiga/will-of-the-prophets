@@ -11,9 +11,6 @@ install:
   - sudo apt-get -y install libenchant1c2a
   - pipenv install --dev
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
   - psql -c "CREATE DATABASE will_of_the_prophets;" -U postgres
 env:
   DATABASE_URL: postgresql://postgres:postgres@localhost/will_of_the_prophets/
@@ -21,8 +18,6 @@ script:
   - pipenv run black --check .
   - pipenv run isort --check-only
   - find . -iname "*.py" | xargs pipenv run pylint
-  - pipenv run pytest --cov=. --cov-report=xml
+  - pipenv run pytest
   - pipenv run python manage.py compilescss && git diff --no-ext-diff --exit-code
   - pipenv check
-after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
