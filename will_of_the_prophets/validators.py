@@ -1,5 +1,6 @@
 """Validators."""
 
+import warnings
 from datetime import datetime
 
 from django.core import validators
@@ -11,6 +12,10 @@ from will_of_the_prophets import models
 
 
 def not_butthole_start_validator(value):
+    """Validator to ensure square is not the start of a butthole."""
+    warnings.warn(
+        "Validator does not consider butthole time frames.", DeprecationWarning
+    )
     if models.Butthole.objects.filter(start_square=value).exists():
         raise ValidationError(_("Cannot be a special square."))
 
@@ -18,6 +23,10 @@ def not_butthole_start_validator(value):
 
 
 def not_special_square_validator(value):
+    """Validator to ensure square is not a special square."""
+    warnings.warn(
+        "Validator does not consider special square time frames.", DeprecationWarning
+    )
     if models.SpecialSquare.objects.filter(square=value).exists():
         raise ValidationError(_("Cannot be a special square."))
 
