@@ -9,19 +9,27 @@ from django.utils import timezone
 from will_of_the_prophets import models
 
 
-@lru_cache()
+@lru_cache(maxsize=1)
 def get_all_buttholes():
     """Get all buttholes."""
     return models.Butthole.objects.all()
 
 
-@lru_cache()
+@lru_cache(maxsize=1)
 def get_all_special_squares():
     """Get all special squares."""
     return models.SpecialSquare.objects.select_related().all()
 
 
-@lru_cache()
+def clear_caches(**kwargs):  # pylint: disable=unused-argument
+    """Clear cached results of buttholes and special squares."""
+    get_all_buttholes.cache_clear()
+    get_all_special_squares.cache_clear()
+
+
+signals.request_started.connect(clear_caches)
+
+
 def calculate_position(now):
     """Calculate the position at a particular time."""
     position = 1
@@ -37,16 +45,6 @@ def calculate_position(now):
         position = buttholes.get(position, position)
 
     return (position - 1) % 100 + 1
-
-
-def clear_caches(**kwargs):  # pylint: disable=unused-argument
-    """Clear cached results of buttholes and special squares."""
-    get_all_buttholes.cache_clear()
-    get_all_special_squares.cache_clear()
-    calculate_position.cache_clear()
-
-
-signals.request_started.connect(clear_caches)
 
 
 def is_active(obj, now):
