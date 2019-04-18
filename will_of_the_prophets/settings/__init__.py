@@ -2,6 +2,7 @@
 
 import os
 
+import dj_database_url
 import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -209,3 +210,7 @@ PUBLIC_BOARD_CANONICAL_URL = os.environ.get("PUBLIC_BOARD_CANONICAL_URL")
 
 # Inject settings for Heroku.
 django_heroku.settings(locals(), logging=False)
+
+
+if os.environ.get("DATABASE_NO_SSL_REQUIRE"):
+    DATABASES["default"] = dj_database_url.config(ssl_require=False)
