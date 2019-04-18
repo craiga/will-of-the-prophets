@@ -3,6 +3,9 @@
 # pylint: disable=unused-argument
 
 from datetime import datetime
+from types import SimpleNamespace
+
+from django.core.management import call_command
 
 import pytest
 import pytz
@@ -82,3 +85,29 @@ def test_explicit_date(rolls):
             continue
 
         assert not squares[i].is_current_position
+
+
+@pytest.mark.parametrize(
+    "start, end, is_active",
+    [
+        (None, None, True),
+        (datetime(2369, 7, 1), None, True),
+        (datetime(2369, 8, 1), None, False),
+        (None, datetime(2369, 8, 1), True),
+        (None, datetime(2369, 7, 1), False),
+        (datetime(2369, 7, 1), datetime(2396, 8, 1), True),
+    ],
+)
+def test_is_active(start, end, is_active):
+    """Test is_active."""
+    obj = SimpleNamespace(start=start, end=end)
+    assert board.is_active(obj, datetime(2369, 7, 5)) == is_active
+
+
+@pytest.mark.django_db
+def test_query_count(django_assert_max_num_queries):
+    """Test that rendering the board does not issue an excessive number of queries."""
+    board.clear_caches()
+    call_command("loaddata", "live")
+    with django_assert_max_num_queries(10):
+        str(board.Board())
