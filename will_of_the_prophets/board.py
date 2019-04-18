@@ -3,7 +3,6 @@
 from functools import lru_cache
 
 from django.core import signals
-from django.db.models import Q
 from django.template.loader import render_to_string
 from django.utils import timezone
 
@@ -11,30 +10,15 @@ from will_of_the_prophets import models
 
 
 @lru_cache()
-def get_buttholes(now):
-    """Get butthole starts and ends."""
-    return dict(
-        models.Butthole.objects.filter(
-            (Q(start__lte=now) | Q(start__isnull=True))
-            & (Q(end__gte=now) | Q(end__isnull=True))
-        ).values_list("start_square", "end_square")
-    )
+def get_all_buttholes():
+    """Get all buttholes."""
+    return models.Butthole.objects.all()
 
 
 @lru_cache()
-def get_special_squares(now):
-    """Get special square types keyed on squares they appear in."""
-    squares = dict()
-    for square in (
-        models.SpecialSquare.objects.filter(
-            (Q(start__lte=now) | Q(start__isnull=True))
-            & (Q(end__gte=now) | Q(end__isnull=True))
-        )
-        .select_related()
-        .all()
-    ):
-        squares[square.square] = square.type
-    return squares
+def get_all_special_squares():
+    """Get all special squares."""
+    return models.SpecialSquare.objects.select_related().all()
 
 
 @lru_cache()
@@ -50,20 +34,48 @@ def calculate_position(now):
         if position in special_squares:
             position = position + special_squares[position].auto_move
 
-        if position in buttholes:
-            position = buttholes[position]
+        position = buttholes.get(position, position)
 
     return (position - 1) % 100 + 1
 
 
 def clear_caches(**kwargs):  # pylint: disable=unused-argument
     """Clear cached results of buttholes and special squares."""
-    get_buttholes.cache_clear()
-    get_special_squares.cache_clear()
+    get_all_buttholes.cache_clear()
+    get_all_special_squares.cache_clear()
     calculate_position.cache_clear()
 
 
 signals.request_started.connect(clear_caches)
+
+
+def is_active(obj, now):
+    """Determine if an object is active."""
+    if not obj.start or obj.start <= now:
+        if not obj.end or obj.end >= now:
+            return True
+
+    return False
+
+
+def get_buttholes(now):
+    """Get butthole starts and ends."""
+    buttholes = dict()
+    for butthole in get_all_buttholes():
+        if is_active(butthole, now):
+            buttholes[butthole.start_square] = butthole.end_square
+
+    return buttholes
+
+
+def get_special_squares(now):
+    """Get special square types keyed on squares they appear in."""
+    special_squares = dict()
+    for special_square in get_all_special_squares():
+        if is_active(special_square, now):
+            special_squares[special_square.square] = special_square.type
+
+    return special_squares
 
 
 class Square:
