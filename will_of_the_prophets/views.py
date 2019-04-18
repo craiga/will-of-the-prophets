@@ -58,8 +58,8 @@ def roll_frequency(request):
     Show roll frequency.
     """
     roll_count = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
-    for roll in board.Board().rolls:
-        roll_count[roll] += 1
+    for roll in models.Roll.objects.filter(embargo__lte=timezone.now()):
+        roll_count[roll.number] += 1
 
     return render(
         request,

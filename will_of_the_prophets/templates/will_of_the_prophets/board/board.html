@@ -5,13 +5,13 @@
         {% for square in squares %}
 
             <div class="col rounded square
-                {% if square.is_current_position or square.butthole_start %}
+                {% if square.is_current_position or square.is_butthole_start %}
                     above-butthole
                 {% endif %}
-                {% if square.special and square.is_current_position %}
+                {% if square.get_special and square.is_current_position %}
                     border border-white
                 {% endif %}
-                {% if square.special or square.butthole_start %}
+                {% if square.get_special or square.is_butthole_start %}
                     square-bg-contain
                 {% else %}
                     {% if square.number|divisibleby:2 %}
@@ -21,23 +21,23 @@
                     {% endif %}
                 {% endif %}
                 "
-                {% if square.special or square.butthole_start %}
+                {% if square.get_special or square.is_butthole_start %}
                     style="background-image:
-                    {% if square.special %}
-                        url('{{ square.special.image }}')
+                    {% if square.get_special %}
+                        url('{{ square.get_special.image }}')
                     {% endif %}
-                    {% if square.butthole_start %}
+                    {% if square.is_butthole_start %}
                         url('{% static 'will_of_the_prophets/butthole_start.png' %}')
                     {% endif %}
                     ;"
                 {% endif %}
-                {% if square.butthole_start %}
+                {% if square.is_butthole_start %}
                     id="butthole-start-{{ square.number }}"
                 {% endif %}
-                {% if square.butthole_ends %}
+                {% if square.get_butthole_ends %}
                     data-buttholes-start-at='[
-                        {% for butthole_start in square.butthole_ends %}
-                            "butthole-start-{{ butthole_start }}"
+                        {% for is_butthole_start in square.get_butthole_ends %}
+                            "butthole-start-{{ is_butthole_start }}"
                             {% if not forloop.last %},{% endif %}
                         {% endfor %}
                     ]'
@@ -47,7 +47,7 @@
                     <img class="img-runabout img-fluid above-butthole {% if square.row_reversed %} flip-horizontal{% endif %}" src="{% static 'will_of_the_prophets/runabout.png' %}" alt="Runabout"/>
                 {% endif %}
                 <p class="square-number
-                    {% if square.special or square.butthole_start or square.is_current_position %}
+                    {% if square.get_special or square.is_butthole_start or square.is_current_position %}
                         invisible
                     {% endif %}
                 ">{{ square.number }}</p>

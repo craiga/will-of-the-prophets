@@ -7,7 +7,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.forms.models import model_to_dict
 
-from model_utils.models import TimeStampedModel
+from model_utils.models import TimeFramedModel, TimeStampedModel
 from s3direct.fields import S3DirectField
 
 # pylint: disable=cyclic-import
@@ -34,7 +34,7 @@ class SpecialSquareType(models.Model):
         return self.name
 
 
-class SpecialSquare(models.Model):
+class SpecialSquare(TimeFramedModel):
     """A special square."""
 
     square = models.PositiveIntegerField(
@@ -48,7 +48,7 @@ class SpecialSquare(models.Model):
         return "{type} at {square}".format(square=self.square, type=str(self.type))
 
 
-class Butthole(models.Model):
+class Butthole(TimeFramedModel):
     """A butthole."""
 
     start_square = models.PositiveIntegerField(

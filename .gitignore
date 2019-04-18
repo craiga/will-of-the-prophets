@@ -110,3 +110,6 @@ staticfiles/
 
 # Where I like to put the output of `pylint --generate-rcfile`.
 pylint.txt
+
+will_of_the_prophets/fixtures/live.json
+will_of_the_prophets/fixtures/legacy_rolls.json
