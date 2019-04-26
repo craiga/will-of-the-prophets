@@ -4,7 +4,7 @@ A web app for the board game played by the hosts of [The Greatest Generation](ht
 
 [More information on Wikia.](http://greatestgen.wikia.com/wiki/DS9_Board_Game_(Game_of_Buttholes))
 
-[![Build Status](https://www.travis-ci.com/craiga/will-of-the-prophets.svg?branch=master)](https://www.travis-ci.com/craiga/will-of-the-prophets)
+![CircleCI branch](https://img.shields.io/circleci/project/github/craiga/will-of-the-prophets/master.svg)
 
 
 # Getting Started
