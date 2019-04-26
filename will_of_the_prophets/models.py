@@ -7,15 +7,11 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.forms.models import model_to_dict
 
-from model_utils.models import TimeStampedModel
+from model_utils.models import TimeFramedModel, TimeStampedModel
 from s3direct.fields import S3DirectField
 
 # pylint: disable=cyclic-import
-from will_of_the_prophets.validators import (
-    RollEmbargoValidator,
-    not_butthole_start_validator,
-    not_special_square_validator,
-)
+from will_of_the_prophets.validators import RollEmbargoValidator
 
 SQUARE_VALIDATORS = [validators.MinValueValidator(1), validators.MaxValueValidator(100)]
 
@@ -34,12 +30,10 @@ class SpecialSquareType(models.Model):
         return self.name
 
 
-class SpecialSquare(models.Model):
+class SpecialSquare(TimeFramedModel):
     """A special square."""
 
-    square = models.PositiveIntegerField(
-        unique=True, validators=SQUARE_VALIDATORS + [not_butthole_start_validator]
-    )
+    square = models.PositiveIntegerField(validators=SQUARE_VALIDATORS)
     type = models.ForeignKey(
         SpecialSquareType, on_delete=models.PROTECT, related_name="squares"
     )
@@ -48,12 +42,10 @@ class SpecialSquare(models.Model):
         return "{type} at {square}".format(square=self.square, type=str(self.type))
 
 
-class Butthole(models.Model):
+class Butthole(TimeFramedModel):
     """A butthole."""
 
-    start_square = models.PositiveIntegerField(
-        unique=True, validators=SQUARE_VALIDATORS + [not_special_square_validator]
-    )
+    start_square = models.PositiveIntegerField(validators=SQUARE_VALIDATORS)
     end_square = models.PositiveIntegerField(validators=SQUARE_VALIDATORS)
 
     def clean(self):

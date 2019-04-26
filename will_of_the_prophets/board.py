@@ -10,66 +10,91 @@ from will_of_the_prophets import models
 
 
 @lru_cache(maxsize=1)
-def get_buttholes():
-    """Get butthole starts and ends."""
-    return dict(models.Butthole.objects.values_list("start_square", "end_square"))
+def get_all_buttholes():
+    """Get all buttholes."""
+    return models.Butthole.objects.all()
 
 
 @lru_cache(maxsize=1)
-def get_special_squares():
-    """Get special square types keyed on squares they appear in."""
-    squares = dict()
-    for square in models.SpecialSquare.objects.select_related().all():
-        squares[square.square] = square.type
-    return squares
+def get_all_special_squares():
+    """Get all special squares."""
+    return models.SpecialSquare.objects.select_related().all()
 
 
 def clear_caches(**kwargs):  # pylint: disable=unused-argument
     """Clear cached results of buttholes and special squares."""
-    get_buttholes.cache_clear()
-    get_special_squares.cache_clear()
+    get_all_buttholes.cache_clear()
+    get_all_special_squares.cache_clear()
 
 
 signals.request_started.connect(clear_caches)
 
 
-def calculate_position(*rolls):
-    """Calculate the current position."""
-    buttholes = get_buttholes()
-    special_squares = get_special_squares()
+def calculate_position(now):
+    """Calculate the position at a particular time."""
     position = 1
-    for roll in rolls:
-        position += roll
+    for roll in models.Roll.objects.filter(embargo__lte=now):
+        buttholes = get_buttholes(roll.embargo)
+        special_squares = get_special_squares(roll.embargo)
+
+        position += roll.number
+
         if position in special_squares:
             position = position + special_squares[position].auto_move
 
-        if position in buttholes:
-            position = buttholes[position]
+        position = buttholes.get(position, position)
 
     return (position - 1) % 100 + 1
+
+
+def is_active(obj, now):
+    """Determine if an object is active."""
+    if not obj.start or obj.start <= now:
+        if not obj.end or obj.end >= now:
+            return True
+
+    return False
+
+
+def get_buttholes(now):
+    """Get butthole starts and ends."""
+    buttholes = dict()
+    for butthole in get_all_buttholes():
+        if is_active(butthole, now):
+            buttholes[butthole.start_square] = butthole.end_square
+
+    return buttholes
+
+
+def get_special_squares(now):
+    """Get special square types keyed on squares they appear in."""
+    special_squares = dict()
+    for special_square in get_all_special_squares():
+        if is_active(special_square, now):
+            special_squares[special_square.square] = special_square.type
+
+    return special_squares
 
 
 class Square:
     """A square in the board."""
 
-    def __init__(self, number, row_reversed=False, is_current_position=False):
+    def __init__(self, number, now, row_reversed=False, is_current_position=False):
+        self.now = now
         self.number = number
         self.row_reversed = row_reversed
         self.is_current_position = is_current_position
 
-    @property
-    def special(self):
-        return get_special_squares().get(self.number)
+    def get_special(self):
+        return get_special_squares(self.now).get(self.number)
 
-    @property
-    def butthole_start(self):
-        return self.number in get_buttholes()
+    def is_butthole_start(self):
+        return self.number in get_buttholes(self.now)
 
-    @property
-    def butthole_ends(self):
+    def get_butthole_ends(self):
         """Get the starting squares of any buttholes which end here."""
         butthole_ends = []
-        for start, end in get_buttholes().items():
+        for start, end in get_buttholes(self.now).items():
             if end == self.number:
                 butthole_ends.append(start)
 
@@ -117,21 +142,14 @@ class Board:
             is_current_position = square_number == current_position
             yield Square(
                 number=square_number,
+                now=self.now,
                 row_reversed=row_reversed,
                 is_current_position=is_current_position,
             )
 
-    @property
-    def rolls(self):
-        return (
-            models.Roll.objects.filter(embargo__lte=self.now)
-            .order_by("embargo")
-            .values_list("number", flat=True)
-        )
-
     def get_current_position(self):
         """Get the current position."""
-        return calculate_position(*self.rolls)
+        return calculate_position(self.now)
 
     def __str__(self):
         return render_to_string(

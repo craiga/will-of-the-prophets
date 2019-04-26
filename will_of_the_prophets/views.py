@@ -34,13 +34,13 @@ def public_board(request):
 
     Does not take embargoed rolls into account.
     """
+    now = timezone.now()
+    special_squares = board.get_special_squares(now)
+    special_square_types = set(special_squares.values())
     response = render(
         request,
         "will_of_the_prophets/public_board.html",
-        {
-            "board": board.Board(),
-            "special_square_types": models.SpecialSquareType.objects.all(),
-        },
+        {"board": board.Board(now), "special_square_types": special_square_types},
     )
 
     canonical_url = settings.PUBLIC_BOARD_CANONICAL_URL
@@ -58,8 +58,8 @@ def roll_frequency(request):
     Show roll frequency.
     """
     roll_count = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
-    for roll in board.Board().rolls:
-        roll_count[roll] += 1
+    for roll in models.Roll.objects.filter(embargo__lte=timezone.now()):
+        roll_count[roll.number] += 1
 
     return render(
         request,

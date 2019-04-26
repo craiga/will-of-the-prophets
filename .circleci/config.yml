@@ -1,0 +1,53 @@
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
+version: 2
+jobs:
+  build:
+    working_directory: ~/will-of-the-prophets
+    docker:
+      - image: circleci/python:3.6
+        environment:
+          DATABASE_URL: postgresql://will_of_the_prophets:security_is_important@localhost/will_of_the_prophets
+          DATABASE_NO_SSL_REQUIRE: True
+      - image: circleci/postgres:11
+        environment:
+          POSTGRES_USER: will_of_the_prophets
+          POSTGRES_PASSWORD: security_is_important
+          POSTGRES_DB: will_of_the_prophets
+
+    steps:
+      - checkout
+
+      - run:
+          name: install dependencies
+          command: |
+            sudo apt-get -y install libenchant1c2a
+            sudo pip install pipenv
+            pipenv install --dev
+
+      - run:
+          name: run tests
+          command: |
+            pipenv run pytest
+
+      - run:
+          name: check code formatting
+          command: |
+            pipenv run black --check .
+            pipenv run isort --check-only
+            find . -iname "*.py" | xargs pipenv run pylint
+
+      - run:
+          name: check CSS
+          command: |
+            pipenv run python manage.py compilescss
+            git diff --no-ext-diff --exit-code
+
+      - store_test_results:
+          path: test-results
+
+      - store_artifacts:
+          path: test-results
+          destination: tr1
