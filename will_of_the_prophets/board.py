@@ -79,7 +79,14 @@ def get_special_squares(now):
 class Square:
     """A square in the board."""
 
-    def __init__(self, number, now, row_reversed=False, is_current_position=False, was_visited=False):
+    def __init__(
+        self,
+        number,
+        now,
+        row_reversed=False,
+        is_current_position=False,
+        was_visited=False,
+    ):
         self.now = now
         self.number = number
         self.row_reversed = row_reversed
