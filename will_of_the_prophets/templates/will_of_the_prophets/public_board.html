@@ -2,26 +2,55 @@
 
 {% block content %}
 
-<div class="row pt-3">
-    <div class="col-lg-9">
-        <p class="h3 text-orange">The Greatest Generation Presents</p>
-        <h1 class="text-blue">Game of Buttholes:<br>The Will of the Prophets</h1>
-        {{ board }}
-        {% include "will_of_the_prophets/_footer.html" %}
+<h1 class="site__header">The Greatest Generation Presents:</h1>
+
+<section class="lcar-group">
+    <div class="lcar-group__top-bar">
+        <div class="lcar-group__filler lcar-group__filler--yellow">INSIDE JOKES</div>
     </div>
-    <aside class="col-lg-3">
-        <div class="row">
+    <div class="lcar-group__left-bar">
+        <div class="lcar-group__filler lcar-group__filler--yellow">CODE 47</div>
+        <div class="lcar-group__filler lcar-group__filler--purple">ALL I DO IS BITS</div>
+        <div class="lcar-group__filler lcar-group__filler--lilac">MAIN COMPUTER CORE</div>
+        <div class="lcar-group__filler lcar-group__filler--yellow">DICK JOKES</div>
+    </div>
+    <div class="lcar-group__content">
+        <h2 class="lcar-group__content-header"><span class="no-break">GAME OF BUTTHOLES</span> • <span
+                class="no-break">THE WILL OF THE PROPHETS</span></h2>
+        {{ board }}
+    </div>
+    <div class="lcar-group__bottom-bar">
+        <div class="lcar-group__filler lcar-group__filler--yellow">100-69:420</div>
+    </div>
+</section>
+
+<section class="lcar-group">
+    <div class="lcar-group__top-bar">
+        <div class="lcar-group__filler lcar-group__filler--yellow">42402.7</div>
+    </div>
+    <div class="lcar-group__left-bar">
+        <div class="lcar-group__filler lcar-group__filler--yellow">LEGEND</div>
+        <div class="lcar-group__filler lcar-group__filler--lilac">BAD BIT MOMENTS</div>
+        <div class="lcar-group__filler lcar-group__filler--purple">MORNHAMMER</div>
+        <div class="lcar-group__filler lcar-group__filler--blue">FUCK BOKAI</div>
+    </div>
+    <div class="lcar-group__content">
+        <ul class="legend">
             {% for special_square_type in special_square_types %}
-                <div class="col-lg-4 col-2 py-3">
-                    <img class="img-fluid" src="{{ special_square_type.image }}" alt="{{ special_square_type.name }}"/>
+            <li class="legend__item">
+                <img class="legend__item-img" src="{{ special_square_type.image }}"
+                    alt="{{ special_square_type.name }}" />
+                <div class="legend__item-meta">
+                    <h4 class="legend__item-name">{{ special_square_type.name }}</h4>
+                    <p class="legend__item-description">{{ special_square_type.description }}</p>
                 </div>
-                <div class="col-lg-8 col-4 py-3">
-                    <h4 class="text-uppercase text-font-normal mb-0">{{ special_square_type.name }}</h4>
-                    <p class="text-blue text-uppercase h5 text-font-normal ">{{ special_square_type.description }}</p>
-                </div>
+            </li>
             {% endfor %}
-        </div>
-    </aside>
-</div>
+        </ul>
+    </div>
+</section>
+
+
+{% include "will_of_the_prophets/_footer.html" %}
 
 {% endblock %}

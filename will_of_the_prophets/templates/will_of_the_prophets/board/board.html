@@ -1,61 +1,46 @@
 {% load static %}
 
-<div class="starfield board border border-orange">
-    <div class="row no-gutters">
-        {% for square in squares %}
-
-            <div class="col rounded square
-                {% if square.is_current_position or square.is_butthole_start %}
-                    above-butthole
-                {% endif %}
-                {% if square.get_special and square.is_current_position %}
-                    border border-white
-                {% endif %}
-                {% if square.get_special or square.is_butthole_start %}
-                    square-bg-contain
-                {% else %}
-                    {% if square.number|divisibleby:2 %}
-                        square-red
-                    {% else %}
-                        square-green
-                    {% endif %}
-                {% endif %}
-                "
-                {% if square.get_special or square.is_butthole_start %}
-                    style="background-image:
-                    {% if square.get_special %}
-                        url('{{ square.get_special.image }}')
-                    {% endif %}
-                    {% if square.is_butthole_start %}
-                        url('{% static 'will_of_the_prophets/butthole_start.png' %}')
-                    {% endif %}
-                    ;"
-                {% endif %}
-                {% if square.is_butthole_start %}
-                    id="butthole-start-{{ square.number }}"
-                {% endif %}
-                {% if square.get_butthole_ends %}
-                    data-buttholes-start-at='[
-                        {% for is_butthole_start in square.get_butthole_ends %}
-                            "butthole-start-{{ is_butthole_start }}"
-                            {% if not forloop.last %},{% endif %}
-                        {% endfor %}
-                    ]'
-                {% endif %}
-                >
-                {% if square.is_current_position %}
-                    <img class="img-runabout img-fluid above-butthole {% if square.row_reversed %} flip-horizontal{% endif %}" src="{% static 'will_of_the_prophets/runabout.png' %}" alt="Runabout"/>
-                {% endif %}
-                <p class="square-number
-                    {% if square.get_special or square.is_butthole_start or square.is_current_position %}
-                        invisible
-                    {% endif %}
-                ">{{ square.number }}</p>
-            </div>
-            {% if forloop.counter|divisibleby:"10" %}
-                </div>
-                <div class="row no-gutters">
+<div class="board">
+    {% for square in squares %}
+    <div class="board__cell
+            {% if square.number|divisibleby:2 %}
+                board__cell--even
             {% endif %}
-        {% endfor %}
+            {% if square.get_special %}
+                board__cell--special
+            {% endif %}
+            {% if square.is_current_position %}
+                board__cell--selected
+            {% endif %}
+            {% if square.was_visited %}
+                board__cell--visited
+            {% endif %}
+            {% if square.is_butthole_start or square.get_butthole_ends %}
+                board__cell--butthole-related
+            {% endif %}
+            " {% if square.get_butthole_ends %} data-butthole-starts='[
+                    {% for is_butthole_start in square.get_butthole_ends %}
+                        "{{ is_butthole_start }}"
+                        {% if not forloop.last %},{% endif %}
+                    {% endfor %}
+                ]' {% endif %} data-number="{{ square.number}}">
+        <div class="board__cell-contents">
+            {% if square.is_current_position %}
+            <img class="
+                    board__cell-img
+                    board__cell-img--runabout
+                    {% if square.row_reversed %} board__cell-img--runabout-reverse {% endif %}
+                " src="{% static 'will_of_the_prophets/runabout.png' %}" alt="Runabout" />
+            {% elif square.is_butthole_start %}
+            <img class="board__cell-img board__cell-img--butthole"
+                src="{% static 'will_of_the_prophets/butthole_start.png' %}" />
+            {% elif square.get_special %}
+            <img class="board__cell-img" src="{{ square.get_special.image }}" />
+            {% else %}
+            <span class="board__cell--number">{{ square.number }}</span>
+            {% endif %}
+        </div>
     </div>
+    {% endfor %}
+    <svg xmlns="http://www.w3.org/2000/svg" class="board__buttholes" viewBox="0 0 1 1"></svg>
 </div>

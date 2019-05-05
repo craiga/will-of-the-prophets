@@ -79,11 +79,12 @@ def get_special_squares(now):
 class Square:
     """A square in the board."""
 
-    def __init__(self, number, now, row_reversed=False, is_current_position=False):
+    def __init__(self, number, now, row_reversed=False, is_current_position=False, was_visited=False):
         self.now = now
         self.number = number
         self.row_reversed = row_reversed
         self.is_current_position = is_current_position
+        self.was_visited = was_visited
 
     def get_special(self):
         return get_special_squares(self.now).get(self.number)
@@ -140,11 +141,13 @@ class Board:
         current_position = self.get_current_position()
         for square_number, row_reversed in square_numbers():
             is_current_position = square_number == current_position
+            was_visited = square_number < current_position
             yield Square(
                 number=square_number,
                 now=self.now,
                 row_reversed=row_reversed,
                 is_current_position=is_current_position,
+                was_visited=was_visited,
             )
 
     def get_current_position(self):

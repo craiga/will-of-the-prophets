@@ -1,135 +1,111 @@
-Raven.context(function () {
-    function getOrange() {
-        return $(".text-orange").css('color');
-    }
+/**
+ * Helper Point class for simple vector manipulation. All instance methods
+ * should return new instances to allow safe chaining.
+ */
+function Point(x, y) {
+  this.x = x || 0;
+  this.y = y || 0;
+}
 
+Point.toQuadCurveString = function(control, end) {
+  return "Q" + [control.toString(), end.toString()].join(",");
+};
 
-    function getBlue() {
-        return $(".text-blue").css('color');
-    }
+Point.prototype.rotate = function(deg) {
+  var rad = (deg * Math.PI) / 180;
+  var x = this.x;
+  var y = this.y;
 
+  var xp = x * Math.cos(rad) - y * Math.sin(rad);
+  var yp = x * Math.sin(rad) + y * Math.cos(rad);
 
-    function getBorderWidth() {
-        return parseInt($('.border').css('border-top-width'));
-    }
+  return new Point(xp, yp);
+};
 
+Point.prototype.add = function(point) {
+  return new Point(this.x + point.x, this.y + point.y);
+};
 
-    /**
-     * Calculate coordinates of buttholes.
-     * Returns a list of six numbers:
-     *  1 & 2: x and y coordinates of left side of start
-     *  3 & 4: x and y coordinates of right side of start
-     *  5 & 6: x and y coordinates of end
-     */
-    function calculateCoordinates(startEle, endEle) {
-        var startPos = $(startEle).offset();
-        var endPos = $(endEle).offset();
-        var squareWidth= $(startEle).outerWidth();
-        var squareHeight= $(startEle).outerHeight();
-        var borderWidth = getBorderWidth();
-        return [
-            startPos.left + borderWidth,
-            startPos.top + (squareHeight / 2),
-            startPos.left + squareWidth - borderWidth,
-            startPos.top + (squareHeight / 2),
-            endPos.left + (squareWidth / 2),
-            endPos.top + (squareHeight / 4),
-        ];
-    }
+Point.prototype.subtract = function(point) {
+  return new Point(this.x - point.x, this.y - point.y);
+};
 
+Point.prototype.scale = function(scale) {
+  return new Point(this.x * scale, this.y * scale);
+};
 
-    function createCanvas(coordinates) {
-        var left = Math.min(coordinates[0], coordinates[2], coordinates[4]);
-        var top = Math.min(coordinates[1], coordinates[3], coordinates[5]);
-        var width = Math.max(coordinates[0], coordinates[2], coordinates[4]) - left;
-        var height = Math.max(coordinates[1], coordinates[3], coordinates[5]) - top;
-        var canvas = document.createElement('canvas');
-        $(canvas).css({
-            position: 'absolute',
-            left: left,
-            top: top,
-        });
-        $(canvas).attr('width', width);
-        $(canvas).attr('height', height);
-        $(canvas).addClass('butthole');
-        $('.container').append(canvas);
-        return canvas;
-    }
+Point.prototype.length = function() {
+  return Math.sqrt(this.x * this.x + this.y * this.y);
+};
 
+Point.prototype.toString = function() {
+  return this.x + " " + this.y;
+};
 
-    /** Transpose coordinates so that the upper-left corner is 0, 0. */
-    function transposeCoordinates(coordinates) {
-        var minX = Math.min(coordinates[0], coordinates[2], coordinates[4]);
-        var minY = Math.min(coordinates[1], coordinates[3], coordinates[5]);
-        return [
-            coordinates[0] - minX,
-            coordinates[1] - minY,
-            coordinates[2] - minX,
-            coordinates[3] - minY,
-            coordinates[4] - minX,
-            coordinates[5] - minY,
-        ];
-    }
+Raven.context(function() {
+  var NS = "http://www.w3.org/2000/svg";
+  var container = document.querySelector(".board__buttholes");
+  var containerRect = container.getBoundingClientRect();
 
+  function getRelativeCenterAsPoint(el) {
+    var rect = el.getBoundingClientRect();
+    var x =
+      (rect.left + rect.width / 2 - containerRect.left) / containerRect.width;
+    var y =
+      (rect.top + rect.height / 2 - containerRect.top) / containerRect.height;
+    return new Point(x, y);
+  }
 
-    function drawButtholeSides(coordinates, canvasContext) {
-        canvasContext.lineWidth = getBorderWidth();
-        canvasContext.beginPath();
-        canvasContext.moveTo(coordinates[0], coordinates[1]);
-        canvasContext.lineTo(coordinates[4], coordinates[5]);
-        canvasContext.stroke();
-        canvasContext.beginPath();
-        canvasContext.moveTo(coordinates[2], coordinates[3]);
-        canvasContext.lineTo(coordinates[4], coordinates[5]);
-        canvasContext.stroke();
-    }
+  function renderPath(startEl, endEl) {
+    var startPoint = getRelativeCenterAsPoint(startEl);
+    var endPoint = getRelativeCenterAsPoint(endEl);
+    var midPoint = endPoint
+      .subtract(startPoint)
+      .scale(0.5)
+      .add(startPoint);
 
+    // Longer buttholes should be curved more.
+    var length = endPoint.subtract(startPoint).length();
+    var rotationAngle = 40 * length;
 
-    function drawButtholeBackground(coordinates, canvasContext) {
-        canvasContext.beginPath();
-        canvasContext.globalAlpha = 0.75;
-        canvasContext.moveTo(coordinates[0], coordinates[1]);
-        canvasContext.lineTo(coordinates[2], coordinates[3]);
-        canvasContext.lineTo(coordinates[4], coordinates[5]);
-        canvasContext.lineTo(coordinates[0], coordinates[1]);
-        canvasContext.fill();
-    }
+    // If the end point is to the left of the start point, we want the line to
+    // curve left first. Otherwise curve to the right first. This creates a
+    // more natural looking curve.
+    var rotationDirection = startPoint.x > endPoint.x ? -1 : 1;
 
+    var controlPoint1 = midPoint
+      .subtract(startPoint)
+      .scale(0.5)
+      .rotate(rotationDirection * rotationAngle)
+      .add(startPoint);
 
-    function drawButthole(coordinates, canvas) {
-        var canvasContext = canvas.getContext('2d');
+    var controlPoint2 = endPoint
+      .subtract(midPoint)
+      .scale(0.5)
+      .rotate(-rotationDirection * rotationAngle)
+      .add(midPoint);
 
-        // Create gradient
-        var gradient = canvasContext.createLinearGradient(0, 0, 0, coordinates[5]);
-        gradient.addColorStop(0, getBlue());
-        gradient.addColorStop(1, getOrange());
+    var path = document.createElementNS(NS, "path");
+    path.setAttribute(
+      "d",
+      "M " +
+        startPoint.toString() +
+        [
+          Point.toQuadCurveString(controlPoint1, midPoint),
+          Point.toQuadCurveString(controlPoint2, endPoint)
+        ].join(" ")
+    );
 
-        // Set up canvas context.
-        canvasContext.strokeStyle = gradient;
-        canvasContext.fillStyle = gradient;
+    container.appendChild(path);
+  }
 
-        drawButtholeSides(coordinates, canvasContext);
-        drawButtholeBackground(coordinates, canvasContext);
-    }
-
-
-    function drawButtholes() {
-        $('[data-buttholes-start-at]').each(function(i, endEle) {
-            var startIds = $(endEle).data('buttholes-start-at');
-            $(startIds).each(function(i , startId) {
-                // Calculate start and end positions
-                var startEle = document.getElementById(startId);
-                coordinates = calculateCoordinates(startEle, endEle);
-                canvas = createCanvas(coordinates);
-                coordinates = transposeCoordinates(coordinates);
-                drawButthole(coordinates, canvas);
-            });
-        });
-    }
-
-    $(drawButtholes);
-    $(window).resize(function () {
-        $('.butthole').remove();
-        drawButtholes();
+  var buttholeEnds = document.querySelectorAll("[data-butthole-starts]");
+  [].forEach.call(buttholeEnds, function(endEl) {
+    JSON.parse(endEl.dataset.buttholeStarts).forEach(function(startNumber) {
+      renderPath(
+        document.querySelector('[data-number="' + startNumber + '"]'),
+        endEl
+      );
     });
+  });
 });
