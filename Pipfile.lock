@@ -269,13 +269,6 @@
             ],
             "version": "==0.3.11"
         },
-        "importlib-metadata": {
-            "hashes": [
-                "sha256:46fc60c34b6ed7547e2a723fc8de6dc2e3a1173f8423246b3ce497f064e9c3de",
-                "sha256:bc136180e961875af88b1ab85b4009f4f1278f8396a60526c0009f503a1a96ca"
-            ],
-            "version": "==0.9"
-        },
         "ipython": {
             "hashes": [
                 "sha256:54c5a8aa1eadd269ac210b96923688ccf01ebb2d0f21c18c3c717909583579a8",
@@ -409,11 +402,11 @@
         },
         "pluggy": {
             "hashes": [
-                "sha256:1c0b297d4d41bc9bdfbdc17991b35f9e1d2cfe8eaa4d7c118e86d705870d34c8",
-                "sha256:fb2f776b7ec85038ef95860f4e83bfb6ab171a9d0b70b69d7ca4d04130644c2b"
+                "sha256:25a1bc1d148c9a640211872b4ff859878d422bccb59c9965e04eed468a0aa180",
+                "sha256:964cedd2b27c492fbf0b7f58b3284a09cf7f99b0f715941fb24a439b3af1bd1a"
             ],
             "index": "pypi",
-            "version": "==0.10.0"
+            "version": "==0.11.0"
         },
         "prompt-toolkit": {
             "hashes": [
@@ -606,13 +599,6 @@
                 "sha256:4aea003270831cceb8a90ff27c4031da6ead7ec1886023b80ce0dfe0adf61533"
             ],
             "version": "==1.11.1"
-        },
-        "zipp": {
-            "hashes": [
-                "sha256:139391b239594fd8b91d856bc530fbd2df0892b17dd8d98a91f018715954185f",
-                "sha256:8047e4575ce8d700370a3301bbfc972896a5845eb62dd535da395b86be95dfad"
-            ],
-            "version": "==0.4.0"
         }
     }
 }
