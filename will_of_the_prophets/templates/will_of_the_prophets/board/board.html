@@ -25,19 +25,25 @@
                     {% endfor %}
                 ]' {% endif %} data-number="{{ square.number}}">
         <div class="board__cell-contents">
+            <span class="board__cell-number">{{ square.number }}</span>
+
+            {% if square.get_special %}
+            <img class="board__cell-img" src="{{ square.get_special.image }}" />
+            {% endif %}
+
+            {% if square.is_butthole_start %}
+            <img class="board__cell-img board__cell-img--butthole"
+                src="{% static 'will_of_the_prophets/butthole_start.png' %}" />
+            {% endif %}
+
             {% if square.is_current_position %}
-            <img class="
+            <div class="board__runabout">
+                <img class="
                     board__cell-img
                     board__cell-img--runabout
                     {% if square.row_reversed %} board__cell-img--runabout-reverse {% endif %}
                 " src="{% static 'will_of_the_prophets/runabout.png' %}" alt="Runabout" />
-            {% elif square.is_butthole_start %}
-            <img class="board__cell-img board__cell-img--butthole"
-                src="{% static 'will_of_the_prophets/butthole_start.png' %}" />
-            {% elif square.get_special %}
-            <img class="board__cell-img" src="{{ square.get_special.image }}" />
-            {% else %}
-            <span class="board__cell--number">{{ square.number }}</span>
+            </div>
             {% endif %}
         </div>
     </div>
