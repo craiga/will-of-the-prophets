@@ -1,39 +1,67 @@
+@import "./mixins";
+
 .legend {
   margin: 0;
   padding: 0;
   list-style: none;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 2vw 1vw;
+
+  @include cap-variable-widths(
+    (
+      grid-gap: 2vw 1vw
+    )
+  );
 }
 
 .legend__item {
   display: flex;
-  padding: 1vw;
+  @include cap-variable-widths(
+    (
+      padding: 1vw
+    )
+  );
 }
 
 .legend__item-img {
   grid-area: img;
-  width: 10vw;
-  height: 10vw;
   object-fit: contain;
+  @include cap-variable-widths(
+    (
+      width: 10vw,
+      height: 10vw
+    )
+  );
 }
 
 .legend__item-meta {
-  padding-left: 1vw;
+  @include cap-variable-widths(
+    (
+      padding-left: 1vw
+    )
+  );
 }
 
 .legend__item-name {
   grid-area: name;
-  font-size: 4vw;
-  margin-bottom: 1vw;
   text-transform: uppercase;
+
+  @include cap-variable-widths(
+    (
+      font-size: 4vw,
+      margin-bottom: 1vw
+    )
+  );
 }
 
 .legend__item-description {
   grid-area: description;
   color: $lcars-color-lavender-purple;
   line-height: 1.2;
-  font-size: 2.5vw;
   text-transform: uppercase;
+  @include cap-variable-widths(
+    (
+      font-size: 2.5vw
+    )
+  );
 }

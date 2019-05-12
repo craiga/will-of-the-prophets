@@ -1,3 +1,5 @@
+@import "./mixins";
+
 $even-color: $lcars-color-lavender-purple;
 $odd-color: $lcars-color-orange-peel;
 
@@ -31,7 +33,11 @@ $runabout-animation-end: translate(-50%, -50%) scale(1.1) rotate(20deg);
   position: relative;
   display: grid;
   grid-template: repeat(10, 1fr) / repeat(10, 1fr);
-  grid-gap: $std-padding;
+  @include cap-variable-widths(
+    (
+      grid-gap: 0.5vw
+    )
+  );
 }
 
 .board__cell {
@@ -48,10 +54,17 @@ $runabout-animation-end: translate(-50%, -50%) scale(1.1) rotate(20deg);
   display: flex;
   justify-content: center;
   align-items: center;
-  border: $std-border solid $odd-color;
   color: $odd-color;
   line-height: 0.5;
-  font-size: 4vw;
+  border-color: $odd-color;
+  border-style: solid;
+
+  @include cap-variable-widths(
+    (
+      border-width: 0.5vw,
+      font-size: 4vw
+    )
+  );
 }
 
 .board__cell[data-number="10"] .board__cell-contents,
@@ -107,10 +120,15 @@ $runabout-animation-end: translate(-50%, -50%) scale(1.1) rotate(20deg);
 
 .board__cell-number {
   position: absolute;
-  top: calc(50% + 0.3vw);
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1;
+
+  top: calc(50% + 0.3vw);
+
+  @include desktop-media() {
+    top: calc(50% + #{0.3 * $site-max-width / 100});
+  }
 }
 
 .board__cell--butthole-related .board__cell-img {

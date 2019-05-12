@@ -1,3 +1,5 @@
+@import "./mixins";
+
 .lcar-group {
   display: grid;
   grid-template-areas:
@@ -6,11 +8,19 @@
     "left-bar bottom-bar bottom-bar";
   grid-template-columns: auto 1fr 1fr;
   grid-template-rows: auto 1fr auto;
-  font-size: 2.5vw;
+  @include cap-variable-widths(
+    (
+      font-size: 2.5vw
+    )
+  );
 }
 
-.lcar-group+.lcar-group {
-  margin-top: $std-padding;
+.lcar-group + .lcar-group {
+  @include cap-variable-widths(
+    (
+      margin-top: 0.5vw
+    )
+  );
 }
 
 .lcar-group__top-bar {
@@ -21,11 +31,16 @@
   display: grid;
   grid-area: left-bar;
   grid-template-rows: 1fr 2fr 1fr 3fr;
-  grid-gap: $std-padding;
   overflow: hidden;
-  border-top-left-radius: 4vw;
-  border-bottom-left-radius: 4vw;
-  width: 12vw;
+
+  @include cap-variable-widths(
+    (
+      grid-gap: 0.5vw,
+      border-top-left-radius: 4vw,
+      border-bottom-left-radius: 4vw,
+      width: 12vw
+    )
+  );
 }
 
 .lcar-group__left-bar .lcar-group__filler {
@@ -38,13 +53,22 @@
 
 .lcar-group__content {
   grid-area: content;
-  padding: 3vw;
+
+  @include cap-variable-widths(
+    (
+      padding: 2vw
+    )
+  );
 }
 
 .lcar-group__content-header {
-  font-size: 5.5vw;
-  margin-bottom: 2vw;
   text-align: center;
+  @include cap-variable-widths(
+    (
+      font-size: 5.5vw,
+      margin-bottom: 2vw
+    )
+  );
 }
 
 .lcar-group__filler {
@@ -52,7 +76,11 @@
   justify-content: flex-end;
   align-items: flex-end;
   color: $lcars-color-ink;
-  padding: 1vw;
+  @include cap-variable-widths(
+    (
+      padding: 1vw
+    )
+  );
 }
 
 .lcar-group__filler--yellow {

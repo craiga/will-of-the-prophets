@@ -1,9 +1,8 @@
-$font-family-sans-serif: Helvetica,
-Arial,
-"Lucida Grande",
-sans-serif;
-$headings-font-family: 'Federation';
-$lcars-font-family: 'Context Ultra Condensed SSi';
+$font-family-sans-serif: Helvetica, Arial, "Lucida Grande", sans-serif;
+$headings-font-family: "Federation";
+$lcars-font-family: "Context Ultra Condensed SSi";
+
+$site-max-width: 900px;
 
 // Slightly modified colors from https://github.com/joernweissenborn/lcars.
 $lcars-color-anakiwa: #99ccff;
@@ -18,25 +17,22 @@ $lcars-color-danub: #6688cc;
 $lcars-color-dodger-blue-alt: #3366ff;
 $lcars-color-dodger-blue: #5599ff;
 $lcars-color-eggplant: #664466;
-$lcars-color-golden-tanoi: #FFCC66;
+$lcars-color-golden-tanoi: #ffcc66;
 $lcars-color-hopbush: #cc6699;
 $lcars-color-husk: #bbaa55;
 $lcars-color-indigo: #4455bb;
-$lcars-color-ink: #02101D;
+$lcars-color-ink: #02101d;
 $lcars-color-lavender-purple: #9977aa;
 $lcars-color-lilac: #cc99cc;
 $lcars-color-mariner: #3366cc;
-$lcars-color-medium-carmine: #AA5533;
+$lcars-color-medium-carmine: #aa5533;
 $lcars-color-melrose: #9999ff;
 $lcars-color-navy-blue: #000088;
-$lcars-color-neon-carrot: #FF9933;
-$lcars-color-orange-peel: #FF9966;
-$lcars-color-pale-canary: #FFFF99;
+$lcars-color-neon-carrot: #ff9933;
+$lcars-color-orange-peel: #ff9966;
+$lcars-color-pale-canary: #ffff99;
 $lcars-color-periwinkle: #ccddff;
 $lcars-color-red-damask: #dd6644;
 $lcars-color-rust: #bb4411;
 $lcars-color-sandy-brown: #ee9955;
-$lcars-color-tng-blue: #00C3FC;
-
-$std-padding: 0.7vw;
-$std-border: 0.5vw;
+$lcars-color-tng-blue: #00c3fc;
