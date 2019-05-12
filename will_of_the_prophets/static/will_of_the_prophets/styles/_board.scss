@@ -1,13 +1,26 @@
 @import "./mixins";
 
-$even-color: $lcars-color-lavender-purple;
-$odd-color: $lcars-color-orange-peel;
+$even-color: $lcars-color-medium-carmine;
+$odd-color: $lcars-color-lavender-purple;
+
+$butthole-color: #99d0ff;
+$butthole-opacity: 0.6;
+
+$visited-opacity: 0.35;
 
 $z-index-butthole-related: 2;
 $z-index-runabout: 3;
 
 $runabout-animation-start: translate(-50%, -50%) scale(0.9) rotate(5deg);
 $runabout-animation-end: translate(-50%, -50%) scale(1.1) rotate(20deg);
+
+@mixin butthole-glow() {
+  filter: drop-shadow(0 0 0.5vw $butthole-color);
+
+  @include desktop-media() {
+    filter: drop-shadow(0 0 #{vw-to-px(0.5vw)} $butthole-color);
+  }
+}
 
 @keyframes runabout-animation {
   0% {
@@ -103,8 +116,7 @@ $runabout-animation-end: translate(-50%, -50%) scale(1.1) rotate(20deg);
 
 .board__cell--selected .board__cell-contents,
 .board__cell--visited .board__cell-contents {
-  background: rgba($odd-color, 0.8);
-  color: $lcars-color-ink;
+  background: rgba($odd-color, $visited-opacity);
 }
 
 .board__cell--even .board__cell-contents {
@@ -114,8 +126,12 @@ $runabout-animation-end: translate(-50%, -50%) scale(1.1) rotate(20deg);
 
 .board__cell--selected.board__cell--even .board__cell-contents,
 .board__cell--visited.board__cell--even .board__cell-contents {
-  background: rgba($even-color, 0.8);
-  color: $lcars-color-ink;
+  background: rgba($even-color, $visited-opacity);
+}
+
+.board__cell--butthole-related .board__cell-contents,
+.board__cell--special .board__cell-contents {
+  border-color: transparent;
 }
 
 .board__cell-number {
@@ -133,6 +149,11 @@ $runabout-animation-end: translate(-50%, -50%) scale(1.1) rotate(20deg);
 
 .board__cell--butthole-related .board__cell-img {
   z-index: $z-index-butthole-related;
+}
+
+.board__cell--butthole-related
+  .board__cell-img:not(.board__cell-img--runabout) {
+  @include butthole-glow();
 }
 
 .board__cell-img {
@@ -164,10 +185,11 @@ $runabout-animation-end: translate(-50%, -50%) scale(1.1) rotate(20deg);
   width: 100%;
   height: 100%;
   pointer-events: none;
+  @include butthole-glow();
 }
 
 .board__buttholes path {
   fill: none;
-  stroke: rgba(153, 208, 255, 0.75);
+  stroke: rgba($butthole-color, $butthole-opacity);
   stroke-width: 0.045;
 }

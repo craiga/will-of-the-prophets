@@ -1,5 +1,7 @@
 @import "./mixins";
 
+$content-padding: 2vw;
+
 .lcar-group {
   display: grid;
   grid-template-areas:
@@ -18,7 +20,7 @@
 .lcar-group + .lcar-group {
   @include cap-variable-widths(
     (
-      margin-top: 0.5vw
+      margin-top: 1vw
     )
   );
 }
@@ -35,7 +37,7 @@
 
   @include cap-variable-widths(
     (
-      grid-gap: 0.5vw,
+      grid-gap: 1vw,
       border-top-left-radius: 4vw,
       border-bottom-left-radius: 4vw,
       width: 12vw
@@ -56,7 +58,7 @@
 
   @include cap-variable-widths(
     (
-      padding: 2vw
+      padding: 2vw 0vw 2vw 2vw
     )
   );
 }
@@ -72,6 +74,7 @@
 }
 
 .lcar-group__filler {
+  position: relative;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
@@ -97,4 +100,48 @@
 
 .lcar-group__filler--blue {
   background: $lcars-color-dodger-blue-alt;
+}
+
+.lcar-group__filler--top-left-elbow::before,
+.lcar-group__filler--top-left-elbow::after,
+.lcar-group__filler--bottom-left-elbow::before,
+.lcar-group__filler--bottom-left-elbow::after {
+  position: absolute;
+  left: 0;
+  content: "";
+
+  @include cap-variable-widths(
+    (
+      height: $content-padding,
+      width: $content-padding
+    )
+  );
+}
+
+.lcar-group__filler--top-left-elbow::before,
+.lcar-group__filler--bottom-left-elbow::before {
+  background: inherit;
+}
+
+.lcar-group__filler--top-left-elbow::after,
+.lcar-group__filler--bottom-left-elbow::after {
+  background: $lcars-color-ink;
+}
+
+.lcar-group__filler--top-left-elbow::before,
+.lcar-group__filler--top-left-elbow::after {
+  top: 100%;
+}
+
+.lcar-group__filler--top-left-elbow::after {
+  border-top-left-radius: 100%;
+}
+
+.lcar-group__filler--bottom-left-elbow::before,
+.lcar-group__filler--bottom-left-elbow::after {
+  bottom: 100%;
+}
+
+.lcar-group__filler--bottom-left-elbow::after {
+  border-bottom-left-radius: 100%;
 }
