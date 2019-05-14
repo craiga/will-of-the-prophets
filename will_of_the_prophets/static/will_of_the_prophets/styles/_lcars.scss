@@ -25,21 +25,19 @@ $content-padding: 2vw;
   );
 }
 
-.lcars-group__top-bar {
+.lcars-group__horizontal-bar--top {
   grid-area: top-bar;
 }
 
 .lcars-group__left-bar {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   grid-area: left-bar;
-  grid-template-rows: 1fr 2fr 1fr 3fr;
   overflow: hidden;
 
   @include cap-variable-widths(
     (
-      grid-gap: 1vw,
-      border-top-left-radius: 4vw,
-      border-bottom-left-radius: 4vw,
+      grid-gap: 0.7vw,
       width: 12vw
     )
   );
@@ -49,7 +47,7 @@ $content-padding: 2vw;
   text-align: right;
 }
 
-.lcars-group__bottom-bar {
+.lcars-group__horizontal-bar--bottom {
   grid-area: bottom-bar;
 }
 
@@ -58,7 +56,7 @@ $content-padding: 2vw;
 
   @include cap-variable-widths(
     (
-      padding: 2vw 0vw 2vw 2vw
+      padding: 2vw
     )
   );
 }
@@ -76,12 +74,45 @@ $content-padding: 2vw;
 .lcars-group__filler {
   position: relative;
   display: flex;
+  flex: 1;
   justify-content: flex-end;
   align-items: flex-end;
   color: $lcars-color-ink;
   @include cap-variable-widths(
     (
       padding: 1vw
+    )
+  );
+}
+
+.lcars-group__horizontal-bar .lcars-group__filler:last-child {
+  @include cap-variable-widths(
+    (
+      padding-right: 2vw
+    )
+  );
+}
+
+.lcars-group__filler + .lcars-group__filler {
+  @include cap-variable-widths(
+    (
+      margin-top: 1vw
+    )
+  );
+}
+
+.lcars-group__filler--top-left {
+  @include cap-variable-widths(
+    (
+      border-top-left-radius: 4vw
+    )
+  );
+}
+
+.lcars-group__filler--bottom-left {
+  @include cap-variable-widths(
+    (
+      border-bottom-left-radius: 4vw
     )
   );
 }
