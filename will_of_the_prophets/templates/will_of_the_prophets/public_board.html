@@ -6,56 +6,48 @@
 
 <section class="lcars-group">
     <div class="lcars-group__horizontal-bar lcars-group__horizontal-bar--top">
-        <div class="lcars-group__filler lcars-group__filler--top-left-elbow lcars-group__filler--yellow">
-            GAME OF BUTTHOLES BOARD
-        </div>
+        {% include "lcars/_lcars_filler.html" with color="yellow" top_left_inner_elbow=True label="GAME OF BUTTHOLES BOARD" only %}
     </div>
     <div class="lcars-group__left-bar">
-        <div class="lcars-group__filler lcars-group__filler--top-left lcars-group__filler--yellow">CODE 47</div>
-        <div class="lcars-group__filler lcars-group__filler--purple">ALL I DO IS BITS</div>
-        <div class="lcars-group__filler lcars-group__filler--lilac">MAIN COMPUTER CORE</div>
-        <div class="lcars-group__filler lcars-group__filler--bottom-left lcars-group__filler--yellow">DICK JOKES</div>
+        {% include "lcars/_lcars_filler.html" with color="yellow" top_left_outer_elbow=True only %}
+        {% include "lcars/_lcars_filler.html" with color="purple" label="ALL I DO IS BITS" only %}
+        {% include "lcars/_lcars_filler.html" with color="lilac" label="MAIN COMPUTER CORE" only %}
+        {% include "lcars/_lcars_filler.html" with color="yellow" bottom_left_outer_elbow=True label="DICK JOKES" only %}
     </div>
     <div class="lcars-group__content">
         <h2 class="lcars-group__content-header">
             <span class="no-break">GAME OF BUTTHOLES</span> •
             <span class="no-break">THE WILL OF THE PROPHETS</span>
         </h2>
+
         {{ board }}
+
+        <p class="lcars-group__text">
+            Game of Buttholes: The Will of the Prophets is a board game played by the hosts of
+            <a href="http://gagh.biz" target="_top">The Greatest Generation</a>, a Star Trek podcast by two guys who are
+            a bit embarrassed to have a Star Trek podcast.
+        </p>
     </div>
     <div class="lcars-group__horizontal-bar lcars-group__horizontal-bar--bottom">
-        <div class="lcars-group__filler lcars-group__filler--bottom-left-elbow lcars-group__filler--yellow"></div>
+        {% include "lcars/_lcars_filler.html" with color="yellow" bottom_left_inner_elbow=True only %}
     </div>
 </section>
 
 <section class="lcars-group">
     <div class="lcars-group__horizontal-bar lcars-group__horizontal-bar--top">
-        <div class="lcars-group__filler lcars-group__filler--top-left-elbow lcars-group__filler--yellow">
-            SPECIAL SQUARE LEGEND
-        </div>
+        {% include "lcars/_lcars_filler.html" with color="yellow" top_left_inner_elbow=True label="SPECIAL SQUARE LEGEND" only %}
     </div>
     <div class="lcars-group__left-bar">
-        <div class="lcars-group__filler lcars-group__filler--top-left lcars-group__filler--yellow"></div>
-        <div class="lcars-group__filler lcars-group__filler--lilac">BAD BIT MOMENTS</div>
-        <div class="lcars-group__filler lcars-group__filler--purple">MORNHAMMER</div>
-        <div class="lcars-group__filler lcars-group__filler--bottom-left lcars-group__filler--blue">FUCK BOKAI</div>
+        {% include "lcars/_lcars_filler.html" with color="yellow" top_left_outer_elbow=True only %}
+        {% include "lcars/_lcars_filler.html" with color="lilac" label="BAD BIT MOMENTS" only %}
+        {% include "lcars/_lcars_filler.html" with color="purple" label="MORNHAMMER" only %}
+        {% include "lcars/_lcars_filler.html" with color="blue" bottom_left_outer_elbow=True label="FUCK BOKAI" only %}
     </div>
     <div class="lcars-group__content">
-        <ul class="legend">
-            {% for special_square_type in special_square_types %}
-            <li class="legend__item">
-                <img class="legend__item-img" src="{{ special_square_type.image }}"
-                    alt="{{ special_square_type.name }}" />
-                <div class="legend__item-meta">
-                    <h4 class="legend__item-name">{{ special_square_type.name }}</h4>
-                    <p class="legend__item-description">{{ special_square_type.description }}</p>
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
+        {% include "will_of_the_prophets/board/_legend.html" %}
     </div>
     <div class="lcars-group__horizontal-bar lcars-group__horizontal-bar--bottom">
-        <div class="lcars-group__filler lcars-group__filler--bottom-left-elbow lcars-group__filler--blue"></div>
+        {% include "lcars/_lcars_filler.html" with color="blue" bottom_left_inner_elbow=True only %}
     </div>
 </section>
 

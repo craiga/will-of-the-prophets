@@ -71,6 +71,16 @@ $content-padding: 2vw;
   );
 }
 
+.lcars-group__text {
+  @include cap-variable-widths(
+    (
+      font-size: 3.5vw,
+      margin-top: 2vw,
+      padding: 1vw
+    )
+  );
+}
+
 .lcars-group__filler {
   position: relative;
   display: flex;

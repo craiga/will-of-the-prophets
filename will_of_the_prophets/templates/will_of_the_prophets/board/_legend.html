@@ -1,0 +1,11 @@
+<ul class="legend">
+    {% for special_square_type in special_square_types %}
+    <li class="legend__item">
+        <img class="legend__item-img" src="{{ special_square_type.image }}" alt="{{ special_square_type.name }}" />
+        <div class="legend__item-meta">
+            <h4 class="legend__item-name">{{ special_square_type.name }}</h4>
+            <p class="legend__item-description">{{ special_square_type.description }}</p>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
