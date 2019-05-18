@@ -8,8 +8,8 @@
 }
 
 body {
-  background: $lcars-color-ink;
-  color: $lcars-color-atomic-tangerine;
+  background: lcars-color("blue-charcoal");
+  color: lcars-color("orange-peel");
   font-family: $lcars-font-family;
   margin: 3vw;
   font-size: 2.5vw;
@@ -17,7 +17,7 @@ body {
 
 a,
 a:visited {
-  color: $lcars-color-tng-blue;
+  color: lcars-color("bright-turquoise");
 }
 
 .no-break {

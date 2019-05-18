@@ -109,7 +109,7 @@ $content-padding: 2vw;
   flex: 1;
   justify-content: flex-end;
   align-items: flex-end;
-  color: $lcars-color-ink;
+  color: lcars-color("blue-charcoal");
   @include cap-variable-widths(
     (
       padding: 1vw
@@ -149,20 +149,10 @@ $content-padding: 2vw;
   );
 }
 
-.lcars-group__filler--yellow {
-  background: $lcars-color-atomic-tangerine;
-}
-
-.lcars-group__filler--purple {
-  background: $lcars-color-lavender-purple;
-}
-
-.lcars-group__filler--lilac {
-  background: $lcars-color-melrose;
-}
-
-.lcars-group__filler--blue {
-  background: $lcars-color-dodger-blue-alt;
+@each $name, $color in $lcars-colors {
+  .lcars-group__filler--#{$name} {
+    background: $color;
+  }
 }
 
 .lcars-group__filler--top-left-elbow::before,
@@ -188,7 +178,7 @@ $content-padding: 2vw;
 
 .lcars-group__filler--top-left-elbow::after,
 .lcars-group__filler--bottom-left-elbow::after {
-  background: $lcars-color-ink;
+  background: lcars-color("blue-charcoal");
 }
 
 .lcars-group__filler--top-left-elbow::before,

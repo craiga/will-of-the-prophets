@@ -16,7 +16,7 @@
 
 .site__header {
   font-family: $headings-font-family;
-  color: $lcars-color-tng-blue;
+  color: lcars-color("bright-turquoise");
 
   @include cap-variable-widths(
     (

@@ -1,7 +1,8 @@
+@import "./variables";
 @import "./mixins";
 
-$even-color: $lcars-color-medium-carmine;
-$odd-color: $lcars-color-lavender-purple;
+$even-color: lcars-color("medium-carmine");
+$odd-color: lcars-color("lavender-purple");
 
 $butthole-color: #99d0ff;
 $butthole-opacity: 0.6;

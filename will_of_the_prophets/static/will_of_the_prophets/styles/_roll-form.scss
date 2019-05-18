@@ -13,7 +13,7 @@
 }
 
 .roll-form__error {
-  color: $lcars-color-rust;
+  color: lcars-color("chesnut-rose");
 
   @include cap-variable-widths(
     (
@@ -53,7 +53,7 @@
 .roll-form__input::placeholder {
   text-align: center;
   text-transform: uppercase;
-  color: $lcars-color-atomic-tangerine;
+  color: lcars-color("orange-peel");
   opacity: 0.7;
 }
 
@@ -61,8 +61,8 @@
   font-family: inherit;
   font-size: inherit;
   border: none;
-  color: $lcars-color-ink;
-  background: $lcars-color-atomic-tangerine;
+  color: lcars-color("blue-charcoal");
+  background: lcars-color("orange-peel");
   text-transform: uppercase;
   letter-spacing: 0.06em;
   cursor: pointer;

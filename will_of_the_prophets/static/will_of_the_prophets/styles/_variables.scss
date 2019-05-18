@@ -4,35 +4,22 @@ $lcars-font-family: "lcars";
 
 $site-max-width: 900px;
 
-// Slightly modified colors from https://github.com/joernweissenborn/lcars.
-$lcars-color-anakiwa: #99ccff;
-$lcars-color-atomic-tangerine: #ff9900;
-$lcars-color-bahama-blue: #006699;
-$lcars-color-blue-bell: #9999cc;
-$lcars-color-blue: #0011ee;
-$lcars-color-bourbon: #bb6622;
-$lcars-color-chestnut-rose: #cc6666;
-$lcars-color-cosmic: #774466;
-$lcars-color-danub: #6688cc;
-$lcars-color-dodger-blue-alt: #3366ff;
-$lcars-color-dodger-blue: #5599ff;
-$lcars-color-eggplant: #664466;
-$lcars-color-golden-tanoi: #ffcc66;
-$lcars-color-hopbush: #cc6699;
-$lcars-color-husk: #bbaa55;
-$lcars-color-indigo: #4455bb;
-$lcars-color-ink: #02101d;
-$lcars-color-lavender-purple: #9977aa;
-$lcars-color-lilac: #cc99cc;
-$lcars-color-mariner: #3366cc;
-$lcars-color-medium-carmine: #aa5533;
-$lcars-color-melrose: #9999ff;
-$lcars-color-navy-blue: #000088;
-$lcars-color-neon-carrot: #ff9933;
-$lcars-color-orange-peel: #ff9966;
-$lcars-color-pale-canary: #ffff99;
-$lcars-color-periwinkle: #ccddff;
-$lcars-color-red-damask: #dd6644;
-$lcars-color-rust: #bb4411;
-$lcars-color-sandy-brown: #ee9955;
-$lcars-color-tng-blue: #00c3fc;
+$lcars-colors: (
+  "blue-charcoal": #01080e,
+  "peach-orange": #ffcc99,
+  "atomic-tangerine": #ff9966,
+  "orange-peel": #ff9900,
+  "lavender-purple": #9977aa,
+  "blue-bell": #999aca,
+  "melrose": #9899ff,
+  "medium-carmine": #aa5533,
+  "chesnut-rose": #cc6666,
+  "hopbush": #cc6699,
+  "bright-turquoise": #00c3fc,
+  "dodger-blue": #5599ff,
+  "mariner": #3366cc
+);
+
+@function lcars-color($color) {
+  @return map-get($lcars-colors, $color);
+}

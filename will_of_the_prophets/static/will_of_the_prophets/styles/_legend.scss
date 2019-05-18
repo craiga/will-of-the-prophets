@@ -56,7 +56,7 @@
 
 .legend__item-description {
   grid-area: description;
-  color: $lcars-color-lavender-purple;
+  color: lcars-color("lavender-purple");
   line-height: 1.2;
   text-transform: uppercase;
   @include cap-variable-widths(
