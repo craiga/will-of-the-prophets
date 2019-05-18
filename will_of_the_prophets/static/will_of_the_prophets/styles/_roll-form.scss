@@ -1,0 +1,77 @@
+@import "./variables";
+@import "./mixins";
+
+.roll-form {
+  text-align: center;
+  text-transform: uppercase;
+  @include cap-variable-widths(
+    (
+      padding: 3vw 0vw,
+      font-size: 3vw
+    )
+  );
+}
+
+.roll-form__error {
+  color: $lcars-color-rust;
+
+  @include cap-variable-widths(
+    (
+      margin-bottom: 2vw
+    )
+  );
+}
+
+.roll-form__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.roll-form__input {
+  display: block;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: transparent;
+  border: 0px solid currentColor;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1;
+  cursor: pointer;
+
+  @include cap-variable-widths(
+    (
+      border-radius: 1vw,
+      padding: 0.5vw 1vw,
+      margin: 0vw 1vw,
+      border-width: 0.5vw
+    )
+  );
+}
+
+.roll-form__input::placeholder {
+  text-align: center;
+  text-transform: uppercase;
+  color: $lcars-color-atomic-tangerine;
+  opacity: 0.7;
+}
+
+.roll-form__submit {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  color: $lcars-color-ink;
+  background: $lcars-color-atomic-tangerine;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+
+  @include cap-variable-widths(
+    (
+      border-radius: 10vw,
+      padding: 0.5vw 3vw,
+      margin: 0vw 1vw
+    )
+  );
+}

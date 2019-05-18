@@ -62,6 +62,7 @@ $content-padding: 2vw;
 }
 
 .lcars-group__content-header {
+  text-transform: uppercase;
   text-align: center;
   @include cap-variable-widths(
     (
@@ -72,13 +73,33 @@ $content-padding: 2vw;
 }
 
 .lcars-group__text {
+  text-transform: uppercase;
+  line-height: 1.5;
+
   @include cap-variable-widths(
     (
       font-size: 3.5vw,
-      margin-top: 2vw,
+      margin: 2vw 0vw,
       padding: 1vw
     )
   );
+
+  em {
+    font-style: normal;
+    text-decoration: underline;
+  }
+}
+
+.lcars-group__text:last-child {
+  @include cap-variable-widths(
+    (
+      margin-bottom: 0vw
+    )
+  );
+}
+
+.lcars-group__text--center {
+  text-align: center;
 }
 
 .lcars-group__filler {
