@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     "tz_detect",
     "debug_toolbar",
     "s3direct",
-    "bootstrap",
     "will_of_the_prophets",
 ]
 
