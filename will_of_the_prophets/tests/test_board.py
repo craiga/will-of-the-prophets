@@ -70,24 +70,6 @@ def test_position(rolls):
 
 @pytest.mark.django_db
 @pytest.mark.freeze_time("2369-07-05 08:00")
-def test_was_visited(rolls):
-    """Test that the was_visited flag is set correctly on squares."""
-    the_board = board.Board()
-    assert the_board.get_current_position() == 11
-
-    squares = list(the_board.squares)
-    assert squares[89].number == 11
-    assert squares[89].is_current_position
-
-    for square in squares:
-        if square.number < 11:
-            assert square.was_visited
-        else:
-            assert not square.was_visited
-
-
-@pytest.mark.django_db
-@pytest.mark.freeze_time("2369-07-05 08:00")
 def test_explicit_date(rolls):
     """Test that the current position is set with an explicit date."""
     the_board = board.Board(
