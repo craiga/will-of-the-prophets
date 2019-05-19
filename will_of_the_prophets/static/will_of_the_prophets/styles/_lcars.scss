@@ -5,16 +5,25 @@ $content-padding: 2vw;
 .lcars-group {
   display: grid;
   grid-template-areas:
-    "left-bar top-bar top-bar"
-    "left-bar content content"
-    "left-bar bottom-bar bottom-bar";
-  grid-template-columns: auto 1fr 1fr;
+    "left-bar top-bar"
+    "left-bar content"
+    "left-bar bottom-bar";
+  grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr auto;
   @include cap-variable-widths(
     (
       font-size: 2.5vw
     )
   );
+}
+
+.lcars-group--double-sidebar {
+  grid-template-areas:
+    "left-bar top-bar right-bar"
+    "left-bar content right-bar"
+    "left-bar bottom-bar right-bar";
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
 }
 
 .lcars-group + .lcars-group {
@@ -25,14 +34,17 @@ $content-padding: 2vw;
   );
 }
 
+.lcars-group__horizontal-bar {
+  display: flex;
+}
+
 .lcars-group__horizontal-bar--top {
   grid-area: top-bar;
 }
 
-.lcars-group__left-bar {
+.lcars-group__side-bar {
   display: flex;
   flex-direction: column;
-  grid-area: left-bar;
   overflow: hidden;
 
   @include cap-variable-widths(
@@ -41,6 +53,14 @@ $content-padding: 2vw;
       width: 12vw
     )
   );
+}
+
+.lcars-group__side-bar--left {
+  grid-area: left-bar;
+}
+
+.lcars-group__side-bar--right {
+  grid-area: right-bar;
 }
 
 .lcars-group__filler {
@@ -109,12 +129,17 @@ $content-padding: 2vw;
   flex: 1;
   justify-content: flex-end;
   align-items: flex-end;
+  text-transform: uppercase;
   color: lcars-color("blue-charcoal");
   @include cap-variable-widths(
     (
       padding: 1vw
     )
   );
+}
+
+.lcars-group__filler--center {
+  justify-content: center;
 }
 
 .lcars-group__horizontal-bar .lcars-group__filler:last-child {
@@ -125,10 +150,18 @@ $content-padding: 2vw;
   );
 }
 
-.lcars-group__filler + .lcars-group__filler {
+.lcars-group__side-bar .lcars-group__filler + .lcars-group__filler {
   @include cap-variable-widths(
     (
       margin-top: 1vw
+    )
+  );
+}
+
+.lcars-group__horizontal-bar .lcars-group__filler + .lcars-group__filler {
+  @include cap-variable-widths(
+    (
+      margin-left: 1vw
     )
   );
 }
@@ -137,6 +170,22 @@ $content-padding: 2vw;
   @include cap-variable-widths(
     (
       border-top-left-radius: 4vw
+    )
+  );
+}
+
+.lcars-group__filler--top-right {
+  @include cap-variable-widths(
+    (
+      border-top-right-radius: 4vw
+    )
+  );
+}
+
+.lcars-group__filler--bottom-right {
+  @include cap-variable-widths(
+    (
+      border-bottom-right-radius: 4vw
     )
   );
 }
@@ -157,10 +206,13 @@ $content-padding: 2vw;
 
 .lcars-group__filler--top-left-elbow::before,
 .lcars-group__filler--top-left-elbow::after,
+.lcars-group__filler--top-right-elbow::before,
+.lcars-group__filler--top-right-elbow::after,
+.lcars-group__filler--bottom-right-elbow::before,
+.lcars-group__filler--bottom-right-elbow::after,
 .lcars-group__filler--bottom-left-elbow::before,
 .lcars-group__filler--bottom-left-elbow::after {
   position: absolute;
-  left: 0;
   content: "";
 
   @include cap-variable-widths(
@@ -172,17 +224,22 @@ $content-padding: 2vw;
 }
 
 .lcars-group__filler--top-left-elbow::before,
+.lcars-group__filler--top-right-elbow::before,
+.lcars-group__filler--bottom-right-elbow::before,
 .lcars-group__filler--bottom-left-elbow::before {
   background: inherit;
 }
 
 .lcars-group__filler--top-left-elbow::after,
+.lcars-group__filler--top-right-elbow::after,
+.lcars-group__filler--bottom-right-elbow::after,
 .lcars-group__filler--bottom-left-elbow::after {
   background: lcars-color("blue-charcoal");
 }
 
 .lcars-group__filler--top-left-elbow::before,
 .lcars-group__filler--top-left-elbow::after {
+  left: 0;
   top: 100%;
 }
 
@@ -190,8 +247,29 @@ $content-padding: 2vw;
   border-top-left-radius: 100%;
 }
 
+.lcars-group__filler--top-right-elbow::before,
+.lcars-group__filler--top-right-elbow::after {
+  right: 0;
+  top: 100%;
+}
+
+.lcars-group__filler--top-right-elbow::after {
+  border-top-right-radius: 100%;
+}
+
+.lcars-group__filler--bottom-right-elbow::before,
+.lcars-group__filler--bottom-right-elbow::after {
+  right: 0;
+  bottom: 100%;
+}
+
+.lcars-group__filler--bottom-right-elbow::after {
+  border-bottom-right-radius: 100%;
+}
+
 .lcars-group__filler--bottom-left-elbow::before,
 .lcars-group__filler--bottom-left-elbow::after {
+  left: 0;
   bottom: 100%;
 }
 

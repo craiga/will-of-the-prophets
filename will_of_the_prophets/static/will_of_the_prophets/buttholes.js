@@ -47,9 +47,11 @@ Point.prototype.toString = function() {
   return this.x + " " + this.y;
 };
 
-Raven.context(function() {
+function initializeButtholes() {
   var NS = "http://www.w3.org/2000/svg";
   var container = document.querySelector(".board__buttholes");
+  if (!container) return;
+
   var containerRect = container.getBoundingClientRect();
 
   /**
@@ -146,4 +148,8 @@ Raven.context(function() {
       );
     });
   });
+}
+
+Raven.context(function() {
+  initializeButtholes();
 });

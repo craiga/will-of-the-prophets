@@ -2,49 +2,40 @@
 
 {% block content %}
 
-<p class="h3 text-orange pt-3">Game of Buttholes: The Will of the Prophets</p>
-<h1 class="text-blue">Roll Frequency</h1>
+<h1 class="site__header">The Greatest Generation Presents:</h1>
 
-<table id="chart">
-    <tr>
-        <th scope="col">Roll</th>
-        <th scope="col">Frequency</th>
-    </tr>
-    {% for roll, count in roll_frequency.items %}
-        <tr>
-            <th scope="rol">{{ roll }}</th>
-            <td>{{ count }}</td>
-        </tr>
-    {% endfor %}
-</table>
-        
+<section class="lcars-group lcars-group--double-sidebar">
+    <div class="lcars-group__horizontal-bar lcars-group__horizontal-bar--top">
+        {% include "lcars/_lcars_filler.html" with color="hopbush" top_left_inner_elbow=True only %}
+        {% include "lcars/_lcars_filler.html" with color="melrose" only %}
+        {% include "lcars/_lcars_filler.html" with color="hopbush" top_right_inner_elbow=True only %}
+    </div>
+    <div class="lcars-group__side-bar lcars-group__side-bar--left">
+        {% include "lcars/_lcars_filler.html" with color="hopbush" top_left_outer_elbow=True only %}
+        {% include "lcars/_lcars_filler.html" with color="peach-orange" label="Roll Value" only %}
+        {% include "lcars/_lcars_filler.html" with color="hopbush" bottom_left_outer_elbow=True only %}
+    </div>
+    <div class="lcars-group__content">
+        <h2 class="lcars-group__content-header">
+            Game Of Buttholes • Roll Frequency
+        </h2>
+        {% include "will_of_the_prophets/_roll_chart.html" with max_count=max_count roll_frequency=roll_frequency only%}
+    </div>
+
+    <div class="lcars-group__side-bar lcars-group__side-bar--right">
+        {% include "lcars/_lcars_filler.html" with color="hopbush" top_right_outer_elbow=True only %}
+        {% include "lcars/_lcars_filler.html" with color="orange-peel" only %}
+        {% include "lcars/_lcars_filler.html" with color="peach-orange" only %}
+        {% include "lcars/_lcars_filler.html" with color="hopbush" bottom_right_outer_elbow=True only %}
+    </div>
+
+    <div class="lcars-group__horizontal-bar lcars-group__horizontal-bar--bottom">
+        {% include "lcars/_lcars_filler.html" with color="hopbush" bottom_left_inner_elbow=True only %}
+        {% include "lcars/_lcars_filler.html" with color="melrose" center=True label="Roll Count" only %}
+        {% include "lcars/_lcars_filler.html" with color="hopbush" bottom_right_inner_elbow=True only %}
+    </div>
+</section>
+
 {% include "will_of_the_prophets/_footer.html" %}
 
-{% endblock %}
-
-{% block script %}
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(function() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Roll');
-        data.addColumn('number', 'Frequency');
-        data.addRows([
-            {% for roll, count in roll_frequency.items %}
-                ['{{ roll }}', {{ count }}],
-            {% endfor %}
-        ]);
-
-        $("#chart").css({"width": "100%", "height": "20rem"});
-        var chart = new google.visualization.BarChart(document.getElementById('chart'));
-        chart.draw(data, {
-            colors: ["#00C3FC"],
-            backgroundColor: "transparent",
-            legend: "none",
-            hAxis: {textStyle: {color: 'white'}},
-            vAxis: {textStyle: {color: 'white'}},
-        });
-    });
-</script>
 {% endblock %}

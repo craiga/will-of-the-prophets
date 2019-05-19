@@ -61,10 +61,12 @@ def roll_frequency(request):
     for roll in models.Roll.objects.filter(embargo__lte=timezone.now()):
         roll_count[roll.number] += 1
 
+    max_count = max(roll_count.values())
+
     return render(
         request,
         "will_of_the_prophets/roll_frequency.html",
-        {"roll_frequency": roll_count},
+        {"roll_frequency": roll_count, "max_count": max_count},
     )
 
 

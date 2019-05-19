@@ -1,9 +1,18 @@
 <div class="
             lcars-group__filler
             lcars-group__filler--{{color}}
+            {% if center %}lcars-group__filler--center{% endif %}
+
+            {# classes for outer radii #}
             {% if top_left_outer_elbow %}lcars-group__filler--top-left{% endif %}
+            {% if top_right_outer_elbow %}lcars-group__filler--top-right{% endif %}
+            {% if bottom_right_outer_elbow %}lcars-group__filler--bottom-right{% endif %}
             {% if bottom_left_outer_elbow %}lcars-group__filler--bottom-left{% endif %}
+
+            {# classes for inner radii #}
             {% if top_left_inner_elbow %}lcars-group__filler--top-left-elbow{% endif %}
+            {% if top_right_inner_elbow %}lcars-group__filler--top-right-elbow{% endif %}
+            {% if bottom_right_inner_elbow %}lcars-group__filler--bottom-right-elbow{% endif %}
             {% if bottom_left_inner_elbow %}lcars-group__filler--bottom-left-elbow{% endif %}
         ">
     {{label}}

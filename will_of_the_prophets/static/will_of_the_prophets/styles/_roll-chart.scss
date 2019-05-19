@@ -1,0 +1,70 @@
+@import "./variables";
+@import "./mixins";
+
+$chart-left-margin: 3vw;
+
+.roll-chart {
+  position: relative;
+  display: flex;
+  margin-bottom: 1em;
+  margin-right: 1vw;
+}
+
+.roll-chart__rules {
+  position: absolute;
+  top: 0;
+  left: $chart-left-margin;
+  right: 0;
+  height: 100%;
+  display: flex;
+}
+
+.roll-chart__rule {
+  position: relative;
+  flex: 1;
+  border-left: 1px solid rgba(white, 0.3);
+}
+
+.roll-chart__rule:last-child {
+  flex: 0;
+  width: 0px;
+}
+
+.roll-chart__rule-label {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transform: translateX(-50%);
+}
+
+.roll-chart__bars {
+  width: 100%;
+}
+
+.roll-chart__bar {
+  display: flex;
+}
+
+.roll-chart__bar + .roll-chart__bar {
+  margin-top: 2vw;
+}
+
+.roll-chart__bar-label {
+  width: $chart-left-margin;
+  text-align: right;
+  padding-right: 1vw;
+}
+
+.roll-chart__bar-value-wrapper {
+  position: relative;
+  flex: 1;
+  min-height: 100%;
+}
+
+.roll-chart__bar-value {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: lcars-color("peach-orange");
+}
