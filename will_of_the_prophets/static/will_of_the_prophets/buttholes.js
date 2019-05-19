@@ -47,12 +47,10 @@ Point.prototype.toString = function() {
   return this.x + " " + this.y;
 };
 
-function initializeButtholes() {
+function renderButtholes() {
   var NS = "http://www.w3.org/2000/svg";
   var container = document.querySelector(".board__buttholes");
   if (!container) return;
-
-  var containerRect = container.getBoundingClientRect();
 
   /**
    * Returns the center point of the provided element relative to the container
@@ -63,11 +61,11 @@ function initializeButtholes() {
    * @returns {Point} The center point of the provided element.
    */
   function getRelativeCenterAsPoint(el) {
+    var containerRect = container.getBoundingClientRect();
     var rect = el.getBoundingClientRect();
-    var x =
-      (rect.left + rect.width / 2 - containerRect.left) / containerRect.width;
-    var y =
-      (rect.top + rect.height / 2 - containerRect.top) / containerRect.height;
+    var x = (rect.x - containerRect.x + rect.width / 2) / containerRect.width;
+    var y = (rect.y - containerRect.y + rect.height / 2) / containerRect.height;
+
     return new Point(x, y);
   }
 
@@ -151,5 +149,5 @@ function initializeButtholes() {
 }
 
 Raven.context(function() {
-  initializeButtholes();
+  renderButtholes();
 });
