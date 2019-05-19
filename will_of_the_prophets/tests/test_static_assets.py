@@ -7,9 +7,6 @@ import pytest
     "url",
     [
         "/favicon.ico",
-        "/apple-touch-icon.png",
-        "/apple-touch-icon-precomposed.png",
-        "/apple-touch-icon-120x120.png",
         "/robots.txt",
         "/humans.txt",
     ],
