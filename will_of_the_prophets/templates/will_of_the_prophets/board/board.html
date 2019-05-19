@@ -33,7 +33,7 @@
 
             {% if square.is_butthole_start %}
             <img class="board__cell-img board__cell-img--butthole"
-                src="{% static 'will_of_the_prophets/butthole_start.png' %}" />
+                src="{% static 'will_of_the_prophets/other_squares/butthole.png' %}" />
             {% endif %}
 
             {% if square.is_current_position %}
@@ -42,7 +42,7 @@
                     board__cell-img
                     board__cell-img--runabout
                     {% if square.row_reversed %} board__cell-img--runabout-reverse {% endif %}
-                " src="{% static 'will_of_the_prophets/runabout.png' %}" alt="Runabout" />
+                " src="{% static 'will_of_the_prophets/other_squares/runabout.png' %}" alt="Runabout" />
             </div>
             {% endif %}
         </div>
