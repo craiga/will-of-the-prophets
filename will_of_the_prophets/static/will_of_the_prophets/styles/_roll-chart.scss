@@ -7,16 +7,25 @@ $chart-left-margin: 3vw;
   position: relative;
   display: flex;
   margin-bottom: 1em;
-  margin-right: 1vw;
+  @include cap-variable-widths(
+    (
+      margin-right: 1vw
+    )
+  );
 }
 
 .roll-chart__rules {
   position: absolute;
   top: 0;
-  left: $chart-left-margin;
   right: 0;
   height: 100%;
   display: flex;
+
+  @include cap-variable-widths(
+    (
+      left: $chart-left-margin
+    )
+  );
 }
 
 .roll-chart__rule {
@@ -27,7 +36,7 @@ $chart-left-margin: 3vw;
 
 .roll-chart__rule:last-child {
   flex: 0;
-  width: 0px;
+  width: 0;
 }
 
 .roll-chart__rule-label {
@@ -46,13 +55,22 @@ $chart-left-margin: 3vw;
 }
 
 .roll-chart__bar + .roll-chart__bar {
-  margin-top: 2vw;
+  @include cap-variable-widths(
+    (
+      margin-top: 2vw
+    )
+  );
 }
 
 .roll-chart__bar-label {
   width: $chart-left-margin;
   text-align: right;
-  padding-right: 1vw;
+
+  @include cap-variable-widths(
+    (
+      padding-right: 1vw
+    )
+  );
 }
 
 .roll-chart__bar-value-wrapper {
