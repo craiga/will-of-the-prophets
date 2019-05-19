@@ -227,3 +227,20 @@ def test_100(rolls, expected_position):
         board.calculate_position(utc.localize(datetime(2369, 12, 31)))
         == expected_position
     )
+
+
+@pytest.mark.django_db
+def test_butthole_after_100():
+    """Test that buttholes take effect on the second time around to board."""
+    # Positions should be calculated as 99, 9, and 14…
+    for day_of_month, roll in enumerate([98, 10, 5]):
+        mommy.make(
+            "Roll",
+            number=roll,
+            embargo=utc.localize(datetime(2369, 7, day_of_month + 1)),
+        )
+
+    # …except there's a butthole from 9 to 2, meaning the positions should be 99, 2,
+    # and 7.
+    mommy.make("Butthole", start_square=9, end_square=2)
+    assert board.calculate_position(utc.localize(datetime(2369, 12, 31))) == 7

@@ -39,12 +39,15 @@ def calculate_position(now):
 
         position += roll.number
 
+        # Handle position > 100.
+        position = (position - 1) % 100 + 1
+
         if position in special_squares:
             position = position + special_squares[position].auto_move
 
         position = buttholes.get(position, position)
 
-    return (position - 1) % 100 + 1
+    return position
 
 
 def is_active(obj, now):
