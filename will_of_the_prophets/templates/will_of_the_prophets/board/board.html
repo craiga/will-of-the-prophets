@@ -2,51 +2,69 @@
 
 <div class="board">
     {% for square in squares %}
-    <div class="board__cell
-            {% if square.number|divisibleby:2 %}
-                board__cell--even
-            {% endif %}
-            {% if square.get_special %}
-                board__cell--special
-            {% endif %}
-            {% if square.is_current_position %}
-                board__cell--selected
-            {% endif %}
-            {% if square.was_visited %}
-                board__cell--visited
-            {% endif %}
-            {% if square.is_butthole_start or square.get_butthole_ends %}
-                board__cell--butthole-related
-            {% endif %}
-            " {% if square.get_butthole_ends %} data-butthole-starts='[
+        <div
+            class="
+                board__cell
+
+                {% if square.number|divisibleby:2 %}
+                    board__cell--even
+                {% endif %}
+
+                {% if square.get_special %}
+                    board__cell--special
+                {% endif %}
+
+                {% if square.is_current_position %}
+                    board__cell--selected
+                {% endif %}
+
+                {% if square.was_visited %}
+                    board__cell--visited
+                {% endif %}
+
+                {% if square.is_butthole_start or square.get_butthole_ends %}
+                    board__cell--butthole-related
+                {% endif %}
+            "
+            {% if square.get_butthole_ends %}
+                data-butthole-starts="[
                     {% for is_butthole_start in square.get_butthole_ends %}
-                        "{{ is_butthole_start }}"
-                        {% if not forloop.last %},{% endif %}
+                        {{ is_butthole_start }}{% if not forloop.last %},{% endif %}
                     {% endfor %}
-                ]' {% endif %} data-number="{{ square.number}}">
-        <div class="board__cell-contents">
-            <span class="board__cell-number">{{ square.number }}</span>
-
-            {% if square.get_special %}
-            <img class="board__cell-img" src="{{ square.get_special.image }}" />
+                ]"
             {% endif %}
+            data-number="{{ square.number}}"
+        >
+            <div class="board__cell-contents">
+                <span class="board__cell-number">{{ square.number }}</span>
 
-            {% if square.is_butthole_start %}
-            <img class="board__cell-img board__cell-img--butthole"
-                src="{% static 'will_of_the_prophets/other_squares/butthole.png' %}" />
-            {% endif %}
+                {% if square.get_special %}
+                    <img class="board__cell-img" src="{{ square.get_special.image }}" />
+                {% endif %}
 
-            {% if square.is_current_position %}
-            <div class="board__runabout">
-                <img class="
-                    board__cell-img
-                    board__cell-img--runabout
-                    {% if square.row_reversed %} board__cell-img--runabout-reverse {% endif %}
-                " src="{% static 'will_of_the_prophets/other_squares/runabout.png' %}" alt="Runabout" />
+                {% if square.is_butthole_start %}
+                    <img
+                        class="board__cell-img board__cell-img--butthole"
+                        src="{% static 'will_of_the_prophets/other_squares/butthole.png' %}"
+                    />
+                {% endif %}
+
+                {% if square.is_current_position %}
+                    <div class="board__runabout">
+                        <img
+                            class="
+                                board__cell-img
+                                board__cell-img--runabout
+                                {% if square.row_reversed %} board__cell-img--runabout-reverse {% endif %}
+                            "
+                            src="{% static 'will_of_the_prophets/other_squares/runabout.png' %}"
+                            alt="Runabout"
+                        />
+                    </div>
+                {% endif %}
             </div>
-            {% endif %}
         </div>
-    </div>
     {% endfor %}
+
     <svg xmlns="http://www.w3.org/2000/svg" class="board__buttholes" viewBox="0 0 1 1"></svg>
 </div>

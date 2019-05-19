@@ -7,7 +7,7 @@
 
 <section class="lcars-group">
     <div class="lcars-group__side-bar lcars-group__side-bar--left">
-        {% include "will_of_the_prophets/_lcars_filler.html" with color="medium-carmine" bottom_left_outer_elbow=True only %}
+        {% include "_lcars_filler.html" with color="medium-carmine" bottom_left_outer_elbow=True only %}
     </div>
     <div class="lcars-group__content">
         <h2 class="lcars-group__content-header">
@@ -18,16 +18,14 @@
             {% csrf_token %}
 
             {% if form.errors %}
-
-            {% for field in form %}
-            {% for error in field.errors %}
-            <p class="roll-form__error">{{ error|escape }}</p>
-            {% endfor %}
-            {% endfor %}
-
-            {% for error in form.non_field_errors %}
-            <p class="roll-form__error">{{ error|escape }}</p>
-            {% endfor %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <p class="roll-form__error">{{ error|escape }}</p>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <p class="roll-form__error">{{ error|escape }}</p>
+                {% endfor %}
             {% endif %}
 
 
@@ -39,16 +37,16 @@
         </form>
     </div>
     <div class="lcars-group__horizontal-bar lcars-group__horizontal-bar--bottom">
-        {% include "will_of_the_prophets/_lcars_filler.html" with color="medium-carmine" bottom_left_inner_elbow=True only %}
+        {% include "_lcars_filler.html" with color="medium-carmine" bottom_left_inner_elbow=True only %}
     </div>
 </section>
 
 <section class="lcars-group">
     <div class="lcars-group__horizontal-bar lcars-group__horizontal-bar--top">
-        {% include "will_of_the_prophets/_lcars_filler.html" with color="medium-carmine" top_left_inner_elbow=True only %}
+        {% include "_lcars_filler.html" with color="medium-carmine" top_left_inner_elbow=True only %}
     </div>
     <div class="lcars-group__side-bar lcars-group__side-bar--left">
-        {% include "will_of_the_prophets/_lcars_filler.html" with color="medium-carmine" top_left_outer_elbow=True bottom_left_outer_elbow=True only %}
+        {% include "_lcars_filler.html" with color="medium-carmine" top_left_outer_elbow=True bottom_left_outer_elbow=True only %}
     </div>
     <div class="lcars-group__content">
         <h2 class="lcars-group__content-header">
@@ -65,22 +63,22 @@
 
     </div>
     <div class="lcars-group__horizontal-bar lcars-group__horizontal-bar--bottom">
-        {% include "will_of_the_prophets/_lcars_filler.html" with color="medium-carmine" bottom_left_inner_elbow=True only %}
+        {% include "_lcars_filler.html" with color="medium-carmine" bottom_left_inner_elbow=True only %}
     </div>
 </section>
 
 <section class="lcars-group">
     <div class="lcars-group__horizontal-bar lcars-group__horizontal-bar--top">
-        {% include "will_of_the_prophets/_lcars_filler.html" with color="medium-carmine" top_left_inner_elbow=True only %}
+        {% include "_lcars_filler.html" with color="medium-carmine" top_left_inner_elbow=True only %}
     </div>
     <div class="lcars-group__side-bar lcars-group__side-bar--left">
-        {% include "will_of_the_prophets/_lcars_filler.html" with color="medium-carmine" top_left_outer_elbow=True bottom_left_outer_elbow=True only %}
+        {% include "_lcars_filler.html" with color="medium-carmine" top_left_outer_elbow=True bottom_left_outer_elbow=True only %}
     </div>
     <div class="lcars-group__content">
         {% include "will_of_the_prophets/board/_legend.html" %}
     </div>
     <div class="lcars-group__horizontal-bar lcars-group__horizontal-bar--bottom">
-        {% include "will_of_the_prophets/_lcars_filler.html" with color="medium-carmine" bottom_left_inner_elbow=True only %}
+        {% include "_lcars_filler.html" with color="medium-carmine" bottom_left_inner_elbow=True only %}
     </div>
 </section>
 
@@ -94,13 +92,22 @@
 {% tz_detect %}
 
 
-<link rel="stylesheet"
+<link
+    rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css"
-    integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"
-    integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+    integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y="
+    crossorigin="anonymous"
+/>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"
+></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"
+    integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk="
+    crossorigin="anonymous"
+></script>
 <script type="text/javascript">
     $(function () {
         $('.roll-form__input').datetimepicker({

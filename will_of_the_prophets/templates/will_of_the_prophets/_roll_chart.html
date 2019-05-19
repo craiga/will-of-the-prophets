@@ -1,26 +1,26 @@
 <div class="roll-chart">
-  <div class="roll-chart__rules">
-    <div class="roll-chart__rule">
-      <div class="roll-chart__rule-label">0</div>
+    <div class="roll-chart__rules">
+        <div class="roll-chart__rule">
+            <div class="roll-chart__rule-label">0</div>
+        </div>
+
+        {% with ''|center:max_count as range %}
+            {% for _ in range %}
+                <div class="roll-chart__rule">
+                    <div class="roll-chart__rule-label">{{forloop.counter}}</div>
+                </div>
+            {% endfor %}
+        {% endwith %}
     </div>
 
-    {% with ''|center:max_count as range %}
-    {% for _ in range %}
-    <div class="roll-chart__rule">
-      <div class="roll-chart__rule-label">{{forloop.counter}}</div>
+    <div class="roll-chart__bars">
+        {% for roll, count in roll_frequency.items %}
+            <div class="roll-chart__bar">
+                <div class="roll-chart__bar-label">{{roll}}</div>
+                <div class="roll-chart__bar-value-wrapper">
+                    <div class="roll-chart__bar-value" style="width: calc(100% * {{ count }} / {{max_count}})"></div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-    {% endwith %}
-  </div>
-
-  <div class="roll-chart__bars">
-    {% for roll, count in roll_frequency.items %}
-    <div class="roll-chart__bar">
-      <div class="roll-chart__bar-label">{{roll}}</div>
-      <div class="roll-chart__bar-value-wrapper">
-        <div class="roll-chart__bar-value" style="width: calc(100% * {{ count }} / {{max_count}})"></div>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
 </div>
