@@ -1,0 +1,19 @@
+@import "./mixins";
+
+.lcars-button {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  color: lcars-color("blue-charcoal");
+  background: lcars-color("orange-peel");
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+
+  @include cap-variable-widths(
+    (
+      border-radius: 10vw,
+      padding: 0.5vw 3vw
+    )
+  );
+}

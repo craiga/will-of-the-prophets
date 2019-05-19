@@ -3,56 +3,74 @@
 
 {% block content %}
 
-<div class="row pt-3">
-    <div class="col-12">
-        <p class="h3 text-orange">The Greatest Generation Presents</p>
-        <h1 class="text-blue">Game of Buttholes:<br>The Will of the Prophets</h1>
+<h1 class="site__header">Login:</h1>
 
+<section class="lcars-group lcars-group--double-sidebar">
+    <div class="lcars-group__horizontal-bar lcars-group__horizontal-bar--top">
+        {% include "_lcars_filler.html" with color="dodger-blue" top_left_inner_elbow=True only %}
+        {% include "_lcars_filler.html" with color="mariner" only %}
+        {% include "_lcars_filler.html" with color="dodger-blue" top_right_inner_elbow=True only %}
+    </div>
+    <div class="lcars-group__side-bar lcars-group__side-bar--left">
+        {% include "_lcars_filler.html" with color="dodger-blue" top_left_outer_elbow=True only %}
+        {% include "_lcars_filler.html" with color="dodger-blue" bottom_left_outer_elbow=True only %}
+    </div>
+    <div class="lcars-group__content">
         {% if form.errors %}
             {% for field in form %}
                 {% for error in field.errors %}
-                    <div class="alert alert-danger">
-                        <strong>{{ error|escape }}</strong>
-                    </div>
+                    <p class="lcars-group__text lcars-group__text--center">{{ error|escape }}</p>
                 {% endfor %}
             {% endfor %}
             {% for error in form.non_field_errors %}
-                <div class="alert alert-danger">
-                    <strong>{{ error|escape }}</strong>
-                </div>
+                <p class="lcars-group__text lcars-group__text--center">{{ error|escape }}</p>
             {% endfor %}
         {% endif %}
 
         {% if next and user.is_authenticated %}
-            <div class="alert alert-danger">
-                <strong>Your account doesn't have access to this page. To proceed,
-                   please login with an account that has access.</strong>
-            </div>
+            <p class="lcars-group__text lcars-group__text--center">{{ error|escape }}</p>
+            <p class="lcars-group__text lcars-group__text--center">
+                Your account doesn't have access to this page. To proceed,
+                please login with an account that has access.
+            </p>
         {% endif %}
 
-        <form method="post" action="{% url 'login' %}">
+        <form class="login" method="post" action="{% url 'login' %}">
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ next }}" />
-            <div class="form-row">
-                <div class="form-group col-sm-6">
-                    {{ form.username.label_tag }}
-                    {{ form.username|add_class:'form-control' }}
-                </div>
-                <div class="form-group col-sm-6">
-                    {{ form.password.label_tag }}
-                    {{ form.password|add_class:'form-control' }}
-                </div>
+
+            <div class="login__row">
+                {{ form.username.label_tag }}
+                {{ form.username|add_class:'lcars-input' }}
             </div>
-            <div class="form-row">
-                <div class="form-group col-12">
-                    <button type="submit" class="btn btn-primary">Log In</button>
-                </div>
+
+            <div class="login__row">
+                {{ form.password.label_tag }}
+                {{ form.password|add_class:'lcars-input' }}
+            </div>
+
+            <div class="login__row">
+                <button type="submit" class="lcars-button">Log In</button>
             </div>
         </form>
 
-        <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-
+        <p class="lcars-group__text lcars-group__text--center">
+            <a href="{% url 'password_reset' %}">Lost password?</a>
+        </p>
     </div>
-</div>
+
+    <div class="lcars-group__side-bar lcars-group__side-bar--right">
+        {% include "_lcars_filler.html" with color="dodger-blue" top_right_outer_elbow=True only %}
+        {% include "_lcars_filler.html" with color="dodger-blue" bottom_right_outer_elbow=True only %}
+    </div>
+
+    <div class="lcars-group__horizontal-bar lcars-group__horizontal-bar--bottom">
+        {% include "_lcars_filler.html" with color="dodger-blue" bottom_left_inner_elbow=True only %}
+        {% include "_lcars_filler.html" with color="mariner" center=True only %}
+        {% include "_lcars_filler.html" with color="dodger-blue" bottom_right_inner_elbow=True only %}
+    </div>
+</section>
+
+{% include "will_of_the_prophets/_footer.html" %}
 
 {% endblock %}
