@@ -1,0 +1,41 @@
+@import "./variables";
+
+@function is-relative-width($value) {
+  @return type-of($value) == "number" and unit($value) == "vw";
+}
+
+@function vw-to-px($values) {
+  $px-values: ();
+
+  @each $value in $values {
+    // Each value should be divided by 1vw to remove the vw unit.
+    $px-values: append($px-values, ($value / 1vw) * $site-max-width / 100);
+  }
+
+  @return $px-values;
+}
+
+@mixin desktop-media {
+  @media (min-width: $site-max-width) {
+    @content;
+  }
+}
+
+/**
+ * Given a set of properties whose values are in vw, this mixin will output
+ * the properties as well as a desktop media query for the current scope with
+ * the vw values converted to absolute units.
+ */
+@mixin cap-variable-widths($props) {
+  // First copy out the original styles as vw.
+  @each $prop, $value in $props {
+    #{$prop}: $value;
+  }
+
+  // Then copy out the styles with the vw's converted to pixels for desktop.
+  @include desktop-media() {
+    @each $prop, $value in $props {
+      #{$prop}: vw-to-px($value);
+    }
+  }
+}

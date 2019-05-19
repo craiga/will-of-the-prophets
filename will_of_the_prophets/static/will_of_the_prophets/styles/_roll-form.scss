@@ -1,0 +1,45 @@
+@import "./variables";
+@import "./mixins";
+
+.roll-form {
+  text-align: center;
+  text-transform: uppercase;
+  @include cap-variable-widths(
+    (
+      padding: 3vw 0vw,
+      font-size: 3vw
+    )
+  );
+
+  input[type="text"] {
+    @include cap-variable-widths(
+      (
+        margin: 0vw 1vw
+      )
+    );
+  }
+
+  button {
+    @include cap-variable-widths(
+      (
+        margin: 0vw 1vw
+      )
+    );
+  }
+}
+
+.roll-form__error {
+  color: lcars-color("chesnut-rose");
+
+  @include cap-variable-widths(
+    (
+      margin-bottom: 2vw
+    )
+  );
+}
+
+.roll-form__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,196 @@
+@import "./variables";
+@import "./mixins";
+
+$even-color: lcars-color("medium-carmine");
+$odd-color: lcars-color("lavender-purple");
+
+$butthole-color: #99d0ff;
+$butthole-opacity: 0.6;
+
+$visited-opacity: 0.35;
+
+$z-index-butthole-related: 2;
+$z-index-runabout: 3;
+
+$runabout-animation-start: translate(-50%, -50%) scale(0.9) rotate(5deg);
+$runabout-animation-end: translate(-50%, -50%) scale(1.1) rotate(20deg);
+
+@mixin butthole-glow() {
+  filter: drop-shadow(0 0 0.5vw $butthole-color);
+
+  @include desktop-media() {
+    filter: drop-shadow(0 0 #{vw-to-px(0.5vw)} $butthole-color);
+  }
+}
+
+@keyframes runabout-animation {
+  0% {
+    transform: $runabout-animation-start;
+  }
+
+  100% {
+    transform: $runabout-animation-end;
+  }
+}
+
+@keyframes runabout-animation-reversed {
+  0% {
+    transform: $runabout-animation-start scaleX(-1);
+  }
+
+  100% {
+    transform: $runabout-animation-end scaleX(-1);
+  }
+}
+
+.board {
+  position: relative;
+  display: grid;
+  grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+  @include cap-variable-widths(
+    (
+      grid-gap: 0.5vw
+    )
+  );
+}
+
+.board__cell {
+  position: relative;
+  padding-top: 100%;
+}
+
+.board__cell-contents {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $odd-color;
+  line-height: 0.5;
+  border-color: $odd-color;
+  border-style: solid;
+
+  @include cap-variable-widths(
+    (
+      border-width: 0.5vw,
+      font-size: 4vw
+    )
+  );
+}
+
+.board__cell[data-number="10"] .board__cell-contents,
+.board__cell[data-number="30"] .board__cell-contents,
+.board__cell[data-number="50"] .board__cell-contents,
+.board__cell[data-number="70"] .board__cell-contents,
+.board__cell[data-number="90"] .board__cell-contents {
+  border-bottom-right-radius: 50%;
+}
+
+.board__cell[data-number="11"] .board__cell-contents,
+.board__cell[data-number="31"] .board__cell-contents,
+.board__cell[data-number="51"] .board__cell-contents,
+.board__cell[data-number="71"] .board__cell-contents,
+.board__cell[data-number="91"] .board__cell-contents {
+  border-top-right-radius: 50%;
+}
+
+.board__cell[data-number="1"] .board__cell-contents,
+.board__cell[data-number="20"] .board__cell-contents,
+.board__cell[data-number="40"] .board__cell-contents,
+.board__cell[data-number="60"] .board__cell-contents,
+.board__cell[data-number="80"] .board__cell-contents,
+.board__cell[data-number="100"] .board__cell-contents {
+  border-bottom-left-radius: 50%;
+}
+
+.board__cell[data-number="1"] .board__cell-contents,
+.board__cell[data-number="21"] .board__cell-contents,
+.board__cell[data-number="41"] .board__cell-contents,
+.board__cell[data-number="61"] .board__cell-contents,
+.board__cell[data-number="81"] .board__cell-contents,
+.board__cell[data-number="100"] .board__cell-contents {
+  border-top-left-radius: 50%;
+}
+
+.board__cell--selected .board__cell-contents,
+.board__cell--visited .board__cell-contents {
+  background: rgba($odd-color, $visited-opacity);
+}
+
+.board__cell--even .board__cell-contents {
+  border-color: $even-color;
+  color: $even-color;
+}
+
+.board__cell--selected.board__cell--even .board__cell-contents,
+.board__cell--visited.board__cell--even .board__cell-contents {
+  background: rgba($even-color, $visited-opacity);
+}
+
+.board__cell--butthole-related .board__cell-contents,
+.board__cell--special .board__cell-contents {
+  border-color: transparent;
+}
+
+.board__cell-number {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1;
+
+  top: calc(50% + 0.3vw);
+
+  @include desktop-media() {
+    top: calc(50% + #{0.3 * $site-max-width / 100});
+  }
+}
+
+.board__cell--butthole-related .board__cell-img {
+  z-index: $z-index-butthole-related;
+}
+
+.board__cell--butthole-related
+  .board__cell-img:not(.board__cell-img--runabout) {
+  @include butthole-glow();
+}
+
+.board__cell-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  object-fit: contain;
+}
+
+.board__cell-img--runabout {
+  width: 140%;
+  height: 140%;
+  z-index: $z-index-runabout;
+  transform-origin: center center;
+  animation: 1s infinite alternate ease-in-out runabout-animation;
+}
+
+.board__cell-img--runabout-reverse {
+  animation-name: runabout-animation-reversed;
+}
+
+.board__buttholes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  @include butthole-glow();
+}
+
+.board__buttholes path {
+  fill: none;
+  stroke: rgba($butthole-color, $butthole-opacity);
+  stroke-width: 0.045;
+}

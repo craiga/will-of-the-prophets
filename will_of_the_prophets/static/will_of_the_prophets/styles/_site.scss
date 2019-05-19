@@ -1,0 +1,40 @@
+@import "./variables";
+@import "./mixins";
+
+.site {
+  max-width: $site-max-width;
+  margin: 0 auto;
+}
+
+.site__content {
+  @include cap-variable-widths(
+    (
+      padding: 0vw 2vw
+    )
+  );
+}
+
+.site__header {
+  font-family: $headings-font-family;
+  color: lcars-color("bright-turquoise");
+
+  @include cap-variable-widths(
+    (
+      font-size: 9vw,
+      margin: 2vw 0vw
+    )
+  );
+}
+
+.site__footer {
+  text-align: center;
+  line-height: 1.3;
+  font-family: $font-family-sans-serif;
+
+  @include cap-variable-widths(
+    (
+      padding: 3vw 0vw 2vw,
+      font-size: 1.7vw
+    )
+  );
+}

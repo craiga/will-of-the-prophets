@@ -1,0 +1,26 @@
+@import "./mixins";
+
+.lcars-input {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: transparent;
+  border: 0px solid currentColor;
+  text-align: center;
+  cursor: pointer;
+
+  @include cap-variable-widths(
+    (
+      border-radius: 1vw,
+      padding: 0.5vw 1vw,
+      border-width: 0.5vw
+    )
+  );
+}
+
+.lcars-input::placeholder {
+  text-align: center;
+  text-transform: uppercase;
+  color: lcars-color("orange-peel");
+  opacity: 0.7;
+}
