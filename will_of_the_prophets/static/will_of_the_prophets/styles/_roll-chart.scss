@@ -63,11 +63,11 @@ $chart-left-margin: 3vw;
 }
 
 .roll-chart__bar-label {
-  width: $chart-left-margin;
   text-align: right;
 
   @include cap-variable-widths(
     (
+      width: $chart-left-margin,
       padding-right: 1vw
     )
   );
