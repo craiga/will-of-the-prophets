@@ -1,6 +1,7 @@
 {% load sass_tags %}
 {% load static %}
 
+<!DOCTYPE html>
 <html>
 <head>
     <title>{% block title %}Game of Buttholes: The Will of the Prophets{% endblock %}</title>
@@ -18,12 +19,19 @@
 
     <style>
         @font-face {
+            font-family: 'federation';
+            src: url('{% static 'will_of_the_prophets/fonts/federation.woff2' %}') format('woff2'),
+                 url('{% static 'will_of_the_prophets/fonts/federation.woff' %}') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
             font-family: 'lcars';
             src: url('{% static 'will_of_the_prophets/fonts/lcars_bold.woff2' %}') format('woff2'),
                  url('{% static 'will_of_the_prophets/fonts/lcars_bold.woff' %}') format('woff');
             font-weight: bold;
             font-style: normal;
-
         }
 
         @font-face {
