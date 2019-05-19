@@ -78,8 +78,9 @@ def test_was_visited(rolls):
     squares = list(the_board.squares)
     assert squares[89].number == 11
     assert squares[89].is_current_position
+
     for square in squares:
-        if square.number <= 11:
+        if square.number < 11:
             assert square.was_visited
         else:
             assert not square.was_visited
