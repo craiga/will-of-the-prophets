@@ -16,6 +16,8 @@
 
 .legend__item {
   display: flex;
+  align-items: flex-start;
+
   @include cap-variable-widths(
     (
       padding: 1vw
@@ -24,8 +26,6 @@
 }
 
 .legend__item-img {
-  grid-area: img;
-  object-fit: contain;
   @include cap-variable-widths(
     (
       width: 10vw
