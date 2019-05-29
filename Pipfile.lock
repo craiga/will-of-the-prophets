@@ -271,10 +271,11 @@
         },
         "importlib-metadata": {
             "hashes": [
-                "sha256:027cfc6524613de726789072f95d2e4cc64dd1dee8096d42d13f2ead5bd302f5",
-                "sha256:0d05199e1f0b1a8707a1b9c46476d4a49807fb56cb1b0737db1d37feb42fe31d"
+                "sha256:379c13a59cdfd27d463b062cbb99c0ac55b8f9dc80c282050dd75c77941b7c76",
+                "sha256:d7dc17f7c38b6d0905d62ce1f5d4e0301c54f848eebcd065e378bcd0526376ae"
             ],
-            "version": "==0.15"
+            "index": "pypi",
+            "version": "==0.16"
         },
         "ipython": {
             "hashes": [
@@ -438,7 +439,6 @@
                 "sha256:71e430bc85c88a430f000ac1d9b331d2407f681d6f6aec95e8bcfbc3df5b0127",
                 "sha256:881c4c157e45f30af185c1ffe8d549d48ac9127433f2c380c24b84572ad66297"
             ],
-            "index": "pypi",
             "version": "==2.4.2"
         },
         "pylint": {
