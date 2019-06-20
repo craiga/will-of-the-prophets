@@ -35,7 +35,7 @@ jobs:
       - run:
           name: check code formatting
           command: |
-            pipenv run black --check .
+            pipenv run black --check --diff .
             pipenv run isort --check-only
             find . -iname "*.py" | xargs pipenv run pylint
 
