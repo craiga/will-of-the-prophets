@@ -123,10 +123,7 @@ STATICFILES_FINDERS = [
 
 # Ignore 404s
 # https://docs.djangoproject.com/en/2.2/ref/settings/#std:setting-IGNORABLE_404_URLS
-IGNORABLE_404_URLS = [
-    re.compile(r"^/phpmyadmin/"),
-    re.compile(r"\.php$"),
-]
+IGNORABLE_404_URLS = [re.compile(r"^/phpmyadmin/"), re.compile(r"\.php$")]
 
 # Logging
 # Combination of logging settings from https://github.com/heroku/django-heroku/
