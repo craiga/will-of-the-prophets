@@ -11,7 +11,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "placeholder")
 
-DEBUG = os.environ.get("DEBUG", False)
+DEBUG = bool(os.environ.get("DEBUG", False))
 
 ALLOWED_HOSTS = ["*.herokuapp.com", "localhost"]
 
@@ -125,6 +125,7 @@ STATICFILES_FINDERS = [
 # https://docs.djangoproject.com/en/2.2/ref/settings/#std:setting-IGNORABLE_404_URLS
 IGNORABLE_404_URLS = [re.compile(r"^/phpmyadmin/"), re.compile(r"\.php$")]
 
+
 # Logging
 # Combination of logging settings from https://github.com/heroku/django-heroku/
 # and https://docs.sentry.io/clients/python/integrations/django/.
@@ -170,6 +171,20 @@ LOGGING = {
         "testlogger": {"handlers": ["console"], "level": "INFO"},
     },
 }
+
+
+# Security
+# https://docs.djangoproject.com/en/2.2/topics/security/
+
+SECURE_HSTS_SECONDS = 0 if DEBUG else 60
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = not DEBUG
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_SSL_REDIRECT = not DEBUG
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+X_FRAME_OPTIONS = "DENY"
 
 
 # django-sass-processor

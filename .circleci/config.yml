@@ -17,6 +17,9 @@ jobs:
           POSTGRES_PASSWORD: security_is_important
           POSTGRES_DB: will_of_the_prophets
 
+    environment:
+      SECRET_KEY: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
+
     steps:
       - checkout
 
@@ -29,8 +32,11 @@ jobs:
 
       - run:
           name: run tests
-          command: |
-            pipenv run pytest
+          command: pipenv run pytest
+
+      - run:
+          name: deployment check
+          command: pipenv run python manage.py check --deploy --fail-level INFO
 
       - run:
           name: check code formatting
