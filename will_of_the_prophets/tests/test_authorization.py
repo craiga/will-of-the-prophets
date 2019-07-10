@@ -9,7 +9,7 @@ import pytest
 @pytest.mark.parametrize("url", ["/", "/roll_frequency/"])
 def test_public(client, url):
     """Test that pages do not require authorization."""
-    response = client.get(url)
+    response = client.get(url, secure=True)
     assert response.status_code == 200
 
 
@@ -17,7 +17,7 @@ def test_public(client, url):
 @pytest.mark.parametrize("url", ["/roll/"])
 def test_requires_auth(client, admin_client, url):
     """Test that pages require authorization."""
-    response = client.get(url)
+    response = client.get(url, secure=True)
     assert response.status_code == 302
-    response = admin_client.get(url)
+    response = admin_client.get(url, secure=True)
     assert response.status_code == 200

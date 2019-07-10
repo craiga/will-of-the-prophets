@@ -9,11 +9,11 @@ import pytest
 @pytest.mark.django_db
 def test_last_modified_latest_roll(client, rolls):
     """Test that the Last-Modified date is the latest roll."""
-    response = client.get("/")
+    response = client.get("/", secure=True)
     assert response["Last-Modified"] == "Fri, 04 Jul 2369 12:34:56 GMT"
 
 
 @pytest.mark.django_db
 def test_last_modified_no_rolls(client):
-    response = client.get("/")
+    response = client.get("/", secure=True)
     assert "Last-Modified" not in response

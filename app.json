@@ -4,6 +4,9 @@
   "scripts": {
   },
   "env": {
+      "SECRET_KEY": {
+          "generator": "secret"
+      }
   },
   "formation": {
     "web": {
