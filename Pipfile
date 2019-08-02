@@ -15,6 +15,7 @@ django-tz-detect = "*"
 django-model-utils = "*"
 django-debug-toolbar = "*"
 django-s3direct = "*"
+django-csp = "*"
 
 [dev-packages]
 pytest = "*"
