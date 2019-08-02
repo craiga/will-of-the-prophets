@@ -44,6 +44,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "csp.middleware.CSPMiddleware",
 ]
 
 ROOT_URLCONF = "will_of_the_prophets.urls"
@@ -224,6 +225,13 @@ AWS_S3_ENDPOINT_URL = os.environ.get("AWS_S3_ENDPOINT_URL")
 S3DIRECT_DESTINATIONS = {
     "special_square": {"key": "special_squares/", "auth": lambda u: u.is_staff}
 }
+
+
+# Content Security Policy
+# https://django-csp.readthedocs.io/en/latest/configuration.html
+
+CSP_REPORT_ONLY = True
+CSP_REPORT_URI = os.environ.get("CSP_REPORT_URI", None)
 
 
 PUBLIC_BOARD_CANONICAL_URL = os.environ.get("PUBLIC_BOARD_CANONICAL_URL")
