@@ -230,6 +230,9 @@ S3DIRECT_DESTINATIONS = {
 # Content Security Policy
 # https://django-csp.readthedocs.io/en/latest/configuration.html
 
+CSP_STYLE_SRC = ["'self'", "'unsafe-inline'"]
+CSP_IMG_SRC = ["'self'", "s3.amazonaws.com", "s3.us-east-1.amazonaws.com"]
+CSP_SCRIPT_SRC = ["'self'", "cdn.ravenjs.com"]
 CSP_REPORT_ONLY = True
 CSP_REPORT_URI = os.environ.get("CSP_REPORT_URI", None)
 
