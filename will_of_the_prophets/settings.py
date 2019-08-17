@@ -5,6 +5,8 @@ import re
 
 import dj_database_url
 import django_heroku
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,7 +21,6 @@ ALLOWED_HOSTS = ["*.herokuapp.com", "localhost"]
 # Application definition
 
 INSTALLED_APPS = [
-    "raven.contrib.django.raven_compat",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -35,7 +36,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "raven.contrib.django.raven_compat.middleware.Sentry404CatchMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -44,6 +44,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "csp_nonce.middleware.CSPNonceMiddleware",
     "csp.middleware.CSPMiddleware",
 ]
 
@@ -56,10 +57,12 @@ TEMPLATES = [
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
+                "csp_nonce.context_processors.nonce",
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "will_of_the_prophets.context_processors.sentry_dsn",
             ],
             "string_if_invalid": "ERROR: '%s' is invalid." if DEBUG else "",
         },
@@ -128,53 +131,6 @@ STATICFILES_FINDERS = [
 IGNORABLE_404_URLS = [re.compile(r"^/phpmyadmin/"), re.compile(r"\.php$")]
 
 
-# Logging
-# Combination of logging settings from https://github.com/heroku/django-heroku/
-# and https://docs.sentry.io/clients/python/integrations/django/.
-
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "root": {"level": "WARNING", "handlers": ["sentry"]},
-    "formatters": {
-        "heroku": {
-            "format": (
-                "%(asctime)s [%(process)d] [%(levelname)s] "
-                + "pathname=%(pathname)s lineno=%(lineno)s "
-                + "funcname=%(funcName)s %(message)s"
-            ),
-            "datefmt": "%Y-%m-%d %H:%M:%S",
-        },
-        "sentry": {
-            "format": "%(levelname)s %(asctime)s %(module)s "
-            "%(process)d %(thread)d %(message)s"
-        },
-        "simple": {"format": "%(levelname)s %(message)s"},
-    },
-    "handlers": {
-        "null": {"level": "DEBUG", "class": "logging.NullHandler"},
-        "sentry": {
-            "level": "WARNING",
-            "class": ("raven.contrib.django.raven_compat.handlers" ".SentryHandler"),
-        },
-        "console": {
-            "level": "DEBUG",
-            "class": "logging.StreamHandler",
-            "formatter": "heroku",
-        },
-    },
-    "loggers": {
-        "raven": {"level": "DEBUG", "handlers": ["console"], "propagate": False},
-        "sentry.errors": {
-            "level": "DEBUG",
-            "handlers": ["console"],
-            "propagate": False,
-        },
-        "testlogger": {"handlers": ["console"], "level": "INFO"},
-    },
-}
-
-
 # Security
 # https://docs.djangoproject.com/en/2.2/topics/security/
 
@@ -226,21 +182,37 @@ S3DIRECT_DESTINATIONS = {
     "special_square": {"key": "special_squares/", "auth": lambda u: u.is_staff}
 }
 
+# Sentry
+# https://sentry.io/for/django/
+
+SENTRY_DSN = os.environ.get("SENTRY_DSN", "")
+
+sentry_sdk.init(SENTRY_DSN, integrations=[DjangoIntegration()])
+
+
+# Django CSP Nonce
+# https://github.com/Bennyoak/django-csp-nonce
+
+CSP_NONCE_SCRIPT = True
+CSP_NONCE_STYLE = True
+CSP_FLAG_STRICT = True
+
 
 # Content Security Policy
 # https://django-csp.readthedocs.io/en/latest/configuration.html
 
-CSP_STYLE_SRC = ["'self'", "'unsafe-inline'"]
+CSP_STYLE_SRC = ["'self'"]
 CSP_IMG_SRC = ["'self'", "s3.amazonaws.com", "s3.us-east-1.amazonaws.com"]
-CSP_SCRIPT_SRC = ["'self'", "cdn.ravenjs.com"]
+CSP_SCRIPT_SRC = ["'self'", "browser.sentry-cdn.com"]
 CSP_REPORT_ONLY = True
 CSP_REPORT_URI = os.environ.get("CSP_REPORT_URI", None)
 
 
 PUBLIC_BOARD_CANONICAL_URL = os.environ.get("PUBLIC_BOARD_CANONICAL_URL")
 
+
 # Inject settings for Heroku.
-django_heroku.settings(locals(), logging=False)
+django_heroku.settings(locals())
 
 
 if os.environ.get("DATABASE_NO_SSL_REQUIRE"):
