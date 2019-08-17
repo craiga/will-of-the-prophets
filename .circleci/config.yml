@@ -31,6 +31,10 @@ jobs:
             pipenv install --dev
 
       - run:
+          name: collect static files
+          command: pipenv run python manage.py collectstatic --no-input
+
+      - run:
           name: run tests
           command: pipenv run pytest
 
