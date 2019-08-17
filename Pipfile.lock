@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "80c49d9f2475ef1c587550b39b95aadf91aa0d97baa3c43d390a66e2676db012"
+            "sha256": "6cd8a792143bc320dce584f4e092c7f614d8d8890fbf7e263ef8fc1fed1dff19"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -14,6 +14,13 @@
         ]
     },
     "default": {
+        "certifi": {
+            "hashes": [
+                "sha256:046832c04d4e752f37383b628bc601a7ea7211496b4638f6514d0e5b9acc4939",
+                "sha256:945e3ba63a0b9f577b1395204e13c3a231f9bc0223888be653286534e5873695"
+            ],
+            "version": "==2019.6.16"
+        },
         "dj-database-url": {
             "hashes": [
                 "sha256:4aeaeb1f573c74835b0686a2b46b85990571159ffc21aa57ecd4d1e1cb334163",
@@ -36,6 +43,13 @@
             ],
             "index": "pypi",
             "version": "==3.5"
+        },
+        "django-csp-nonce": {
+            "hashes": [
+                "sha256:dcd5d53f9df86cbd4ef2d8f79effb3eb88ff5293bdb6554a9831a0999fab1d25"
+            ],
+            "index": "pypi",
+            "version": "==1.0.0"
         },
         "django-debug-toolbar": {
             "hashes": [
@@ -123,13 +137,13 @@
             ],
             "version": "==2019.2"
         },
-        "raven": {
+        "sentry-sdk": {
             "hashes": [
-                "sha256:3fa6de6efa2493a7c827472e984ce9b020797d0da16f1db67197bcc23c8fae54",
-                "sha256:44a13f87670836e153951af9a3c80405d36b43097db869a36e92809673692ce4"
+                "sha256:2a80ff5e2d1bb2e8c745876015fe0c9f2e19c5c6a9da4c28ec06251f1e5f9f9c",
+                "sha256:9eba140e6f9c02f58f6c62f40f1284ceb442c77e704a414efbe5e8401988b483"
             ],
             "index": "pypi",
-            "version": "==6.10.0"
+            "version": "==0.11.0"
         },
         "six": {
             "hashes": [
@@ -144,6 +158,13 @@
                 "sha256:7c3dca29c022744e95b547e867cee89f4fce4373f3549ccd8797d8eb52cdb873"
             ],
             "version": "==0.3.0"
+        },
+        "urllib3": {
+            "hashes": [
+                "sha256:b246607a25ac80bedac05c6f282e3cdaf3afb65420fd024ac94435cabe6e18d1",
+                "sha256:dbe59173209418ae49d485b87d1681aefa36252ee85884c31346debd19463232"
+            ],
+            "version": "==1.25.3"
         },
         "whitenoise": {
             "hashes": [
@@ -160,6 +181,14 @@
                 "sha256:d8b24664561d0d34ddfaec54636d502d7cea6e29c3eaf68f3df6180863e2166e"
             ],
             "version": "==1.4.3"
+        },
+        "appnope": {
+            "hashes": [
+                "sha256:5b26757dc6f79a3b7dc9fab95359328d5747fcb2409d331ea66d0272b90ab2a0",
+                "sha256:8b995ffe925347a2138d7ac0fe77155e4311a0ea6d6da4f5128fe4b3cbe5ed71"
+            ],
+            "markers": "sys_platform == 'darwin'",
+            "version": "==0.1.0"
         },
         "astroid": {
             "hashes": [

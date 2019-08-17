@@ -148,6 +148,4 @@ function renderButtholes() {
   });
 }
 
-Raven.context(function() {
-  renderButtholes();
-});
+renderButtholes();

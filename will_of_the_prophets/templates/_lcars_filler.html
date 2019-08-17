@@ -17,5 +17,7 @@
         {% if bottom_left_inner_elbow %}lcars-filler--bottom-left-elbow{% endif %}
     "
 >
-    {{label}}
+    {% if label %}
+        {{ label }}
+    {% endif %}
 </div>
