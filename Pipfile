@@ -17,6 +17,8 @@ django-s3direct = "*"
 django-csp = "*"
 sentry-sdk = "*"
 django-csp-nonce = "*"
+django-referrer-policy = "*"
+django-feature-policy = "*"
 
 [dev-packages]
 pytest = "*"
