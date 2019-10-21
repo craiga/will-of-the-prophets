@@ -4,6 +4,7 @@ import os
 import re
 
 import dj_database_url
+import django_feature_policy
 import django_heroku
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
@@ -38,6 +39,9 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "csp.middleware.CSPMiddleware",
+    "django_referrer_policy.middleware.ReferrerPolicyMiddleware",
+    "django_feature_policy.FeaturePolicyMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -45,7 +49,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "csp_nonce.middleware.CSPNonceMiddleware",
-    "csp.middleware.CSPMiddleware",
 ]
 
 ROOT_URLCONF = "will_of_the_prophets.urls"
@@ -206,6 +209,22 @@ CSP_IMG_SRC = ["'self'", "s3.amazonaws.com", "s3.us-east-1.amazonaws.com"]
 CSP_SCRIPT_SRC = ["'self'", "browser.sentry-cdn.com"]
 CSP_REPORT_ONLY = True
 CSP_REPORT_URI = os.environ.get("CSP_REPORT_URI", None)
+
+
+# Referrer policy
+# https://django-referrer-policy.readthedocs.io/en/latest/#configuration
+
+REFERRER_POLICY = "same-origin"
+
+
+# Feature policy
+# https://github.com/adamchainz/django-feature-policy#setting
+# List of directives from
+# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
+
+FEATURE_POLICY = {
+    feature_name: "none" for feature_name in django_feature_policy.FEATURE_NAMES
+}
 
 
 PUBLIC_BOARD_CANONICAL_URL = os.environ.get("PUBLIC_BOARD_CANONICAL_URL")

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6cd8a792143bc320dce584f4e092c7f614d8d8890fbf7e263ef8fc1fed1dff19"
+            "sha256": "903e6a36e54b8895aa47f33c34f42b785bc468bcb4f0f0bacfd46c3975d1b4c7"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -59,6 +59,14 @@
             "index": "pypi",
             "version": "==2.0"
         },
+        "django-feature-policy": {
+            "hashes": [
+                "sha256:9300ea9860c7b4808463aedb7280ceeebd7fb3a304098e9c3c05e633fba1dd3f",
+                "sha256:ad80458672ea3ae69577b0867b239b67bd659b939323bdd7456dd1b919163689"
+            ],
+            "index": "pypi",
+            "version": "==3.0.0"
+        },
         "django-heroku": {
             "hashes": [
                 "sha256:2bc690aab89eedbe01311752320a9a12e7548e3b0ed102681acc5736a41a4762",
@@ -74,6 +82,13 @@
             ],
             "index": "pypi",
             "version": "==3.2.0"
+        },
+        "django-referrer-policy": {
+            "hashes": [
+                "sha256:09e134324fa08c10efc12244a4bae7aee5defa7d332b92c603b09258c854615a"
+            ],
+            "index": "pypi",
+            "version": "==1.0"
         },
         "django-s3direct": {
             "hashes": [
