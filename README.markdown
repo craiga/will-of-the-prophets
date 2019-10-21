@@ -11,6 +11,7 @@ A web app for the board game played by the hosts of [The Greatest Generation](ht
 
 Once you've checked out this repository and installed [pipenv](http://pipenv.readthedocs.io), getting this project up and running should be simple.
 
+    echo "DEBUG=1" > .env
     pipenv install --dev
     pipenv run python manage.py migrate
     pipenv run python manage.py loaddata buttholes special_squares rolls
