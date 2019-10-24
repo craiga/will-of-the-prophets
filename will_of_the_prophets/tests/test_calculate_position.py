@@ -3,7 +3,7 @@
 from datetime import datetime
 
 import pytest
-from model_mommy import mommy
+from model_bakery import baker
 from pytz import utc
 
 from will_of_the_prophets import board, models
@@ -24,7 +24,7 @@ def test_zero_rolls():
 @pytest.mark.django_db
 def test_one_roll():
     """Test with one roll."""
-    mommy.make("Roll", number=22, embargo=utc.localize(datetime(2369, 7, 1)))
+    baker.make("Roll", number=22, embargo=utc.localize(datetime(2369, 7, 1)))
     assert board.calculate_position(utc.localize(datetime(2369, 1, 1))) == 1
     assert board.calculate_position(utc.localize(datetime(2369, 12, 31))) == 23
 
@@ -33,7 +33,7 @@ def test_one_roll():
 def test_many_rolls():
     """Test with many rolls."""
     for day_of_month, roll in enumerate([3, 20, 2, 40, 17, 5]):
-        mommy.make(
+        baker.make(
             "Roll",
             number=roll,
             embargo=utc.localize(datetime(2369, 7, day_of_month + 1)),
@@ -46,11 +46,11 @@ def test_many_rolls():
 @pytest.mark.django_db
 def test_butthole():
     """Test that a butthole has an effect."""
-    mommy.make("Butthole", start_square=88, end_square=5)
+    baker.make("Butthole", start_square=88, end_square=5)
 
     # Create some rolls.
     for day_of_month, roll in enumerate([3, 20, 2, 40, 17, 5, 2]):
-        mommy.make(
+        baker.make(
             "Roll",
             number=roll,
             embargo=utc.localize(datetime(2369, 7, day_of_month + 1)),
@@ -63,7 +63,7 @@ def test_butthole():
 def test_butthole_before_effective():
     """Test that a butthole has no effect before it's time frame has started."""
     # Make a butthole which isn't effective until the end of July.
-    mommy.make(
+    baker.make(
         "Butthole",
         start_square=88,
         end_square=5,
@@ -72,7 +72,7 @@ def test_butthole_before_effective():
 
     # Create some rolls, all which take place in July.
     for day_of_month, roll in enumerate([3, 20, 2, 40, 17, 5, 2]):
-        mommy.make(
+        baker.make(
             "Roll",
             number=roll,
             embargo=utc.localize(datetime(2369, 7, day_of_month + 1)),
@@ -88,7 +88,7 @@ def test_butthole_before_effective():
 def test_butthole_after_effective():
     """Test that a butthole has no effect after it's time frame has passed."""
     # Make a butthole which is effective until the start of July.
-    mommy.make(
+    baker.make(
         "Butthole",
         start_square=88,
         end_square=5,
@@ -97,7 +97,7 @@ def test_butthole_after_effective():
 
     # Create some rolls, all which take place in July.
     for day_of_month, roll in enumerate([3, 20, 2, 40, 17, 5, 2]):
-        mommy.make(
+        baker.make(
             "Roll",
             number=roll,
             embargo=utc.localize(datetime(2369, 7, day_of_month + 1)),
@@ -113,11 +113,11 @@ def test_butthole_after_effective():
 def test_special_square_auto_move_positive():
     """Test a special square can move the runabout forwards."""
     # Make a special square which moves the runabout forward five spaces.
-    mommy.make("SpecialSquare", square=24, type__auto_move=5, type__image="")
+    baker.make("SpecialSquare", square=24, type__auto_move=5, type__image="")
 
     # Create some rolls.
     for day_of_month, roll in enumerate([3, 20, 2]):
-        mommy.make(
+        baker.make(
             "Roll",
             number=roll,
             embargo=utc.localize(datetime(2369, 7, day_of_month + 1)),
@@ -134,11 +134,11 @@ def test_special_square_auto_move_positive():
 def test_special_square_auto_move_negative():
     """Test a special square can move the runabout backwards."""
     # Make a special square which moves the runabout backward five spaces.
-    mommy.make("SpecialSquare", square=24, type__auto_move=-5, type__image="")
+    baker.make("SpecialSquare", square=24, type__auto_move=-5, type__image="")
 
     # Create some rolls.
     for day_of_month, roll in enumerate([3, 20, 2]):
-        mommy.make(
+        baker.make(
             "Roll",
             number=roll,
             embargo=utc.localize(datetime(2369, 7, day_of_month + 1)),
@@ -155,7 +155,7 @@ def test_special_square_auto_move_negative():
 def test_special_square_before_effective():
     """Test that a special square has no effect before it's time frame has started."""
     # Make a special square which isn't effective until the end of July.
-    mommy.make(
+    baker.make(
         "SpecialSquare",
         square=24,
         type__auto_move=5,
@@ -165,7 +165,7 @@ def test_special_square_before_effective():
 
     # Create some rolls, all which take place in July.
     for day_of_month, roll in enumerate([3, 20, 2]):
-        mommy.make(
+        baker.make(
             "Roll",
             number=roll,
             embargo=utc.localize(datetime(2369, 7, day_of_month + 1)),
@@ -181,7 +181,7 @@ def test_special_square_before_effective():
 def test_special_square_after_effective():
     """Test that a special square has no effect after it's time frame has passed."""
     # Make a special square which isn't effective until the start of July.
-    mommy.make(
+    baker.make(
         "SpecialSquare",
         square=24,
         type__auto_move=5,
@@ -191,7 +191,7 @@ def test_special_square_after_effective():
 
     # Create some rolls, all which take place in July.
     for day_of_month, roll in enumerate([3, 20, 2]):
-        mommy.make(
+        baker.make(
             "Roll",
             number=roll,
             embargo=utc.localize(datetime(2369, 7, day_of_month + 1)),
@@ -217,7 +217,7 @@ def test_100(rolls, expected_position):
     """Tests for series of rolls around 100."""
     # Create a series of rolls which move the runabout to position 99.
     for day_of_month, roll in enumerate(rolls):
-        mommy.make(
+        baker.make(
             "Roll",
             number=roll,
             embargo=utc.localize(datetime(2369, 7, day_of_month + 1)),
@@ -234,7 +234,7 @@ def test_butthole_after_100():
     """Test that buttholes take effect on the second time around to board."""
     # Positions should be calculated as 99, 9, and 14…
     for day_of_month, roll in enumerate([98, 10, 5]):
-        mommy.make(
+        baker.make(
             "Roll",
             number=roll,
             embargo=utc.localize(datetime(2369, 7, day_of_month + 1)),
@@ -242,5 +242,5 @@ def test_butthole_after_100():
 
     # …except there's a butthole from 9 to 2, meaning the positions should be 99, 2,
     # and 7.
-    mommy.make("Butthole", start_square=9, end_square=2)
+    baker.make("Butthole", start_square=9, end_square=2)
     assert board.calculate_position(utc.localize(datetime(2369, 12, 31))) == 7
