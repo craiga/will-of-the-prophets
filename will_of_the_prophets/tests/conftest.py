@@ -4,7 +4,7 @@ from datetime import datetime
 
 import pytest
 import pytz
-from model_mommy import mommy
+from model_bakery import baker
 
 
 @pytest.fixture
@@ -14,4 +14,4 @@ def rolls():
         embargo = pytz.utc.localize(
             datetime(year=2369, month=7, day=number, hour=12, minute=34, second=56)
         )
-        mommy.make("Roll", number=number, embargo=embargo)
+        baker.make("Roll", number=number, embargo=embargo)
