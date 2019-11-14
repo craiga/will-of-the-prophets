@@ -6,7 +6,7 @@ from datetime import datetime
 
 import pytest
 import pytz
-from model_mommy import mommy
+from model_bakery import baker
 
 from will_of_the_prophets import board
 
@@ -26,8 +26,8 @@ def some_datetime():
 @pytest.mark.django_db
 def test_get_special(some_datetime):
     """Test retrieving a square's special square type."""
-    special = mommy.make("SpecialSquareType", image="")
-    mommy.make("SpecialSquare", square=5, type=special)
+    special = baker.make("SpecialSquareType", image="")
+    baker.make("SpecialSquare", square=5, type=special)
     square = board.Square(number=5, current_position=1, now=some_datetime)
     assert special == square.get_special()
 
@@ -40,7 +40,7 @@ def test_not_special(some_datetime):
 
 @pytest.mark.django_db
 def test_is_butthole_start(some_datetime):
-    mommy.make("Butthole", start_square=50)
+    baker.make("Butthole", start_square=50)
     square = board.Square(number=50, current_position=1, now=some_datetime)
     assert square.is_butthole_start() is True
 
@@ -55,7 +55,7 @@ def test_not_butthole_start(some_datetime):
 def test_get_butthole_ends(some_datetime):
     """Test getting the list of buttholes which end in this square."""
     for start_square in (55, 66, 77):
-        mommy.make("Butthole", start_square=start_square, end_square=26)
+        baker.make("Butthole", start_square=start_square, end_square=26)
 
     square = board.Square(number=26, current_position=1, now=some_datetime)
     assert set(square.get_butthole_ends()) == set([55, 66, 77])

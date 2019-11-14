@@ -8,7 +8,7 @@ from django.core.exceptions import ValidationError
 from django.utils import timezone
 
 import pytest
-from model_mommy import mommy
+from model_bakery import baker
 
 from will_of_the_prophets.models import Roll
 
@@ -27,8 +27,8 @@ def test_must_be_later_than_latest():
     assumes that the roll with the latest embargo date is the most recently
     created one.
     """
-    mommy.make("Roll", embargo=timezone.now() + timedelta(days=5))
-    roll = mommy.prepare("Roll", embargo=timezone.now() + timedelta(days=2))
+    baker.make("Roll", embargo=timezone.now() + timedelta(days=5))
+    roll = baker.prepare("Roll", embargo=timezone.now() + timedelta(days=2))
     with pytest.raises(ValidationError):
         roll.full_clean()
 
