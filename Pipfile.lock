@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9c25c7c11513adee30ffd7f8421b8bfbdf92f72a879a4b0b015e2d2a753b5832"
+            "sha256": "7b72de7994430f6814d1bfb2d1edb1b1f398fd239758b5fce00c41d8d6c4bbb8"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -43,13 +43,6 @@
             ],
             "index": "pypi",
             "version": "==3.5"
-        },
-        "django-csp-nonce": {
-            "hashes": [
-                "sha256:dcd5d53f9df86cbd4ef2d8f79effb3eb88ff5293bdb6554a9831a0999fab1d25"
-            ],
-            "index": "pypi",
-            "version": "==1.0.0"
         },
         "django-debug-toolbar": {
             "hashes": [
@@ -198,6 +191,14 @@
                 "sha256:d8b24664561d0d34ddfaec54636d502d7cea6e29c3eaf68f3df6180863e2166e"
             ],
             "version": "==1.4.3"
+        },
+        "appnope": {
+            "hashes": [
+                "sha256:5b26757dc6f79a3b7dc9fab95359328d5747fcb2409d331ea66d0272b90ab2a0",
+                "sha256:8b995ffe925347a2138d7ac0fe77155e4311a0ea6d6da4f5128fe4b3cbe5ed71"
+            ],
+            "markers": "sys_platform == 'darwin'",
+            "version": "==0.1.0"
         },
         "astroid": {
             "hashes": [

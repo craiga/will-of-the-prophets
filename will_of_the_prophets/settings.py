@@ -48,7 +48,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "csp_nonce.middleware.CSPNonceMiddleware",
 ]
 
 ROOT_URLCONF = "will_of_the_prophets.urls"
@@ -60,7 +59,6 @@ TEMPLATES = [
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
-                "csp_nonce.context_processors.nonce",
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
@@ -137,7 +135,7 @@ IGNORABLE_404_URLS = [re.compile(r"^/phpmyadmin/"), re.compile(r"\.php$")]
 # Security
 # https://docs.djangoproject.com/en/2.2/topics/security/
 
-SECURE_HSTS_SECONDS = 0 if DEBUG else 60
+SECURE_HSTS_SECONDS = 0 if DEBUG else int(os.environ.get("SECURE_HSTS_SECONDS", 60))
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = not DEBUG
 SECURE_CONTENT_TYPE_NOSNIFF = True
@@ -193,22 +191,15 @@ SENTRY_DSN = os.environ.get("SENTRY_DSN", "")
 sentry_sdk.init(SENTRY_DSN, integrations=[DjangoIntegration()])
 
 
-# Django CSP Nonce
-# https://github.com/Bennyoak/django-csp-nonce
-
-CSP_NONCE_SCRIPT = True
-CSP_NONCE_STYLE = True
-CSP_FLAG_STRICT = True
-
-
 # Content Security Policy
 # https://django-csp.readthedocs.io/en/latest/configuration.html
 
 CSP_STYLE_SRC = ["'self'"]
 CSP_IMG_SRC = ["'self'", "s3.amazonaws.com", "s3.us-east-1.amazonaws.com"]
 CSP_SCRIPT_SRC = ["'self'", "browser.sentry-cdn.com"]
-CSP_REPORT_ONLY = True
+CSP_REPORT_ONLY = bool(os.environ.get("CSP_REPORT_ONLY", DEBUG))
 CSP_REPORT_URI = os.environ.get("CSP_REPORT_URI", None)
+CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]
 
 
 # Referrer policy
