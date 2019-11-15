@@ -43,6 +43,10 @@ jobs:
           command: pipenv run python manage.py check --deploy --fail-level INFO
 
       - run:
+          name: check for missing migrations
+          command: pipenv run python manage.py makemigrations --check
+
+      - run:
           name: check code formatting
           command: |
             pipenv run black --check --diff .
