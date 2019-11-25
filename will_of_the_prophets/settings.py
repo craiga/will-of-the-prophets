@@ -141,8 +141,8 @@ SECURE_HSTS_PRELOAD = not DEBUG
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_SSL_REDIRECT = not DEBUG
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
 X_FRAME_OPTIONS = "DENY"
 
 
@@ -194,9 +194,9 @@ sentry_sdk.init(SENTRY_DSN, integrations=[DjangoIntegration()])
 # Content Security Policy
 # https://django-csp.readthedocs.io/en/latest/configuration.html
 
-CSP_STYLE_SRC = ["'self'"]
+CSP_STYLE_SRC = ["'self'", "cdnjs.cloudflare.com"]
 CSP_IMG_SRC = ["'self'", "s3.amazonaws.com", "s3.us-east-1.amazonaws.com"]
-CSP_SCRIPT_SRC = ["'self'", "browser.sentry-cdn.com"]
+CSP_SCRIPT_SRC = ["'self'", "browser.sentry-cdn.com", "cdnjs.cloudflare.com"]
 CSP_REPORT_ONLY = bool(os.environ.get("CSP_REPORT_ONLY", DEBUG))
 CSP_REPORT_URI = os.environ.get("CSP_REPORT_URI", None)
 CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]
