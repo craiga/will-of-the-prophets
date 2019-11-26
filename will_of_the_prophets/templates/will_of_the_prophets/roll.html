@@ -89,7 +89,7 @@
 {% block script %}
 
 {% load tz_detect %}
-{% tz_detect %}
+{% tz_detect nonce=request.csp_nonce %}
 
 
 <link
