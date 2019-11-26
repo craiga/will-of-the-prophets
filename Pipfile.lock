@@ -479,10 +479,11 @@
         },
         "pygments": {
             "hashes": [
-                "sha256:71e430bc85c88a430f000ac1d9b331d2407f681d6f6aec95e8bcfbc3df5b0127",
-                "sha256:881c4c157e45f30af185c1ffe8d549d48ac9127433f2c380c24b84572ad66297"
+                "sha256:a1cfe41228f8eee128bc841f25e625e2ea8b7c5f2835be76b5b6e1f0f2e2730c",
+                "sha256:cdc7a45df8c489a965948fb4d26d8411927bae48771519c61ebca88d076a5aae"
             ],
-            "version": "==2.4.2"
+            "index": "pypi",
+            "version": "==2.5.0"
         },
         "pylint": {
             "hashes": [
