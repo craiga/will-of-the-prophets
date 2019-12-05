@@ -92,10 +92,10 @@
         },
         "django-sass-processor": {
             "hashes": [
-                "sha256:c1b56e76ce2b57382d26328ecdc204d3f65412d5da35df8a6b7bce6e7f754882"
+                "sha256:9267e5fcc7fcde2ec0c7d6ad045b4c6c7e9aea92498ed1725312035a5469b410"
             ],
             "index": "pypi",
-            "version": "==0.7.4"
+            "version": "==0.7.5"
         },
         "django-tz-detect": {
             "hashes": [
@@ -308,14 +308,6 @@
                 "sha256:edfdf5bc6040969e6ed2e36eafe277963bdc8b7c01daeda96c5c8594576c9390"
             ],
             "version": "==0.3.12"
-        },
-        "importlib-metadata": {
-            "hashes": [
-                "sha256:3a8b2dfd0a2c6a3636e7c016a7e54ae04b997d30e69d5eacdca7a6c2221a1402",
-                "sha256:41e688146d000891f32b1669e8573c57e39e5060e7f5f647aa617cd9a9568278"
-            ],
-            "index": "pypi",
-            "version": "==1.2.0"
         },
         "ipython": {
             "hashes": [
@@ -639,13 +631,6 @@
                 "sha256:565a021fd19419476b9362b05eeaa094178de64f8361e44468f9e9d7843901e1"
             ],
             "version": "==1.11.2"
-        },
-        "zipp": {
-            "hashes": [
-                "sha256:3718b1cbcd963c7d4c5511a8240812904164b7f381b647143a89d3b98f9bcd8e",
-                "sha256:f06903e9f1f43b12d371004b4ac7b06ab39a44adc747266928ae6debfa7b3335"
-            ],
-            "version": "==0.6.0"
         }
     }
 }
