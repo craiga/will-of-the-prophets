@@ -35,3 +35,6 @@ pylint-django = "*"
 isort = "*"
 pyenchant = "*"
 model-bakery = "*"
+
+[requires]
+python_version = "3.8"
