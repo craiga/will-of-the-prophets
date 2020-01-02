@@ -94,10 +94,10 @@
         },
         "django-sass-processor": {
             "hashes": [
-                "sha256:9267e5fcc7fcde2ec0c7d6ad045b4c6c7e9aea92498ed1725312035a5469b410"
+                "sha256:e039551994feaaba6fcf880412b25a772dd313162a34cbb4289814988cfae340"
             ],
             "index": "pypi",
-            "version": "==0.7.5"
+            "version": "==0.8"
         },
         "django-tz-detect": {
             "hashes": [
