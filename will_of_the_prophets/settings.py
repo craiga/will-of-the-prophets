@@ -40,7 +40,6 @@ MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "csp.middleware.CSPMiddleware",
-    "django_referrer_policy.middleware.ReferrerPolicyMiddleware",
     "django_feature_policy.FeaturePolicyMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -128,12 +127,12 @@ STATICFILES_FINDERS = [
 
 
 # Ignore 404s
-# https://docs.djangoproject.com/en/2.2/ref/settings/#std:setting-IGNORABLE_404_URLS
+# https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-IGNORABLE_404_URLS
 IGNORABLE_404_URLS = [re.compile(r"^/phpmyadmin/"), re.compile(r"\.php$")]
 
 
 # Security
-# https://docs.djangoproject.com/en/2.2/topics/security/
+# https://docs.djangoproject.com/en/stable/topics/security/
 
 SECURE_HSTS_SECONDS = 0 if DEBUG else int(os.environ.get("SECURE_HSTS_SECONDS", 60))
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
@@ -144,6 +143,7 @@ SECURE_SSL_REDIRECT = not DEBUG
 SESSION_COOKIE_SECURE = not DEBUG
 CSRF_COOKIE_SECURE = not DEBUG
 X_FRAME_OPTIONS = "DENY"
+SECURE_REFERRER_POLICY = "same-origin"
 
 
 # django-sass-processor
@@ -200,12 +200,6 @@ CSP_SCRIPT_SRC = ["'self'", "browser.sentry-cdn.com", "cdnjs.cloudflare.com"]
 CSP_REPORT_ONLY = bool(os.environ.get("CSP_REPORT_ONLY", DEBUG))
 CSP_REPORT_URI = os.environ.get("CSP_REPORT_URI", None)
 CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]
-
-
-# Referrer policy
-# https://django-referrer-policy.readthedocs.io/en/latest/#configuration
-
-REFERRER_POLICY = "same-origin"
 
 
 # Feature policy
