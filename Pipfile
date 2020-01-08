@@ -16,7 +16,6 @@ django-debug-toolbar = "*"
 django-s3direct = "*"
 django-csp = "*"
 sentry-sdk = "*"
-django-referrer-policy = "*"
 django-feature-policy = "*"
 
 [dev-packages]
