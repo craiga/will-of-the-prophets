@@ -36,7 +36,7 @@ jobs:
 
       - run:
           name: run tests
-          command: pipenv run pytest
+          command: pipenv run pytest --log-level DEBUG
 
       - run:
           name: deployment check
