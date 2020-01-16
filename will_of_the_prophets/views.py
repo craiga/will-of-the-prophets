@@ -1,5 +1,7 @@
 """Views."""
 
+import logging
+
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
@@ -12,16 +14,21 @@ from django.views.generic.edit import CreateView
 
 from will_of_the_prophets import board, forms, models
 
+logger = logging.getLogger(__name__)
+
 
 def get_last_modified(request):
     """Get board's last modified datetime."""
     try:
-        return (
+        last_modified = (
             models.Roll.objects.filter(embargo__lte=timezone.now())
             .latest("embargo")
             .embargo
         )
+        logger.debug("Got last modified date %s", last_modified)
+        return last_modified
     except models.Roll.DoesNotExist:
+        logger.info("Cannot calculate last modified date as no rolls were found.")
         return None
 
 
