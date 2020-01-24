@@ -112,3 +112,8 @@ staticfiles/
 pylint.txt
 
 will_of_the_prophets/fixtures/legacy_rolls.json
+
+/node_modules/
+/cypress/plugins/
+/cypress/support/
+/cypress/videos/

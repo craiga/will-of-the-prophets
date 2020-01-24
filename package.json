@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "cypress": "$(npm bin)/cypress",
+    "wait-on": "$(npm bin)/wait-on"
+  },
+  "dependencies": {
+    "cypress": "^3.8.2",
+    "wait-on": "^4.0.0"
+  }
+}

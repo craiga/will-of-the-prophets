@@ -26,9 +26,10 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            sudo apt-get -y install libenchant1c2a
+            sudo apt-get -y install libenchant1c2a npm libgtk2.0-0 libgtk-3-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
             sudo pip install pipenv
             pipenv install --dev
+            npm install
 
       - run:
           name: collect static files
@@ -37,6 +38,20 @@ jobs:
       - run:
           name: run tests
           command: pipenv run pytest --log-level DEBUG
+
+      - run:
+          name: run end-to-end tests
+          environment:
+            DJANGO_SUPERUSER_USERNAME: rollinguser
+            DJANGO_SUPERUSER_PASSWORD: "rolling user password"
+            DJANGO_SUPERUSER_EMAIL: nobody@example.com
+            DEBUG: 1
+            DISABLE_DEBUG_TOOLBAR: 1
+          command: |
+            pipenv run python manage.py migrate
+            pipenv run python manage.py createsuperuser --noinput
+            pipenv run python manage.py runserver & npm run wait-on http://localhost:8000
+            npm run cypress run
 
       - run:
           name: deployment check
