@@ -49,6 +49,10 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+if bool(os.environ.get("DISABLE_DEBUG_TOOLBAR", False)):
+    INSTALLED_APPS.remove("debug_toolbar")
+    MIDDLEWARE.remove("debug_toolbar.middleware.DebugToolbarMiddleware")
+
 ROOT_URLCONF = "will_of_the_prophets.urls"
 
 TEMPLATES = [
@@ -204,12 +208,11 @@ CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]
 
 # Feature policy
 # https://github.com/adamchainz/django-feature-policy#setting
-# List of directives from
-# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
 
 FEATURE_POLICY = {
     feature_name: "none" for feature_name in django_feature_policy.FEATURE_NAMES
 }
+FEATURE_POLICY["document-domain"] = "self"
 
 
 PUBLIC_BOARD_CANONICAL_URL = os.environ.get("PUBLIC_BOARD_CANONICAL_URL")
