@@ -21,7 +21,6 @@
                 "sha256:3e4192eaec0758b99722f0b0666d5fbfaa713054d92e8de5b58ba84ec5ce696f",
                 "sha256:c8f49dd3b42edcc51d09dd2eea8a92b3cfc987ff7e6486be734b4d0cbfd5d315"
             ],
-            "index": "pypi",
             "version": "==3.2.5"
         },
         "certifi": {
@@ -110,11 +109,11 @@
         },
         "django-widget-tweaks": {
             "hashes": [
-                "sha256:65c960f3d75008a285e4b10f4d21f9eae4160fd77a0f6097ad545185f8648bd6",
-                "sha256:f2e2c9c9be1ccc59061e248dcc2144f4906d594abe1a563902f4bdf6aa14e432"
+                "sha256:a4ab4877744238e493c162a1bde2ebcae499d338e45072ebf5569c0664644bf9",
+                "sha256:bb81ca73ff17080192801c9bf3abba3b70d44ea0f1fcfd57778edb75f387c82e"
             ],
             "index": "pypi",
-            "version": "==1.4.5"
+            "version": "==1.4.6"
         },
         "gunicorn": {
             "hashes": [
@@ -200,7 +199,6 @@
                 "sha256:3e4192eaec0758b99722f0b0666d5fbfaa713054d92e8de5b58ba84ec5ce696f",
                 "sha256:c8f49dd3b42edcc51d09dd2eea8a92b3cfc987ff7e6486be734b4d0cbfd5d315"
             ],
-            "index": "pypi",
             "version": "==3.2.5"
         },
         "astroid": {
