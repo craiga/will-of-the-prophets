@@ -8,9 +8,9 @@ describe('Rolling', () => {
     cy.get(".xdsoft_year").click();
     cy.get(".xdsoft_year").contains("2050").click();
     cy.get(".xdsoft_month").click();
-    cy.get(".xdsoft_month").contains("March").click();
+    cy.get(".xdsoft_month").contains("December").click();
     cy.get(".xdsoft_date").contains("31").click();
     cy.get("button").contains("Roll!").click();
-    cy.contains("Board as of March 31, 2050")
+    cy.contains("Board as of December 31, 2050")
   });
 });
