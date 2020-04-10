@@ -117,3 +117,5 @@ will_of_the_prophets/fixtures/legacy_rolls.json
 /cypress/plugins/
 /cypress/support/
 /cypress/videos/
+/cypress/fixtures/
+/cypress/screenshots/
