@@ -11,6 +11,6 @@ describe('Rolling', () => {
     cy.get(".xdsoft_month").contains("December").click();
     cy.get(".xdsoft_date").contains("31").click();
     cy.get("button").contains("Roll!").click();
-    cy.contains("Board as of December 31, 2050")
+    cy.contains("Board as of Dec. 31, 2050")
   });
 });
