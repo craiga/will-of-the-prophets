@@ -5,6 +5,6 @@
   },
   "dependencies": {
     "cypress": "^4.2.0",
-    "wait-on": "^4.0.1"
+    "wait-on": "^4.0.2"
   }
 }
