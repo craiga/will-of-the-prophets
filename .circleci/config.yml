@@ -53,6 +53,12 @@ jobs:
             pipenv run python manage.py runserver & npm run wait-on http://localhost:8000
             npm run cypress run
 
+      - store_artifacts:
+          path: ~/will-of-the-prophets/cypress/videos/
+
+      - store_artifacts:
+          path: ~/will-of-the-prophets/cypress/screenshots/
+
       - run:
           name: deployment check
           command: pipenv run python manage.py check --deploy --fail-level INFO
@@ -73,10 +79,3 @@ jobs:
           command: |
             pipenv run python manage.py compilescss
             git diff --no-ext-diff --exit-code
-
-      - store_test_results:
-          path: test-results
-
-      - store_artifacts:
-          path: test-results
-          destination: tr1
