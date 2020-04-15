@@ -4,7 +4,7 @@
     "wait-on": "$(npm bin)/wait-on"
   },
   "dependencies": {
-    "cypress": "^4.3.0",
+    "cypress": "^4.4.0",
     "wait-on": "^4.0.2"
   }
 }
