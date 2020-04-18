@@ -13,7 +13,7 @@ $content-padding: 2vw;
   color: lcars-color("blue-charcoal");
   @include cap-variable-widths(
     (
-      padding: 1vw
+      padding: 1vw,
     )
   );
 }
@@ -25,7 +25,7 @@ $content-padding: 2vw;
 .lcars-group__horizontal-bar .lcars-filler:last-child {
   @include cap-variable-widths(
     (
-      padding-right: 2vw
+      padding-right: 2vw,
     )
   );
 }
@@ -33,7 +33,7 @@ $content-padding: 2vw;
 .lcars-group__side-bar .lcars-filler + .lcars-filler {
   @include cap-variable-widths(
     (
-      margin-top: 1vw
+      margin-top: 1vw,
     )
   );
 }
@@ -41,7 +41,7 @@ $content-padding: 2vw;
 .lcars-group__horizontal-bar .lcars-filler + .lcars-filler {
   @include cap-variable-widths(
     (
-      margin-left: 1vw
+      margin-left: 1vw,
     )
   );
 }
@@ -49,7 +49,7 @@ $content-padding: 2vw;
 .lcars-filler--top-left {
   @include cap-variable-widths(
     (
-      border-top-left-radius: 4vw
+      border-top-left-radius: 4vw,
     )
   );
 }
@@ -57,7 +57,7 @@ $content-padding: 2vw;
 .lcars-filler--top-right {
   @include cap-variable-widths(
     (
-      border-top-right-radius: 4vw
+      border-top-right-radius: 4vw,
     )
   );
 }
@@ -65,7 +65,7 @@ $content-padding: 2vw;
 .lcars-filler--bottom-right {
   @include cap-variable-widths(
     (
-      border-bottom-right-radius: 4vw
+      border-bottom-right-radius: 4vw,
     )
   );
 }
@@ -73,7 +73,7 @@ $content-padding: 2vw;
 .lcars-filler--bottom-left {
   @include cap-variable-widths(
     (
-      border-bottom-left-radius: 4vw
+      border-bottom-left-radius: 4vw,
     )
   );
 }
@@ -98,7 +98,7 @@ $content-padding: 2vw;
   @include cap-variable-widths(
     (
       height: $content-padding,
-      width: $content-padding
+      width: $content-padding,
     )
   );
 }

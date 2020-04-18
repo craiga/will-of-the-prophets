@@ -9,7 +9,7 @@ $chart-left-margin: 3vw;
   margin-bottom: 1em;
   @include cap-variable-widths(
     (
-      margin-right: 1vw
+      margin-right: 1vw,
     )
   );
 }
@@ -23,7 +23,7 @@ $chart-left-margin: 3vw;
 
   @include cap-variable-widths(
     (
-      left: $chart-left-margin
+      left: $chart-left-margin,
     )
   );
 }
@@ -57,7 +57,7 @@ $chart-left-margin: 3vw;
 .roll-chart__bar + .roll-chart__bar {
   @include cap-variable-widths(
     (
-      margin-top: 2vw
+      margin-top: 2vw,
     )
   );
 }
@@ -68,7 +68,7 @@ $chart-left-margin: 3vw;
   @include cap-variable-widths(
     (
       width: $chart-left-margin,
-      padding-right: 1vw
+      padding-right: 1vw,
     )
   );
 }

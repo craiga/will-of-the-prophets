@@ -9,7 +9,7 @@
 .site__content {
   @include cap-variable-widths(
     (
-      padding: 0vw 2vw
+      padding: 0vw 2vw,
     )
   );
 }
@@ -21,7 +21,7 @@
   @include cap-variable-widths(
     (
       font-size: 9vw,
-      margin: 2vw 0vw
+      margin: 2vw 0vw,
     )
   );
 }
@@ -34,7 +34,7 @@
   @include cap-variable-widths(
     (
       padding: 3vw 0vw 2vw,
-      font-size: 1.7vw
+      font-size: 1.7vw,
     )
   );
 }

@@ -13,37 +13,34 @@ function Point(x, y) {
  * See https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths for
  * more details.
  */
-Point.toQuadCurveString = function(controlPoint, endPoint) {
+Point.toQuadCurveString = function (controlPoint, endPoint) {
   return "Q" + [controlPoint.toString(), endPoint.toString()].join(",");
 };
 
 /**
  * Returns the midpoint between two Points.
  */
-Point.getMidPoint = function(startPoint, endPoint) {
-  return endPoint
-    .subtract(startPoint)
-    .scale(0.5)
-    .add(startPoint);
+Point.getMidPoint = function (startPoint, endPoint) {
+  return endPoint.subtract(startPoint).scale(0.5).add(startPoint);
 };
 
-Point.prototype.ortho = function() {
+Point.prototype.ortho = function () {
   return new Point(this.y, -this.x);
 };
 
-Point.prototype.add = function(point) {
+Point.prototype.add = function (point) {
   return new Point(this.x + point.x, this.y + point.y);
 };
 
-Point.prototype.subtract = function(point) {
+Point.prototype.subtract = function (point) {
   return new Point(this.x - point.x, this.y - point.y);
 };
 
-Point.prototype.scale = function(scale) {
+Point.prototype.scale = function (scale) {
   return new Point(this.x * scale, this.y * scale);
 };
 
-Point.prototype.toString = function() {
+Point.prototype.toString = function () {
   return this.x + " " + this.y;
 };
 
@@ -132,14 +129,14 @@ function renderButtholes() {
 
     var path = createPathElement(startPoint, [
       Point.toQuadCurveString(controlPoint1, midPoint),
-      Point.toQuadCurveString(controlPoint2, endPoint)
+      Point.toQuadCurveString(controlPoint2, endPoint),
     ]);
     container.appendChild(path);
   }
 
   var buttholeEnds = document.querySelectorAll("[data-butthole-starts]");
-  [].forEach.call(buttholeEnds, function(endEl) {
-    JSON.parse(endEl.dataset.buttholeStarts).forEach(function(startNumber) {
+  [].forEach.call(buttholeEnds, function (endEl) {
+    JSON.parse(endEl.dataset.buttholeStarts).forEach(function (startNumber) {
       renderPath(
         document.querySelector('[data-number="' + startNumber + '"]'),
         endEl

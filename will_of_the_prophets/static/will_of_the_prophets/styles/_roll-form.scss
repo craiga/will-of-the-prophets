@@ -7,14 +7,14 @@
   @include cap-variable-widths(
     (
       padding: 3vw 0vw,
-      font-size: 3vw
+      font-size: 3vw,
     )
   );
 
   input[type="text"] {
     @include cap-variable-widths(
       (
-        margin: 0vw 1vw
+        margin: 0vw 1vw,
       )
     );
   }
@@ -22,7 +22,7 @@
   button {
     @include cap-variable-widths(
       (
-        margin: 0vw 1vw
+        margin: 0vw 1vw,
       )
     );
   }
@@ -33,7 +33,7 @@
 
   @include cap-variable-widths(
     (
-      margin-bottom: 2vw
+      margin-bottom: 2vw,
     )
   );
 }
