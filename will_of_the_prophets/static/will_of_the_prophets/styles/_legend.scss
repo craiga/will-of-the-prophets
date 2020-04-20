@@ -9,7 +9,7 @@
 
   @include cap-variable-widths(
     (
-      grid-gap: 2vw 1vw
+      grid-gap: 2vw 1vw,
     )
   );
 }
@@ -20,7 +20,7 @@
 
   @include cap-variable-widths(
     (
-      padding: 1vw
+      padding: 1vw,
     )
   );
 }
@@ -28,7 +28,7 @@
 .legend__item-img {
   @include cap-variable-widths(
     (
-      width: 10vw
+      width: 10vw,
     )
   );
 }
@@ -36,7 +36,7 @@
 .legend__item-meta {
   @include cap-variable-widths(
     (
-      padding-left: 1vw
+      padding-left: 1vw,
     )
   );
 }
@@ -48,7 +48,7 @@
   @include cap-variable-widths(
     (
       font-size: 4vw,
-      margin-bottom: 1vw
+      margin-bottom: 1vw,
     )
   );
 }
@@ -60,7 +60,7 @@
   text-transform: uppercase;
   @include cap-variable-widths(
     (
-      font-size: 2.5vw
+      font-size: 2.5vw,
     )
   );
 }

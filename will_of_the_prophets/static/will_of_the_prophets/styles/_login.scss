@@ -9,7 +9,7 @@
   label {
     @include cap-variable-widths(
       (
-        font-size: 4vw
+        font-size: 4vw,
       )
     );
   }
@@ -19,7 +19,7 @@
     text-align: left;
     @include cap-variable-widths(
       (
-        margin-left: 1.5vw
+        margin-left: 1.5vw,
       )
     );
   }
@@ -28,7 +28,7 @@
 .login__row + .login__row {
   @include cap-variable-widths(
     (
-      margin-top: 2vw
+      margin-top: 2vw,
     )
   );
 }

@@ -13,7 +13,7 @@ $content-padding: 2vw;
   grid-template-rows: auto 1fr auto;
   @include cap-variable-widths(
     (
-      font-size: 2.5vw
+      font-size: 2.5vw,
     )
   );
 }
@@ -30,7 +30,7 @@ $content-padding: 2vw;
 .lcars-group + .lcars-group {
   @include cap-variable-widths(
     (
-      margin-top: 1vw
+      margin-top: 1vw,
     )
   );
 }
@@ -51,7 +51,7 @@ $content-padding: 2vw;
   @include cap-variable-widths(
     (
       grid-gap: 0.7vw,
-      width: 12vw
+      width: 12vw,
     )
   );
 }
@@ -73,7 +73,7 @@ $content-padding: 2vw;
 
   @include cap-variable-widths(
     (
-      padding: 2vw
+      padding: 2vw,
     )
   );
 }
@@ -84,7 +84,7 @@ $content-padding: 2vw;
   @include cap-variable-widths(
     (
       font-size: 5.2vw,
-      margin-bottom: 2vw
+      margin-bottom: 2vw,
     )
   );
 }
@@ -97,7 +97,7 @@ $content-padding: 2vw;
     (
       font-size: 3.5vw,
       margin: 2vw 0vw,
-      padding: 1vw
+      padding: 1vw,
     )
   );
 
@@ -111,7 +111,7 @@ $content-padding: 2vw;
 .lcars-group__text:last-child {
   @include cap-variable-widths(
     (
-      margin-bottom: 0vw
+      margin-bottom: 0vw,
     )
   );
 }

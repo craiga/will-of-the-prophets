@@ -49,7 +49,7 @@ $runabout-animation-end: translate(-50%, -50%) scale(1.1) rotate(20deg);
   grid-template: repeat(10, 1fr) / repeat(10, 1fr);
   @include cap-variable-widths(
     (
-      grid-gap: 0.5vw
+      grid-gap: 0.5vw,
     )
   );
 }
@@ -76,7 +76,7 @@ $runabout-animation-end: translate(-50%, -50%) scale(1.1) rotate(20deg);
   @include cap-variable-widths(
     (
       border-width: 0.5vw,
-      font-size: 4vw
+      font-size: 4vw,
     )
   );
 }
