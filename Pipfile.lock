@@ -466,13 +466,13 @@
         },
         "pyenchant": {
             "hashes": [
-                "sha256:2b4594e125c9fbc7fff2d310be141a4ace1f8af3e671c63ebd261407c82d3a92",
-                "sha256:5acb1255c93f6b5b840a66b523586c12d372f3ceb9be18f9bf016626ab3387f6",
-                "sha256:764b43937872100a53746f84c07b269f94951b8a03f40308b2b8875bc2f3d538",
-                "sha256:87e54aa2402d1c23b6b117787521eb3b51ff514bd669b2113386fd8fac3b7cf1"
+                "sha256:8ca419921e79022b344581ef7baf2e23af5c20b3e56b2f3d5a0448bd5bf2662e",
+                "sha256:997465ab1f0dc9900b3bde0a1998c62ac08e64cc9a0870865d50de1e7d4b5afa",
+                "sha256:ce0915d7acd771fde6e8c2dce8ad0cb0e6f7c4fa8430cc96e3e7134e99aeb12f",
+                "sha256:fd490efd7ce46e461cbd905bf6e2fdd540d85f43973b296a743b4591bfbcca60"
             ],
             "index": "pypi",
-            "version": "==3.1.0"
+            "version": "==3.1.1"
         },
         "pygments": {
             "hashes": [
