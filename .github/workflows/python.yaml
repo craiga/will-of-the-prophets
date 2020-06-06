@@ -1,0 +1,29 @@
+name: Python
+on:
+  pull_request:
+    branches:
+      - "*"
+  push:
+    paths:
+      - "**/*.py"
+      - ".github/workflows/python.yaml"
+      - "Makefile"
+
+jobs:
+  lint-python:
+    name: Lint Python Code
+    timeout-minutes: 2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Setup
+        run: |
+          pip install pipenv
+          pipenv install --dev
+      - name: Lint Python Code
+        run: make lint-python

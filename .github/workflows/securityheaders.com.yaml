@@ -1,0 +1,16 @@
+name: securityheaders.com
+on:
+  schedule:
+    - cron: "0 0 * * SUN"
+
+jobs:
+  check-score:
+    name: Check Score
+    timeout-minutes: 1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check securityheaders.com Grade
+        run: |
+          GRADE=`curl -I "https://securityheaders.com/?q=https%3A%2F%2Fproject-name.herokuapp.com&followRedirects=on" | grep ^x-grade  | tr -d '\n\r'`
+          echo $GRADE
+          [[ $GRADE =~ A\+?$ ]]
