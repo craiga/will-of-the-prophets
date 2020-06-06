@@ -1,26 +1,26 @@
 [
   {
     "model": "will_of_the_prophets.butthole",
-    "fields": {"start_square": 21, "end_square": 2}
+    "fields": { "start_square": 21, "end_square": 2 }
   },
   {
     "model": "will_of_the_prophets.butthole",
-    "fields": {"start_square": 49, "end_square": 12}
+    "fields": { "start_square": 49, "end_square": 12 }
   },
   {
     "model": "will_of_the_prophets.butthole",
-    "fields": {"start_square": 62, "end_square": 18}
+    "fields": { "start_square": 62, "end_square": 18 }
   },
   {
     "model": "will_of_the_prophets.butthole",
-    "fields": {"start_square": 87, "end_square": 24}
+    "fields": { "start_square": 87, "end_square": 24 }
   },
   {
     "model": "will_of_the_prophets.butthole",
-    "fields": {"start_square": 92, "end_square": 72}
+    "fields": { "start_square": 92, "end_square": 72 }
   },
   {
     "model": "will_of_the_prophets.butthole",
-    "fields": {"start_square": 98, "end_square": 78}
+    "fields": { "start_square": 98, "end_square": 78 }
   }
 ]

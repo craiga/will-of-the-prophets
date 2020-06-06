@@ -1,3 +1,4 @@
-/staticfiles/
-/cypress/plugins/
-/cypress/support/
+staticfiles/
+cypress/plugins/
+cypress/support/
+node_modules/

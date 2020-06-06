@@ -1,0 +1,50 @@
+name: Django
+on:
+  pull_request:
+    branches:
+      - "*"
+  push:
+    branches:
+      - "master"
+
+jobs:
+  pytest:
+    name: Test Django
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Setup
+        run: |
+          pip install pipenv
+          pipenv install --dev
+      - name: Collect Static Assets
+        run: pipenv run python manage.py collectstatic --no-input
+      - name: Run Tests
+        run: make test
+
+  check-django-configuration:
+    name: Check Django Configuration
+    timeout-minutes: 2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Setup
+        run: |
+          pip install pipenv
+          pipenv install
+      - name: Test Django Configured Correctly
+        run: make check-django
+        env:
+          SECRET_KEY: Some very long and complex string which is very, very secure.
+          CANONICAL_HOST: project-name.net

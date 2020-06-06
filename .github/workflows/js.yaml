@@ -1,0 +1,27 @@
+name: JavaScript
+on:
+  pull_request:
+    branches:
+      - "*"
+  push:
+    paths:
+      - "**/*.js"
+      - ".github/workflows/js.yaml"
+      - "Makefile"
+
+jobs:
+  lint-js:
+    name: Lint JavaScript
+    timeout-minutes: 2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@v2
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Setup
+        run: npm install prettier@`cat package-lock.json | jq ".dependencies.prettier.version" --raw-output`
+      - name: Lint JavaScript
+        run: make lint-js
