@@ -92,91 +92,91 @@
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 1,
-    "fields": {"square": 2, "type": 1}
+    "fields": { "square": 2, "type": 1 }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 2,
-    "fields": {"square": 18, "type": 1}
+    "fields": { "square": 18, "type": 1 }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 3,
-    "fields": {"square": 24, "type": 1}
+    "fields": { "square": 24, "type": 1 }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 4,
-    "fields": {"square": 36, "type": 1}
+    "fields": { "square": 36, "type": 1 }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 5,
-    "fields": {"square": 46, "type": 1}
+    "fields": { "square": 46, "type": 1 }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 6,
-    "fields": {"square": 54, "type": 1}
+    "fields": { "square": 54, "type": 1 }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 7,
-    "fields": {"square": 68, "type": 1}
+    "fields": { "square": 68, "type": 1 }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 8,
-    "fields": {"square": 72, "type": 1}
+    "fields": { "square": 72, "type": 1 }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 18,
-    "fields": {"square": 90, "type": 1}
+    "fields": { "square": 90, "type": 1 }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 9,
-    "fields": {"square": 10, "type": 2}
+    "fields": { "square": 10, "type": 2 }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 10,
-    "fields": {"square": 12, "type": 10}
+    "fields": { "square": 12, "type": 10 }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 11,
-    "fields": {"square": 28, "type": 8}
+    "fields": { "square": 28, "type": 8 }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 12,
-    "fields": {"square": 34, "type": 7}
+    "fields": { "square": 34, "type": 7 }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 13,
-    "fields": {"square": 56, "type": 9}
+    "fields": { "square": 56, "type": 9 }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 14,
-    "fields": {"square": 64, "type": 4}
+    "fields": { "square": 64, "type": 4 }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 15,
-    "fields": {"square": 78, "type": 6}
+    "fields": { "square": 78, "type": 6 }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 16,
-    "fields": {"square": 82, "type": 5}
+    "fields": { "square": 82, "type": 5 }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 17,
-    "fields": {"square": 100, "type": 3}
+    "fields": { "square": 100, "type": 3 }
   }
 ]
