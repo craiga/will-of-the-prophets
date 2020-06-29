@@ -1,0 +1,23 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "08:30"
+    timezone: Etc/Universal
+  open-pull-requests-limit: 99
+  assignees:
+  - craiga
+  allow:
+  - dependency-type: direct
+  - dependency-type: indirect
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "08:30"
+    timezone: Etc/Universal
+  open-pull-requests-limit: 99
+  assignees:
+  - craiga
