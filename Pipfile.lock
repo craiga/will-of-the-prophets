@@ -338,10 +338,10 @@
         },
         "jedi": {
             "hashes": [
-                "sha256:1ddb0ec78059e8e27ec9eb5098360b4ea0a3dd840bedf21415ea820c21b40a22",
-                "sha256:807d5d4f96711a2bcfdd5dfa3b1ae6d09aa53832b182090b222b5efb81f52f63"
+                "sha256:86ed7d9b750603e4ba582ea8edc678657fb4007894a12bcf6f4bb97892f31d20",
+                "sha256:98cc583fa0f2f8304968199b01b6b4b94f469a1f4a74c1560506ca2a211378b5"
             ],
-            "version": "==0.17.1"
+            "version": "==0.17.2"
         },
         "lazy-object-proxy": {
             "hashes": [
@@ -540,11 +540,11 @@
         },
         "pytest-freezegun": {
             "hashes": [
-                "sha256:060cdf192848e50a4a681a5e73f8b544c4ee5ebc1fab3cb7223a0097bac2f83f",
-                "sha256:1c77b2917883b8abf817fc39a1fd3f40ac43711eb923512abe7b6557e55eaaf1"
+                "sha256:19c82d5633751bf3ec92caa481fb5cffaac1787bd485f0df6436fd6242176949",
+                "sha256:5318a6bfb8ba4b709c8471c94d0033113877b3ee02da5bfcd917c1889cde99a7"
             ],
             "index": "pypi",
-            "version": "==0.4.1"
+            "version": "==0.4.2"
         },
         "pytest-mock": {
             "hashes": [
