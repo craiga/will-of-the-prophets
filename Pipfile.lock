@@ -166,10 +166,10 @@
         },
         "sqlparse": {
             "hashes": [
-                "sha256:022fb9c87b524d1f7862b3037e541f68597a730a8843245c349fc93e1643dc4e",
-                "sha256:e162203737712307dfe78860cc56c8da8a852ab2ee33750e33aeadf38d12c548"
+                "sha256:0523026398aea9c8b5f7a4a6d5c0829c285b4fbd960c17b5967a369342e21e01",
+                "sha256:d59e473424ae7470778fa4dd0dd7bb666ff324f0a6106c29deb5946ea5367f04"
             ],
-            "version": "==0.3.1"
+            "version": "==0.4.0"
         },
         "urllib3": {
             "hashes": [
@@ -404,11 +404,11 @@
         },
         "model-bakery": {
             "hashes": [
-                "sha256:44321cded0e130c31e3cdd7589f8c3d551e12e9ebcc8425aff800dfeaf91539a",
-                "sha256:aea339f47aa3b044d1a6d62f54c04686285fa0397a05de29ec6809a2a6f9bdc5"
+                "sha256:088698cdf62e5ccedeb97e55ceb966c974cc79e2514928aec9beab27a8c1faf4",
+                "sha256:b25f400b392067f02d841a0ef33e861543c04b1702dc004020bdd50e1dbce05f"
             ],
             "index": "pypi",
-            "version": "==1.1.0"
+            "version": "==1.2.0"
         },
         "packaging": {
             "hashes": [
@@ -601,10 +601,10 @@
         },
         "sqlparse": {
             "hashes": [
-                "sha256:022fb9c87b524d1f7862b3037e541f68597a730a8843245c349fc93e1643dc4e",
-                "sha256:e162203737712307dfe78860cc56c8da8a852ab2ee33750e33aeadf38d12c548"
+                "sha256:0523026398aea9c8b5f7a4a6d5c0829c285b4fbd960c17b5967a369342e21e01",
+                "sha256:d59e473424ae7470778fa4dd0dd7bb666ff324f0a6106c29deb5946ea5367f04"
             ],
-            "version": "==0.3.1"
+            "version": "==0.4.0"
         },
         "toml": {
             "hashes": [
