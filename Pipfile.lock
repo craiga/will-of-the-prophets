@@ -63,11 +63,11 @@
         },
         "django-feature-policy": {
             "hashes": [
-                "sha256:b300a6ceeb2ff31ccaa7960c8308e08fd3ab95912d48bb98640dafc2f2625c46",
-                "sha256:eb1db62abd061c1402c24226428e18417cd4aa7e5d310199170c84f36d54b3f4"
+                "sha256:68bc103f71dcfc3ae7704270002226eb45e9e3aad40b1d438e5829b453657557",
+                "sha256:6ee95a280cc370e429f892f309ed20167137c02a515b24f3cb99ebf1df9424a3"
             ],
             "index": "pypi",
-            "version": "==3.4.0"
+            "version": "==3.5.0"
         },
         "django-heroku": {
             "hashes": [
