@@ -201,6 +201,7 @@ sentry_sdk.init(SENTRY_DSN, integrations=[DjangoIntegration()])
 CSP_STYLE_SRC = ["'self'", "cdnjs.cloudflare.com"]
 CSP_IMG_SRC = ["'self'", "s3.amazonaws.com", "s3.us-east-1.amazonaws.com"]
 CSP_SCRIPT_SRC = ["'self'", "browser.sentry-cdn.com", "cdnjs.cloudflare.com"]
+CSP_CONNECT_SRC = ["'self'", "s3.us-east-1.amazonaws.com"]
 CSP_REPORT_ONLY = bool(os.environ.get("CSP_REPORT_ONLY", DEBUG))
 CSP_REPORT_URI = os.environ.get("CSP_REPORT_URI", None)
 CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]
