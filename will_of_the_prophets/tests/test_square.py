@@ -52,6 +52,20 @@ def test_not_butthole_start(some_datetime):
 
 
 @pytest.mark.django_db
+def test_butthole_direction_forward(some_datetime):
+    baker.make("Butthole", start_square=50, end_square=51)
+    square = board.Square(number=50, current_position=1, now=some_datetime)
+    assert square.get_butthole_direction() == "forward"
+
+
+@pytest.mark.django_db
+def test_butthole_direction_backward(some_datetime):
+    baker.make("Butthole", start_square=50, end_square=49)
+    square = board.Square(number=50, current_position=1, now=some_datetime)
+    assert square.get_butthole_direction() == "backward"
+
+
+@pytest.mark.django_db
 def test_get_butthole_ends(some_datetime):
     """Test getting the list of buttholes which end in this square."""
     for start_square in (55, 66, 77):
