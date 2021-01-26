@@ -63,5 +63,9 @@ lint-js: ## Lint JavaScript.
 fix-js: ## Attempt to fix JavaScript issues reported by the linter.
 	npm run prettier -- "**/*.js" --write
 
+will_of_the_prophets/fixtures/live.json: ## Get live data from production.
+	heroku run --app will-of-the-prophets python manage.py dumpdata will_of_the_prophets > will_of_the_prophets/fixtures/live.json
+	make fix-json
+
 help: ## Display this help screen.
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

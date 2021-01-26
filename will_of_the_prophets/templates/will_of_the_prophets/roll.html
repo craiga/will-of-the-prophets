@@ -32,6 +32,7 @@
             <div class="roll-form__form">
                 {{ form.embargo.label_tag }}
                 {{ form.embargo|add_class:'lcars-input'|attr:'placeholder:Select Date and Time' }}
+                {{ form.die_size|add_class:'lcars-input' }}
                 <button class="lcars-button" type="submit">Roll!</button>
             </div>
         </form>
@@ -110,7 +111,7 @@
 ></script>
 <script type="text/javascript" nonce="{{request.csp_nonce}}">
     $(function () {
-        $('.lcars-input').datetimepicker({
+        $('input.lcars-input').datetimepicker({
             theme: 'dark',
             format: 'Y-m-d H:i',
         });
