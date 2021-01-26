@@ -95,6 +95,10 @@ class Square:
     def is_butthole_start(self):
         return self.number in get_buttholes(self.now)
 
+    def get_butthole_direction(self):
+        buttholes = get_buttholes(self.now)
+        return "forward" if buttholes[self.number] > self.number else "backward"
+
     def get_butthole_ends(self):
         """Get the starting squares of any buttholes which end here."""
         butthole_ends = []

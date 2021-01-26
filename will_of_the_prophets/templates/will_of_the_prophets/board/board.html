@@ -43,10 +43,17 @@
                 {% endif %}
 
                 {% if square.is_butthole_start %}
-                    <img
-                        class="board__cell-img board__cell-img--butthole"
-                        src="{% static 'will_of_the_prophets/other_squares/butthole.png' %}"
-                    />
+                    {% if square.get_butthole_direction == "forward" %}
+                        <img
+                            class="board__cell-img board__cell-img--butthole"
+                            src="{% static 'will_of_the_prophets/other_squares/delta_flyer.png' %}"
+                        />
+                    {% else %}
+                        <img
+                            class="board__cell-img board__cell-img--butthole"
+                            src="{% static 'will_of_the_prophets/other_squares/butthole.png' %}"
+                        />
+                    {% endif %}
                 {% endif %}
 
                 {% if square.is_current_position %}
