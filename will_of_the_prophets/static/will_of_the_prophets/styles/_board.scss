@@ -5,6 +5,8 @@ $even-color: lcars-color("medium-carmine");
 $odd-color: lcars-color("lavender-purple");
 
 $butthole-color: #99d0ff;
+$forward-butthole-color: #ff9933;
+$backward-butthole-color: #99d0ff;
 $butthole-opacity: 0.6;
 
 $visited-opacity: 0.35;
@@ -191,6 +193,11 @@ $runabout-animation-end: translate(-50%, -50%) scale(1.1) rotate(20deg);
 
 .board__buttholes path {
   fill: none;
-  stroke: rgba($butthole-color, $butthole-opacity);
   stroke-width: 0.045;
+  &.forward {
+    stroke: rgba($forward-butthole-color, $butthole-opacity);
+  }
+  &.backward {
+    stroke: rgba($backward-butthole-color, $butthole-opacity);
+  }
 }

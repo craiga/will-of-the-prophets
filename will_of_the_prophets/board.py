@@ -134,7 +134,7 @@ def square_numbers():
 
 
 class Board:
-    """The Will of the Prophets board at any given time."""
+    """The Will of the Caretaker board at any given time."""
 
     def __init__(self, now=None):
         if not now:
