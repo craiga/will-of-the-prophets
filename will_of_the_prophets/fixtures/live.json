@@ -74,7 +74,7 @@
     "pk": 8,
     "fields": {
       "name": "The Naked Now",
-      "description": "Roderick Style From the bathtub",
+      "description": "Neelix-Style from the Bathtub",
       "image": "/static/will_of_the_prophets/special_squares/naked_now.png",
       "auto_move": 0
     }
@@ -150,6 +150,46 @@
     }
   },
   {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 16,
+    "fields": {
+      "name": "Neelix's Galley",
+      "description": "The hosts drink Talaxian Champagne",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/icon_neelix.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 17,
+    "fields": {
+      "name": "The Caretaker",
+      "description": "The caretaker sends the runabout to a random square on the board",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/icon_caretaker.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 49,
+    "fields": {
+      "name": "Janeway",
+      "description": "The Delta Flyer takes the hosts up the board",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/icon_deltaflyer.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 50,
+    "fields": {
+      "name": "Space Butthole",
+      "description": "The hosts go down the board",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/butthole.png",
+      "auto_move": 0
+    }
+  },
+  {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 1,
     "fields": {
@@ -212,17 +252,32 @@
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 8,
-    "fields": { "start": null, "end": null, "square": 72, "type": 1 }
+    "fields": {
+      "start": null,
+      "end": "2021-02-01T05:59:59Z",
+      "square": 72,
+      "type": 1
+    }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 9,
-    "fields": { "start": null, "end": null, "square": 10, "type": 2 }
+    "fields": {
+      "start": null,
+      "end": "2021-02-01T05:59:59Z",
+      "square": 10,
+      "type": 2
+    }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 10,
-    "fields": { "start": null, "end": null, "square": 12, "type": 10 }
+    "fields": {
+      "start": null,
+      "end": "2021-02-01T05:59:59Z",
+      "square": 12,
+      "type": 10
+    }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
@@ -232,12 +287,22 @@
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 12,
-    "fields": { "start": null, "end": null, "square": 34, "type": 7 }
+    "fields": {
+      "start": null,
+      "end": "2021-02-01T05:59:59Z",
+      "square": 34,
+      "type": 7
+    }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
     "pk": 13,
-    "fields": { "start": null, "end": null, "square": 56, "type": 9 }
+    "fields": {
+      "start": null,
+      "end": "2021-02-01T05:59:59Z",
+      "square": 56,
+      "type": 9
+    }
   },
   {
     "model": "will_of_the_prophets.specialsquare",
@@ -284,7 +349,7 @@
     "pk": 20,
     "fields": {
       "start": "2019-04-23T06:00:00Z",
-      "end": null,
+      "end": "2021-02-01T05:59:59Z",
       "square": 2,
       "type": 13
     }
@@ -304,9 +369,79 @@
     "pk": 22,
     "fields": {
       "start": "2019-04-23T06:00:00Z",
-      "end": null,
+      "end": "2021-02-01T05:59:59Z",
       "square": 36,
       "type": 14
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 23,
+    "fields": {
+      "start": "2021-02-01T06:00:00Z",
+      "end": null,
+      "square": 21,
+      "type": 13
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 24,
+    "fields": {
+      "start": "2021-02-01T06:00:00Z",
+      "end": null,
+      "square": 87,
+      "type": 7
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 25,
+    "fields": {
+      "start": "2021-02-01T06:00:00Z",
+      "end": null,
+      "square": 10,
+      "type": 17
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 26,
+    "fields": {
+      "start": "2021-02-01T06:00:00Z",
+      "end": null,
+      "square": 12,
+      "type": 2
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 27,
+    "fields": {
+      "start": "2021-02-01T06:00:00Z",
+      "end": null,
+      "square": 36,
+      "type": 16
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 28,
+    "fields": {
+      "start": "2021-02-01T06:00:00Z",
+      "end": null,
+      "square": 56,
+      "type": 17
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 29,
+    "fields": {
+      "start": "2021-02-01T06:00:00Z",
+      "end": null,
+      "square": 92,
+      "type": 16
     }
   },
   {
@@ -314,7 +449,7 @@
     "pk": 1,
     "fields": {
       "start": null,
-      "end": null,
+      "end": "2021-02-01T05:59:59Z",
       "start_square": 21,
       "end_square": 2
     }
@@ -344,7 +479,7 @@
     "pk": 4,
     "fields": {
       "start": null,
-      "end": null,
+      "end": "2021-02-01T05:59:59Z",
       "start_square": 87,
       "end_square": 34
     }
@@ -354,7 +489,7 @@
     "pk": 5,
     "fields": {
       "start": null,
-      "end": null,
+      "end": "2021-02-01T05:59:59Z",
       "start_square": 92,
       "end_square": 72
     }
@@ -367,6 +502,36 @@
       "end": null,
       "start_square": 98,
       "end_square": 78
+    }
+  },
+  {
+    "model": "will_of_the_prophets.butthole",
+    "pk": 9,
+    "fields": {
+      "start": "2021-02-01T05:59:59Z",
+      "end": null,
+      "start_square": 2,
+      "end_square": 21
+    }
+  },
+  {
+    "model": "will_of_the_prophets.butthole",
+    "pk": 10,
+    "fields": {
+      "start": "2021-02-01T06:00:00Z",
+      "end": null,
+      "start_square": 34,
+      "end_square": 87
+    }
+  },
+  {
+    "model": "will_of_the_prophets.butthole",
+    "pk": 11,
+    "fields": {
+      "start": "2021-02-01T06:00:00Z",
+      "end": null,
+      "start_square": 72,
+      "end_square": 92
     }
   },
   {
@@ -1597,6 +1762,26 @@
       "modified": "2021-01-25T17:23:09.614Z",
       "number": 1,
       "embargo": "2021-01-25T17:23:08Z"
+    }
+  },
+  {
+    "model": "will_of_the_prophets.roll",
+    "pk": 299,
+    "fields": {
+      "created": "2021-01-26T14:08:43.305Z",
+      "modified": "2021-01-26T14:08:43.305Z",
+      "number": 20,
+      "embargo": "2021-02-01T06:00:00Z"
+    }
+  },
+  {
+    "model": "will_of_the_prophets.roll",
+    "pk": 332,
+    "fields": {
+      "created": "2021-02-03T00:17:06.895Z",
+      "modified": "2021-02-03T00:17:06.895Z",
+      "number": 1,
+      "embargo": "2021-02-15T08:00:00Z"
     }
   }
 ]

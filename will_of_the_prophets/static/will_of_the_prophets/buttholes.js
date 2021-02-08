@@ -131,6 +131,13 @@ function renderButtholes() {
       Point.toQuadCurveString(controlPoint1, midPoint),
       Point.toQuadCurveString(controlPoint2, endPoint),
     ]);
+
+    if (startPoint.y > endPoint.y) {
+      path.classList.add("forward");
+    } else {
+      path.classList.add("backward");
+    }
+
     container.appendChild(path);
   }
 
