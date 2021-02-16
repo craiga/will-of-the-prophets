@@ -7,8 +7,6 @@ updates:
     time: "08:30"
     timezone: Etc/Universal
   open-pull-requests-limit: 99
-  assignees:
-  - craiga
   allow:
   - dependency-type: direct
   - dependency-type: indirect
