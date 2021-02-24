@@ -17,5 +17,3 @@ updates:
     time: "08:30"
     timezone: Etc/Universal
   open-pull-requests-limit: 99
-  assignees:
-  - craiga
