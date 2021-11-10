@@ -112,11 +112,11 @@
         },
         "django-widget-tweaks": {
             "hashes": [
-                "sha256:9f91ca4217199b7671971d3c1f323a2bec71a0c27dec6260b3c006fa541bc489",
-                "sha256:f80bff4a8a59b278bb277a405a76a8b9a884e4bae7a6c70e78a39c626cd1c836"
+                "sha256:19bcb66a4a9e68493ced04e7124882d753c5be517ed001556f9e35a40147f545",
+                "sha256:d6c64fbf92cd2df9031f597c1374982233c05a1190d295c39d1c57ce007569c7"
             ],
             "index": "pypi",
-            "version": "==1.4.8"
+            "version": "==1.4.9"
         },
         "gunicorn": {
             "hashes": [
