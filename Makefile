@@ -69,3 +69,14 @@ will_of_the_prophets/fixtures/live.json: ## Get live data from production.
 
 help: ## Display this help screen.
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+.PHONY: pyenv-virtualenv
+pyenv-virtualenv:  ## Create a virtual environment managed by pyenv-virtualenv.
+	pyenv install --skip-existing `cat runtime.txt | sed "s/python-//"`
+	pyenv virtualenv `cat runtime.txt | sed "s/python-//"` will-of-the-prophets
+	echo "will-of-the-prophets" > .python-version
+
+.PHONY: pyenv-virtualenv-delete
+pyenv-virtualenv-delete:  ## Delete a virtual environment managed by pyenv-virtualenv.
+	pyenv virtualenv-delete --force `cat .python-version || echo will-of-the-prophets`
+	rm -f .python-version
