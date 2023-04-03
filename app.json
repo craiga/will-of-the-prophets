@@ -1,7 +1,6 @@
 {
   "name": "will-of-the-prophets",
-  "description": "",
-  "scripts": {},
+  "stack": "heroku-20",
   "env": {
     "SECRET_KEY": {
       "generator": "secret"
