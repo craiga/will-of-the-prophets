@@ -37,6 +37,10 @@ def calculate_position(now):
         buttholes = get_buttholes(roll.embargo)
         special_squares = get_special_squares(roll.embargo)
 
+        # always land on mornhammered
+        if (position < 100) and ((position + roll.number) >= 100):
+            return 100
+
         position += roll.number
 
         # Handle position > 100.
