@@ -1,43 +1,42 @@
 default:  ## Build and serve the web site.
-	pipenv run python manage.py migrate
-	pipenv run python manage.py loaddata buttholes special_squares rolls
+	python manage.py migrate
+	python manage.py loaddata buttholes special_squares rolls
 	make scss
-	make js
-	pipenv run python manage.py runserver
+	python manage.py runserver
 
 setup:  ## Install required environments and packages.
-	pipenv install
+	pip install --requirement requirements.txt
 	npm ci --production
 	printf "SECRET_KEY=`pwgen --capitalize --numerals 50 1`\n" > .env
 
 setup-dev:  ## Install required environments and packages for development.
-	pipenv install --dev
+	pip install --requirement requirements.txt
 	npm ci
 	printf "DEBUG=1\n" > .env
 
 test: ## Run tests.
-	pipenv run pytest
+	pytest
 
 check-django:  ## Check Django configuration. Will fail if DEBUG is set to true.
-	pipenv run python manage.py makemigrations --check
-	pipenv run python manage.py check --deploy --fail-level INFO
+	python manage.py makemigrations --check
+	python manage.py check --deploy --fail-level INFO
 
 migrations:  ## Create Django migrations.
-	pipenv run python manage.py makemigrations
-	pipenv run black **/migrations/*.py
-	pipenv run isort --apply **/migrations/*.py
+	python manage.py makemigrations
+	black **/migrations/*.py
+	isort --apply **/migrations/*.py
 
 scss:  ## Build SCSS.
-	pipenv run python manage.py compilescss
+	python manage.py compilescss
 
 lint-python:  ## Lint Python.
-	pipenv run isort --check-only
-	pipenv run black --check --diff .
-	find . -iname "*.py" | xargs pipenv run pylint
+	isort --check-only
+	black --check --diff .
+	find . -iname "*.py" | xargs pylint
 
 fix-python:  ## Attempt to automatically fix Python issues reported by linter.
-	pipenv run isort --apply
-	pipenv run black .
+	isort --apply
+	black .
 
 lint-yaml: ## Lint YAML.
 	npm run prettier -- "**/*.yaml" --check
@@ -80,3 +79,6 @@ pyenv-virtualenv:  ## Create a virtual environment managed by pyenv-virtualenv.
 pyenv-virtualenv-delete:  ## Delete a virtual environment managed by pyenv-virtualenv.
 	pyenv virtualenv-delete --force `cat .python-version || echo will-of-the-prophets`
 	rm -f .python-version
+
+requirements.txt: requirements.in;
+	pip-compile --allow-unsafe --generate-hashes --strip-extras

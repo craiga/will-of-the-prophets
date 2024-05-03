@@ -23,7 +23,6 @@ jobs:
           python-version: 3.8
       - name: Setup
         run: |
-          pip install pipenv
-          pipenv install --dev
+          pip install --requirement requirements.txt
       - name: Lint Python Code
         run: make lint-python
