@@ -21,10 +21,9 @@ jobs:
           python-version: 3.8
       - name: Setup
         run: |
-          pip install pipenv
-          pipenv install --dev
+          pip install --requirement requirements.txt
       - name: Collect Static Assets
-        run: pipenv run python manage.py collectstatic --no-input
+        run: python manage.py collectstatic --no-input
       - name: Run Tests
         run: make test
 
@@ -41,8 +40,7 @@ jobs:
           python-version: 3.8
       - name: Setup
         run: |
-          pip install pipenv
-          pipenv install
+          pip install --requirement requirements.txt
       - name: Test Django Configured Correctly
         run: make check-django
         env:

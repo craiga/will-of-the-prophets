@@ -4,17 +4,6 @@ A web app for the board game played by the hosts of [The Greatest Generation](ht
 
 [More information on Wikia.](<http://greatestgen.wikia.com/wiki/DS9_Board_Game_(Game_of_Buttholes)>)
 
-# Getting Started
-
-Once you've checked out this repository and installed [pipenv](http://pipenv.readthedocs.io), getting this project up and running should be simple.
-
-```
-make setup-dev
-make
-```
-
-Run `make help` for descriptions of other commands!
-`
 
 # Developing with CSS
 

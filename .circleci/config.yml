@@ -27,17 +27,16 @@ jobs:
           name: install dependencies
           command: |
             sudo apt-get -y install libenchant1c2a npm libgtk2.0-0 libgtk-3-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
-            sudo pip install pipenv
-            pipenv install --dev
+            pip install --requirement requirements.txt
             npm ci
 
       - run:
           name: collect static files
-          command: pipenv run python manage.py collectstatic --no-input
+          command: python manage.py collectstatic --no-input
 
       - run:
           name: run tests
-          command: pipenv run pytest --log-level DEBUG
+          command: pytest --log-level DEBUG
 
       - run:
           name: run end-to-end tests
@@ -48,9 +47,9 @@ jobs:
             DEBUG: 1
             DISABLE_DEBUG_TOOLBAR: 1
           command: |
-            pipenv run python manage.py migrate
-            pipenv run python manage.py createsuperuser --noinput
-            pipenv run python manage.py runserver & npm run wait-on http://localhost:8000
+            python manage.py migrate
+            python manage.py createsuperuser --noinput
+            python manage.py runserver & npm run wait-on http://localhost:8000
             npm run cypress run
 
       - store_artifacts:
@@ -61,23 +60,23 @@ jobs:
 
       - run:
           name: deployment check
-          command: pipenv run python manage.py check --deploy --fail-level INFO
+          command: python manage.py check --deploy --fail-level INFO
 
       - run:
           name: check for missing migrations
-          command: pipenv run python manage.py makemigrations --check
+          command: python manage.py makemigrations --check
 
       - run:
           name: check code formatting
           command: |
             npm run prettier -- **/*.scss --check
             npm run prettier -- **/*.js --check
-            pipenv run black --check --diff .
-            pipenv run isort --check-only
-            find . -iname "*.py" | xargs pipenv run pylint
+            black --check --diff .
+            isort --check-only
+            find . -iname "*.py" | xargs pylint
 
       - run:
           name: check CSS
           command: |
-            pipenv run python manage.py compilescss
+            python manage.py compilescss
             git diff --no-ext-diff --exit-code
