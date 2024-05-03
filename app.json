@@ -1,6 +1,6 @@
 {
   "name": "will-of-the-prophets",
-  "stack": "heroku-20",
+  "stack": "heroku-22",
   "env": {
     "SECRET_KEY": {
       "generator": "secret"
