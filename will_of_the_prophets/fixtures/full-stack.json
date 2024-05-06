@@ -10,5 +10,15 @@
       "is_staff": true,
       "is_active": true
     }
+  },
+  {
+    "model": "will_of_the_prophets.roll",
+    "pk": 1701,
+    "fields": {
+      "created": "2000-01-01T00:00:00Z",
+      "modified": "2000-01-01T00:00:00Z",
+      "number": 1,
+      "embargo": "2000-01-01T00:00:00Z"
+    }
   }
 ]
