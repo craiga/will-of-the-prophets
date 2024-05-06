@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -ex
+
+if [ -z "$DEBUG" ]
+then
+    python manage.py check --deploy --fail-level WARNING
+    python manage.py migrate --check
+fi
+
+gunicorn will_of_the_prophets.wsgi --log-file -

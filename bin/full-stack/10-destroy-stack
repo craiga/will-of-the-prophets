@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -x
+
+heroku run --exit-code "bin/predestroy"
+heroku ps:scale web=0
+heroku apps:destroy "$HEROKU_APP" --confirm "$HEROKU_APP"

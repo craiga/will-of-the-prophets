@@ -3,11 +3,6 @@ on:
   pull_request:
     branches:
       - "*"
-  push:
-    paths:
-      - "**/*.js"
-      - ".github/workflows/js.yaml"
-      - "Makefile"
 
 jobs:
   lint-js:
@@ -20,8 +15,8 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 21
       - name: Setup
-        run: npm install prettier@`cat package-lock.json | jq ".dependencies.prettier.version" --raw-output`
+        run: npm ci
       - name: Lint JavaScript
-        run: make lint-js
+        run: npx prettier --check -- "**/*.js"

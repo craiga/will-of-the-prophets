@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -ex
+
+heroku logs --num 1500 --tail | tee logs.txt &
+while true
+do
+  heroku logs --num 1 > /dev/null
+done

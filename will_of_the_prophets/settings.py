@@ -239,6 +239,12 @@ FEATURE_POLICY["document-domain"] = "self"
 PUBLIC_BOARD_CANONICAL_URL = os.environ.get("PUBLIC_BOARD_CANONICAL_URL")
 
 
+# Django Debug Toolbar
+# https://django-debug-toolbar.readthedocs.io/en/stable/configuration.html
+
+DEBUG_TOOLBAR_CONFIG = {"SHOW_COLLAPSED": True}
+
+
 # Inject settings for Heroku.
 django_heroku.settings(locals())
 

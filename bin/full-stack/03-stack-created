@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -ex
+
+# Check app setup didn't immediately fail.
+RESPONSE=$(curl \
+  "https://api.heroku.com/app-setups/$HEROKU_SETUP_ID" \
+  --header "Authorization: Bearer $HEROKU_API_KEY" \
+  --header "Content-Type: application/json" \
+  --header "Accept: application/vnd.heroku+json; version=3"  \
+  --silent)
+STATUS="$(echo "$RESPONSE" | jq ".status" -r)"
+if [ "$STATUS" = "failed" ]
+then
+  echo "Heroku app setup failed."
+  echo "$RESPONSE" | jq ".failure_message" -r
+  echo "$RESPONSE" | jq ".build.output_stream_url" -r
+  curl "$(echo "$RESPONSE" | jq ".build.output_stream_url" -r)" --silent
+  heroku logs
+  exit 1
+fi
+
+# Setting up metrics and metadata
+heroku labs:enable log-runtime-metrics
+heroku labs:enable runtime-dyno-metadata
+
+# Set Sentry DSN if set
+heroku config:set SENTRY_DSN="$SENTRY_DSN"

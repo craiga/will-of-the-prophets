@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -ex
+
+RESPONSE=$(curl \
+    "https://api.heroku.com/app-setups/$HEROKU_SETUP_ID" \
+      --header "Authorization: Bearer $HEROKU_API_KEY" \
+      --header "Content-Type: application/json" \
+      --header "Accept: application/vnd.heroku+json; version=3"  \
+      --silent)
+BUILD_LOG_URL=$(echo "$RESPONSE" | jq ".build.output_stream_url" -r)
+curl --output build-log.txt "$BUILD_LOG_URL"

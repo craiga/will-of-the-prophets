@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -ex
+
+heroku ps:copy postdeploy-output.txt || true
+
+RESPONSE=$(curl \
+    "https://api.heroku.com/app-setups/$HEROKU_SETUP_ID" \
+      --header "Authorization: Bearer $HEROKU_API_KEY" \
+      --header "Content-Type: application/json" \
+      --header "Accept: application/vnd.heroku+json; version=3"  \
+      --silent)
+echo "Heroku app setup API response: $RESPONSE"
+
+POSTDEPLOY_OUTPUT=$(echo "$RESPONSE" | jq ".postdeploy.output" -r)
+echo "Postdeploy script output: $POSTDEPLOY_OUTPUT"
+
+if [ "$POSTDEPLOY_OUTPUT" != "null" ]; then
+  echo "$POSTDEPLOY_OUTPUT" >> postdeploy-output.txt
+fi
