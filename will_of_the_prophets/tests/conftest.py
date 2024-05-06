@@ -2,13 +2,9 @@
 
 import logging
 import os
-import re
 from datetime import datetime
 from unittest import mock
-from urllib.parse import urlparse, urlunparse
 
-from django.conf import settings
-from django.http import QueryDict
 from django.test.utils import override_settings
 
 import pytest
