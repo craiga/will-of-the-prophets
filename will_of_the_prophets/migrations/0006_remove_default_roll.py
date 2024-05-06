@@ -6,13 +6,11 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('will_of_the_prophets', '0005_timeframe_specialsquares_and_buttholes'),
+        ("will_of_the_prophets", "0005_timeframe_specialsquares_and_buttholes")
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='roll',
-            name='number',
-            field=models.PositiveIntegerField(),
-        ),
+            model_name="roll", name="number", field=models.PositiveIntegerField()
+        )
     ]

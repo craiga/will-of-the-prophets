@@ -18,7 +18,6 @@ from model_bakery import baker
 logger = logging.getLogger(__name__)
 
 
-
 @pytest.fixture
 def rolls():
     """Generate nine rolls on the first nine days of July 2369."""
@@ -27,8 +26,6 @@ def rolls():
             datetime(year=2369, month=7, day=number, hour=12, minute=34, second=56)
         )
         baker.make("Roll", number=number, embargo=embargo)
-
-
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -46,7 +43,7 @@ def _set_settings():
         PASSWORD_HASHERS=["django.contrib.auth.hashers.MD5PasswordHasher"],
         SECURE_SSL_REDIRECT=True,
         WHITENOISE_AUTOREFRESH=True,
-        STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+        STATICFILES_STORAGE="whitenoise.storage.CompressedStaticFilesStorage",
     ):
         yield
 
