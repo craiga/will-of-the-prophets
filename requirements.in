@@ -69,3 +69,5 @@ wrapt==1.12.1
 pip-tools
 python-dotenv
 pytest-dotenv
+importlib-metadata
+tomli
