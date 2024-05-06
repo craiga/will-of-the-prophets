@@ -28,3 +28,4 @@ class RollForm(forms.ModelForm):
         model = Roll
         fields = ["embargo", "die_size"]
         labels = {"embargo": "Date and time move will be public"}
+        widgets = {"embargo": forms.DateInput(attrs={"type": "date"})}

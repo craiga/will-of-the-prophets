@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+python manage.py loaddata \
+  buttholes \
+  rolls \
+  special_squares \
+  --verbosity 3 2>&1 | tee -a postdeploy-output.txt

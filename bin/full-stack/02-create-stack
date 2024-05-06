@@ -1,0 +1,74 @@
+#!/bin/bash
+
+set -ex
+
+
+# Download code from GitHub.
+
+curl \
+  "https://api.github.com/repos/$GITHUB_REPOSITORY/tarball/$SOURCE_GITHUB_SHA" \
+  --location \
+  --header "Authorization: Bearer $GITHUB_TOKEN" \
+  --silent \
+  --fail \
+  --output source.tar
+
+
+# Upload code to Heroku.
+
+RESPONSE=$(curl \
+  https://api.heroku.com/sources \
+  --request POST \
+  --header "Authorization: Bearer $HEROKU_API_KEY" \
+  --header "Content-Type: application/json" \
+  --header "Accept: application/vnd.heroku+json; version=3" \
+  --silent \
+  --fail)
+
+SOURCE_PUT_URL=$(echo "$RESPONSE" | jq ".source_blob.put_url" -r)
+SOURCE_GET_URL=$(echo "$RESPONSE" | jq ".source_blob.get_url" -r)
+
+curl "$SOURCE_PUT_URL" \
+  --request PUT \
+  --header 'Content-Type:' \
+  --data-binary @source.tar \
+  --silent \
+  --fail
+
+
+# Start app setup on Heroku.
+
+RESPONSE=$(curl \
+  --request POST \
+  https://api.heroku.com/app-setups \
+  --header "Authorization: Bearer $HEROKU_API_KEY" \
+  --header "Content-Type: application/json" \
+  --header "Accept: application/vnd.heroku+json; version=3" \
+  --data \
+  "{\
+    \"source_blob\": {\"url\": \"$SOURCE_GET_URL\"}, \
+    \"app\": { \
+      \"organization\": \"uhf62\"
+    }, \
+    \"overrides\": {\"env\": { \
+      \"HEROKU_API_KEY\": \"$HEROKU_API_KEY\", \
+      \"SENTRY_RELEASE\": \"$SOURCE_GITHUB_SHA\" \
+    }} \
+  }" \
+  --silent)
+echo "Heroku app setup API response: $RESPONSE"
+
+STATUS=$(echo "$RESPONSE" | jq ".status" -r)
+if [ "$STATUS" != "pending" ]
+then
+  echo "Heroku app setup failed."
+  echo "$RESPONSE" | jq ".failure_message" -r
+  exit 1
+fi
+
+HEROKU_SETUP_ID=$(echo "$RESPONSE" | jq ".id" -r)
+echo "HEROKU_SETUP_ID=$HEROKU_SETUP_ID" >> .env
+HEROKU_APP=$(echo "$RESPONSE" | jq ".app.name" -r)
+echo "HEROKU_APP=$HEROKU_APP" >> .env
+
+exit 0
