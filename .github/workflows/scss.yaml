@@ -33,10 +33,13 @@ jobs:
     steps:
       - name: Clone Repo
         uses: actions/checkout@v2
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v2
+      - name: Read Python version
+        run: echo PYTHON_VERSION=$(cat runtime.txt | sed "s/python-//") >> $GITHUB_ENV
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.8
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: "pip"
       - name: Setup
         run: |
           pip install --requirement requirements.txt

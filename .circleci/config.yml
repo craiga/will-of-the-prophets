@@ -7,7 +7,7 @@ jobs:
   build:
     working_directory: ~/will-of-the-prophets
     docker:
-      - image: circleci/python:3.8
+      - image: circleci/python:3.9
         environment:
           DATABASE_URL: postgresql://will_of_the_prophets:security_is_important@localhost/will_of_the_prophets
           DATABASE_NO_SSL_REQUIRE: True
