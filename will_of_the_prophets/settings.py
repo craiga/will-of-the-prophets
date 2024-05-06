@@ -128,6 +128,7 @@ STATICFILES_FINDERS = [
     # https://github.com/jrief/django-sass-processor
     "sass_processor.finders.CssFinder",
 ]
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 # Ignore 404s
