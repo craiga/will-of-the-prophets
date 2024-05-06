@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -ex
+
+RESPONSE=$(curl \
+  "https://api.heroku.com/account/rate-limits" \
+  --header "Authorization: Bearer $HEROKU_API_KEY" \
+  --header "Content-Type: application/json" \
+  --header "Accept: application/vnd.heroku+json; version=3"  \
+  --silent)
+REMAINING_API_CALLS="$(echo "$RESPONSE" | jq ".remaining" -r)"
+
+while [[ $REMAINING_API_CALLS -lt ${MIN_REMAINING_HEROKU_API_CALLS:-1000} ]]
+do
+  sleep 60
+
+  RESPONSE=$(curl \
+    "https://api.heroku.com/account/rate-limits" \
+    --header "Authorization: Bearer $HEROKU_API_KEY" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/vnd.heroku+json; version=3"  \
+    --silent)
+  REMAINING_API_CALLS="$(echo "$RESPONSE" | jq ".remaining" -r)"
+done

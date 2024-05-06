@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -ex
+
+# https://gist.github.com/mihow/9c7f559807069a03e302605691f85572
+if [ -f .env ]
+then
+  # shellcheck disable=SC2046
+  export $(xargs < .env) || true
+fi
+
+
+if [ -z "$DATABASE_URL" ]
+then
+    echo "Skipping release as database is unavailable."
+else
+    if [ -z "$DEBUG" ]
+    then
+        python manage.py check --deploy --fail-level WARNING
+    fi
+
+    python manage.py migrate --no-input
+fi

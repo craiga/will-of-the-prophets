@@ -1,0 +1,44 @@
+#!/bin/bash
+
+set -x
+
+STATUS="pending"
+LOW_LEVEL_FAILURE_COUNT=0
+until [ "$STATUS" != "pending" ]
+do
+  heroku ps:copy postdeploy-output.txt
+  sleep 20
+
+  RESPONSE=$(curl \
+    "https://api.heroku.com/app-setups/$HEROKU_SETUP_ID" \
+      --header "Authorization: Bearer $HEROKU_API_KEY" \
+      --header "Content-Type: application/json" \
+      --header "Accept: application/vnd.heroku+json; version=3" \
+      --silent)
+  echo "Heroku app setup API response: $RESPONSE"
+  if [ "$RESPONSE" = "An unhandled lowlevel error occurred. The application logs may have details." ]
+  then
+    (( LOW_LEVEL_FAILURE_COUNT++ )) || true  # https://github.com/koalaman/shellcheck/wiki/SC2219
+    echo "$LOW_LEVEL_FAILURE_COUNT unhandled low-level failures; will abort after five."
+    if [ "$LOW_LEVEL_FAILURE_COUNT" -gt 5 ]
+    then
+      STATUS="failed"
+    fi
+  else
+    STATUS=$(echo "$RESPONSE" | jq ".status" -r)
+    echo "Heroku app setup status: $STATUS"
+  fi
+done
+if [ "$STATUS" = "failed" ]
+then
+  echo "Heroku app setup failed."
+  echo "$RESPONSE" | jq ".failure_message" -r
+
+  # The get postdeploy script output job will often fail after waiting for stack fails
+  # because the app is automatically deleted.
+  # Let's try getting the postdeploy output straight away.
+  bin/full-stack/08-download-postdeploy-output
+  exit 1
+fi
+
+exit 0

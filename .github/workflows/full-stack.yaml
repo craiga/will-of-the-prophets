@@ -1,0 +1,254 @@
+name: Full stack
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - "main"
+
+env:
+  GITHUB_REPOSITORY: ${{ github.repository }}
+  GITHUB_RUN_ID: ${{ github.run_id }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+  SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+
+concurrency:
+  group: ${{ github.event.pull_request.head.ref }}
+  cancel-in-progress: true
+
+jobs:
+  create-stack:
+    name: Create stack
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Create environment variables
+        run: |
+          echo SOURCE_GITHUB_SHA='${{ github.event.pull_request.head.sha }}' >> .env
+          echo LATEST_MAIL_SHARED_SECRET="$(openssl rand -base64 32)" >> .env
+      - name: Read environment variables
+        run: cat .env >> $GITHUB_ENV
+      - name: Save environment variables
+        uses: actions/upload-artifact@v4
+        with:
+          name: .env
+          path: .env
+          retention-days: 1
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.4
+        with:
+          ref: ${{ env.SOURCE_GITHUB_SHA }}
+      - name: Reinstate environment variables file
+        uses: actions/download-artifact@v4
+        with:
+          name: .env
+      - name: Run pre-flight checks
+        run: bin/full-stack/00-pre-flight-checks
+      - name: Wait for Heroku
+        run: bin/full-stack/01-wait-for-heroku
+        env:
+          MIN_REMAINING_HEROKU_API_CALLS: ${{ vars.MIN_REMAINING_HEROKU_API_CALLS || 1000 }}
+      - name: Run create stack script
+        run: bin/full-stack/02-create-stack
+      - name: Read environment variables
+        run: cat .env >> $GITHUB_ENV
+      - name: Write links
+        run: |
+          echo "### Created Heroku stack $HEROKU_APP" >> $GITHUB_STEP_SUMMARY
+          echo " - [Heroku Dashboard](https://dashboard.heroku.com/apps/$HEROKU_APP)" >> $GITHUB_STEP_SUMMARY
+          echo " - [Errors in Sentry tagged with environment $HEROKU_APP](https://sentry.io/organizations/craig-anderson/issues/?environment=$HEROKU_APP)" >> $GITHUB_STEP_SUMMARY
+      - name: Run stack created script
+        run: bin/full-stack/03-stack-created
+      - name: Save environment variables
+        uses: actions/upload-artifact@v4
+        with:
+          name: .env
+          path: .env
+          retention-days: 1
+          overwrite: true
+
+  collect-logs:
+    name: Collect logs
+    runs-on: ubuntu-latest
+    needs: [create-stack]
+    steps:
+      - name: Download environment variables
+        uses: actions/download-artifact@v4
+        with:
+          name: .env
+      - name: Read environment variables
+        run: cat .env >> $GITHUB_ENV
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.4
+        with:
+          ref: ${{ env.SOURCE_GITHUB_SHA }}
+      - name: Reinstate environment variables file
+        uses: actions/download-artifact@v4
+        with:
+          name: .env
+      - name: Collect logs
+        run: bin/full-stack/04-collect-logs
+        continue-on-error: true
+      - name: Archive logs
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          path: logs.txt
+          name: logs
+      - name: Save environment variables
+        uses: actions/upload-artifact@v4
+        with:
+          name: .env
+          path: .env
+          retention-days: 1
+          overwrite: true
+
+  wait-for-stack:
+    name: Wait for stack
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    needs: [create-stack]
+    steps:
+      - name: Download environment variables
+        uses: actions/download-artifact@v4
+        with:
+          name: .env
+      - name: Read environment variables
+        run: cat .env >> $GITHUB_ENV
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.4
+        with:
+          ref: ${{ env.SOURCE_GITHUB_SHA }}
+      - name: Reinstate environment variables file
+        uses: actions/download-artifact@v4
+        with:
+          name: .env
+      - name: Run database wait script
+        run: bin/full-stack/05-wait-for-database
+      - name: Run database ready script
+        run: bin/full-stack/06-database-ready
+      - name: Run stack wait script
+        run: bin/full-stack/07-wait-for-stack
+      - name: Save postdeploy script output on wait for stack failure
+        uses: actions/upload-artifact@v4
+        if: ${{ failure() }}
+        with:
+          name: postdeploy-output-on-wait-for-stack-failure
+          path: postdeploy-output.txt
+      - name: Save Heroku CLI log on wait for stack failure
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          path: ~/.cache/heroku/error.log
+          name: heroku-cli-log-on-wait-for-stack-failure
+      - name: Run stack created script
+        run: bin/full-stack/08-stack-ready
+      - name: Save environment variables
+        uses: actions/upload-artifact@v4
+        with:
+          name: .env
+          path: .env
+          retention-days: 1
+          overwrite: true
+
+  build-logs:
+    name: Get build logs
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: [wait-for-stack]
+    if: ${{ always() }}
+    steps:
+      - name: Download environment variables
+        uses: actions/download-artifact@v4
+        with:
+          name: .env
+      - name: Read environment variables
+        run: cat .env >> $GITHUB_ENV
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.4
+        with:
+          ref: ${{ env.SOURCE_GITHUB_SHA }}
+      - name: Reinstate environment variables file
+        uses: actions/download-artifact@v4
+        with:
+          name: .env
+      - name: Download build log
+        run: bin/full-stack/08-download-build-log
+      - name: Save build log
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build-log.txt
+      - name: Download postdeploy output
+        run: bin/full-stack/08-download-postdeploy-output
+      - name: Save postdeploy script output
+        uses: actions/upload-artifact@v4
+        with:
+          name: postdeploy-output
+          path: postdeploy-output.txt
+
+  cypress:
+    name: Cypress
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [wait-for-stack]
+    steps:
+      - name: Download environment variables
+        uses: actions/download-artifact@v4
+        with:
+          name: .env
+      - name: Read environment variables
+        run: cat .env >> $GITHUB_ENV
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.4
+        with:
+          ref: ${{ env.SOURCE_GITHUB_SHA }}
+      - name: Reinstate environment variables file
+        uses: actions/download-artifact@v4
+        with:
+          name: .env
+      - name: Run tests
+        uses: cypress-io/github-action@v6
+        with:
+          config: baseUrl=${{ env.URL }}
+          wait-on: ${{ env.URL }}
+        env:
+          CYPRESS_LATEST_MAIL_SHARED_SECRET: ${{ env.LATEST_MAIL_SHARED_SECRET }}
+      - name: Save Cypress screenshots
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: "cypress/screenshots/"
+      - name: Post-Cypress test
+        run: bin/full-stack/09-post-cypress-test
+
+  destroy-stack:
+    name: Destroy stack
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: [cypress, build-logs]
+    if: always()
+    steps:
+      - name: Download environment variables
+        uses: actions/download-artifact@v4
+        with:
+          name: .env
+      - name: Read environment variables
+        run: cat .env >> $GITHUB_ENV
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.4
+        with:
+          ref: ${{ env.SOURCE_GITHUB_SHA }}
+      - name: Reinstate environment variables file
+        uses: actions/download-artifact@v4
+        with:
+          name: .env
+      - name: Run destroy stack script
+        run: bin/full-stack/10-destroy-stack
+      - name: Archive Heroku CLI log
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          path: ~/.cache/heroku/error.log
+          name: heroku-cli-log

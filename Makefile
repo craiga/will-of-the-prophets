@@ -38,30 +38,6 @@ fix-python:  ## Attempt to automatically fix Python issues reported by linter.
 	isort --apply
 	black .
 
-lint-yaml: ## Lint YAML.
-	npm run prettier -- "**/*.yaml" --check
-
-fix-yaml: ## Attempt to fix YAML issues reported by the linter.
-	npm run prettier -- "**/*.yaml" --write
-
-lint-json: ## Lint JSON.
-	npm run prettier -- "*.json" "**/*.json" --check
-
-fix-json: ## Attempt to fix JSON issues reported by the linter.
-	npm run prettier -- "*.json" "**/*.json" --write
-
-lint-scss: ## Lint SCSS.
-	npm run prettier -- "**/*.scss" --check
-
-fix-scss: ## Attempt to fix SCSS issues reported by the linter.
-	npm run prettier -- "**/*.scss" --write
-
-lint-js: ## Lint JavaScript.
-	npm run prettier -- "**/*.js" --check
-
-fix-js: ## Attempt to fix JavaScript issues reported by the linter.
-	npm run prettier -- "**/*.js" --write
-
 will_of_the_prophets/fixtures/live.json: ## Get live data from production.
 	heroku run --app will-of-the-prophets python manage.py dumpdata will_of_the_prophets > will_of_the_prophets/fixtures/live.json
 	make fix-json
@@ -82,3 +58,6 @@ pyenv-virtualenv-delete:  ## Delete a virtual environment managed by pyenv-virtu
 
 requirements.txt: requirements.in;
 	pip-compile --allow-unsafe --generate-hashes --strip-extras
+
+cypress.env.json:  ## Create Cypress environment file.
+	echo "{\n  \"initCommand\": \"python manage.py loaddata full-stack\"\n}" > cypress.env.json

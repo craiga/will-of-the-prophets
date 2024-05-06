@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -ex
+
+URL=$(curl \
+  "https://api.heroku.com/app-setups/$HEROKU_SETUP_ID" \
+    --header "Authorization: Bearer $HEROKU_API_KEY" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/vnd.heroku+json; version=3" \
+    --silent \
+    | jq ".resolved_success_url" -r)
+
+echo "URL=${URL%/}" >> .env
+
+heroku run --exit-code \
+  "python manage.py loaddata full-stack --verbosity 3"
