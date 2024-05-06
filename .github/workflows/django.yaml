@@ -22,8 +22,6 @@ jobs:
       - name: Setup
         run: |
           pip install --requirement requirements.txt
-      - name: Collect Static Assets
-        run: python manage.py collectstatic --no-input
       - name: Run Tests
         run: make test
 
