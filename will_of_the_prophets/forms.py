@@ -10,7 +10,7 @@ from will_of_the_prophets.models import Roll
 class RollForm(forms.ModelForm):
     """Roll form."""
 
-    die_size = forms.ChoiceField(choices=[(6, "Six-sided die"), (100, "100-sided die")])
+    die_size = forms.ChoiceField(choices=[(100, "100-sided die"), (6, "Six-sided die")])
 
     def save(self, commit=True):
         """
