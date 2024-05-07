@@ -10,8 +10,6 @@ from django.utils import timezone
 import pytest
 from model_bakery import baker
 
-from will_of_the_prophets.models import Roll
-
 
 @pytest.mark.django_db
 def test_must_be_later_than_latest():
