@@ -10,7 +10,7 @@ import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # noqa: PTH100, PTH120
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "placeholder")
 
@@ -68,7 +68,6 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "will_of_the_prophets.context_processors.sentry_dsn",
             ],
-            "string_if_invalid": "ERROR: '%s' is invalid." if DEBUG else "",
         },
     }
 ]
@@ -82,7 +81,7 @@ WSGI_APPLICATION = "will_of_the_prophets.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),  # noqa: PTH118
     }
 }
 
@@ -159,18 +158,6 @@ SECURE_REFERRER_POLICY = "same-origin"
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 
-# SECURE_HSTS_SECONDS = 0 if DEBUG else int(os.environ.get("SECURE_HSTS_SECONDS", 60))
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-# SECURE_HSTS_PRELOAD = not DEBUG
-# SECURE_CONTENT_TYPE_NOSNIFF = True
-# SECURE_BROWSER_XSS_FILTER = True
-# SECURE_SSL_REDIRECT = not DEBUG
-# SESSION_COOKIE_SECURE = not DEBUG
-# CSRF_COOKIE_SECURE = not DEBUG
-# X_FRAME_OPTIONS = "DENY"
-# SECURE_REFERRER_POLICY = "same-origin"
-
-
 # django-sass-processor
 # https://github.com/jrief/django-sass-processor
 
@@ -194,7 +181,7 @@ INTERNAL_IPS = ("127.0.0.1",)
 # Whitenoise
 # http://whitenoise.evans.io/en/stable/django.html#available-settings
 
-WHITENOISE_ROOT = os.path.join(BASE_DIR, "staticfiles")
+WHITENOISE_ROOT = os.path.join(BASE_DIR, "staticfiles")  # noqa: PTH118
 
 # django-s3direct
 # https://github.com/bradleyg/django-s3direct

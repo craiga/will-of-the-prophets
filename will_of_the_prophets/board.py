@@ -1,41 +1,25 @@
 """Will of the Prophets game board."""
 
-from functools import lru_cache
-
-from django.core import signals
 from django.template.loader import render_to_string
 from django.utils import timezone
 
 from will_of_the_prophets import models
 
 
-@lru_cache(maxsize=1)
-def get_all_buttholes():
-    """Get all buttholes."""
-    return models.Butthole.objects.all()
-
-
-@lru_cache(maxsize=1)
-def get_all_special_squares():
-    """Get all special squares."""
-    return models.SpecialSquare.objects.select_related().all()
-
-
-def clear_caches(**kwargs):  # pylint: disable=unused-argument
-    """Clear cached results of buttholes and special squares."""
-    get_all_buttholes.cache_clear()
-    get_all_special_squares.cache_clear()
-
-
-signals.request_started.connect(clear_caches)
-
-
-def calculate_position(now):
+def calculate_position(now):  # noqa: ANN001, ANN201
     """Calculate the position at a particular time."""
     position = 1
     for roll in models.Roll.objects.filter(embargo__lte=now):
-        buttholes = get_buttholes(roll.embargo)
-        special_squares = get_special_squares(roll.embargo)
+        buttholes = {
+            b.start_square: b.end_square
+            for b in models.Butthole.objects.active(roll.embargo)
+        }
+        special_squares = {
+            s.square: s.type
+            for s in models.SpecialSquare.objects.select_related("type").active(
+                roll.embargo
+            )
+        }
 
         position += roll.number
 
@@ -50,70 +34,34 @@ def calculate_position(now):
     return position
 
 
-def is_active(obj, now):
-    """Determine if an object is active."""
-    if not obj.start or obj.start <= now:
-        if not obj.end or obj.end >= now:
-            return True
-
-    return False
-
-
-def get_buttholes(now):
-    """Get butthole starts and ends."""
-    buttholes = dict()
-    for butthole in get_all_buttholes():
-        if is_active(butthole, now):
-            buttholes[butthole.start_square] = butthole.end_square
-
-    return buttholes
-
-
-def get_special_squares(now):
-    """Get special square types keyed on squares they appear in."""
-    special_squares = dict()
-    for special_square in get_all_special_squares():
-        if is_active(special_square, now):
-            special_squares[special_square.square] = special_square.type
-
-    return special_squares
-
-
 class Square:
     """A square in the board."""
 
-    def __init__(self, number, current_position, now, row_reversed=False):
+    def __init__(  # noqa: D107, PLR0913
+        self,
+        number,  # noqa: ANN001
+        current_position,  # noqa: ANN001
+        now,  # noqa: ANN001
+        row_reversed=False,  # noqa: ANN001, FBT002
+        butthole_destination=None,  # noqa: ANN001
+        butthole_source=None,  # noqa: ANN001
+        special_square_type=None,  # noqa: ANN001
+    ) -> None:
         self.now = now
         self.number = number
         self.row_reversed = row_reversed
         self.is_current_position = number == current_position
         self.was_visited = number < current_position
-
-    def get_special(self):
-        return get_special_squares(self.now).get(self.number)
-
-    def is_butthole_start(self):
-        return self.number in get_buttholes(self.now)
-
-    def get_butthole_direction(self):
-        buttholes = get_buttholes(self.now)
-        return "forward" if buttholes[self.number] > self.number else "backward"
-
-    def get_butthole_ends(self):
-        """Get the starting squares of any buttholes which end here."""
-        butthole_ends = []
-        for start, end in get_buttholes(self.now).items():
-            if end == self.number:
-                butthole_ends.append(start)
-
-        return butthole_ends
+        self.butthole_destination = butthole_destination
+        self.butthole_source = butthole_source
+        self.special_square_type = special_square_type
 
     @property
-    def row_break_after(self):
+    def row_break_after(self):  # noqa: ANN201, D102
         return str(self.number)[-1] == "1"
 
 
-def square_numbers():
+def square_numbers():  # noqa: ANN201
     """
     Square numbers in order, and whether the row is reversed.
 
@@ -121,7 +69,7 @@ def square_numbers():
     left-to-right, the second row runs right-to-left (that is, reversed),
     the third row runs left-to-right, and so on.
     """
-    for row_number in reversed(range(0, 10)):
+    for row_number in reversed(range(10)):
         first_square = row_number * 10 + 1
         numbers = range(first_square, first_square + 10)
         row_reversed = False
@@ -136,14 +84,21 @@ def square_numbers():
 class Board:
     """The Will of the Caretaker board at any given time."""
 
-    def __init__(self, now=None):
+    def __init__(self, now=None) -> None:  # noqa: ANN001, D107
         if not now:
             now = timezone.now()
 
         self.now = now
+        buttholes = models.Butthole.objects.active(now)
+        self.buttholes_start_to_end = {b.start_square: b.end_square for b in buttholes}
+        self.buttholes_end_to_start = {b.end_square: b.start_square for b in buttholes}
+        self.special_square_types = {
+            s.square: s.type
+            for s in models.SpecialSquare.objects.select_related("type").active(now)
+        }
 
     @property
-    def squares(self):
+    def squares(self):  # noqa: ANN201
         """The 100 squares which make up the board."""
         current_position = self.get_current_position()
         for square_number, row_reversed in square_numbers():
@@ -152,13 +107,16 @@ class Board:
                 now=self.now,
                 current_position=current_position,
                 row_reversed=row_reversed,
+                butthole_destination=self.buttholes_start_to_end.get(square_number),
+                butthole_source=self.buttholes_end_to_start.get(square_number),
+                special_square_type=self.special_square_types.get(square_number),
             )
 
-    def get_current_position(self):
+    def get_current_position(self):  # noqa: ANN201
         """Get the current position."""
         return calculate_position(self.now)
 
-    def __str__(self):
+    def __str__(self) -> str:  # noqa: D105
         return render_to_string(
             "will_of_the_prophets/board/board.html", {"squares": self.squares}
         )

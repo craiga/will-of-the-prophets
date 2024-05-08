@@ -1,0 +1,33 @@
+name: pre-commit
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+
+jobs:
+  pre-commit:
+    name: pre-commit
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@v4.1.4
+      - name: Read Python version
+        run: echo PYTHON_VERSION=$(cat runtime.txt | sed "s/python-//") >> $GITHUB_ENV
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: "pip"
+      - name: Setup
+        run: pip install --requirement requirements.txt
+      - name: pre-commit
+        uses: pre-commit/action@v3.0.1
+      - name: Commit changed files on failure
+        if: ${{ failure() }}
+        run: |
+          git config user.email "pre-commit-action@example.com"
+          git config user.name "pre-commit action"
+          git add .
+          git commit --message "pre-commit changes"
+          git push

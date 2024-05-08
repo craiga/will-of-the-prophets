@@ -123,7 +123,7 @@ function renderButtholes() {
     var controlPoint1 = getControlPoint(
       startPoint,
       midPoint,
-      rotationDirection
+      rotationDirection,
     );
     var controlPoint2 = getControlPoint(midPoint, endPoint, -rotationDirection);
 
@@ -146,7 +146,7 @@ function renderButtholes() {
     JSON.parse(endEl.dataset.buttholeStarts).forEach(function (startNumber) {
       renderPath(
         document.querySelector('[data-number="' + startNumber + '"]'),
-        endEl
+        endEl,
       );
     });
   });

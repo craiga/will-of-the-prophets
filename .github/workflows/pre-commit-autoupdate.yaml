@@ -1,0 +1,33 @@
+name: pre-commit auto-update
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0/4 * * *"
+
+jobs:
+  auto-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@v4.1.4
+      - name: Read Python version
+        run: echo PYTHON_VERSION=$(cat runtime.txt | sed "s/python-//") >> $GITHUB_ENV
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: "pip"
+      - name: Setup
+        run: |
+          pip install --requirement requirements.txt
+      - uses: browniebroke/pre-commit-autoupdate-action@v1.0.0
+        continue-on-error: true
+      - uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: Update pre-commit repos
+          branch: pre-commit-update
+          base: main
+          delete-branch: true
+          commit-message: "pre-commit update"

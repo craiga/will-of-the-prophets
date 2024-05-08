@@ -1,26 +1,92 @@
 [
   {
     "model": "will_of_the_prophets.butthole",
-    "fields": { "start_square": 21, "end_square": 2 }
+    "pk": 1,
+    "fields": {
+      "start": null,
+      "end": "2021-02-01T05:59:59Z",
+      "start_square": 21,
+      "end_square": 2
+    }
   },
   {
     "model": "will_of_the_prophets.butthole",
-    "fields": { "start_square": 49, "end_square": 12 }
+    "pk": 2,
+    "fields": {
+      "start": null,
+      "end": null,
+      "start_square": 49,
+      "end_square": 12
+    }
   },
   {
     "model": "will_of_the_prophets.butthole",
-    "fields": { "start_square": 62, "end_square": 18 }
+    "pk": 3,
+    "fields": {
+      "start": null,
+      "end": null,
+      "start_square": 62,
+      "end_square": 18
+    }
   },
   {
     "model": "will_of_the_prophets.butthole",
-    "fields": { "start_square": 87, "end_square": 24 }
+    "pk": 4,
+    "fields": {
+      "start": null,
+      "end": "2021-02-01T05:59:59Z",
+      "start_square": 87,
+      "end_square": 34
+    }
   },
   {
     "model": "will_of_the_prophets.butthole",
-    "fields": { "start_square": 92, "end_square": 72 }
+    "pk": 5,
+    "fields": {
+      "start": null,
+      "end": "2021-02-01T05:59:59Z",
+      "start_square": 92,
+      "end_square": 72
+    }
   },
   {
     "model": "will_of_the_prophets.butthole",
-    "fields": { "start_square": 98, "end_square": 78 }
+    "pk": 6,
+    "fields": {
+      "start": null,
+      "end": null,
+      "start_square": 98,
+      "end_square": 78
+    }
+  },
+  {
+    "model": "will_of_the_prophets.butthole",
+    "pk": 9,
+    "fields": {
+      "start": "2021-02-01T05:59:59Z",
+      "end": null,
+      "start_square": 2,
+      "end_square": 21
+    }
+  },
+  {
+    "model": "will_of_the_prophets.butthole",
+    "pk": 10,
+    "fields": {
+      "start": "2021-02-01T06:00:00Z",
+      "end": null,
+      "start_square": 34,
+      "end_square": 87
+    }
+  },
+  {
+    "model": "will_of_the_prophets.butthole",
+    "pk": 11,
+    "fields": {
+      "start": "2021-02-01T06:00:00Z",
+      "end": null,
+      "start_square": 72,
+      "end_square": 92
+    }
   }
 ]

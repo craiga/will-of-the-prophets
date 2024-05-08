@@ -1,0 +1,267 @@
+[
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 1,
+    "fields": {
+      "start": "2018-09-24T14:40:00Z",
+      "end": "2019-04-23T06:00:00Z",
+      "square": 2,
+      "type": 12
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 2,
+    "fields": { "start": null, "end": null, "square": 18, "type": 1 }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 3,
+    "fields": {
+      "start": "2018-09-24T14:40:00Z",
+      "end": null,
+      "square": 24,
+      "type": 11
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 4,
+    "fields": {
+      "start": null,
+      "end": "2019-04-23T06:00:00Z",
+      "square": 36,
+      "type": 1
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 5,
+    "fields": {
+      "start": "2018-09-24T14:40:00Z",
+      "end": "2019-04-23T06:00:00Z",
+      "square": 46,
+      "type": 12
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 6,
+    "fields": { "start": null, "end": null, "square": 54, "type": 14 }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 7,
+    "fields": {
+      "start": "2018-09-24T14:40:00Z",
+      "end": "2019-04-23T06:00:00Z",
+      "square": 68,
+      "type": 11
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 8,
+    "fields": {
+      "start": null,
+      "end": "2021-02-01T05:59:59Z",
+      "square": 72,
+      "type": 1
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 9,
+    "fields": {
+      "start": null,
+      "end": "2021-02-01T05:59:59Z",
+      "square": 10,
+      "type": 2
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 10,
+    "fields": {
+      "start": null,
+      "end": "2021-02-01T05:59:59Z",
+      "square": 12,
+      "type": 10
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 11,
+    "fields": { "start": null, "end": null, "square": 28, "type": 8 }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 12,
+    "fields": {
+      "start": null,
+      "end": "2021-02-01T05:59:59Z",
+      "square": 34,
+      "type": 7
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 13,
+    "fields": {
+      "start": null,
+      "end": "2021-02-01T05:59:59Z",
+      "square": 56,
+      "type": 9
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 14,
+    "fields": { "start": null, "end": null, "square": 64, "type": 4 }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 15,
+    "fields": { "start": null, "end": null, "square": 78, "type": 6 }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 16,
+    "fields": { "start": null, "end": null, "square": 82, "type": 5 }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 17,
+    "fields": { "start": null, "end": null, "square": 100, "type": 3 }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 18,
+    "fields": {
+      "start": "2018-09-24T14:40:00Z",
+      "end": null,
+      "square": 90,
+      "type": 12
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 19,
+    "fields": {
+      "start": "2019-04-23T06:00:00Z",
+      "end": null,
+      "square": 46,
+      "type": 2
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 20,
+    "fields": {
+      "start": "2019-04-23T06:00:00Z",
+      "end": "2021-02-01T05:59:59Z",
+      "square": 2,
+      "type": 13
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 21,
+    "fields": {
+      "start": "2019-04-23T06:00:00Z",
+      "end": null,
+      "square": 68,
+      "type": 15
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 22,
+    "fields": {
+      "start": "2019-04-23T06:00:00Z",
+      "end": "2021-02-01T05:59:59Z",
+      "square": 36,
+      "type": 14
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 23,
+    "fields": {
+      "start": "2021-02-01T06:00:00Z",
+      "end": null,
+      "square": 21,
+      "type": 13
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 24,
+    "fields": {
+      "start": "2021-02-01T06:00:00Z",
+      "end": null,
+      "square": 87,
+      "type": 7
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 25,
+    "fields": {
+      "start": "2021-02-01T06:00:00Z",
+      "end": null,
+      "square": 10,
+      "type": 17
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 26,
+    "fields": {
+      "start": "2021-02-01T06:00:00Z",
+      "end": null,
+      "square": 12,
+      "type": 2
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 27,
+    "fields": {
+      "start": "2021-02-01T06:00:00Z",
+      "end": null,
+      "square": 36,
+      "type": 16
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 28,
+    "fields": {
+      "start": "2021-02-01T06:00:00Z",
+      "end": null,
+      "square": 56,
+      "type": 17
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 29,
+    "fields": {
+      "start": "2021-02-01T06:00:00Z",
+      "end": null,
+      "square": 92,
+      "type": 16
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquare",
+    "pk": 61,
+    "fields": {
+      "start": "2022-07-25T22:06:49Z",
+      "end": null,
+      "square": 43,
+      "type": 51
+    }
+  }
+]
