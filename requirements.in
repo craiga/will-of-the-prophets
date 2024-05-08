@@ -1,5 +1,5 @@
 appdirs==1.4.4
-asgiref==3.5.0
+asgiref==3.8.1
 astroid==3.2.0
 attrs==21.4.0
 backcall==0.2.0
