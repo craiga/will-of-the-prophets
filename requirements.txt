@@ -130,9 +130,9 @@ dj-database-url==0.5.0 \
     # via
     #   -r requirements.in
     #   django-heroku
-django==3.1.14 \
-    --hash=sha256:0fabc786489af16ad87a8c170ba9d42bfd23f7b699bd5ef05675864e8d012859 \
-    --hash=sha256:72a4a5a136a214c39cf016ccdd6b69e2aa08c7479c66d93f3a9b5e4bb9d8a347
+django==4.0.10 \
+    --hash=sha256:2c2f73c16b11cb272c6d5e3b063f0d1be06f378d8dc6005fbe8542565db659cc \
+    --hash=sha256:4496eb4f65071578b703fdc6e6f29302553c7440e3f77baf4cefa4a4e091fc3d
     # via
     #   -r requirements.in
     #   django-appconf
@@ -428,7 +428,6 @@ pytz==2024.1 \
     --hash=sha256:328171f4e3623139da4983451950b28e95ac706e13f3f2630a879749e7a8b319
     # via
     #   -r requirements.in
-    #   django
     #   django-tz-detect
 rcssmin==1.0.6 \
     --hash=sha256:ca87b695d3d7864157773a61263e5abb96006e9ff0e021eff90cbe0e1ba18270
