@@ -49,7 +49,7 @@ pytest-cov==2.11.1
 pytest-django==4.1.0
 pytest-dotenv
 pytest-freezegun==0.4.2
-pytest-mock==3.5.1
+pytest-mock==3.12.0
 pytest==6.2.2
 python-dateutil==2.8.2
 python-dotenv
