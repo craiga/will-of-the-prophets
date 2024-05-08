@@ -38,7 +38,7 @@ pexpect==4.8.0
 pickleshare==0.7.5
 pip-tools
 pluggy==0.13.1
-prompt-toolkit==3.0.24
+prompt-toolkit==3.0.43
 psycopg2==2.9.3
 ptyprocess==0.7.0
 py==1.11.0
