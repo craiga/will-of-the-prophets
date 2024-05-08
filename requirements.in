@@ -39,7 +39,7 @@ pickleshare==0.7.5
 pip-tools
 pluggy==0.13.1
 prompt-toolkit==3.0.43
-psycopg2==2.9.3
+psycopg2==2.9.9
 ptyprocess==0.7.0
 py==1.11.0
 pyenchant==3.2.0
