@@ -14,9 +14,9 @@ asgiref==3.5.0 \
     # via
     #   -r requirements.in
     #   django
-astroid==2.5 \
-    --hash=sha256:87ae7f2398b8a0ae5638ddecf9987f081b756e0e9fc071aeebdca525671fc4dc \
-    --hash=sha256:b31c92f545517dcc452f284bc9c044050862fbe6d93d2b3de4a215a6b384bf0d
+astroid==3.2.0 \
+    --hash=sha256:16ee8ca5c75ac828783028cc1f967777f0e507c6886a295ad143e0f405b975a2 \
+    --hash=sha256:f7f829f8506ade59f1b3c6c93d8fac5b1ebc721685fa9af23e9794daf1d450a3
     # via -r requirements.in
 attrs==21.4.0 \
     --hash=sha256:2d27e3784d7a565d36ab851fe94887c5eccd6a463168875832a1be79c82828b4 \
@@ -262,9 +262,7 @@ lazy-object-proxy==1.7.1 \
     --hash=sha256:f769457a639403073968d118bc70110e7dce294688009f5c24ab78800ae56dc8 \
     --hash=sha256:fccdf7c2c5821a8cbd0a9440a456f5050492f2270bd54e94360cac663398739b \
     --hash=sha256:fd45683c3caddf83abbb1249b653a266e7069a09f486daa8863fb0e7496a9fdb
-    # via
-    #   -r requirements.in
-    #   astroid
+    # via -r requirements.in
 libsass==0.23.0 \
     --hash=sha256:31e86d92a5c7a551df844b72d83fc2b5e50abc6fbbb31e296f7bebd6489ed1b4 \
     --hash=sha256:31e86d92a5c7a551df844b72d83fc2b5e50abc6fbbb31e296f7bebd6489ed1b4 \
@@ -492,6 +490,12 @@ traitlets==5.1.1 \
     #   -r requirements.in
     #   ipython
     #   matplotlib-inline
+typing-extensions==4.11.0 \
+    --hash=sha256:83f085bd5ca59c80295fc2a82ab5dac679cbe02b9f33f7d83af68e241bea51b0 \
+    --hash=sha256:83f085bd5ca59c80295fc2a82ab5dac679cbe02b9f33f7d83af68e241bea51b0 \
+    --hash=sha256:c1f94d72897edaf4ce775bb7558d5b79d8126906a14ea5ed1635921406c0387a \
+    --hash=sha256:c1f94d72897edaf4ce775bb7558d5b79d8126906a14ea5ed1635921406c0387a
+    # via astroid
 urllib3==1.26.8 \
     --hash=sha256:000ca7f471a233c2251c6c7023ee85305721bfdf18621ebff4fd17a8653427ed \
     --hash=sha256:0e7c33d9a63e7ddfcb86780aac87befc2fbddf46c58dbb487e0855f7ceec283c
@@ -516,9 +520,7 @@ whitenoise==5.3.0 \
     #   django-heroku
 wrapt==1.12.1 \
     --hash=sha256:b62ffa81fb85f4332a4f609cab4ac40709470da05643a082ec1eb88e6d9b97d7
-    # via
-    #   -r requirements.in
-    #   astroid
+    # via -r requirements.in
 zipp==3.18.1 \
     --hash=sha256:206f5a15f2af3dbaee80769fb7dc6f249695e940acca08dfb2a4769fe61e538b \
     --hash=sha256:2884ed22e7d8961de1c9a05142eb69a247f120291bc0206a00a7642f09b5b715
