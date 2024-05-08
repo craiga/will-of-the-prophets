@@ -4,9 +4,6 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "0 0/4 * * *"
-  pull_request:
-    paths:
-      - ".github/workflows/pre-commit-autoupdate.yaml"
 
 jobs:
   auto-update:
