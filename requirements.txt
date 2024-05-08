@@ -144,9 +144,9 @@ django==3.1.14 \
     #   django-s3direct
     #   django-tz-detect
     #   model-bakery
-django-appconf==1.0.5 \
-    --hash=sha256:ae9f864ee1958c815a965ed63b3fba4874eec13de10236ba063a788f9a17389d \
-    --hash=sha256:be3db0be6c81fa84742000b89a81c016d70ae66a7ccb620cdef592b1f1a6aaa4
+django-appconf==1.0.6 \
+    --hash=sha256:c3ae442fba1ff7ec830412c5184b17169a7a1e71cf0864a4c3f93cf4c98a1993 \
+    --hash=sha256:cfe87ea827c4ee04b9a70fab90b86d704cb02f2981f89da8423cb0fabf88efbf
     # via
     #   -r requirements.in
     #   django-compressor
