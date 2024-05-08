@@ -1,7 +1,5 @@
 """Roll tests."""
 
-# pylint: disable=redefined-outer-name
-
 from datetime import timedelta
 
 from django.core.exceptions import ValidationError
@@ -11,8 +9,8 @@ import pytest
 from model_bakery import baker
 
 
-@pytest.mark.django_db
-def test_must_be_later_than_latest():
+@pytest.mark.django_db()
+def test_must_be_later_than_latest() -> None:
     """
     Test that a roll's embargo must be after other rolls' embargoes.
 

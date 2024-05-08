@@ -7,14 +7,35 @@ from django.core import validators
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.forms.models import model_to_dict
+from django.utils import timezone
 
 from model_utils.models import TimeFramedModel, TimeStampedModel
 from s3direct.fields import S3DirectField
 
-# pylint: disable=cyclic-import
 from will_of_the_prophets.validators import RollEmbargoValidator
 
 SQUARE_VALIDATORS = [validators.MinValueValidator(1), validators.MaxValueValidator(100)]
+
+
+class SpecialSquareTypeModelQuerySet(models.QuerySet):  # noqa: D101
+    def current(self, now=None):  # noqa: ANN001, ANN201, D102
+        now = now if now else timezone.now()
+        return super().filter(squares__in=SpecialSquare.objects.active(now)).distinct()
+
+    def archived(self, now):  # noqa: ANN001, ANN201, D102
+        now = now if now else timezone.now()
+        return (
+            super()
+            .exclude(
+                models.Q(squares__end__gt=now) | models.Q(squares__end__isnull=True)
+            )
+            .distinct()
+        )
+
+
+SpecialSquareTypeModelManager = models.Manager.from_queryset(
+    SpecialSquareTypeModelQuerySet
+)
 
 
 class SpecialSquareType(models.Model):
@@ -27,8 +48,23 @@ class SpecialSquareType(models.Model):
         default=0, help_text="Automatically move the runabout by this many places"
     )
 
-    def __str__(self):
+    objects = SpecialSquareTypeModelManager()
+
+    def __str__(self) -> str:  # noqa: D105
         return self.name
+
+
+class TimeFramedModelQuerySet(models.QuerySet):  # noqa: D101
+    def active(self, now=None):  # noqa: ANN001, ANN201, D102
+        now = now if now else timezone.now()
+        return (
+            super()
+            .filter(models.Q(start__lt=now) | models.Q(start__isnull=True))
+            .filter(models.Q(end__gt=now) | models.Q(end__isnull=True))
+        )
+
+
+TimeFramedModelManager = models.Manager.from_queryset(TimeFramedModelQuerySet)
 
 
 class SpecialSquare(TimeFramedModel):
@@ -39,8 +75,10 @@ class SpecialSquare(TimeFramedModel):
         SpecialSquareType, on_delete=models.PROTECT, related_name="squares"
     )
 
-    def __str__(self):
-        return "{type} at {square}".format(square=self.square, type=str(self.type))
+    objects = TimeFramedModelManager()
+
+    def __str__(self) -> str:  # noqa: D105
+        return f"{self.type!s} at {self.square}"
 
 
 class Butthole(TimeFramedModel):
@@ -49,21 +87,22 @@ class Butthole(TimeFramedModel):
     start_square = models.PositiveIntegerField(validators=SQUARE_VALIDATORS)
     end_square = models.PositiveIntegerField(validators=SQUARE_VALIDATORS)
 
-    def clean(self):
+    objects = TimeFramedModelManager()
+
+    def clean(self):  # noqa: ANN201, D102
         if self.start_square == self.end_square:
-            raise ValidationError(
-                "A butthole cannot start and end in the " "same square."
-            )
+            msg = "A butthole cannot start and end in the " "same square."
+            raise ValidationError(msg)
 
         return super().clean()
 
-    def __str__(self):
+    def __str__(self) -> str:  # noqa: D105
         return "{start_square} to {end_square}".format(**model_to_dict(self))
 
 
-def default_roll_number():
-    warnings.warn("Default roll number no longer used.", category=DeprecationWarning)
-    return random.randint(1, 6)
+def default_roll_number():  # noqa: ANN201, D103
+    warnings.warn("Default roll number no longer used.", category=DeprecationWarning)  # noqa: B028
+    return random.randint(1, 6)  # noqa: S311
 
 
 class Roll(TimeStampedModel):
@@ -72,5 +111,5 @@ class Roll(TimeStampedModel):
     number = models.PositiveIntegerField(blank=False, null=False)
     embargo = models.DateTimeField(validators=[RollEmbargoValidator()])
 
-    def __str__(self):
+    def __str__(self) -> str:  # noqa: D105
         return "{number} on {embargo}".format(**model_to_dict(self))

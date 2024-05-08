@@ -10,7 +10,7 @@
                     board__cell--even
                 {% endif %}
 
-                {% if square.get_special %}
+                {% if square.special_square_type %}
                     board__cell--special
                 {% endif %}
 
@@ -22,28 +22,24 @@
                     board__cell--visited
                 {% endif %}
 
-                {% if square.is_butthole_start or square.get_butthole_ends %}
+                {% if square.butthole_destination or square.butthole_source %}
                     board__cell--butthole-related
                 {% endif %}
             "
-            {% if square.get_butthole_ends %}
-                data-butthole-starts="[
-                    {% for is_butthole_start in square.get_butthole_ends %}
-                        {{ is_butthole_start }}{% if not forloop.last %},{% endif %}
-                    {% endfor %}
-                ]"
+            {% if square.butthole_source %}
+                data-butthole-starts="[{{ square.butthole_source }}]"
             {% endif %}
             data-number="{{ square.number}}"
         >
             <div class="board__cell-contents">
                 <span class="board__cell-number">{{ square.number }}</span>
 
-                {% if square.get_special %}
-                    <img class="board__cell-img" src="{{ square.get_special.image }}" />
+                {% if square.special_square_type %}
+                    <img class="board__cell-img" src="{{ square.special_square_type.image }}" />
                 {% endif %}
 
-                {% if square.is_butthole_start %}
-                    {% if square.get_butthole_direction == "forward" %}
+                {% if square.butthole_destination %}
+                    {% if square.butthole_destination > square.number %}
                         <img
                             class="board__cell-img board__cell-img--butthole"
                             src="{% static 'will_of_the_prophets/other_squares/delta_flyer.png' %}"

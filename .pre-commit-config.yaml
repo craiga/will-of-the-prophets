@@ -1,0 +1,76 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-toml
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: file-contents-sorter
+        files: ^(\.dictionary|.gitignore|requirements.*\.in)$
+        args: ["--ignore-case"]
+      - id: mixed-line-ending
+        args:
+          - "--fix=lf"
+      - id: trailing-whitespace
+  - repo: https://github.com/adamchainz/django-upgrade
+    rev: 1.16.0
+    hooks:
+      - id: django-upgrade
+        args: [--target-version, "3.1"]
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.15.2
+    hooks:
+      - id: pyupgrade
+        args: ["--py39"]
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+    hooks:
+      - id: prettier
+        types_or: [javascript, scss, markdown, yaml, json, toml]
+        additional_dependencies:
+          - prettier
+          - prettier-plugin-toml
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck
+        files: bin/.*
+  - repo: https://github.com/mrtazz/checkmake.git
+    rev: 0.2.2
+    hooks:
+      - id: checkmake
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.4.1
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+  - repo: local
+    hooks:
+      - id: no-auto-migrations
+        name: no auto-named migrations
+        entry: please provide a descriptive name for migrations
+        language: fail
+        types: ["python"]
+        files: .*/migrations/\d{4}_auto_.*\.py$
+      - id: django-check
+        name: django check
+        entry: python manage.py check
+        language: system
+        pass_filenames: false
+      - id: missing-migrations
+        name: missing migrations
+        entry: python manage.py makemigrations --dry-run --check --no-input
+        language: system
+        pass_filenames: false
+      - id: make
+        name: make can run
+        entry: make
+        language: system
+        files: Makefile$

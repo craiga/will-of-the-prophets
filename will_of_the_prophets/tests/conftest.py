@@ -14,18 +14,18 @@ from model_bakery import baker
 logger = logging.getLogger(__name__)
 
 
-@pytest.fixture
-def rolls():
+@pytest.fixture()
+def rolls() -> None:  # noqa: PT004
     """Generate nine rolls on the first nine days of July 2369."""
     for number in range(1, 10):
         embargo = pytz.utc.localize(
-            datetime(year=2369, month=7, day=number, hour=12, minute=34, second=56)
+            datetime(year=2369, month=7, day=number, hour=12, minute=34, second=56)  # noqa: DTZ001
         )
         baker.make("Roll", number=number, embargo=embargo)
 
 
 @pytest.fixture(scope="session", autouse=True)
-def _set_settings():
+def _set_settings():  # noqa: ANN202
     """Global settings for all tests."""
     with override_settings(
         AWS_S3_REGION_NAME="us-east-1",
@@ -45,7 +45,7 @@ def _set_settings():
 
 
 @pytest.fixture(scope="session", autouse=True)
-def _set_environment_variables():
+def _set_environment_variables():  # noqa: ANN202
     """Override global environment variables in all tests."""
     with mock.patch.dict(
         os.environ,

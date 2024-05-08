@@ -7,9 +7,7 @@
 appdirs==1.4.4 \
     --hash=sha256:7d5d0167b2b1ba821647616af46a749d1c653740dd0d2415100fe26e27afdf41 \
     --hash=sha256:a841dacd6b99318a741b166adb07e19ee71a274450e68237b4650ca1055ab128
-    # via
-    #   -r requirements.in
-    #   black
+    # via -r requirements.in
 appnope==0.1.4 \
     --hash=sha256:1de3860566df9caf38f01f86f65e0e13e379af54f9e4bee1e66b48f2efffd1ee \
     --hash=sha256:502575ee11cd7a28c0205f379b525beefebab9d161b7c964670864014ed7213c
@@ -23,15 +21,12 @@ asgiref==3.5.0 \
 astroid==2.5 \
     --hash=sha256:87ae7f2398b8a0ae5638ddecf9987f081b756e0e9fc071aeebdca525671fc4dc \
     --hash=sha256:b31c92f545517dcc452f284bc9c044050862fbe6d93d2b3de4a215a6b384bf0d
-    # via
-    #   -r requirements.in
-    #   pylint
+    # via -r requirements.in
 attrs==21.4.0 \
     --hash=sha256:2d27e3784d7a565d36ab851fe94887c5eccd6a463168875832a1be79c82828b4 \
     --hash=sha256:626ba8234211db98e869df76230a137c4c40a12d72445c45d5f5b716f076e2fd
     # via
     #   -r requirements.in
-    #   black
     #   pytest
 backcall==0.2.0 \
     --hash=sha256:5cbdbf27be5e7cfadb448baf0aa95508f91f2bbc6c6437cd9cd06e2a4c215e1e \
@@ -57,10 +52,6 @@ backports-zoneinfo==0.2.1 \
     --hash=sha256:f04e857b59d9d1ccc39ce2da1021d196e47234873820cbeaad210724b1ee28ac \
     --hash=sha256:fadbfe37f74051d024037f223b8e001611eac868b5c5b06144ef4d8b799862f2
     # via -r requirements.in
-black==19.3b0 \
-    --hash=sha256:09a9dcb7c46ed496a9850b76e4e825d6049ecd38b611f1224857a79bd985a8cf \
-    --hash=sha256:68950ffd4d9169716bcb8719a56c07a2f4485354fec061cdd5910aa07369731c
-    # via -r requirements.in
 build==1.2.1 \
     --hash=sha256:526263f4870c26f26c433545579475377b2b7588b6f1eac76a001e873ae3e19d \
     --hash=sha256:75e10f767a433d9a86e50d83f418e83efc18ede923ee5ff7df93b6cb0306c5d4
@@ -76,7 +67,6 @@ click==8.0.3 \
     --hash=sha256:410e932b050f5eed773c4cda94de75971c89cdb3155a72a0831139a79e5ecb5b
     # via
     #   -r requirements.in
-    #   black
     #   pip-tools
 coverage==6.2 \
     --hash=sha256:01774a2c2c729619760320270e42cd9e797427ecfddd32c2a7b639cdc481f3c0 \
@@ -225,12 +215,6 @@ ipython==7.31.1 \
     --hash=sha256:55df3e0bd0f94e715abd968bedd89d4e8a7bce4bf498fb123fed4f5398fea874 \
     --hash=sha256:b5548ec5329a4bcf054a5deed5099b0f9622eb9ea51aaa7104d215fece201d8c
     # via -r requirements.in
-isort==4.3.21 \
-    --hash=sha256:54da7e92468955c4fceacd0c86bd0ec997b0e1ee80d97f67c35a78b719dccab1 \
-    --hash=sha256:6e811fcb295968434526407adb8796944f1988c5b65e8139058f2014cbe100fd
-    # via
-    #   -r requirements.in
-    #   pylint
 jedi==0.18.1 \
     --hash=sha256:637c9635fcf47945ceb91cd7f320234a7be540ded6f3e99a50cb6febdfd1ba8d \
     --hash=sha256:74137626a64a99c8eb6ae5832d99b3bdd7d29a3850fe2aa80a4126b2a7d949ab
@@ -302,9 +286,7 @@ matplotlib-inline==0.1.3 \
 mccabe==0.6.1 \
     --hash=sha256:ab8a6258860da4b6677da4bd2fe5dc2c659cff31b3ee4f7f5d64e79735b80d42 \
     --hash=sha256:dd8d182285a0fe56bace7f45b5e7d1a6ebcbf524e8f3bd87eb0f125271b8831f
-    # via
-    #   -r requirements.in
-    #   pylint
+    # via -r requirements.in
 model-bakery==1.4.0 \
     --hash=sha256:a89befaae667380f5e2352981d45fed36747941f5c3e9dffa962fc6ba8d661d1 \
     --hash=sha256:c29fb821c81cda2c37dfbdcb1dd2218cda179ecb96c6edb6cd9cdaa146706d92
@@ -389,23 +371,6 @@ pygments==2.11.2 \
     # via
     #   -r requirements.in
     #   ipython
-pylint==2.7.1 \
-    --hash=sha256:81ce108f6342421169ea039ff1f528208c99d2e5a9c4ca95cfc5291be6dfd982 \
-    --hash=sha256:a251b238db462b71d25948f940568bb5b3ae0e37dbaa05e10523f54f83e6cc7e
-    # via
-    #   -r requirements.in
-    #   pylint-django
-    #   pylint-plugin-utils
-pylint-django==2.3.0 \
-    --hash=sha256:770e0c55fb054c6378e1e8bb3fe22c7032a2c38ba1d1f454206ee9c6591822d7 \
-    --hash=sha256:b8dcb6006ae9fa911810aba3bec047b9410b7d528f89d5aca2506b03c9235a49
-    # via -r requirements.in
-pylint-plugin-utils==0.7 \
-    --hash=sha256:b3d43e85ab74c4f48bb46ae4ce771e39c3a20f8b3d56982ab17aa73b4f98d535 \
-    --hash=sha256:ce48bc0516ae9415dd5c752c940dfe601b18fe0f48aa249f2386adfa95a004dd
-    # via
-    #   -r requirements.in
-    #   pylint-django
 pyparsing==3.0.7 \
     --hash=sha256:18ee9022775d270c55187733956460083db60b37d0d0fb357445f3094eed3eea \
     --hash=sha256:a6c06a88f252e6c322f65faf8f418b16213b51bdfaece0524c1c1bc30c63c484
@@ -514,8 +479,6 @@ toml==0.10.2 \
     --hash=sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f
     # via
     #   -r requirements.in
-    #   black
-    #   pylint
     #   pytest
 tomli==2.0.1 \
     --hash=sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc \

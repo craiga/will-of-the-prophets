@@ -1,0 +1,292 @@
+[
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 1,
+    "fields": {
+      "name": "Quark's Bar",
+      "description": "Drunkisode",
+      "image": "/static/will_of_the_prophets/special_squares/quarks_bar.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 2,
+    "fields": {
+      "name": "CoCo NoNo",
+      "description": "A special tiki-themed Drunkisode",
+      "image": "/static/will_of_the_prophets/special_squares/coco_nono.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 3,
+    "fields": {
+      "name": "Mornhammered",
+      "description": "Power Hour",
+      "image": "/static/will_of_the_prophets/special_squares/morn.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 4,
+    "fields": {
+      "name": "Starship Mine",
+      "description": "Build a spaceship model while recording",
+      "image": "/static/will_of_the_prophets/special_squares/starship_mine.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 5,
+    "fields": {
+      "name": "Caught in the Nebula",
+      "description": "No notes",
+      "image": "/static/will_of_the_prophets/special_squares/caught_in_the_nebula.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 6,
+    "fields": {
+      "name": "The Nth Degree",
+      "description": "Extensive Research",
+      "image": "/static/will_of_the_prophets/special_squares/nth_degree.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 7,
+    "fields": {
+      "name": "Measure of a Man",
+      "description": "We flip a coin and vehemently argue the pro/con of an episode",
+      "image": "/static/will_of_the_prophets/special_squares/measure_of_a_man.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 8,
+    "fields": {
+      "name": "The Naked Now",
+      "description": "Neelix-Style from the Bathtub",
+      "image": "/static/will_of_the_prophets/special_squares/naked_now.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 9,
+    "fields": {
+      "name": "Looking At Each Other During",
+      "description": "One host has to fly to the other host's city and record in-person",
+      "image": "/static/will_of_the_prophets/special_squares/look_at_each_other.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 10,
+    "fields": {
+      "name": "Fuck It, We’ll Do It Live!",
+      "description": "Livestream the recording session",
+      "image": "/static/will_of_the_prophets/special_squares/do_it_live.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 11,
+    "fields": {
+      "name": "Banger",
+      "description": "Move the runabout 5 spaces back",
+      "image": "https://s3.amazonaws.com/will-of-the-prophets/special_squares/icon_banger_no_background_small.png",
+      "auto_move": -5
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 12,
+    "fields": {
+      "name": "The Traveller",
+      "description": "Move the runabout 5 spaces forward",
+      "image": "https://s3.amazonaws.com/will-of-the-prophets/special_squares/icon_traveler_no_background_small.png",
+      "auto_move": 5
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 13,
+    "fields": {
+      "name": "His Eyes Uncovered",
+      "description": "The hosts must employ ten Tamarian-style metaphors during the episode.",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/icon_hiseyesuncovered_low.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 14,
+    "fields": {
+      "name": "Kanar with Damar",
+      "description": "Each host attempts to invent a cocktail that tastes like Kanar and the other host must try the recipe",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/icon_kanar_low.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 15,
+    "fields": {
+      "name": "Naomi Wildman",
+      "description": "Each host must make a piece of artwork representing the episode and share it with the other and post pictures",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/icon_naomiwildman_low.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 16,
+    "fields": {
+      "name": "Neelix's Galley",
+      "description": "The hosts drink Talaxian Champagne",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/icon_neelix.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 17,
+    "fields": {
+      "name": "The Caretaker",
+      "description": "The caretaker sends the runabout to a random square on the board",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/icon_caretaker.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 49,
+    "fields": {
+      "name": "Janeway",
+      "description": "These take the hosts of the show up the board",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/icon_deltaflyer.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 50,
+    "fields": {
+      "name": "Space Butthole",
+      "description": "These take the hosts of the show down the board",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/butthole.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 51,
+    "fields": {
+      "name": "Brone Zone",
+      "description": "The hosts must communicate using gloried Vori tellings during the fullness of the episode",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/icon_bronezone_low.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 84,
+    "fields": {
+      "name": "Porthos Ate My Notes",
+      "description": "No notes",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/icon_porthos_notes_medium.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 85,
+    "fields": {
+      "name": "Reed Alert",
+      "description": "Pineapple drink drunkisode",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/icon_reedalert_medium.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 86,
+    "fields": {
+      "name": "Faith of the Heart",
+      "description": "The hosts have to make new lyrics to the theme song on the next episode",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/icon_faithoftheheart_medium.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 87,
+    "fields": {
+      "name": "Temporal Cold War",
+      "description": "The hosts must react to three old, bad reviews of The Greatest Generation on the next Maron",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/icon_temporalcoldwar_medium.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 88,
+    "fields": {
+      "name": "Porthos Cheese Plate",
+      "description": "Cheese review on the next episode",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/icon_cheeseplate_medium.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 89,
+    "fields": {
+      "name": "The Xindi Arc",
+      "description": "The hosts must take shots of five different alcohols during the episode",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/icon_xindi_medium.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 90,
+    "fields": {
+      "name": "Breadstick Power Hour",
+      "description": "Breadsticksode",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/icon_breadsticks_medium.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 91,
+    "fields": {
+      "name": "J/C",
+      "description": "The person who rolled has to read Jeffrey Combs character slashfic to the other in next week’s Maron",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/icon_jc_medium.png",
+      "auto_move": 0
+    }
+  },
+  {
+    "model": "will_of_the_prophets.specialsquaretype",
+    "pk": 92,
+    "fields": {
+      "name": "Decontamination Chamber",
+      "description": "Record in underpants",
+      "image": "https://s3.us-east-1.amazonaws.com/will-of-the-prophets/special_squares/icon_decontamination_medium.png",
+      "auto_move": 0
+    }
+  }
+]

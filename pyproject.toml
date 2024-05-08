@@ -1,0 +1,77 @@
+[project]
+name = "Will of the Prophets"
+requires-python = ">=3.9"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "will_of_the_prophets.settings"
+
+[tool.ruff]
+output-format = "full"
+
+[tool.ruff.format]
+preview = true
+
+[tool.ruff.lint]
+
+# Rule definitions are at https://docs.astral.sh/ruff/rules/.
+
+# Try to keep as many checks enabled as possible.
+# If there's a specific check that causes problems with a certain type of file,
+# consider adding an entry to per-file-ignores instead of here.
+
+select = ["ALL"]
+ignore = ["ANN401", "ANN1", "COM812", "ISC001"]
+
+
+# To see available fixes classed as unsafe, run
+# ruff check --ignore-noqa --unsafe-fixes --diff.
+# If any of them are safe in this project, please add them here!
+
+extend-safe-fixes = [
+  "ANN201",
+  "ANN204",
+  "D200",
+  "EM",
+  "F401",
+  "PERF102",
+  "PIE810",
+  "PT006",
+  "RSE102",
+  "RUF005",
+  "SIM117",
+  "SIM118",
+  "TCH",
+  "TRY003",
+  "TRY201",
+  "TRY201",
+  "TRY400",
+  "UP038",
+ ]
+ extend-unsafe-fixes = [
+  # Replaces getattr(obj, "attr") with obj.attr when what you might want is
+  # getattr(obj, "attr", None).
+   "B009",
+   # Replaces setattr(obj, "attr", "value") with obj.attr = value. In some situations,
+   # we need to use setattr like this to pass mypy checks.
+   "B010",
+ ]
+
+[tool.ruff.lint.isort]
+section-order = ["future", "standard-library", "django", "third-party", "first-party", "local-folder"]
+
+[tool.ruff.lint.isort.sections]
+"django" = ["django"]
+
+[tool.ruff.lint.flake8-self]
+ignore-names = ["_meta", "_replace", "_default_manager"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
+
+[tool.ruff.lint.flake8-unused-arguments]
+ignore-variadic-names = true
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/**/*.py" = ["S101", "ARG001", "PLR2004"]
+"**/management/commands/*.py" = ["N999"]
+"**/migrations/*.py" = ["RUF012"]

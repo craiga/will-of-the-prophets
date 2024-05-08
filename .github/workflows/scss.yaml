@@ -5,22 +5,6 @@ on:
       - "*"
 
 jobs:
-  lint-scss:
-    name: Lint SCSS
-    timeout-minutes: 2
-    runs-on: ubuntu-latest
-    steps:
-      - name: Clone Repo
-        uses: actions/checkout@v2
-      - name: Set up Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 21
-      - name: Setup
-        run: npm ci
-      - name: Lint SCSS
-        run: npx prettier  --check -- "**/*.scss"
-
   latest-scss:
     name: Test the latest SCSS was commited
     timeout-minutes: 2
