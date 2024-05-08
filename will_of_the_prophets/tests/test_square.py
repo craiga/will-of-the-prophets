@@ -1,8 +1,27 @@
 """Square tests."""
 
+from datetime import datetime, timezone
+
 import pytest
+import pytz
 
 from will_of_the_prophets import board
+
+
+@pytest.fixture()
+def some_datetime() -> datetime:
+    """Datetime."""
+    return pytz.utc.localize(
+        datetime(
+            year=2369,
+            month=7,
+            day=5,
+            hour=12,
+            minute=34,
+            second=56,
+            tzinfo=timezone.utc,
+        )
+    )
 
 
 @pytest.mark.django_db()
