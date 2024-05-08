@@ -34,7 +34,7 @@ mccabe==0.6.1
 model-bakery==1.4.0
 packaging==21.3
 parso==0.8.3
-pexpect==4.8.0
+pexpect==4.9.0
 pickleshare==0.7.5
 pip-tools
 pluggy==0.13.1
