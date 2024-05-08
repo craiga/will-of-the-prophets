@@ -180,9 +180,9 @@ django-s3direct==1.1.8 \
 django-sass-processor==0.8.2 \
     --hash=sha256:9b46a12ca8bdcb397d46fbcc49e6a926ff9f76a93c5efeb23b495419fd01fc7a
     # via -r requirements.in
-django-tz-detect==0.3.0 \
-    --hash=sha256:4c13811c21a7a233171392b5bb639a891b4241ca4a45b38ddbb19d348b5b3e07 \
-    --hash=sha256:fb94506a52a4d2d46e1aca007d0c7101903c037203bf69a2bbc186f0721a777b
+django-tz-detect==0.5.0 \
+    --hash=sha256:4dd6e5e4080c2257a205545134f252e51e2c58225de362dc8f05328c88599237 \
+    --hash=sha256:b804c562ecd6e1c2a303cc9a88e5ad18df053b07f15453d67984f3f34b038de4
     # via -r requirements.in
 django-widget-tweaks==1.4.12 \
     --hash=sha256:9bfc5c705684754a83cc81da328b39ad1b80f32bd0f4340e2a810cbab4b0c00e \
@@ -464,7 +464,6 @@ six==1.16.0 \
     # via
     #   -r requirements.in
     #   django-compressor
-    #   django-tz-detect
     #   python-dateutil
 sqlparse==0.5.0 \
     --hash=sha256:714d0a4932c059d16189f58ef5411ec2287a4360f17cdd0edd2d09d4c5087c93 \
