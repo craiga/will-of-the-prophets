@@ -93,10 +93,7 @@ class RollView(LoginRequiredMixin, CreateView):
             **kwargs,
             last_roll=last_roll,
             board=board.Board(now=last_roll_embargo),
-            current_square_types=models.SpecialSquareType.objects.current(
-                last_roll_embargo
-            ),
-            archived_square_types=models.SpecialSquareType.objects.archived(
+            special_square_types=models.SpecialSquareType.objects.current(
                 last_roll_embargo
             ),
         )
