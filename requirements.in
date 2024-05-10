@@ -20,7 +20,7 @@ django-s3direct==1.1.8
 django-sass-processor==0.8.2
 django-tz-detect==0.5.0
 django-widget-tweaks==1.5.0
-Django==3.1.14
+Django==3.2.25
 freezegun==1.5.0
 gunicorn==22.0.0
 importlib-metadata
