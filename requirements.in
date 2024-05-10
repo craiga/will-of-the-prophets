@@ -17,7 +17,7 @@ django-feature-policy==3.7.0
 django-heroku==0.3.1
 django-model-utils==4.1.1
 django-s3direct==1.1.8
-django-sass-processor==0.8.2
+django-sass-processor==1.4
 django-tz-detect==0.5.0
 django-widget-tweaks==1.5.0
 Django==3.1.14
