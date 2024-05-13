@@ -82,7 +82,7 @@ def square_numbers():  # noqa: ANN201
 
 
 class Board:
-    """The Will of the Caretaker board at any given time."""
+    """The Will of the Riker - Quantum Leap board at any given time."""
 
     def __init__(self, now=None) -> None:  # noqa: ANN001, D107
         if not now:
