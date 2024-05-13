@@ -1,4 +1,4 @@
-# Game of Buttholes: The Will of the Caretaker
+# Game of Buttholes: The Will of the Riker - Quantum Leap
 
 A web app for the board game played by the hosts of [The Greatest Generation](http://gagh.biz) that I'm a little embarrassed to be involved with.
 
