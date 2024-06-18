@@ -177,8 +177,9 @@ django-model-utils==4.1.1 \
 django-s3direct==1.1.8 \
     --hash=sha256:10e729e9ec56bb2ad15add9fc534f0af278e2a9381477282d76a8095782d4a26
     # via -r requirements.in
-django-sass-processor==0.8.2 \
-    --hash=sha256:9b46a12ca8bdcb397d46fbcc49e6a926ff9f76a93c5efeb23b495419fd01fc7a
+django-sass-processor==1.4.1 \
+    --hash=sha256:1e9d04769f76d89bbf77b9b279ba83dfacad9c98c03ca8a58ecfc29d997e6fcf \
+    --hash=sha256:7b76560172f72519cfcda944feeb517b37f40f5562196298245f5569c2d02f91
     # via -r requirements.in
 django-tz-detect==0.5.0 \
     --hash=sha256:4dd6e5e4080c2257a205545134f252e51e2c58225de362dc8f05328c88599237 \
