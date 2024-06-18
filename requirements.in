@@ -1,6 +1,6 @@
 appdirs==1.4.4
 asgiref==3.8.1
-astroid==3.2.0
+astroid==3.2.2
 attrs==23.2.0
 backcall==0.2.0
 backports.zoneinfo==0.2.1
