@@ -64,5 +64,5 @@ tomli
 traitlets==5.14.3
 urllib3==2.2.1
 wcwidth==0.2.13
-whitenoise==6.6.0
+whitenoise==6.7.0
 wrapt==1.12.1
