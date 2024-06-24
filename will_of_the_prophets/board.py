@@ -21,6 +21,10 @@ def calculate_position(now):  # noqa: ANN001, ANN201
             )
         }
 
+        # always land on mornhammered
+        if (position < 100) and ((position + roll.number) >= 100):
+            return 100
+
         position += roll.number
 
         # Handle position > 100.
