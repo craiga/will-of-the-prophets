@@ -453,9 +453,9 @@ rjsmin==1.1.0 \
     # via
     #   -r requirements.in
     #   django-compressor
-sentry-sdk==1.5.3 \
-    --hash=sha256:141da032f0fa4c56f9af6b361fda57360af1789576285bd1944561f9c274f9c0 \
-    --hash=sha256:9aeff2a47f4038460296b920bf4d269284e8454e1c67547ee002ccafd9c2442b
+sentry-sdk==2.7.0 \
+    --hash=sha256:d846a211d4a0378b289ced3c434480945f110d0ede00450ba631fc2852e7a0d4 \
+    --hash=sha256:db9594c27a4d21c1ebad09908b1f0dc808ef65c2b89c1c8e7e455143262e37c1
     # via -r requirements.in
 six==1.16.0 \
     --hash=sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926 \
