@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "cypress": "^13.10.0",
+    "cypress": "^13.13.0",
     "prettier": "latest",
     "wait-on": "latest"
   }
