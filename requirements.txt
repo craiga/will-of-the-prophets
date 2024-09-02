@@ -8,6 +8,10 @@ appdirs==1.4.4 \
     --hash=sha256:7d5d0167b2b1ba821647616af46a749d1c653740dd0d2415100fe26e27afdf41 \
     --hash=sha256:a841dacd6b99318a741b166adb07e19ee71a274450e68237b4650ca1055ab128
     # via -r requirements.in
+appnope==0.1.4 \
+    --hash=sha256:1de3860566df9caf38f01f86f65e0e13e379af54f9e4bee1e66b48f2efffd1ee \
+    --hash=sha256:502575ee11cd7a28c0205f379b525beefebab9d161b7c964670864014ed7213c
+    # via ipython
 asgiref==3.8.1 \
     --hash=sha256:3e1e3ecc849832fe52ccf2cb6686b7a55f82bb1d6aee72a58826471390335e47 \
     --hash=sha256:c343bd80a0bec947a9860adb4c432ffa7db769836c64238fc34bdc3fec84d590
@@ -188,9 +192,9 @@ django-widget-tweaks==1.5.0 \
     --hash=sha256:1c2180681ebb994e922c754804c7ffebbe1245014777ac47897a81f57cc629c7 \
     --hash=sha256:a41b7b2f05bd44d673d11ebd6c09a96f1d013ee98121cb98c384fe84e33b881e
     # via -r requirements.in
-exceptiongroup==1.2.1 \
-    --hash=sha256:5258b9ed329c5bbdd31a309f53cbfb0b155341807f6ff7606a1e801a891b29ad \
-    --hash=sha256:a4785e48b045528f5bfe627b6ad554ff32def154f42372786903b7abcfe1aa16
+exceptiongroup==1.2.2 \
+    --hash=sha256:3111b9d131c238bec2f8f516e123e14ba243563fb135d3fe885990585aa7795b \
+    --hash=sha256:47c2edf7c6738fafb49fd34290706d1a1a2f4d1c6df275526b62cbb4aa5393cc
     # via pytest
 freezegun==1.5.0 \
     --hash=sha256:200a64359b363aa3653d8aac289584078386c7c3da77339d257e46a01fb5c77c \
@@ -265,16 +269,10 @@ lazy-object-proxy==1.10.0 \
     # via -r requirements.in
 libsass==0.23.0 \
     --hash=sha256:31e86d92a5c7a551df844b72d83fc2b5e50abc6fbbb31e296f7bebd6489ed1b4 \
-    --hash=sha256:31e86d92a5c7a551df844b72d83fc2b5e50abc6fbbb31e296f7bebd6489ed1b4 \
-    --hash=sha256:34cae047cbbfc4ffa832a61cbb110f3c95f5471c6170c842d3fed161e40814dc \
     --hash=sha256:34cae047cbbfc4ffa832a61cbb110f3c95f5471c6170c842d3fed161e40814dc \
     --hash=sha256:4a218406d605f325d234e4678bd57126a66a88841cb95bee2caeafdc6f138306 \
-    --hash=sha256:4a218406d605f325d234e4678bd57126a66a88841cb95bee2caeafdc6f138306 \
-    --hash=sha256:6f209955ede26684e76912caf329f4ccb57e4a043fd77fe0e7348dd9574f1880 \
     --hash=sha256:6f209955ede26684e76912caf329f4ccb57e4a043fd77fe0e7348dd9574f1880 \
     --hash=sha256:a2ec85d819f353cbe807432d7275d653710d12b08ec7ef61c124a580a8352f3c \
-    --hash=sha256:a2ec85d819f353cbe807432d7275d653710d12b08ec7ef61c124a580a8352f3c \
-    --hash=sha256:ea97d1b45cdc2fc3590cb9d7b60f1d8915d3ce17a98c1f2d4dd47ee0d9c68ce6 \
     --hash=sha256:ea97d1b45cdc2fc3590cb9d7b60f1d8915d3ce17a98c1f2d4dd47ee0d9c68ce6
     # via -r requirements.in
 matplotlib-inline==0.1.7 \
@@ -491,12 +489,11 @@ traitlets==5.14.3 \
     #   -r requirements.in
     #   ipython
     #   matplotlib-inline
-typing-extensions==4.11.0 \
-    --hash=sha256:83f085bd5ca59c80295fc2a82ab5dac679cbe02b9f33f7d83af68e241bea51b0 \
-    --hash=sha256:83f085bd5ca59c80295fc2a82ab5dac679cbe02b9f33f7d83af68e241bea51b0 \
-    --hash=sha256:c1f94d72897edaf4ce775bb7558d5b79d8126906a14ea5ed1635921406c0387a \
-    --hash=sha256:c1f94d72897edaf4ce775bb7558d5b79d8126906a14ea5ed1635921406c0387a
+typing-extensions==4.12.2 \
+    --hash=sha256:04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d \
+    --hash=sha256:1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8
     # via
+    #   -r requirements.in
     #   asgiref
     #   astroid
 urllib3==2.2.1 \
