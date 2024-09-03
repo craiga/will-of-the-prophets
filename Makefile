@@ -1,6 +1,6 @@
 default:  ## Build and serve the web site.
 	python manage.py migrate
-	python manage.py loaddata buttholes special_squares rolls
+	python manage.py loaddata buttholes special-squares special-square-types rolls
 	make scss
 	python manage.py runserver
 
