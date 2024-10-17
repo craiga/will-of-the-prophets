@@ -10,7 +10,7 @@ import pytz
 from will_of_the_prophets import board
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_square_order() -> None:
     """
     Tests that squares are generated as expected.
@@ -48,7 +48,7 @@ def test_square_order() -> None:
         assert squares[i].row_reversed == expected_row_reversed
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 @pytest.mark.freeze_time("2369-07-05 08:00")
 def test_position(rolls) -> None:  # noqa: ANN001
     """Test that the current position is correctly set."""
@@ -65,7 +65,7 @@ def test_position(rolls) -> None:  # noqa: ANN001
         assert not squares[i].is_current_position
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 @pytest.mark.freeze_time("2369-07-05 08:00")
 def test_explicit_date(rolls) -> None:  # noqa: ANN001
     """Test that the current position is set with an explicit date."""
@@ -84,7 +84,7 @@ def test_explicit_date(rolls) -> None:  # noqa: ANN001
         assert not squares[i].is_current_position
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_query_count(django_assert_max_num_queries) -> None:  # noqa: ANN001
     """Test that rendering the board does not issue an excessive number of queries."""
     call_command(
@@ -94,7 +94,7 @@ def test_query_count(django_assert_max_num_queries) -> None:  # noqa: ANN001
         str(board.Board())
 
 
-@pytest.fixture()
+@pytest.fixture
 def some_datetime():  # noqa: ANN201, D103
     return pytz.utc.localize(
         datetime(year=2369, month=7, day=5, hour=12, minute=34, second=56)  # noqa: DTZ001
