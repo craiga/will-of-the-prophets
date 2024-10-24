@@ -6,7 +6,7 @@ from model_bakery import baker
 from will_of_the_prophets import models
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_one_square_no_start_or_end() -> None:  # noqa: D103
     special_square_type = baker.make(models.SpecialSquareType, image="")
     baker.make(models.SpecialSquare, start=None, end=None, type=special_square_type)
@@ -15,7 +15,7 @@ def test_one_square_no_start_or_end() -> None:  # noqa: D103
     )
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_one_square_start_in_past() -> None:  # noqa: D103
     special_square_type = baker.make(models.SpecialSquareType, image="")
     baker.make(
@@ -29,7 +29,7 @@ def test_one_square_start_in_past() -> None:  # noqa: D103
     )
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_one_square_start_in_future() -> None:  # noqa: D103
     special_square_type = baker.make(models.SpecialSquareType, image="")
     baker.make(
@@ -43,7 +43,7 @@ def test_one_square_start_in_future() -> None:  # noqa: D103
     )
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_one_square_end_in_past() -> None:  # noqa: D103
     special_square_type = baker.make(models.SpecialSquareType, image="")
     baker.make(
@@ -57,7 +57,7 @@ def test_one_square_end_in_past() -> None:  # noqa: D103
     )
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_one_square_end_in_future() -> None:  # noqa: D103
     special_square_type = baker.make(models.SpecialSquareType, image="")
     baker.make(
@@ -71,7 +71,7 @@ def test_one_square_end_in_future() -> None:  # noqa: D103
     )
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_one_square_start_and_end_in_past() -> None:  # noqa: D103
     special_square_type = baker.make(models.SpecialSquareType, image="")
     baker.make(
@@ -85,7 +85,7 @@ def test_one_square_start_and_end_in_past() -> None:  # noqa: D103
     )
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_one_square_start_in_past_end_in_future() -> None:  # noqa: D103
     special_square_type = baker.make(models.SpecialSquareType, image="")
     baker.make(
@@ -99,7 +99,7 @@ def test_one_square_start_in_past_end_in_future() -> None:  # noqa: D103
     )
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_one_square_start_and_end_in_future() -> None:  # noqa: D103
     special_square_type = baker.make(models.SpecialSquareType, image="")
     baker.make(
@@ -113,7 +113,7 @@ def test_one_square_start_and_end_in_future() -> None:  # noqa: D103
     )
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_many_squares_all_active() -> None:  # noqa: D103
     special_square_type = baker.make(models.SpecialSquareType, image="")
     baker.make(models.SpecialSquare, start=None, end=None, type=special_square_type)
@@ -140,7 +140,7 @@ def test_many_squares_all_active() -> None:  # noqa: D103
     )
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_many_squares_none_active() -> None:  # noqa: D103
     special_square_type = baker.make(models.SpecialSquareType, image="")
     baker.make(
@@ -172,7 +172,7 @@ def test_many_squares_none_active() -> None:  # noqa: D103
     )
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_many_squares_some_active() -> None:  # noqa: D103
     special_square_type = baker.make(models.SpecialSquareType, image="")
     baker.make(models.SpecialSquare, start=None, end=None, type=special_square_type)

@@ -91,7 +91,7 @@ class Butthole(TimeFramedModel):
 
     def clean(self):  # noqa: ANN201, D102
         if self.start_square == self.end_square:
-            msg = "A butthole cannot start and end in the " "same square."
+            msg = "A butthole cannot start and end in the same square."
             raise ValidationError(msg)
 
         return super().clean()
