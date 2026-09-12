@@ -7,7 +7,7 @@ import pytest
 from will_of_the_prophets import board
 
 
-@pytest.fixture()
+@pytest.fixture
 def some_datetime() -> datetime:
     """Datetime."""
     return datetime(
@@ -21,7 +21,7 @@ def some_datetime() -> datetime:
     )
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 @pytest.mark.parametrize(
     ("number", "pos", "was_visited"), [(74, 75, True), (75, 75, False), (76, 75, False)]
 )
@@ -31,7 +31,7 @@ def test_was_visited(some_datetime, number, pos, was_visited) -> None:  # noqa: 
     assert square.was_visited == was_visited
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 @pytest.mark.parametrize(
     ("number", "pos", "is_current_position"),
     [(74, 75, False), (75, 75, True), (76, 75, False)],
