@@ -9,7 +9,7 @@ import pytest
 from model_bakery import baker
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_must_be_later_than_latest() -> None:
     """
     Test that a roll's embargo must be after other rolls' embargoes.
