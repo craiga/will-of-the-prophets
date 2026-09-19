@@ -21,7 +21,8 @@ def get_last_modified(request):  # noqa: ANN001, ANN201, ARG001
     """Get board's last modified datetime."""
     try:
         last_modified = (
-            models.Roll.objects.filter(embargo__lte=timezone.now())
+            models.Roll.objects
+            .filter(embargo__lte=timezone.now())
             .latest("embargo")
             .embargo
         )
