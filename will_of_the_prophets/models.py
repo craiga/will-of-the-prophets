@@ -19,11 +19,11 @@ SQUARE_VALIDATORS = [validators.MinValueValidator(1), validators.MaxValueValidat
 
 class SpecialSquareTypeModelQuerySet(models.QuerySet):  # noqa: D101
     def current(self, now=None):  # noqa: ANN001, ANN201, D102
-        now = now if now else timezone.now()
+        now = now or timezone.now()
         return super().filter(squares__in=SpecialSquare.objects.active(now)).distinct()
 
     def archived(self, now):  # noqa: ANN001, ANN201, D102
-        now = now if now else timezone.now()
+        now = now or timezone.now()
         return (
             super()
             .exclude(
@@ -56,7 +56,7 @@ class SpecialSquareType(models.Model):
 
 class TimeFramedModelQuerySet(models.QuerySet):  # noqa: D101
     def active(self, now=None):  # noqa: ANN001, ANN201, D102
-        now = now if now else timezone.now()
+        now = now or timezone.now()
         return (
             super()
             .filter(models.Q(start__lt=now) | models.Q(start__isnull=True))
@@ -91,7 +91,7 @@ class Butthole(TimeFramedModel):
 
     def clean(self):  # noqa: ANN201, D102
         if self.start_square == self.end_square:
-            msg = "A butthole cannot start and end in the " "same square."
+            msg = "A butthole cannot start and end in the same square."
             raise ValidationError(msg)
 
         return super().clean()
