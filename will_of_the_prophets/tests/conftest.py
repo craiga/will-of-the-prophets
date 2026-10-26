@@ -14,8 +14,8 @@ from model_bakery import baker
 logger = logging.getLogger(__name__)
 
 
-@pytest.fixture()
-def rolls() -> None:  # noqa: PT004
+@pytest.fixture
+def rolls() -> None:
     """Generate nine rolls on the first nine days of July 2369."""
     for number in range(1, 10):
         embargo = pytz.utc.localize(
