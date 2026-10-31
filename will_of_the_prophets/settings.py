@@ -92,13 +92,12 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": (
-            "django.contrib.auth.password_validation"
-            ".UserAttributeSimilarityValidator"
+            "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
         )
     },
-    {"NAME": ("django.contrib.auth.password_validation" ".MinimumLengthValidator")},
-    {"NAME": ("django.contrib.auth.password_validation" ".CommonPasswordValidator")},
-    {"NAME": ("django.contrib.auth.password_validation" ".NumericPasswordValidator")},
+    {"NAME": ("django.contrib.auth.password_validation.MinimumLengthValidator")},
+    {"NAME": ("django.contrib.auth.password_validation.CommonPasswordValidator")},
+    {"NAME": ("django.contrib.auth.password_validation.NumericPasswordValidator")},
 ]
 
 
@@ -218,9 +217,7 @@ CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]
 # Feature policy
 # https://github.com/adamchainz/django-feature-policy#setting
 
-FEATURE_POLICY = {
-    feature_name: "none" for feature_name in django_feature_policy.FEATURE_NAMES
-}
+FEATURE_POLICY = dict.fromkeys(django_feature_policy.FEATURE_NAMES, "none")
 FEATURE_POLICY["document-domain"] = "self"
 
 
